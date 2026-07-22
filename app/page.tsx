@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal, SectionHead, CtaBox } from "@/components/ui";
-import { services, products, clients, marqueeWords, testimonial } from "@/lib/site";
+import { services, products, clientLogos, carouselTiles, testimonial } from "@/lib/site";
 
 export default function Home() {
   return (
@@ -33,9 +33,9 @@ export default function Home() {
           <Reveal>
             <div className="hero-logos">
               <span className="mono">Trusted by 20+ organizations every year</span>
-              <div className="logo-row">
-                {clients.map((c) => (
-                  <span key={c}>{c}</span>
+              <div className="client-logos">
+                {clientLogos.map((c) => (
+                  <Image src={c.file} alt={c.name} title={c.name} key={c.file} width={140} height={34} style={{ width: "auto" }} />
                 ))}
               </div>
             </div>
@@ -43,17 +43,23 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ---------- Capability marquee ---------- */}
-      <div className="marquee" aria-hidden="true">
-        <div className="marquee-track">
+      {/* ---------- Service card carousel ---------- */}
+      <div className="carousel" aria-label="What we do">
+        <div className="carousel-track">
           {[0, 1].map((pass) => (
-            <span key={pass}>
-              {marqueeWords.map((w) => (
-                <span key={`${pass}-${w.text}`} className={w.serif ? "serif" : undefined}>
-                  {w.text}
-                </span>
+            <div key={pass} style={{ display: "flex", gap: 22 }} aria-hidden={pass === 1}>
+              {carouselTiles.map((t) => (
+                <Link className="svc-tile" href={t.href} key={`${pass}-${t.title}`}>
+                  <Image src={t.img} alt={t.title} width={900} height={900} sizes="300px" />
+                  <h3>{t.title}</h3>
+                  <div className="tile-tags">
+                    {t.tags.map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                </Link>
               ))}
-            </span>
+            </div>
           ))}
         </div>
       </div>

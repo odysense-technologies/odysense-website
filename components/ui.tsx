@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { site } from "@/lib/site";
 
 /* ---------- Scroll reveal wrapper ---------- */
@@ -36,7 +37,7 @@ export function Nav() {
     <nav className="nav">
       <div className="nav-pill">
         <Link className="nav-logo" href="/">
-          <span className="dot" />
+          <Image className="nav-icon" src="/logos/odysense-icon.png" alt="" width={44} height={44} priority />
           Odysense
         </Link>
         <div className="nav-links">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Reveal, SectionHead, CtaBox, PageHero } from "@/components/ui";
 import type { ServiceDef } from "@/lib/service-pages";
 
@@ -59,6 +60,18 @@ export function ServicePageView({ def }: { def: ServiceDef }) {
           </Reveal>
         </div>
       </section>
+
+      {def.image && (
+        <section className="section section--flush-top">
+          <div className="wrap">
+            <Reveal>
+              <div className="img-inline svc-page-img">
+                <Image src={def.image.src} alt={def.image.alt} width={1200} height={900} sizes="(max-width: 920px) 100vw, 1200px" />
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       <section className="section quote-sec">
         <div className="wrap">

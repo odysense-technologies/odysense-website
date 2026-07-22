@@ -87,6 +87,18 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
+      {d.image && (
+        <section className="section section--flush-top">
+          <div className="wrap">
+            <Reveal>
+              <div className="img-inline">
+                <Image src={d.image.src} alt={d.image.alt} width={900} height={1200} sizes="(max-width: 920px) 100vw, 900px" style={{ maxHeight: 560, objectFit: "cover", width: "100%" }} />
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
       <section className="section section--flush-top">
         <div className="wrap">
           <Reveal>

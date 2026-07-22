@@ -267,6 +267,149 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "seo-in-qatar-how-businesses-get-found",
+    title: "SEO in Qatar: how local businesses actually get found in 2026",
+    description:
+      "What ranking in Qatar really takes in 2026 — local intent, Arabic search, Google Business Profile, and the technical basics most local sites still get wrong.",
+    date: "2026-07-22",
+    category: "SEO",
+    minutes: 6,
+    relatedService: { label: "SEO services in Qatar", href: "/digital-marketing-agency-qatar/seo-services-qatar" },
+    sections: [
+      {
+        ps: [
+          "Qatar's search results are less crowded than almost any Western market — which means competent SEO goes further here than nearly anywhere else. It also means most local businesses are competing badly against a small field, and the ones who do the basics properly take a disproportionate share of the customers searching every day.",
+        ],
+      },
+      {
+        h: "Local intent is the whole game",
+        ps: [
+          "The searches that bring customers in Qatar are overwhelmingly local and commercial: a service plus a place (\"landscaping company Doha\"), or a \"near me\" query resolved by Google Maps. Two consequences follow. First, your Google Business Profile is not a side task — for many businesses it produces more calls than the website, so complete it fully: categories, photos, hours, and a steady flow of genuine reviews. Second, your website's pages should name what you do and where you do it in plain language — not because of keyword tricks, but because pages that clearly answer \"who is this for and where\" are the ones Google can confidently show.",
+        ],
+      },
+      {
+        h: "Arabic search is the open goal",
+        ps: [
+          "A large share of Qatar's search volume happens in Arabic, yet most business websites here are English-only — meaning the Arabic results for many commercial queries are thin. A properly built Arabic version of your key pages (real translation, correct right-to-left layout, Arabic metadata) often ranks faster than the English equivalent simply because fewer competitors bothered. It is the single most under-used advantage in this market.",
+        ],
+      },
+      {
+        h: "The technical basics most Qatar sites still fail",
+        list: [
+          "Speed — heavy page-builder websites dominate the local market and load slowly on mobile, where most Qatar traffic lives. A fast site starts ahead of most of its competitors by default.",
+          "Indexing hygiene — one clear page per service, working internal links, an accurate sitemap, no accidental noindex leftovers from development.",
+          "Structured data — organization, FAQ and breadcrumb schema help Google understand and present your pages; almost no local competitors implement it.",
+          "Content that answers questions — pages that state prices, timelines and process outrank vague brochure pages because they match what people actually type.",
+        ],
+      },
+      {
+        h: "What a realistic timeline looks like",
+        ps: [
+          "With a technically sound site and content targeting real queries: early movement in 2–3 months, meaningful enquiry flow by 4–6. Faster promises usually rely on tactics that don't survive Google's next update. SEO here is not magic — it's doing a modest list of things properly in a market where most competitors haven't.",
+          "If you want to know where your site stands today, we audit exactly these points — send us your domain and we'll tell you honestly what it would take.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "launching-online-fashion-store-gulf-checklist",
+    title: "Launching an online fashion store in the Gulf: the complete checklist",
+    description:
+      "From catalogue photography to payment gateways to delivery — everything a fashion or abaya brand needs in place before selling online in Qatar and the GCC.",
+    date: "2026-07-21",
+    category: "E-commerce",
+    minutes: 8,
+    relatedService: { label: "E-commerce development in Qatar", href: "/ecommerce-development-company-qatar" },
+    sections: [
+      {
+        ps: [
+          "Fashion is the GCC's most natural e-commerce category — visual products, brand-driven buying, and customers who already shop from their phones. It's also where weak execution shows fastest: photography, sizing and delivery problems all land harder when the product is worn. Having built stores for fashion brands including abaya ateliers, here is the checklist we run before any launch.",
+        ],
+      },
+      {
+        h: "Before the website: product and content",
+        list: [
+          "Photography that carries the brand — consistent lighting, consistent framing, on-model and flat shots per piece. In fashion, the photos are the store.",
+          "A sizing system customers trust — clear charts, measurements per item, and honest fit notes. Sizing doubt is the top cause of abandoned fashion carts and returns.",
+          "Bilingual product content planned from the start — Arabic titles and descriptions are a sales tool in this region, not a translation chore for later.",
+          "Collection structure — how you group products (by line, occasion, season) becomes your site navigation and your SEO architecture. Decide it deliberately.",
+        ],
+      },
+      {
+        h: "The store itself",
+        list: [
+          "Mobile-first design — the overwhelming majority of Gulf fashion purchases happen on a phone; design for the thumb, verify on real devices.",
+          "A checkout with no surprises — full costs visible early, guest checkout allowed, and the fewest possible steps between \"I want it\" and \"paid\".",
+          "Local payment gateways — cards and wallets Gulf customers actually hold, plus cash-on-delivery, which still matters in this region and must be managed (see delivery below).",
+          "Speed — every second of load time costs fashion conversions; image-heavy stores need proper image optimization, not just beautiful uploads.",
+        ],
+      },
+      {
+        h: "Delivery, returns and the operations nobody glamorizes",
+        ps: [
+          "Delivery expectations in the Gulf are same-day-to-two-days in-country, and your courier choice decides your review scores as much as your product does. Decide the returns policy before launch — fashion without workable returns doesn't scale — and be deliberate about cash-on-delivery: it expands your market and inflates your refusal rate, so pair it with WhatsApp order confirmation to filter unserious orders before dispatch.",
+        ],
+      },
+      {
+        h: "After launch: the first ninety days",
+        list: [
+          "WhatsApp integration — order confirmations, delivery updates and abandoned-cart recovery on the channel Gulf customers answer.",
+          "Instagram as the shop window — the store closes the sale, but discovery happens on social; plan the content pipeline before launch, not after.",
+          "Collect reviews from day one — social proof compounds, and early reviews are the hardest and most valuable.",
+          "Watch the data weekly — which pieces get viewed but not bought (price or photos?), where checkout is abandoned (payment or shipping cost?), and what customers ask on WhatsApp (missing information on the site).",
+        ],
+      },
+      {
+        ps: [
+          "Every item on this checklist is part of an Odysense e-commerce build — if you're launching a fashion brand online in Qatar or the GCC, bring us the collection and we'll handle the rest of the list.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "whatsapp-vs-email-marketing-gulf",
+    title: "WhatsApp vs email marketing in the Gulf: where your message actually gets read",
+    description:
+      "Why WhatsApp outperforms email for customer communication in Qatar and the GCC, what each channel is still best at, and how to use both without annoying anyone.",
+    date: "2026-07-19",
+    category: "WhatsApp",
+    minutes: 5,
+    relatedService: { label: "WhatsApp Business API in Qatar", href: "/whatsapp-business-api-qatar" },
+    sections: [
+      {
+        ps: [
+          "Ask any Gulf business owner where their customers respond and you'll get one answer. Email in this region is where newsletters go to be archived unread; WhatsApp is where people actually live. But \"WhatsApp beats email\" is too simple to act on — the useful question is what each channel is for.",
+        ],
+      },
+      {
+        h: "Why WhatsApp wins attention here",
+        ps: [
+          "WhatsApp is the default communication layer of the GCC — personal, immediate, and checked constantly. Messages get seen within minutes, not days, and replying feels as natural as texting a friend. That intimacy is the power and the constraint: customers welcome useful messages on WhatsApp and punish spam instantly with a block. Email's weakness is the mirror image — nobody blocks a newsletter, because nobody reads it.",
+        ],
+      },
+      {
+        h: "What each channel is actually best at",
+        list: [
+          "WhatsApp: transactional messages (order confirmations, delivery updates, appointment reminders), customer support, abandoned-cart recovery, and occasional high-value offers to opted-in customers. Anything where speed and response matter.",
+          "Email: receipts and records customers may need later, long-form content, B2B communication where paper trails matter, and low-frequency newsletters for audiences that chose them.",
+          "The rule of thumb: WhatsApp for conversation, email for documentation.",
+        ],
+      },
+      {
+        h: "The compliance line you must not cross",
+        ps: [
+          "WhatsApp marketing only works through the official Business API, with opted-in recipients and approved message templates. The unofficial bulk-sender tools sold around the region get numbers banned — taking every customer conversation with them. Done officially, frequency discipline is what keeps performance high: a message a customer finds useful builds the relationship; a daily promotion destroys it.",
+        ],
+      },
+      {
+        h: "How to run both without extra work",
+        ps: [
+          "In practice: put transactional and support messaging on WhatsApp first — that alone typically transforms customer experience — keep email for records and long-form, and route both from your store or system automatically so nobody is copy-pasting. Our WASL platform handles the WhatsApp side end to end: official API setup, AI-assisted inbox, broadcasts and integrations. Ask for a demo on your own number and compare the response rates yourself.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string) {

@@ -395,3 +395,48 @@ h1 .grad {
   .form-grid { grid-template-columns: 1fr; }
   .contact-layout { grid-template-columns: 1fr; }
 }
+
+/* ---------- Nav icon ---------- */
+.nav-logo .nav-icon { width: 22px; height: 22px; margin-right: 9px; }
+
+/* ---------- Client logo row ---------- */
+.client-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 26px 44px; margin-top: 26px; }
+.client-logos img {
+  height: 34px; width: auto; object-fit: contain;
+  filter: grayscale(1); opacity: .55; transition: filter .3s, opacity .3s;
+}
+.client-logos img:hover { filter: none; opacity: 1; }
+
+/* ---------- Service card carousel ---------- */
+.carousel { overflow: hidden; padding: 26px 0 34px; border-bottom: 1px solid var(--border); }
+.carousel-track { display: flex; gap: 22px; width: max-content; animation: carousel 55s linear infinite; }
+.carousel:hover .carousel-track { animation-play-state: paused; }
+@keyframes carousel { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.svc-tile {
+  position: relative; width: 300px; height: 400px; border-radius: 22px; overflow: hidden;
+  border: 1px solid var(--border); flex-shrink: 0; display: block;
+}
+.svc-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.svc-tile:hover img { transform: scale(1.05); }
+.svc-tile::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(22,21,26,.42) 0%, rgba(22,21,26,0) 38%, rgba(22,21,26,0) 55%, rgba(22,21,26,.55) 100%);
+}
+.svc-tile h3 {
+  position: absolute; top: 22px; left: 22px; z-index: 2; color: #fff;
+  font-size: 22px; font-weight: 600; letter-spacing: -.02em;
+}
+.svc-tile .tile-tags {
+  position: absolute; left: 18px; right: 18px; bottom: 18px; z-index: 2;
+  display: flex; flex-wrap: wrap; gap: 7px;
+}
+.svc-tile .tile-tags span {
+  background: rgba(250,249,246,.16); backdrop-filter: blur(8px);
+  border: 1px solid rgba(250,249,246,.25); color: #fff; border-radius: 999px;
+  padding: 5px 12px; font-size: 11.5px; font-weight: 600;
+}
+@media (prefers-reduced-motion: reduce) { .carousel-track { animation: none; } }
+@media (max-width: 920px) { .svc-tile { width: 250px; height: 340px; } }
+
+/* ---------- Service page image ---------- */
+.svc-page-img { margin-top: 0; }

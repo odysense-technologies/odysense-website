@@ -12,6 +12,7 @@ export type ServiceDef = {
   metaDescription: string;
   lede: string;
   includesKicker?: string;
+  image?: { src: string; alt: string };
   includes: { h: string; p: string }[];
   faqs: { q: string; a: string }[];
   related?: { label: string; href: string }[];
@@ -23,6 +24,7 @@ export type ServiceDef = {
 export const servicePages: ServiceDef[] = [
   {
     slug: "website-design-company-in-qatar",
+    image: { src: "/images/svc-webdesign.webp", alt: "Designers collaborating on a website concept" },
     crumb: "Website Design",
     title: "Website design",
     titleAccent: "company in Qatar.",
@@ -67,6 +69,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "website-development-company-qatar",
+    image: { src: "/images/svc-webdev.webp", alt: "Engineer at work on a development build" },
     crumb: "Website Development",
     title: "Website development",
     titleAccent: "company in Qatar.",
@@ -111,6 +114,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "software-development-company-qatar",
+    image: { src: "/images/card-software.webp", alt: "AI and software engineering at Odysense" },
     crumb: "Software Development",
     title: "Software development",
     titleAccent: "company in Qatar.",
@@ -155,6 +159,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "mobile-app-development-company-qatar",
+    image: { src: "/images/card-videos.webp", alt: "Developing and testing a mobile experience" },
     crumb: "Mobile Apps",
     title: "Mobile app development",
     titleAccent: "company in Qatar.",
@@ -198,6 +203,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "digital-marketing-agency-qatar",
+    image: { src: "/images/card-marketing.webp", alt: "Planning a marketing campaign on the board" },
     crumb: "Digital Marketing",
     title: "Digital marketing",
     titleAccent: "agency in Qatar.",
@@ -242,6 +248,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "digital-marketing-agency-qatar/seo-services-qatar",
+    image: { src: "/images/svc-seo.webp", alt: "Reviewing search performance together" },
     crumb: "SEO Services",
     title: "SEO services",
     titleAccent: "in Qatar.",
@@ -285,6 +292,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "whatsapp-business-api-qatar",
+    image: { src: "/images/card-social.webp", alt: "Customer conversations on WhatsApp" },
     crumb: "WhatsApp Business API",
     title: "WhatsApp Business API",
     titleAccent: "in Qatar.",
@@ -328,6 +336,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "branding-agency-qatar",
+    image: { src: "/images/card-branding.webp", alt: "Brand identity materials in production" },
     crumb: "Branding",
     title: "Branding agency",
     titleAccent: "in Qatar.",

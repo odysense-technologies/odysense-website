@@ -132,7 +132,7 @@ export const testimonial = {
 /** Extended content for /products/[slug] pages */
 export const productDetails: Record<
   string,
-  { tagline: string; features: { h: string; p: string }[]; cta: string }
+  { tagline: string; features: { h: string; p: string }[]; cta: string; image?: { src: string; alt: string } }
 > = {
   wasl: {
     tagline: "Every conversation, one intelligent inbox.",
@@ -146,6 +146,7 @@ export const productDetails: Record<
   },
   qflow: {
     tagline: "Scan. Order. Flow.",
+    image: { src: "/images/qflow-cafe.webp", alt: "A café moment — QFlow in its natural habitat" },
     features: [
       { h: "QR ordering", p: "Guests scan at the table or in line, browse the menu and order — no app download, no waiting for staff." },
       { h: "Queue management", p: "Virtual queues with live status — customers wait comfortably instead of crowding the counter." },
@@ -185,3 +186,35 @@ export const productDetails: Record<
     cta: "Create your free ProSeek profile — or find the professional you need.",
   },
 };
+
+/** Homepage service card carousel (slow auto-scroll) */
+export const carouselTiles = [
+  { title: "Web Design", img: "/images/card-webdesign.webp", href: "/website-design-company-in-qatar", tags: ["Next.js", "Responsive", "Prototyping", "CMS", "Performance"] },
+  { title: "E-commerce", img: "/images/card-ecommerce.webp", href: "/ecommerce-development-company-qatar", tags: ["WooCommerce", "Shopify", "Payments", "Logistics"] },
+  { title: "Branding", img: "/images/card-branding.webp", href: "/branding-agency-qatar", tags: ["Logo Design", "Strategy", "Print", "Style Guides", "Visual Identity"] },
+  { title: "Content Creation", img: "/images/card-content.webp", href: "/products/social-bakery", tags: ["Copywriting", "Design", "Production", "Blogs & Articles"] },
+  { title: "Social Media", img: "/images/card-social.webp", href: "/digital-marketing-agency-qatar", tags: ["Strategy", "Paid Ads", "Analytics", "Scheduling", "Management"] },
+  { title: "Marketing", img: "/images/card-marketing.webp", href: "/digital-marketing-agency-qatar/seo-services-qatar", tags: ["SEO", "PPC", "Conversion", "A/B Testing", "Reporting"] },
+  { title: "Software & AI", img: "/images/card-software.webp", href: "/software-development-company-qatar", tags: ["Web Apps", "Dashboards", "AI Features", "APIs"] },
+  { title: "Videos", img: "/images/card-videos.webp", href: "/digital-marketing-agency-qatar", tags: ["Storyboarding", "Reels & Shorts", "Editing", "Motion Graphics"] },
+];
+
+/** Client logo files (public/brands) shown in the hero */
+export const clientLogos = [
+  { name: "European Union — Delegation of Qatar", file: "/brands/european-union.png" },
+  { name: "Eleganza", file: "/brands/eleganza.png" },
+  { name: "Eunited", file: "/brands/eunited.png" },
+  { name: "FormaSports", file: "/brands/forma.png" },
+  { name: "Labasah", file: "/brands/labasah.png" },
+  { name: "Mezami", file: "/brands/mezami.png" },
+  { name: "Nouga", file: "/brands/nouga.png" },
+  { name: "Flow", file: "/brands/flow.png" },
+  { name: "Ninth", file: "/brands/ninth.png" },
+  { name: "Sharqiyat Line", file: "/brands/sharqiyat.png" },
+  { name: "Rafea Line", file: "/brands/rafealine.png" },
+  { name: "Bodega", file: "/brands/bodega.png" },
+  { name: "Right Vision Optical", file: "/brands/rightvision.png" },
+  { name: "Fuolo", file: "/brands/fuolo.png" },
+  { name: "Solemn", file: "/brands/solemn.png" },
+  { name: "Vou", file: "/brands/vou.png" },
+];
