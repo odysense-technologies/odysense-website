@@ -7,7 +7,7 @@ import Script from "next/script";
  * NOT the numeric property ID.
  */
 export function Analytics() {
-  const id = process.env.NEXT_PUBLIC_GA_ID;
+  const id = process.env.NEXT_PUBLIC_GA_ID ?? "G-XXE190R73Z";
   if (!id) return null;
   return (
     <>

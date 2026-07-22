@@ -213,6 +213,60 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "shopify-vs-woocommerce-vs-custom-gcc",
+    title: "Shopify vs WooCommerce vs custom build: what GCC retailers should choose",
+    description:
+      "An honest comparison of Shopify, WooCommerce and custom e-commerce builds for retailers in Qatar, KSA and the GCC — costs, control, and when each wins.",
+    date: "2026-07-22",
+    category: "E-commerce",
+    minutes: 7,
+    relatedService: { label: "E-commerce development in Qatar", href: "/ecommerce-development-company-qatar" },
+    sections: [
+      {
+        ps: [
+          "Every e-commerce project starts with the same fork in the road, and most advice about it is secretly a sales pitch — agencies recommend whatever they build. We build all three, so here is the comparison we give clients in the room.",
+        ],
+      },
+      {
+        h: "Shopify — pay for peace of mind",
+        ps: [
+          "Shopify is managed simplicity: hosting, security, updates and checkout are Shopify's problem, not yours. You pay monthly (plus transaction economics), accept the platform's boundaries, and in exchange your team runs a store instead of maintaining software. It shines for teams that want to move fast, sell across borders, and never think about servers.",
+        ],
+        list: [
+          "Strongest for: fast launches, lean teams, cross-GCC selling, brands that value uptime over customization.",
+          "Watch for: monthly costs that grow with apps, less freedom in checkout and data, and local payment gateways needing the right integration path.",
+        ],
+      },
+      {
+        h: "WooCommerce — own everything",
+        ps: [
+          "WooCommerce turns WordPress into a store you fully own: no platform fees, any payment gateway, unlimited customization, and your data on your hosting. The trade: you (or your agency) are now responsible for hosting quality, updates and security — a well-built WooCommerce store is excellent; a neglected one becomes slow and fragile.",
+        ],
+        list: [
+          "Strongest for: brands wanting full ownership and low running costs, content-heavy stores, unusual catalogue or checkout requirements on a budget.",
+          "Watch for: quality varies enormously with who builds it — theme and hosting choices decide whether it flies or crawls.",
+        ],
+      },
+      {
+        h: "Custom build — when the store is the business",
+        ps: [
+          "A custom build (modern frameworks, headless architecture) buys you exactly the experience you design — the fastest possible storefront, any integration, any business logic. It costs the most and demands a real engineering partner, which is why it only makes sense when e-commerce is core to the business, traffic is significant, or requirements genuinely do not fit the platforms.",
+        ],
+        list: [
+          "Strongest for: high-traffic brands, unusual business models, performance as a competitive weapon.",
+          "Watch for: paying custom prices for problems Shopify or WooCommerce already solved.",
+        ],
+      },
+      {
+        h: "The honest decision shortcut",
+        ps: [
+          "Choosing between them comes down to three questions. Who maintains it? No technical team leans Shopify; an agency partner opens up WooCommerce; engineering ambition justifies custom. What is genuinely unique about your selling? Nothing unusual leans Shopify; some leans WooCommerce; everything leans custom. What is the total cost over three years — not the build quote? Shopify's subscriptions, WooCommerce's maintenance and custom's development all price differently over time, and the cheapest year one is rarely the cheapest year three.",
+          "If you want the recommendation applied to your actual catalogue, market and team, this comparison is the first conversation of every Odysense e-commerce project — bring us your requirements and we will make the case for the right one, including when it is not the most expensive one.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string) {

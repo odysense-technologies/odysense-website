@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Reveal, PageHero } from "@/components/ui";
+import { ContactForm } from "@/components/lead-forms";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -24,7 +25,10 @@ export default function ContactPage() {
 
       <section className="section">
         <div className="wrap">
-          <Reveal className="grid-3">
+          <Reveal>
+            <div className="contact-layout">
+              <ContactForm />
+              <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
             <a className="card" href={site.whatsapp} target="_blank" rel="noopener noreferrer">
               <span className="num">i.</span>
               <h3>WhatsApp</h3>
@@ -48,6 +52,8 @@ export default function ContactPage() {
               <ul>
                 <li>{site.phone}</li>
               </ul>
+            </div>
+              </div>
             </div>
           </Reveal>
         </div>

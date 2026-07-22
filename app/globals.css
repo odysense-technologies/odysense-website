@@ -344,3 +344,54 @@ h1 .grad {
   .img-band { grid-template-columns: 1fr; }
   .img-frame { min-height: 240px; }
 }
+
+/* ---------- Lead forms ---------- */
+.lead-form { display: flex; flex-direction: column; gap: 14px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.lead-form input, .lead-form select, .lead-form textarea {
+  width: 100%; background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 15px 18px; font-size: 15px; font-family: var(--font-sans); color: var(--ink);
+  transition: border-color .2s;
+}
+.lead-form input:focus, .lead-form select:focus, .lead-form textarea:focus {
+  outline: none; border-color: var(--purple);
+}
+.lead-form textarea { resize: vertical; }
+.form-phone { display: grid; grid-template-columns: 150px 1fr; gap: 10px; }
+.form-row { grid-column: auto; }
+.lead-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.form-error { color: #C0392B; font-size: 14px; }
+.form-note { font-size: 12.5px; color: var(--slate); }
+.form-success {
+  border: 1px solid var(--border); background: var(--card); border-radius: 22px;
+  padding: 48px 40px; text-align: center;
+}
+.form-success p { margin-top: 12px; color: var(--slate); font-size: 15px; }
+.contact-layout { display: grid; grid-template-columns: 1.3fr 1fr; gap: 44px; align-items: start; }
+
+/* ---------- Exit-intent popup ---------- */
+.popup-overlay {
+  position: fixed; inset: 0; z-index: 100; background: rgba(22, 21, 26, .45);
+  backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 20px;
+  animation: fadeIn .25s var(--ease);
+}
+.popup {
+  position: relative; background: var(--bg); border: 1px solid var(--border); border-radius: 24px;
+  padding: 44px 40px; max-width: 460px; width: 100%; box-shadow: 0 30px 80px rgba(22, 21, 26, .25);
+  animation: popIn .3s var(--ease);
+}
+.popup h3 { font-size: 26px; font-weight: 600; letter-spacing: -.02em; margin: 12px 0 12px; }
+.popup > p { font-size: 14.5px; line-height: 1.65; color: var(--slate); margin-bottom: 22px; }
+.popup-close {
+  position: absolute; top: 16px; right: 16px; width: 34px; height: 34px; border-radius: 50%;
+  border: 1px solid var(--border); background: var(--card); cursor: pointer; font-size: 13px;
+  color: var(--slate); transition: color .2s, border-color .2s;
+}
+.popup-close:hover { color: var(--ink); border-color: var(--ink); }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popIn { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 920px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; }
+}

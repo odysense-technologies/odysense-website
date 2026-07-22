@@ -68,7 +68,7 @@ export const products = [
   },
   {
     name: "Social Bakery",
-    logo: null,
+    logo: "/logos/social-bakery.svg",
     chip: "Content Ops",
     chipColor: "pink",
     url: "https://social-bakery.com",
@@ -88,7 +88,18 @@ export const products = [
     description:
       "Gamified paediatric physiotherapy with camera-based motion tracking — home exercise, turned into play.",
   },
-] as const;
+  {
+    name: "ProSeek",
+    logo: "/logos/proseek.png",
+    chip: "AI Talent Search",
+    chipColor: "purple",
+    url: "https://pro-seek.com",
+    urlLabel: "pro-seek.com",
+    slug: "/products/proseek",
+    description:
+      "An AI-powered platform connecting skilled professionals with the people who need them — semantic search, direct contact, no middleman, no commission.",
+  },
+];
 
 export const clients = [
   "EUROPEAN UNION",
@@ -162,5 +173,15 @@ export const productDetails: Record<
       { h: "Built with clinicians", p: "Developed with clinical expertise at the core — engagement in service of outcomes." },
     ],
     cta: "Request a Rehabitt walkthrough for your clinic.",
+  },
+  proseek: {
+    tagline: "Be found for what you can do.",
+    features: [
+      { h: "Professional profiles", p: "Sign up free and build a profile showcasing your skills, experience, certifications and portfolio — once." },
+      { h: "AI semantic search", p: "Clients describe what they need in natural language; ProSeek's AI matches the right professionals — no keyword games." },
+      { h: "Direct connection", p: "Interested clients message you directly. No middleman, no commission, no hidden fees." },
+      { h: "Built for both sides", p: "Professionals get discovered; clients skip the directories and find genuinely matched skills in one search." },
+    ],
+    cta: "Create your free ProSeek profile — or find the professional you need.",
   },
 };

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nav, Footer } from "@/components/ui";
 import { Analytics } from "@/components/analytics";
+import { ConsultPopup } from "@/components/lead-forms";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -64,6 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Analytics />
         <Nav />
         {children}
+        <ConsultPopup />
         <Footer />
       </body>
     </html>

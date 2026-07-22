@@ -103,9 +103,9 @@ export function CtaBox({
       <span className="kicker">{kicker}</span>
       <h2>{title}</h2>
       <p>{body}</p>
-      <a className="btn btn-invert" href={`mailto:${site.email}`}>
-        {site.email}
-      </a>
+      <Link className="btn btn-invert" href="/contact">
+        Start your project →
+      </Link>
     </div>
   );
 }
