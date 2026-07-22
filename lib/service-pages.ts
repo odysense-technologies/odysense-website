@@ -114,7 +114,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "software-development-company-qatar",
-    image: { src: "/images/card-software.webp", alt: "AI and software engineering at Odysense" },
+    image: { src: "/images/svc-software.webp", alt: "AI and software engineering at Odysense" },
     crumb: "Software Development",
     title: "Software development",
     titleAccent: "company in Qatar.",
@@ -159,7 +159,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "mobile-app-development-company-qatar",
-    image: { src: "/images/card-videos.webp", alt: "Developing and testing a mobile experience" },
+    image: { src: "/images/svc-mobile.webp", alt: "Developing and testing a mobile experience" },
     crumb: "Mobile Apps",
     title: "Mobile app development",
     titleAccent: "company in Qatar.",
@@ -203,7 +203,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "digital-marketing-agency-qatar",
-    image: { src: "/images/card-marketing.webp", alt: "Planning a marketing campaign on the board" },
+    image: { src: "/images/svc-marketing.webp", alt: "Planning a marketing campaign on the board" },
     crumb: "Digital Marketing",
     title: "Digital marketing",
     titleAccent: "agency in Qatar.",
@@ -292,7 +292,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "whatsapp-business-api-qatar",
-    image: { src: "/images/card-social.webp", alt: "Customer conversations on WhatsApp" },
+    image: { src: "/images/svc-whatsapp.webp", alt: "Customer conversations on WhatsApp" },
     crumb: "WhatsApp Business API",
     title: "WhatsApp Business API",
     titleAccent: "in Qatar.",
@@ -336,7 +336,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "branding-agency-qatar",
-    image: { src: "/images/card-branding.webp", alt: "Brand identity materials in production" },
+    image: { src: "/images/svc-branding.webp", alt: "Brand identity materials in production" },
     crumb: "Branding",
     title: "Branding agency",
     titleAccent: "in Qatar.",

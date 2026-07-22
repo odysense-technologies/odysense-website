@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal, SectionHead, CtaBox } from "@/components/ui";
-import { services, products, clientLogos, carouselTiles, testimonial } from "@/lib/site";
+import { services, products, clientLogos, testimonial } from "@/lib/site";
+import { ServiceCarousel } from "@/components/carousel";
 
 export default function Home() {
   return (
@@ -44,25 +45,7 @@ export default function Home() {
       </header>
 
       {/* ---------- Service card carousel ---------- */}
-      <div className="carousel" aria-label="What we do">
-        <div className="carousel-track">
-          {[0, 1].map((pass) => (
-            <div key={pass} style={{ display: "flex", gap: 22 }} aria-hidden={pass === 1}>
-              {carouselTiles.map((t) => (
-                <Link className="svc-tile" href={t.href} key={`${pass}-${t.title}`}>
-                  <Image src={t.img} alt={t.title} width={900} height={900} sizes="300px" />
-                  <h3>{t.title}</h3>
-                  <div className="tile-tags">
-                    {t.tags.map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
-                  </div>
-                </Link>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
+      <ServiceCarousel />
 
       {/* ---------- Services ---------- */}
       <section className="section" id="services">

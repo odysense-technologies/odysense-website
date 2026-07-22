@@ -10,7 +10,7 @@ export const site = {
   email: "contact@odysense.com",
   whatsapp: "https://wa.link/odysense",
   phone: "+974 3066 6516",
-  address: "Office 317-04, Innovation Centre, Qatar Science & Technology Park, Doha, Qatar",
+  address: "Innovation Centre, Qatar Science & Technology Park, Doha, Qatar",
   founded: 2013,
   description:
     "Odysense is a Doha-based digital agency and software company. We design, build and grow websites, e-commerce and products for ambitious brands across Qatar, Saudi Arabia and the Gulf.",
@@ -99,6 +99,17 @@ export const products = [
     description:
       "An AI-powered platform connecting skilled professionals with the people who need them — semantic search, direct contact, no middleman, no commission.",
   },
+  {
+    name: "Odysense AI",
+    logo: "/logos/odysense-ai.png",
+    chip: "AI Platform",
+    chipColor: "sky",
+    url: "https://ai.odysense.com",
+    urlLabel: "ai.odysense.com",
+    slug: "/products/odysense-ai",
+    description:
+      "All-in-one AI content platform — generate text, images, code and chatbots in minutes, in multiple languages, from one dashboard.",
+  },
 ];
 
 export const clients = [
@@ -185,6 +196,16 @@ export const productDetails: Record<
     ],
     cta: "Create your free ProSeek profile — or find the professional you need.",
   },
+  "odysense-ai": {
+    tagline: "Unleash the power of AI.",
+    features: [
+      { h: "Generate anything", p: "Text, images, code, chat and voiceovers — powered by leading AI models, ready in seconds." },
+      { h: "Custom templates & chatbots", p: "Dozens of ready templates for blogs, ads, product copy and more — or build your own prompts and chatbots." },
+      { h: "Multi-lingual", p: "Understands and generates content across languages — including the Arabic/English mix the GCC actually works in." },
+      { h: "One dashboard", p: "Create, edit, manage and export all your AI content from a single, clean workspace." },
+    ],
+    cta: "Start your free trial at ai.odysense.com.",
+  },
 };
 
 /** Homepage service card carousel (slow auto-scroll) */
@@ -209,7 +230,6 @@ export const clientLogos = [
   { name: "Mezami", file: "/brands/mezami.png" },
   { name: "Nouga", file: "/brands/nouga.png" },
   { name: "Flow", file: "/brands/flow.png" },
-  { name: "Ninth", file: "/brands/ninth.png" },
   { name: "Sharqiyat Line", file: "/brands/sharqiyat.png" },
   { name: "Rafea Line", file: "/brands/rafealine.png" },
   { name: "Bodega", file: "/brands/bodega.png" },

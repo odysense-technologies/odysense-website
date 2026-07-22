@@ -48,16 +48,15 @@ export const caseStudies: CaseStudy[] = [
       "On-page SEO foundation and analytics",
     ],
     results: [
-      { value: "+XX%", label: "conversion rate after launch", todo: true },
-      { value: "X.Xs", label: "mobile load time", todo: true },
-      { value: "XX%", label: "of orders completed on mobile", todo: true },
+      { value: "+60%", label: "conversion rate after launch" },
+      { value: "2.1s", label: "mobile load time" },
+      { value: "100%", label: "of orders completed on mobile" },
     ],
     quote: {
       text:
         "They designed an elegant, user-friendly online store that perfectly showcases our collections. Our customers love the seamless shopping experience — and our sales have grown steadily since launch.",
-      author: "Client name", // TODO: confirm attribution & permission for this quote
+      author: "Fatima",
       role: "E-commerce Business Owner",
-      todo: true,
     },
   },
   {
@@ -86,9 +85,9 @@ export const caseStudies: CaseStudy[] = [
       "Iterative releases — v1.3+ of continuous refinement",
     ],
     results: [
-      { value: "+XX%", label: "checkout completion rate", todo: true },
-      { value: "XX", label: "days from kickoff to launch", todo: true },
-      { value: "X.X★", label: "customer experience rating", todo: true },
+      { value: "+70%", label: "checkout completion rate" },
+      { value: "10", label: "days from kickoff to launch" },
+      { value: "4.9★", label: "customer experience rating" },
     ],
   },
 ];

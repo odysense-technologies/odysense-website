@@ -37,7 +37,7 @@ const orgSchema = {
   foundingDate: String(site.founded),
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Office 317-04, Innovation Centre, Qatar Science & Technology Park",
+    streetAddress: "Innovation Centre, Qatar Science & Technology Park",
     addressLocality: "Doha",
     addressCountry: "QA",
   },
