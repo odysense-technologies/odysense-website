@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Reveal, CtaBox, PageHero } from "@/components/ui";
 import { products } from "@/lib/site";
 
@@ -30,9 +31,14 @@ export default function ProductsPage() {
               <Link className="prod" href={p.slug} key={p.name}>
                 <div>
                   <div className="prod-top">
-                    <h3>{p.name}</h3>
+                    {p.logo ? (
+                      <Image className="prod-mark" src={p.logo} alt={`${p.name} logo`} width={130} height={40} />
+                    ) : (
+                      <h3>{p.name}</h3>
+                    )}
                     <span className={`chip chip--${p.chipColor}`}>{p.chip}</span>
                   </div>
+                  {p.logo && <h3 style={{ marginTop: 14 }}>{p.name}</h3>}
                   <p>{p.description}</p>
                 </div>
                 <span className="prod-link">Learn more →</span>

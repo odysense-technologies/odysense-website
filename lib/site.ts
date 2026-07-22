@@ -46,6 +46,7 @@ export const services = [
 export const products = [
   {
     name: "WASL",
+    logo: "/logos/wasl.svg",
     chip: "WhatsApp AI",
     chipColor: "purple",
     url: "https://wasl.odysense.com",
@@ -56,6 +57,7 @@ export const products = [
   },
   {
     name: "QFlow",
+    logo: "/logos/qflow.svg",
     chip: "Queue & Ordering",
     chipColor: "orange",
     url: "https://qflow.odysense.com",
@@ -66,6 +68,7 @@ export const products = [
   },
   {
     name: "Social Bakery",
+    logo: null,
     chip: "Content Ops",
     chipColor: "pink",
     url: "https://social-bakery.com",
@@ -76,6 +79,7 @@ export const products = [
   },
   {
     name: "Rehabitt",
+    logo: "/logos/rehabitt.png",
     chip: "Health Tech",
     chipColor: "sky",
     url: "https://rehabitt.com",

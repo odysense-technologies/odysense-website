@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Reveal, SectionHead, CtaBox } from "@/components/ui";
 import { services, products, clients, marqueeWords, testimonial } from "@/lib/site";
 
@@ -88,6 +89,27 @@ export default function Home() {
         </div>
       </section>
 
+
+      {/* ---------- Studio imagery ---------- */}
+      <section className="section section--flush-top">
+        <div className="wrap">
+          <Reveal className="img-band">
+            <div className="img-frame">
+              <Image src="/images/studio-design.webp" alt="Designers reviewing brand work in the Odysense studio" width={1200} height={1200} sizes="(max-width: 920px) 100vw, 40vw" />
+              <span className="img-tag">Design</span>
+            </div>
+            <div className="img-frame">
+              <Image src="/images/studio-code.webp" alt="Developer writing code at a workstation" width={840} height={1200} sizes="(max-width: 920px) 100vw, 30vw" />
+              <span className="img-tag">Engineering</span>
+            </div>
+            <div className="img-frame">
+              <Image src="/images/studio-collab.webp" alt="Team collaborating on a project session" width={904} height={1200} sizes="(max-width: 920px) 100vw, 30vw" />
+              <span className="img-tag">Strategy</span>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ---------- Products ---------- */}
       <section className="section section--flush-top" id="products">
         <div className="wrap">
@@ -107,9 +129,14 @@ export default function Home() {
               <Link className="prod" href={p.slug} key={p.name}>
                 <div>
                   <div className="prod-top">
-                    <h3>{p.name}</h3>
+                    {p.logo ? (
+                      <Image className="prod-mark" src={p.logo} alt={`${p.name} logo`} width={130} height={40} />
+                    ) : (
+                      <h3>{p.name}</h3>
+                    )}
                     <span className={`chip chip--${p.chipColor}`}>{p.chip}</span>
                   </div>
+                  {p.logo && <h3 style={{ marginTop: 14 }}>{p.name}</h3>}
                   <p>{p.description}</p>
                 </div>
                 <span className="prod-link">{p.urlLabel} →</span>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Reveal, SectionHead, CtaBox, PageHero } from "@/components/ui";
 import { products, productDetails } from "@/lib/site";
@@ -45,6 +46,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         crumbs={[{ label: "Home", href: "/" }, { label: "Products", href: "/products" }, { label: p.name }]}
         title={
           <>
+            {p.logo && (
+              <Image className="prod-hero-mark" src={p.logo} alt={`${p.name} logo`} width={220} height={64} style={{ display: "block" }} />
+            )}
             {p.name}
             <span className="serif">.</span>
           </>

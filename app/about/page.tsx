@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Reveal, SectionHead, CtaBox, PageHero } from "@/components/ui";
 
 export const metadata: Metadata = {
@@ -46,6 +47,17 @@ export default function AboutPage() {
                 Both<span className="serif"> sides</span>
               </b>
               <span>agency craft and product ownership — we build for clients like we build for ourselves</span>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+
+      <section className="section section--flush-top">
+        <div className="wrap">
+          <Reveal>
+            <div className="img-inline">
+              <Image src="/images/about-workspace.webp" alt="The Odysense workspace" width={1200} height={670} sizes="(max-width: 920px) 100vw, 1200px" />
             </div>
           </Reveal>
         </div>

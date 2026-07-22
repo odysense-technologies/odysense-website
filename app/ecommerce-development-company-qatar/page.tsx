@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Reveal, SectionHead, CtaBox, PageHero } from "@/components/ui";
 import { caseStudies } from "@/lib/case-studies";
 
@@ -138,6 +139,17 @@ export default function EcommercePage() {
               <span className="num">vi.</span>
               <h3>SEO &amp; analytics</h3>
               <p>Technical SEO, structured data and conversion tracking built in — so the store gets found and you see what works.</p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Imagery */}
+      <section className="section section--flush-top">
+        <div className="wrap">
+          <Reveal>
+            <div className="img-inline">
+              <Image src="/images/ecom-packages.webp" alt="E-commerce order packaging ready for delivery" width={1200} height={673} sizes="(max-width: 920px) 100vw, 1200px" />
             </div>
           </Reveal>
         </div>

@@ -309,3 +309,38 @@ h1 .grad {
 .post-body ul li { margin-bottom: 10px; }
 .post-related { border: 1px solid var(--border); background: var(--card); border-radius: 16px; padding: 24px 28px; margin-top: 48px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
 .post-related span { font-size: 14px; color: var(--slate); }
+
+/* ---------- Photography ---------- */
+.img-band { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 22px; align-items: stretch; }
+.img-frame { position: relative; border-radius: 22px; overflow: hidden; border: 1px solid var(--border); min-height: 320px; }
+.img-frame img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.img-frame:hover img { transform: scale(1.035); }
+.img-frame .img-tag {
+  position: absolute; left: 16px; bottom: 16px; z-index: 2;
+  background: rgba(250, 249, 246, .88); backdrop-filter: blur(10px);
+  border: 1px solid var(--border); border-radius: 999px; padding: 7px 15px;
+  font-size: 12px; font-weight: 600; color: var(--ink);
+}
+.img-inline { border-radius: 22px; overflow: hidden; border: 1px solid var(--border); }
+.img-inline img { width: 100%; height: auto; display: block; }
+
+/* ---------- Gradient border hover (interactive) ---------- */
+.card, .prod, .cs-card { overflow: hidden; }
+.card::before, .prod::before, .cs-card::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+  background: linear-gradient(135deg, var(--purple), var(--pink), var(--orange));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity .25s var(--ease); pointer-events: none;
+}
+.card:hover::before, .prod:hover::before, .cs-card:hover::before { opacity: 1; }
+.prod, .cs-card { position: relative; }
+
+/* ---------- Product logo marks ---------- */
+.prod-mark { height: 40px; width: auto; max-width: 130px; object-fit: contain; }
+.prod-hero-mark { height: 64px; width: auto; max-width: 220px; object-fit: contain; position: relative; margin-bottom: 26px; }
+
+@media (max-width: 920px) {
+  .img-band { grid-template-columns: 1fr; }
+  .img-frame { min-height: 240px; }
+}
