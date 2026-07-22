@@ -109,3 +109,35 @@ export function CtaBox({
     </div>
   );
 }
+
+/* ---------- Inner page hero ---------- */
+export function PageHero({
+  crumbs,
+  title,
+  lede,
+  children,
+}: {
+  crumbs: { label: string; href?: string }[];
+  title: ReactNode;
+  lede?: string;
+  children?: ReactNode;
+}) {
+  return (
+    <header className="page-hero">
+      <div className="orb" aria-hidden="true" />
+      <div className="wrap">
+        <nav className="crumb" aria-label="Breadcrumb">
+          {crumbs.map((c, i) => (
+            <span key={c.label}>
+              {i > 0 && <span style={{ margin: "0 8px", opacity: 0.5 }}>/</span>}
+              {c.href ? <Link href={c.href}>{c.label}</Link> : <span>{c.label}</span>}
+            </span>
+          ))}
+        </nav>
+        <h1>{title}</h1>
+        {lede && <p className="lede">{lede}</p>}
+        {children}
+      </div>
+    </header>
+  );
+}
