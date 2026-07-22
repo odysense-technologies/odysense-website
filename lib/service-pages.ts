@@ -41,7 +41,7 @@ export const servicePages: ServiceDef[] = [
     faqs: [
       {
         q: "How much does a website cost in Qatar?",
-        a: "A professionally designed business website in Qatar typically starts around QAR 8,000–20,000 depending on the number of pages and features; e-commerce and custom web applications range higher. Odysense quotes fixed and itemized before work begins, so you know the full cost upfront.",
+        a: "A professionally designed business website in Qatar typically starts around QAR 2,000–10,000 depending on the number of pages and features; e-commerce and custom web applications range higher. Odysense quotes fixed and itemized before work begins, so you know the full cost upfront.",
       },
       {
         q: "How long does a website take to design and launch?",
@@ -133,7 +133,7 @@ export const servicePages: ServiceDef[] = [
       },
       {
         q: "How much does custom software cost?",
-        a: "Custom software in Qatar typically starts around QAR 30,000 for a focused MVP and scales with complexity. We always propose a phased plan — a lean first release that proves value, then iterations — rather than a giant one-shot build.",
+        a: "Custom software in Qatar typically starts around QAR 10,000 for a focused MVP and scales with complexity. We always propose a phased plan — a lean first release that proves value, then iterations — rather than a giant one-shot build.",
       },
       {
         q: "Do you sign NDAs and work with sensitive data?",
@@ -173,7 +173,7 @@ export const servicePages: ServiceDef[] = [
     faqs: [
       {
         q: "How much does a mobile app cost in Qatar?",
-        a: "A focused first-release app typically starts around QAR 40,000–80,000 including backend and store publishing; complex apps range higher. A detailed fixed quote follows a scoping session — and if a web app would serve you better for less, we'll tell you before you spend.",
+        a: "A focused first-release app typically starts around QAR 15,000–20,000 including backend and store publishing; complex apps range higher. A detailed fixed quote follows a scoping session — and if a web app would serve you better for less, we'll tell you before you spend.",
       },
       {
         q: "Do you build native or cross-platform?",
@@ -346,7 +346,7 @@ export const servicePages: ServiceDef[] = [
     faqs: [
       {
         q: "How much does branding cost in Qatar?",
-        a: "A professional identity project (strategy, logo, core identity system and guidelines) typically starts around QAR 10,000–25,000; full brand systems with bilingual identity and extensive collateral range higher. Fixed, itemized quotes before we start.",
+        a: "A professional identity project (strategy, logo, core identity system and guidelines) typically starts around QAR 5,000–10,000; full brand systems with bilingual identity and extensive collateral range higher. Fixed, itemized quotes before we start.",
       },
       {
         q: "Do you design Arabic logos and bilingual identities?",

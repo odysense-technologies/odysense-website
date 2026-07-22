@@ -2,12 +2,13 @@ import type { MetadataRoute } from "next";
 import { site, products } from "@/lib/site";
 import { caseStudies } from "@/lib/case-studies";
 import { servicePages } from "@/lib/service-pages";
+import { posts } from "@/lib/blog";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const core = ["", "services/", "products/", "work/", "about/", "contact/", "ecommerce-development-company-qatar/"].map((r) => ({
+  const core = ["", "services/", "products/", "work/", "about/", "contact/", "blog/", "ecommerce-development-company-qatar/"].map((r) => ({
     url: `${site.url}/${r}`,
     lastModified: now,
     changeFrequency: "weekly" as const,
@@ -31,5 +32,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
-  return [...core, ...svc, ...prods, ...work];
+  const blog = posts.map((p) => ({
+    url: `${site.url}/blog/${p.slug}/`,
+    lastModified: new Date(p.date),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+  return [...core, ...svc, ...prods, ...work, ...blog];
 }
