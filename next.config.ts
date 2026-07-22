@@ -13,6 +13,8 @@ const nextConfig: NextConfig = {
       { source: "/portfolio/", destination: "/work/", permanent: true },
       { source: "/services/ecommerce-services-qatar/", destination: "/ecommerce-development-company-qatar/", permanent: true },
       { source: "/services/whatsapp-business-api-integration-qatar/", destination: "/whatsapp-business-api-qatar/", permanent: true },
+      { source: "/mobile-app-development-company-qatar/android-app-development-company-qatar/", destination: "/mobile-app-development-company-qatar/", permanent: true },
+      { source: "/mobile-app-development-company-qatar/ios-app-development-company-in-qatar/", destination: "/mobile-app-development-company-qatar/", permanent: true },
       { source: "/products/qflow-restaurant-management-system/", destination: "/products/qflow/", permanent: true },
       { source: "/products/wasl-whatsapp-cloud-messaging-api/", destination: "/products/wasl/", permanent: true },
     ];

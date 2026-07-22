@@ -113,3 +113,50 @@ export const testimonial = {
   author: "Ali Abdulla",
   role: "Founder",
 };
+
+/** Extended content for /products/[slug] pages */
+export const productDetails: Record<
+  string,
+  { tagline: string; features: { h: string; p: string }[]; cta: string }
+> = {
+  wasl: {
+    tagline: "Every conversation, one intelligent inbox.",
+    features: [
+      { h: "AI-powered inbox", p: "WASL's AI answers routine questions instantly and routes the rest to your team — no customer left on read." },
+      { h: "Broadcasts & campaigns", p: "Compliant marketing to opted-in customers with approved templates — offers and updates at scale." },
+      { h: "Automated notifications", p: "Order confirmations, delivery updates and reminders, triggered straight from your store or systems." },
+      { h: "Team collaboration", p: "Multiple agents on one number with assignment, notes and full history — WhatsApp, organized." },
+    ],
+    cta: "Get a WASL demo on your own number.",
+  },
+  qflow: {
+    tagline: "Scan. Order. Flow.",
+    features: [
+      { h: "QR ordering", p: "Guests scan at the table or in line, browse the menu and order — no app download, no waiting for staff." },
+      { h: "Queue management", p: "Virtual queues with live status — customers wait comfortably instead of crowding the counter." },
+      { h: "Live operations view", p: "Every order, table and queue on one real-time dashboard for managers and kitchen staff." },
+      { h: "Menu control", p: "Update items, prices and availability instantly — sold out means sold out, everywhere, immediately." },
+    ],
+    cta: "See QFlow running in a venue like yours.",
+  },
+  "social-bakery": {
+    tagline: "Fresh content, delivered like clockwork.",
+    features: [
+      { h: "Content subscription", p: "Agency-grade posts, campaigns and creative on a predictable monthly plan — no retainers drama." },
+      { h: "Calendars that ship", p: "Planned, produced and scheduled — your channels stay active without you chasing anyone." },
+      { h: "Design & copy included", p: "Visuals and words from one team, consistent with your brand every single post." },
+      { h: "Scales with you", p: "Start with one channel, add more as you grow — plans flex month to month." },
+    ],
+    cta: "Get your first month's content plan.",
+  },
+  rehabitt: {
+    tagline: "Physiotherapy kids actually finish.",
+    features: [
+      { h: "Camera-based tracking", p: "On-device motion tracking turns exercises into games — no wearables, just a camera." },
+      { h: "Gamified sessions", p: "Progress, rewards and play mechanics that keep children engaged through their full program." },
+      { h: "Clinician dashboard", p: "Therapists assign programs and monitor adherence and progress remotely." },
+      { h: "Built with clinicians", p: "Developed with clinical expertise at the core — engagement in service of outcomes." },
+    ],
+    cta: "Request a Rehabitt walkthrough for your clinic.",
+  },
+};
