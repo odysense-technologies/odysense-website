@@ -3,9 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Reveal, SectionHead, CtaBox, PageHero } from "@/components/ui";
-import { products, productDetails } from "@/lib/site";
+import { products, productDetails, productShowcase } from "@/lib/site";
+import { LottiePlayer } from "@/components/lottie";
 
-const NUMERALS = ["i.", "ii.", "iii.", "iv."];
+const NUMERALS = ["i.", "ii.", "iii.", "iv.", "v.", "vi."];
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug.replace("/products/", "") }));
@@ -26,6 +27,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const p = products.find((x) => x.slug === `/products/${slug}`);
   const d = productDetails[slug];
+  const show = productShowcase[slug];
   if (!p || !d) notFound();
 
   const schema = {
@@ -86,6 +88,77 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </Reveal>
         </div>
       </section>
+
+      {show && (
+        <section className="section section--flush-top">
+          <div className="wrap">
+            <SectionHead
+              kicker="How it works"
+              title={
+                <>
+                  Three steps, <span className="serif">no friction.</span>
+                </>
+              }
+            />
+            <div>
+              {show.steps.map((st, i) => (
+                <Reveal key={st.title}>
+                  <div className="step-row">
+                    <div>
+                      <span className="step-num">Step {i + 1}</span>
+                      <h3>{st.title}</h3>
+                      <p>{st.text}</p>
+                    </div>
+                    <div className="lottie-wrap">
+                      <LottiePlayer src={st.lottie} />
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {show && (
+        <section className="section section--flush-top quote-sec">
+          <div className="wrap">
+            <SectionHead
+              kicker="Inside the product"
+              title={
+                <>
+                  Real screens, <span className="serif">not mockups.</span>
+                </>
+              }
+            />
+            <Reveal>
+              <div className="shot-grid">
+                {show.gallery.map((g) => (
+                  <figure className="shot" key={g.src}>
+                    <div className="img-inline">
+                      <Image src={g.src} alt={g.caption} width={g.w} height={g.h} sizes="(max-width: 920px) 100vw, 590px" />
+                    </div>
+                    <figcaption>{g.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </Reveal>
+            <Reveal>
+              <div className="mini-quotes" style={{ marginTop: 44 }}>
+                {show.quotes.map((q) => (
+                  <blockquote className="mini-quote" key={q.author}>
+                    <p>“{q.text}”</p>
+                    <cite>
+                      <b>{q.author}</b>
+                      {q.role}
+                    </cite>
+                  </blockquote>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {d.image && (
         <section className="section section--flush-top">

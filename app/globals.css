@@ -445,3 +445,33 @@ h1 .grad {
 
 /* ---------- Service page image ---------- */
 .svc-page-img { max-width: 940px; margin: 0 auto; }
+
+/* ---------- Product showcase: steps with Lottie ---------- */
+.step-row { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding: 44px 0; }
+.step-row + .step-row { border-top: 1px solid var(--border); }
+.step-row:nth-child(even) .lottie-wrap { order: 2; }
+.step-num { font-family: var(--font-serif); font-style: italic; font-size: 20px; color: var(--purple); }
+.step-row h3 { font-size: clamp(24px, 2.6vw, 32px); font-weight: 600; letter-spacing: -.025em; margin: 10px 0 14px; }
+.step-row p { font-size: 15.5px; line-height: 1.7; color: var(--slate); max-width: 52ch; }
+.lottie-wrap { display: flex; justify-content: center; }
+.lottie-box { width: 100%; max-width: 380px; aspect-ratio: 1; }
+
+/* ---------- Screenshot gallery ---------- */
+.shot-grid { columns: 2; column-gap: 22px; }
+.shot { break-inside: avoid; margin-bottom: 22px; }
+.shot .img-inline img { background: var(--card); }
+.shot figcaption { margin-top: 10px; font-size: 13px; color: var(--slate); }
+
+/* ---------- Mini quotes ---------- */
+.mini-quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.mini-quote { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 34px 32px; }
+.mini-quote p { font-family: var(--font-serif); font-style: italic; font-size: 19px; line-height: 1.55; letter-spacing: -.01em; }
+.mini-quote cite { display: block; margin-top: 20px; font-style: normal; font-size: 13.5px; color: var(--slate); }
+.mini-quote cite b { color: var(--ink); font-weight: 600; display: block; font-size: 14.5px; }
+
+@media (max-width: 920px) {
+  .step-row { grid-template-columns: 1fr; gap: 20px; }
+  .step-row:nth-child(even) .lottie-wrap { order: 0; }
+  .shot-grid { columns: 1; }
+  .mini-quotes { grid-template-columns: 1fr; }
+}

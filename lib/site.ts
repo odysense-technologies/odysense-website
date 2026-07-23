@@ -146,12 +146,14 @@ export const productDetails: Record<
   { tagline: string; features: { h: string; p: string }[]; cta: string; image?: { src: string; alt: string } }
 > = {
   wasl: {
-    tagline: "Every conversation, one intelligent inbox.",
+    tagline: "Send WhatsApp messages at scale for your business.",
     features: [
-      { h: "AI-powered inbox", p: "WASL's AI answers routine questions instantly and routes the rest to your team — no customer left on read." },
-      { h: "Broadcasts & campaigns", p: "Compliant marketing to opted-in customers with approved templates — offers and updates at scale." },
-      { h: "Automated notifications", p: "Order confirmations, delivery updates and reminders, triggered straight from your store or systems." },
-      { h: "Team collaboration", p: "Multiple agents on one number with assignment, notes and full history — WhatsApp, organized." },
+      { h: "WhatsApp Cloud API", p: "Official Meta-verified connection — no third-party proxies. Messages go directly through Meta's infrastructure with enterprise SLAs." },
+      { h: "Template management", p: "Create, submit and manage Meta-approved templates, with an admin review workflow that ensures compliance before going live." },
+      { h: "Auto-reply bots", p: "Keyword-triggered replies for inbound and outbound messages — priority rules, exact or fuzzy matching, text or template responses." },
+      { h: "API keys & playground", p: "Developer-first API with scoped keys, IP allowlists and a live sandbox to test sends before production." },
+      { h: "Credits system", p: "Transparent pay-as-you-go pricing — top up credits, track consumption per message, set spending controls." },
+      { h: "Audit logs & analytics", p: "A complete audit trail for every action, plus delivery analytics, error breakdowns and bot performance dashboards." },
     ],
     cta: "Get a WASL demo on your own number.",
   },
@@ -159,10 +161,12 @@ export const productDetails: Record<
     tagline: "Scan. Order. Flow.",
     image: { src: "/images/qflow-cafe.webp", alt: "A café moment — QFlow in its natural habitat" },
     features: [
-      { h: "QR ordering", p: "Guests scan at the table or in line, browse the menu and order — no app download, no waiting for staff." },
-      { h: "Queue management", p: "Virtual queues with live status — customers wait comfortably instead of crowding the counter." },
-      { h: "Live operations view", p: "Every order, table and queue on one real-time dashboard for managers and kitchen staff." },
-      { h: "Menu control", p: "Update items, prices and availability instantly — sold out means sold out, everywhere, immediately." },
+      { h: "QR code menus", p: "A unique QR code for every table — customers scan to view the live menu and their running bill." },
+      { h: "Bill splitting", p: "Split equally, by item, or custom amounts, with real-time tracking of who's paid and who hasn't." },
+      { h: "POS terminal", p: "A full point-of-sale for staff — cash, card and digital payments processed from one dashboard." },
+      { h: "Kitchen display", p: "Real-time kitchen order screen with status tracking — preparing, ready, served." },
+      { h: "Delivery integrations", p: "Talabat, Snoonu, Rafeeq and Keeta connected — aggregator orders flow into the same kitchen screen." },
+      { h: "Analytics dashboard", p: "Revenue, popular items, peak hours and payment trends in clear visual reports." },
     ],
     cta: "See QFlow running in a venue like yours.",
   },
@@ -238,3 +242,90 @@ export const clientLogos = [
   { name: "Solemn", file: "/brands/solemn.png" },
   { name: "Vou", file: "/brands/vou.png" },
 ];
+
+/** Rich showcase content for flagship product pages (steps with Lottie, screenshots, quotes) */
+export const productShowcase: Record<
+  string,
+  {
+    steps: { title: string; text: string; lottie: string }[];
+    gallery: { src: string; w: number; h: number; caption: string }[];
+    quotes: { text: string; author: string; role: string }[];
+  }
+> = {
+  qflow: {
+    steps: [
+      {
+        title: "Generate QR codes",
+        text: "Create your tables and QFlow auto-generates a unique QR code for each one. Print, place, done — every table becomes a self-serve ordering point.",
+        lottie: "https://lottie.host/ff0686b3-deee-4e9f-acde-6e6a3f3ec9dd/SbGo29JWyT.json",
+      },
+      {
+        title: "Guests scan & order",
+        text: "Customers scan to browse the live menu with photos and allergen info, order from their phone, and track preparation in real time. No app download — it works in any browser.",
+        lottie: "https://lottie.host/6de32d1c-5838-4637-8c28-576c8e9939b0/oFNFQpmSDL.json",
+      },
+      {
+        title: "Split & pay instantly",
+        text: "Guests split the bill equally, by item, or by custom amounts — then pay securely by card, Apple Pay, Google Pay or cash. Orders flow straight to the kitchen display; you watch it all live.",
+        lottie: "https://lottie.host/1e484114-a347-4c72-861e-0ae8b6dcc4ca/JCplekjHdD.json",
+      },
+    ],
+    gallery: [
+      { src: "/images/shot-qflow-pos.webp", w: 1200, h: 591, caption: "POS Terminal — cash, card and digital payments in one screen" },
+      { src: "/images/shot-qflow-analytics.webp", w: 1200, h: 613, caption: "Analytics — revenue, peak hours and popular items" },
+      { src: "/images/shot-qflow-delivery.webp", w: 1100, h: 767, caption: "Delivery integrations — Talabat, Snoonu, Rafeeq and Keeta" },
+      { src: "/images/shot-qflow-guest.webp", w: 402, h: 943, caption: "The guest experience — scan, browse, add" },
+      { src: "/images/shot-qflow-tables.webp", w: 1200, h: 386, caption: "Tables — QR code per table, live availability" },
+      { src: "/images/shot-qflow-pay.webp", w: 409, h: 944, caption: "Bill splitting and payment, right from the phone" },
+    ],
+    quotes: [
+      {
+        text: "Before QFlow, managing orders during peak hours was chaotic. Since switching, everything runs smoothly — from the POS terminal to the QR code menu and direct customer payments. Guests simply scan, order and pay instantly.",
+        author: "Sarah",
+        role: "Restaurant Owner",
+      },
+      {
+        text: "We introduced QFlow to reduce queues and improve order accuracy, and it delivered beyond expectations. Orders go straight to the kitchen display, eliminating miscommunication between front-of-house and the kitchen.",
+        author: "Abdullah M.",
+        role: "Cafe Owner",
+      },
+    ],
+  },
+  wasl: {
+    steps: [
+      {
+        title: "Connect your WhatsApp number",
+        text: "Link your Meta Business account via embedded signup or enter your number credentials. Official, Meta-verified connection — verification takes minutes, not weeks.",
+        lottie: "https://lottie.host/37c6f68e-b2c2-456a-aae1-fa1e2380ca3c/7RXcvCSDXi.json",
+      },
+      {
+        title: "Create & approve templates",
+        text: "Design message templates with variables, buttons and headers, submit them for Meta approval, and manage everything from your WASL dashboard — compliance built into the workflow.",
+        lottie: "https://lottie.host/cb53fc78-e1c1-40e5-a4c7-96767b05b6bf/llLyJc2tvd.json",
+      },
+      {
+        title: "Send at scale",
+        text: "Use the REST API or the dashboard to send transactional notifications, run campaigns and trigger automated bot replies — every message tracked, every delivery accounted for.",
+        lottie: "https://lottie.host/21793b85-b8fa-47b3-a88f-3a17133eea4b/dQKEpvbvgx.json",
+      },
+    ],
+    gallery: [
+      { src: "/images/shot-wasl-console.webp", w: 1100, h: 460, caption: "The WASL Console — usage, delivery and quick actions" },
+      { src: "/images/shot-wasl-chat.webp", w: 612, h: 486, caption: "Live on WhatsApp — order status, auto-replies, Meta-verified" },
+      { src: "/images/shot-wasl-bots.webp", w: 794, h: 433, caption: "Auto-reply bots — keyword rules, priorities, first match wins" },
+      { src: "/images/shot-wasl-template.webp", w: 497, h: 852, caption: "Template builder — variables, buttons and approval workflow" },
+    ],
+    quotes: [
+      {
+        text: "WASL has completely transformed how we communicate with our customers. Order confirmations, shipping updates and support responses go out instantly — and the automated bots handle common questions 24/7, which has reduced our support workload dramatically.",
+        author: "Founder",
+        role: "Online Store",
+      },
+      {
+        text: "WASL helped us scale our customer communication without expanding our support team. Appointment confirmations, service updates and reminders now go out automatically, while template management keeps our messaging consistent.",
+        author: "Head of Customer Experience",
+        role: "Retail Business",
+      },
+    ],
+  },
+};
