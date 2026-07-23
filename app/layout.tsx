@@ -4,6 +4,7 @@ import { Nav } from "@/components/nav";
 import { Analytics } from "@/components/analytics";
 import { ConsultPopup } from "@/components/lead-forms";
 import { site } from "@/lib/site";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -68,6 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <ConsultPopup />
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );
