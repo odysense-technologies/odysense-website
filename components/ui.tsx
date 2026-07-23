@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { site } from "@/lib/site";
 
 /* ---------- Scroll reveal wrapper ---------- */
@@ -28,29 +27,6 @@ export function Reveal({ children, className = "" }: { children: ReactNode; clas
     <div ref={ref} className={`reveal ${className}`}>
       {children}
     </div>
-  );
-}
-
-/* ---------- Nav ---------- */
-export function Nav() {
-  return (
-    <nav className="nav">
-      <div className="nav-pill">
-        <Link className="nav-logo" href="/">
-          <Image className="nav-icon" src="/logos/odysense-icon.png" alt="" width={44} height={44} priority />
-          Odysense
-        </Link>
-        <div className="nav-links">
-          <Link href="/services">Services</Link>
-          <Link href="/products">Products</Link>
-          <Link href="/work">Work</Link>
-          <Link href="/blog">Blog</Link>
-        </div>
-        <Link className="nav-cta" href="/contact">
-          Start a project
-        </Link>
-      </div>
-    </nav>
   );
 }
 

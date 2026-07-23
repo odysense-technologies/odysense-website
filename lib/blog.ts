@@ -410,6 +410,170 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "qr-code-ordering-restaurants-qatar",
+    title: "QR code ordering in Qatar: how it pays for itself in the first month",
+    description:
+      "What QR table ordering actually changes for a restaurant or cafe — faster tables, bigger orders, fewer mistakes — and what to look for in a system.",
+    date: "2026-07-23",
+    category: "QFlow",
+    minutes: 6,
+    relatedService: { label: "QFlow — restaurant management", href: "/products/qflow" },
+    sections: [
+      {
+        ps: [
+          "Every restaurant owner has watched the same scene: a full section, two servers, and a table waving for the bill while another waits to order. QR ordering exists for exactly that moment — it removes the waiting from the parts of service that never needed a human, so your team can spend time on the parts that do.",
+        ],
+      },
+      {
+        h: "Where the money actually comes from",
+        list: [
+          "Faster table turns — guests order the moment they're ready and pay the moment they're done, no flagging anyone down. Minutes saved per table become extra covers per night.",
+          "Bigger average orders — menus with photos sell better than paper, and a phone never forgets to offer the add-on, the drink, or the dessert.",
+          "Fewer mistakes — the order goes from the guest's own hands straight to the kitchen display. No mishearing, no handwriting, no forgotten modifications.",
+          "Leaner peak hours — staff stop being order-takers and become hosts. The same team handles more tables with less stress.",
+        ],
+      },
+      {
+        h: "What guests in Qatar expect from it",
+        ps: [
+          "The bar is set by the best experiences they've already had: scan and see the menu instantly with no app download, photos and allergen information on every item, a running bill they can check anytime, and — the feature that quietly wins loyalty — splitting the bill their way and paying from the phone with card, Apple Pay or Google Pay. If the QR just opens a PDF, you've spent money to disappoint people.",
+        ],
+      },
+      {
+        h: "What to look for in a system",
+        list: [
+          "Live menu control — sold out means sold out everywhere, instantly, without reprinting anything.",
+          "A kitchen display, not a printer — orders tracked from placed to preparing to served, visible to the whole team.",
+          "A real POS behind it — QR ordering should feed the same system your staff use, not live beside it.",
+          "Local payments and delivery — Qatar-relevant payment options, and integrations with the delivery platforms you already sell on.",
+        ],
+      },
+      {
+        ps: [
+          "This is precisely what we built QFlow to do — QR menus, bill splitting, POS, kitchen display and delivery integrations in one system, built in Doha for exactly this market. Ask us for a demo in a venue like yours.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "restaurant-delivery-aggregators-one-screen",
+    title: "Talabat, Snoonu, Rafeeq, Keeta: escaping the restaurant tablet farm",
+    description:
+      "Why juggling a separate tablet per delivery app slows your kitchen down — and how integrating aggregators into one order screen fixes margins and mistakes.",
+    date: "2026-07-23",
+    category: "QFlow",
+    minutes: 5,
+    relatedService: { label: "QFlow — restaurant management", href: "/products/qflow" },
+    sections: [
+      {
+        ps: [
+          "Walk into the back of most delivery-active restaurants in Qatar and you'll find it: the tablet farm. One device per platform — Talabat here, Snoonu there, Rafeeq, Keeta — each with its own login, its own chime, its own menu to keep updated, and a staff member whose real job has become retyping orders into the POS.",
+        ],
+      },
+      {
+        h: "What the tablet farm actually costs",
+        list: [
+          "Retyping errors — every order manually transferred to the POS or kitchen is a chance to get it wrong, and wrong delivery orders mean refunds plus a public bad review.",
+          "Slower kitchens — cooks working from three screens and a shout don't have one clear queue; ticket times stretch exactly when volume peaks.",
+          "Menu drift — a price change or sold-out item updated in one platform and forgotten in another sells food you don't have at prices you didn't mean.",
+          "No single picture — revenue and item performance split across platform dashboards that never quite add up.",
+        ],
+      },
+      {
+        h: "What integration changes",
+        ps: [
+          "Connect the platforms to your restaurant system properly and the farm disappears: every aggregator order lands in the same kitchen display as your dine-in tickets, in one queue with one status flow. Accept or auto-accept with a set prep time, sync your menu outward so availability and prices stay true everywhere, and see delivery revenue in the same analytics as everything else. Your staff go back to cooking and hosting.",
+        ],
+      },
+      {
+        ps: [
+          "QFlow ships with direct integrations for Talabat, Snoonu, Rafeeq and Keeta — webhook-connected, menu-synced, flowing into the same kitchen screen your dine-in orders use. If your counter currently looks like an electronics shop, ask us for a demo.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "whatsapp-auto-reply-bots-that-help",
+    title: "WhatsApp auto-reply bots that customers don't hate: a setup guide",
+    description:
+      "Most WhatsApp bots frustrate more than they help. How to design keyword rules, replies and human handoff so automation actually improves your service.",
+    date: "2026-07-23",
+    category: "WASL",
+    minutes: 6,
+    relatedService: { label: "WASL — WhatsApp AI platform", href: "/products/wasl" },
+    sections: [
+      {
+        ps: [
+          "Everyone has met a bad WhatsApp bot — the one that answers every message with the same menu, understands nothing, and hides the human behind five wrong turns. The lesson businesses draw is often \"bots annoy customers.\" The real lesson: badly designed bots annoy customers. A well-designed one answers in one second what would otherwise wait an hour, and nobody complains about that.",
+        ],
+      },
+      {
+        h: "Automate the repetitive, never the personal",
+        ps: [
+          "Pull up your chat history and count: what share of inbound messages are the same five questions? Opening hours, location, prices, delivery, availability — that's the automation zone, where an instant accurate reply beats a human answer that arrives after lunch. Complaints, special requests and anything emotional stay human, always. The bot's job is to clear the routine so your team has time for exactly those.",
+        ],
+      },
+      {
+        h: "Designing rules that actually match",
+        list: [
+          "Think in keywords customers use, not words you use — people write \"open?\", \"timing\", \"دوام\" — not \"operating hours\". Feed rules real phrasings from your chat history, in both languages your customers write.",
+          "Order rules by priority — evaluation should stop at the first match, so put specific triggers above general ones and a friendly catch-all at the bottom.",
+          "Answer, don't menu — reply to the question asked. Forced button-mazes are why people hate bots.",
+          "Always leave the exit — every automated reply should make reaching a human effortless, and unmatched messages should route to your team, visibly, not vanish.",
+        ],
+      },
+      {
+        h: "Respect the 24-hour window",
+        ps: [
+          "One WhatsApp API rule trips up every new team: free-form replies are only allowed within 24 hours of the customer's last message. Outside that window, only pre-approved templates can be sent. A good platform handles this for you — bots reply free-form inside the window, templates handle the rest — and keeps you compliant without thinking about it.",
+        ],
+      },
+      {
+        ps: [
+          "WASL's auto-reply bots were built around these principles: keyword rules with priorities, exact or fuzzy matching, text or template replies, and clean human handoff — with reports showing what your bot resolved. Set up your first rule in minutes, or ask us to design the rule set with you.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "whatsapp-order-notifications-ecommerce",
+    title: "WhatsApp order notifications: the cheapest upgrade your online store can make",
+    description:
+      "Order confirmations and delivery updates on WhatsApp cut support messages and build trust GCC customers expect — here's what to send, when, and how.",
+    date: "2026-07-23",
+    category: "WASL",
+    minutes: 5,
+    relatedService: { label: "WhatsApp Business API in Qatar", href: "/whatsapp-business-api-qatar" },
+    sections: [
+      {
+        ps: [
+          "The most common message an online store in the Gulf receives is not a complaint or a question about products. It's some version of \"where is my order?\" — sent because the confirmation email went unread, as emails here do. Every one of those messages is a small failure of trust, and each one costs staff time to answer. WhatsApp notifications remove the reason to ask.",
+        ],
+      },
+      {
+        h: "The notification sequence that works",
+        list: [
+          "Order confirmed — instantly after checkout, with items, total and order number. This message alone kills most \"did my order go through?\" anxiety.",
+          "Out for delivery — the message customers actually wait for; include the expected window.",
+          "Delivered / ready for pickup — closes the loop, and is the natural moment to invite a review.",
+          "For cash-on-delivery stores: an order confirmation asking the customer to confirm — this single step filters unserious COD orders before you ship them.",
+        ],
+      },
+      {
+        h: "Why WhatsApp specifically",
+        ps: [
+          "Because it's read. Delivery updates on WhatsApp get seen in minutes in a way email never will in this region — and each notification lands in a thread where the customer can simply reply if something's wrong, turning a support ticket into a conversation you were already having. Done through the official API with approved templates, it's fully compliant and works at any volume.",
+        ],
+      },
+      {
+        h: "The setup, practically",
+        ps: [
+          "You need three things: the official WhatsApp Business API on your number, approved message templates for each notification, and a connection from your store so messages trigger automatically on order events. With WASL that's a straightforward setup — templates managed in the dashboard, your WooCommerce, Shopify or custom store connected, every send tracked. Most stores are live within days, and the \"where is my order?\" messages drop off almost immediately.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string) {
