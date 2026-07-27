@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/ui";
 import { Nav } from "@/components/nav";
-import { Analytics } from "@/components/analytics";
+import { Analytics, WhatsAppTracker } from "@/components/analytics";
 import { ConsultPopup } from "@/components/lead-forms";
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -21,11 +21,14 @@ export const metadata: Metadata = {
     description: site.description,
     url: site.url,
     locale: "en_US",
+    images: [{ url: "/og.png", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/og.png"],
   },
   robots: { index: true, follow: true },
+  verification: { google: "S89j3QhEP8zX5xo8zO5PvKmEqJxT-gpf152W9xmq2GU" },
 };
 
 const orgSchema = {
@@ -64,6 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <Analytics />
+        <WhatsAppTracker />
         <Nav />
         {children}
         <ConsultPopup />

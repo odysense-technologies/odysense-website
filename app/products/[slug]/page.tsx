@@ -62,9 +62,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <Link className="btn btn-primary" href="/contact">
             Request a demo →
           </Link>
-          <a className="btn btn-secondary" href={p.url} target="_blank" rel="noopener noreferrer">
-            Visit {p.urlLabel}
-          </a>
+          {p.url && (
+            <a className="btn btn-secondary" href={p.url} target="_blank" rel="noopener noreferrer">
+              Visit {p.urlLabel}
+            </a>
+          )}
         </div>
       </PageHero>
 
@@ -90,7 +92,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </div>
       </section>
 
-      {show && (
+      {show?.steps && (
         <section className="section section--flush-top">
           <div className="wrap">
             <SectionHead
@@ -129,6 +131,27 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <Reveal>
               <ShotCarousel shots={show.gallery} />
             </Reveal>
+            {show.pricing && (
+              <Reveal>
+                <p className="pricing-strip">{show.pricing}</p>
+              </Reveal>
+            )}
+            {show.addons && (
+              <Reveal>
+                <div className="addon-grid" style={{ marginTop: 44 }}>
+                  {show.addons.map((a) => (
+                    <div className="addon" key={a.name}>
+                      <div>
+                        <b>{a.name}</b>
+                        <p>{a.desc}</p>
+                      </div>
+                      <span>{a.price}</span>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            )}
+            {show.quotes && (
             <Reveal>
               <div className="mini-quotes" style={{ marginTop: 44 }}>
                 {show.quotes.map((q) => (
@@ -142,6 +165,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 ))}
               </div>
             </Reveal>
+            )}
           </div>
         </section>
       )}

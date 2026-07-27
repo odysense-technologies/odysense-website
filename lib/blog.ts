@@ -574,6 +574,95 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "how-much-does-ecommerce-website-cost-qatar",
+    title: "How much does an e-commerce website cost in Qatar? (2026 guide)",
+    description:
+      "Real 2026 pricing for online stores in Qatar — what QAR 8,000–10,000 gets you, what pushes the price up, running costs, and what should be included.",
+    date: "2026-07-27",
+    category: "E-commerce",
+    minutes: 6,
+    relatedService: { label: "E-commerce development in Qatar", href: "/ecommerce-development-company-qatar" },
+    sections: [
+      {
+        ps: [
+          "The direct answer: a professionally built e-commerce website in Qatar — custom design, not a template — typically costs QAR 8,000–10,000, and at Odysense that figure includes your first year of domain registration and hosting. More advanced stores cost more, depending on features and design. Here's what sits inside those numbers, so you can compare any quote you receive intelligently.",
+        ],
+      },
+      {
+        h: "What QAR 8,000–10,000 should include",
+        list: [
+          "Custom storefront design around your brand and catalogue — not a purchased theme with your logo dropped in.",
+          "Full store build: product pages, cart, checkout, and the payment gateway integration GCC customers actually use.",
+          "Domain registration and hosting for the first year — the running costs handled upfront.",
+          "Mobile-first build and testing, because that's where Gulf customers shop.",
+          "The management layer: with Odysense builds, our Store Portal platform — products, orders, invoicing, POS and analytics in one dashboard — is included free for the first year.",
+        ],
+      },
+      {
+        h: "What pushes the price above that",
+        ps: [
+          "Complexity is the honest answer, and it comes in predictable forms: large or complicated catalogues (hundreds of products, many variants), custom features (subscriptions, bookings, loyalty programs, marketplace mechanics), integrations with ERPs or courier systems, bilingual Arabic/English content with proper RTL design, and advanced design ambitions like custom animations or interactive product experiences. None of these are padding — each is real work — but a good agency will itemize them so you can choose what earns its cost.",
+        ],
+      },
+      {
+        h: "The costs after launch — ask about them upfront",
+        ps: [
+          "Year two is where cheap builds get expensive. Ask any agency: what do domain, hosting and maintenance cost after the first year? What does a small change cost? Who owns everything if we part ways? With our builds, ongoing store management runs through Store Portal (QAR 170/month after the free first year, or QAR 150/month billed yearly), and optional managed services — from automated backups to full order management — are priced openly, so there are no surprise invoices.",
+        ],
+      },
+      {
+        ps: [
+          "If you're budgeting a store for Qatar or the wider GCC, send us your product range and requirements — you'll get a fixed, itemized quote, usually within two business days, and an honest recommendation on which platform fits.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "store-portal-woocommerce-management",
+    title: "Running a WooCommerce store without wrestling the WordPress admin",
+    description:
+      "Why store owners struggle with the default WooCommerce admin — and how Store Portal turns daily operations into a mobile-first dashboard staff can use on day one.",
+    date: "2026-07-27",
+    category: "Store Portal",
+    minutes: 6,
+    relatedService: { label: "Store Portal — e-commerce operations", href: "/products/store-portal" },
+    sections: [
+      {
+        ps: [
+          "WooCommerce runs a huge share of the world's online stores for good reason: you own everything and it can do almost anything. Its weakness is equally famous — the admin was built for WordPress users, not shopkeepers. Finding today's orders, updating twenty prices, printing an invoice: all possible, none pleasant, and every new staff member needs training in WordPress before they can do their actual job.",
+        ],
+      },
+      {
+        h: "The operations gap",
+        ps: [
+          "Watch a store team work and the friction is always the same tasks: bulk price updates before a promotion, importing a new season's products from a spreadsheet, checking what's low on stock, printing packing slips for the day's orders, and answering \"how did we do this month?\" without exporting anything. These are operator jobs, and the default admin makes each one a small expedition. That gap is exactly what we built Store Portal to close — a dedicated portal on top of your own WooCommerce store, organized around the jobs, not the data models.",
+        ],
+      },
+      {
+        h: "What day-to-day looks like in the portal",
+        list: [
+          "Products — search and filter everything, select in bulk and change prices, stock or status in one action; import a CSV with preview and rollback; duplicate a product for a seasonal color run in one click; print barcode and QR labels.",
+          "Orders — a live dashboard by status, branded PDF invoices and packing slips printed straight from the order, and a peak-hours heatmap that tells you when to schedule staff.",
+          "Counter sales — a built-in POS any staff member can run on a tablet: scan, discount, take cash or card, reconcile the shift in one click.",
+          "Numbers — revenue, top products, coupon performance and customer lifetime value in one dashboard, on your phone.",
+          "And because it's a plugin on your WordPress installation, your data never leaves your own store — the regular admin stays right there for your developer.",
+        ],
+      },
+      {
+        h: "The feature nobody else has: AI Virtual Try-On",
+        ps: [
+          "For fashion retailers, Store Portal ships something genuinely rare: customers can see themselves wearing your products before buying. They upload a photo — or just a face photo plus measurements — and the AI generates a photorealistic try-on with fit scoring and styling tips. Fashion's biggest cost is returns, and \"didn't look as expected\" is the biggest reason; every convincing try-on is a return avoided. The portal tracks which try-ons turned into sales, so the ROI isn't a feeling — it's a report.",
+        ],
+      },
+      {
+        h: "What it costs",
+        ps: [
+          "If Odysense builds your e-commerce store, Store Portal is included free for the first year. After that it's QAR 170/month — or QAR 150/month billed yearly — with optional add-ons (WhatsApp and SMS notifications, automated backups, managed SEO, email marketing automation and more) priced openly so the platform grows with the store. Ask us for a walkthrough on a real store — it makes the case better than any article.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string) {

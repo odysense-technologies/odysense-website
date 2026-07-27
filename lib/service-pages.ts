@@ -279,7 +279,7 @@ export const servicePages: ServiceDef[] = [
       },
       {
         q: "What does SEO cost in Qatar?",
-        a: "Ongoing SEO retainers in Qatar typically run QAR 3,000–8,000/month depending on competitiveness and content volume, after an initial audit. We scope to your market — and we'll say upfront if SEO isn't your best first investment.",
+        a: "SEO pricing depends entirely on the project — your market's competitiveness, the current state of your website, and the content volume needed. Request a callback and we'll assess where you stand and quote honestly, including telling you if SEO isn't your best first investment yet.",
       },
     ],
     related: [

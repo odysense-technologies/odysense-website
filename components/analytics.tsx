@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect } from "react";
 import Script from "next/script";
 
 /**
@@ -20,4 +23,29 @@ gtag('config', '${id}');`}
       </Script>
     </>
   );
+}
+
+
+/** Fire a GA4 event (no-op if gtag isn't loaded). */
+export function track(event: string, params?: Record<string, string>) {
+  if (typeof window === "undefined") return;
+  const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+  w.gtag?.("event", event, params ?? {});
+}
+
+/** Tracks clicks on any WhatsApp link (wa.link / wa.me / api.whatsapp.com) site-wide. */
+export function WhatsAppTracker() {
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      const a = (e.target as HTMLElement).closest?.("a");
+      if (!a) return;
+      const href = a.getAttribute("href") ?? "";
+      if (/wa\.link|wa\.me|api\.whatsapp\.com/.test(href)) {
+        track("whatsapp_click", { link_url: href, page_path: window.location.pathname });
+      }
+    };
+    document.addEventListener("click", onClick, true);
+    return () => document.removeEventListener("click", onClick, true);
+  }, []);
+  return null;
 }

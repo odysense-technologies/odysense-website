@@ -110,6 +110,17 @@ export const products = [
     description:
       "All-in-one AI content platform — generate text, images, code and chatbots in minutes, in multiple languages, from one dashboard.",
   },
+  {
+    name: "Store Portal",
+    logo: "/logos/store-portal.svg",
+    chip: "E-commerce Ops",
+    chipColor: "orange",
+    url: "",
+    urlLabel: "",
+    slug: "/products/store-portal",
+    description:
+      "A complete operations platform for WooCommerce stores — products, orders, POS, analytics and AI Virtual Try-On in one mobile-first portal. Free for a year with every Odysense e-commerce build.",
+  },
 ];
 
 export const clients = [
@@ -210,6 +221,18 @@ export const productDetails: Record<
     ],
     cta: "Start your free trial at ai.odysense.com.",
   },
+  "store-portal": {
+    tagline: "Run your store. Skip the WordPress admin.",
+    features: [
+      { h: "Product management", p: "Bulk actions, CSV import with rollback, one-click duplication, barcode & QR generation, and a health score per product." },
+      { h: "Orders & invoices", p: "Live order dashboard, branded PDF invoices, packing slips for A4 and thermal printers, and a peak-sales heatmap." },
+      { h: "Built-in POS", p: "A cashier interface any staff member can run on a tablet — barcode scanning, discounts, split payments, one-click shift reconciliation." },
+      { h: "Customers & analytics", p: "Unified customer directory with lifetime value, plus revenue, top products and coupon performance in one dashboard." },
+      { h: "AI Virtual Try-On", p: "Customers see themselves wearing your products — photorealistic try-on with fit scores and styling tips, every session attributed to sales." },
+      { h: "Bilingual & mobile-first", p: "Arabic/English throughout, QAR by default, every screen phone-ready — staff update prices from the shop floor." },
+    ],
+    cta: "Free for your first year with any Odysense e-commerce build — ask us for a walkthrough.",
+  },
 };
 
 /** Homepage service card carousel (slow auto-scroll) */
@@ -247,9 +270,11 @@ export const clientLogos = [
 export const productShowcase: Record<
   string,
   {
-    steps: { title: string; text: string; lottie: string }[];
+    steps?: { title: string; text: string; lottie: string }[];
     gallery: { src: string; w: number; h: number; caption: string }[];
-    quotes: { text: string; author: string; role: string }[];
+    quotes?: { text: string; author: string; role: string }[];
+    pricing?: string;
+    addons?: { name: string; price: string; desc: string }[];
   }
 > = {
   qflow: {

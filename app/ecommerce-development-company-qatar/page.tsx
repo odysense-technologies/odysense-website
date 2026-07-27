@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "How much does an e-commerce website cost in Qatar?",
-    a: "It depends on scope. A launch-ready store on WooCommerce or Shopify with local payments typically starts around QAR 15,000–35,000; custom-designed stores with integrations, bilingual content and advanced features range higher. Every Odysense project starts with a fixed, itemized quote — no surprises after kickoff.",
+    a: "A launch-ready store with custom design — including one year of domain registration and one year of hosting — typically costs QAR 8,000–10,000. More advanced stores cost more depending on features and design, and every project starts with a fixed, itemized quote. Every Odysense e-commerce build also includes Store Portal, our store management platform, free for the first year.",
   },
   {
     q: "Which payment gateways do you integrate for Qatar and KSA?",

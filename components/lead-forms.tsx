@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import { track } from "@/components/analytics";
 
 export const GCC_CODES = [
   { flag: "🇶🇦", code: "+974", label: "Qatar" },
@@ -59,6 +60,7 @@ export function ContactForm() {
     setState("sending");
     try {
       await submitLead({ ...payload, type: "contact" });
+      track("generate_lead", { form: "contact", service: payload.service ?? "" });
       setState("done");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");
@@ -133,6 +135,7 @@ export function ConsultPopup() {
     setState("sending");
     try {
       await submitLead({ ...payload, type: "callback" });
+      track("callback_request", { form: "exit_popup" });
       setState("done");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");

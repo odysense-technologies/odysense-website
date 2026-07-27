@@ -21,6 +21,7 @@ type Panel = "products" | "services" | null;
 
 export function Nav() {
   const [panel, setPanel] = useState<Panel>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const openPanel = (p: Panel) => {
@@ -33,10 +34,22 @@ export function Nav() {
   };
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setPanel(null);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setPanel(null);
+        setMobileOpen(false);
+      }
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
 
   return (
     <nav className="nav" onMouseLeave={scheduleClose}>
@@ -69,10 +82,49 @@ export function Nav() {
             Blog
           </Link>
         </div>
-        <Link className="nav-cta" href="/contact" onMouseEnter={scheduleClose}>
-          Start a project
-        </Link>
+        <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+          <Link className="nav-cta" href="/contact" onMouseEnter={scheduleClose}>
+            Start a project
+          </Link>
+          <button
+            className="burger"
+            onClick={() => setMobileOpen(true)}
+            aria-label="Open menu"
+            aria-expanded={mobileOpen}
+          >
+            <span /><span /><span />
+          </button>
+        </div>
       </div>
+
+      {mobileOpen && (
+        <div className="mobile-menu" role="dialog" aria-modal="true">
+          <div className="mobile-menu-head">
+            <span className="nav-logo">
+              <Image className="nav-icon" src="/logos/odysense-icon.png" alt="" width={44} height={44} />
+              Odysense
+            </span>
+            <button className="popup-close" onClick={() => setMobileOpen(false)} aria-label="Close menu">✕</button>
+          </div>
+          <div className="mobile-menu-body">
+            <span className="mono">Services</span>
+            {serviceItems.map((sv) => (
+              <Link href={sv.href} key={sv.href} onClick={() => setMobileOpen(false)}>{sv.label}</Link>
+            ))}
+            <span className="mono" style={{ marginTop: 22 }}>Products</span>
+            {products.map((p) => (
+              <Link href={p.slug} key={p.slug} onClick={() => setMobileOpen(false)}>{p.name}</Link>
+            ))}
+            <span className="mono" style={{ marginTop: 22 }}>Company</span>
+            <Link href="/work" onClick={() => setMobileOpen(false)}>Work</Link>
+            <Link href="/blog" onClick={() => setMobileOpen(false)}>Blog</Link>
+            <Link href="/about" onClick={() => setMobileOpen(false)}>About</Link>
+            <Link className="btn btn-primary" style={{ marginTop: 26, justifyContent: "center" }} href="/contact" onClick={() => setMobileOpen(false)}>
+              Start a project →
+            </Link>
+          </div>
+        </div>
+      )}
 
       {panel === "products" && (
         <div className="mega" onMouseEnter={() => openPanel("products")}>
