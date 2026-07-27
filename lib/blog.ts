@@ -663,6 +663,119 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "whatsapp-automation-for-website",
+    title: "WhatsApp automation for your website: turning visitors into conversations",
+    description:
+      "How to connect your website to WhatsApp automation — chat widgets, order notifications and auto-replies — so visitors become conversations, not bounces.",
+    date: "2026-06-20",
+    category: "WASL",
+    minutes: 6,
+    relatedService: { label: "WASL — WhatsApp AI platform", href: "/products/wasl" },
+    sections: [
+      { ps: ["Most website visitors in the Gulf don't fill in contact forms — they'd rather send a quick WhatsApp. Connecting your website to WhatsApp automation captures exactly those people, and then handles the repetitive parts of the conversation automatically. Here's how the pieces fit together."] },
+      { h: "Start with the click-to-chat entry point", ps: ["A WhatsApp button on your site (floating, or on key pages) turns interest into a message in one tap — no form, no friction. The moment that chat opens, automation can take over the routine parts: greeting the visitor, answering the five questions everyone asks, and collecting basic details before a human ever joins."] },
+      { h: "Automate notifications from the website", list: ["Order and enquiry confirmations sent the instant someone acts on your site.", "Delivery and status updates triggered by your store or system — no staff time.", "Abandoned-cart nudges for e-commerce, on the channel people actually read.", "Appointment or booking reminders that cut no-shows."] },
+      { h: "Keep a human in the loop", ps: ["Automation clears the routine so your team spends time where it matters. Good setups answer instantly within the 24-hour window, route anything unusual to a person, and keep the full conversation history in one place. Done through the official WhatsApp Business API, it's compliant and scales to any volume."] },
+      { ps: ["Our WASL platform connects your website to WhatsApp end to end — chat capture, auto-reply bots, notifications and a team inbox. Ask us for a demo on your own number."] },
+    ],
+  },
+  {
+    slug: "whatsapp-new-features",
+    title: "What's new in WhatsApp Business: the features worth using in 2026",
+    description:
+      "WhatsApp Business keeps evolving — from rich templates to interactive buttons and the Cloud API. Which new capabilities actually move the needle for GCC businesses.",
+    date: "2026-06-10",
+    category: "WASL",
+    minutes: 5,
+    relatedService: { label: "WhatsApp Business API in Qatar", href: "/whatsapp-business-api-qatar" },
+    sections: [
+      { ps: ["WhatsApp Business has quietly become a full commerce and support platform. If your mental model is still \"a green chat app,\" here are the capabilities worth knowing about — and which ones actually matter for a business in Qatar or the GCC."] },
+      { h: "The features that earn their place", list: ["Interactive message templates — buttons, quick replies and calls-to-action inside a message, so customers act without typing.", "The Cloud API — official, Meta-hosted access with enterprise reliability and no third-party proxies.", "Rich media templates — headers with images, documents and location for confirmations and updates that look professional.", "Catalogs and product messages — showing products directly inside the chat.", "Better automation hooks — cleaner ways to trigger messages from your own systems."] },
+      { h: "What to ignore (for now)", ps: ["Not every feature suits every business. Chase the ones that remove real friction — instant confirmations, one-tap replies, automated support for common questions — and skip novelty features that add complexity without changing your customer's experience. The test is always: does this get a customer an answer faster, or a business a sale sooner?"] },
+      { ps: ["WASL keeps pace with the official API so you don't have to track every release — templates, buttons, automation and the Cloud API, managed from one dashboard. Ask us what's worth turning on for your business."] },
+    ],
+  },
+  {
+    slug: "how-software-streamlines-business-operations",
+    title: "How custom software streamlines business operations (with real examples)",
+    description:
+      "When spreadsheets and off-the-shelf tools stop scaling, custom software takes over. How tailored web applications remove the manual work slowing businesses down.",
+    date: "2026-05-28",
+    category: "Software",
+    minutes: 6,
+    relatedService: { label: "Software development in Qatar", href: "/software-development-company-qatar" },
+    sections: [
+      { ps: ["Every growing business hits the same wall: the spreadsheet that ran everything becomes the thing slowing everything down. Custom software exists for that moment — not to look impressive, but to remove the manual, repetitive, error-prone work that quietly eats hours every week."] },
+      { h: "Where custom software pays off fastest", list: ["Manual data re-entry between systems — the classic time sink, eliminated by connecting them.", "Approval and workflow chains run over email and chat — replaced by a system that tracks state.", "Reporting assembled by hand each week — replaced by a live dashboard.", "Customer-facing portals — letting clients self-serve what your team currently handles manually."] },
+      { h: "Our own products are the proof", ps: ["We don't just build software for clients — we run our own. QFlow streamlines restaurant operations, WASL automates customer messaging, Store Portal replaces the WooCommerce admin for shop staff. Living with the consequences of our own architecture decisions is exactly what makes us build better systems for clients."] },
+      { ps: ["If a process in your business runs on spreadsheets, email threads and copy-paste, it's a candidate for automation. Tell us the problem — we'll propose a practical, phased build, starting with the piece that saves the most time first."] },
+    ],
+  },
+  {
+    slug: "exploring-the-evolution-of-design-trends",
+    title: "The evolution of web design trends — and which ones actually last",
+    description:
+      "Web design trends come and go, but a few principles endure. A practical look at what's shaping websites in 2026 and what's just noise.",
+    date: "2026-05-15",
+    category: "Web design",
+    minutes: 5,
+    relatedService: { label: "Website design in Qatar", href: "/website-design-company-in-qatar" },
+    sections: [
+      { ps: ["Design trends are seductive and mostly disposable. The websites that age well aren't the ones that chased every fashion — they're the ones built on principles that don't expire. Here's how to tell the difference in 2026."] },
+      { h: "Trends worth adopting", list: ["Performance as design — fast-loading, lightweight pages, because speed is now a core part of the experience (and a ranking factor).", "Purposeful motion — subtle animation that guides attention, not decoration that distracts.", "Bold, confident typography — type doing the heavy lifting instead of stock imagery.", "Genuine accessibility — designs that work for everyone, which also happen to be clearer for everyone."] },
+      { h: "The principles that never date", ps: ["Underneath the trends sit the things that always matter: clarity over cleverness, a design built around what the user is trying to do, consistency across every page, and restraint. A site that respects those will look current far longer than one assembled from this year's effects."] },
+      { ps: ["We design websites to be distinctive and durable — modern where it serves the user, timeless where it counts. See how that looks across our work, or tell us about your project."] },
+    ],
+  },
+  {
+    slug: "showcasing-beautiful-and-functional-designs",
+    title: "Beautiful and functional: why great design is never just how it looks",
+    description:
+      "The best designs are beautiful and functional at once. How Odysense balances aesthetics with usability, performance and conversion in every build.",
+    date: "2026-05-05",
+    category: "Web design",
+    minutes: 5,
+    relatedService: { label: "Website design in Qatar", href: "/website-design-company-in-qatar" },
+    sections: [
+      { ps: ["\"Make it beautiful\" and \"make it work\" are often treated as a trade-off. They aren't. The best digital products are beautiful because they work — every visual decision also serving a purpose. Here's how we hold both at once."] },
+      { h: "Function is part of the beauty", list: ["A gorgeous site that loads slowly isn't gorgeous to the person waiting — speed is aesthetic.", "A striking layout that hides the buy button is a failure, however award-worthy it looks.", "Beautiful typography that's hard to read has failed at the one job type has.", "Motion that delays the task frustrates more than it delights."] },
+      { h: "How we build both in", ps: ["We design around what the visitor is trying to do, then make that path beautiful — not the other way round. Performance, clear calls to action, accessibility and conversion are treated as design requirements from the first wireframe, not fixes bolted on after the pretty part is done."] },
+      { ps: ["The result is work that looks like a serious brand and performs like one. Browse our projects, or tell us what you're building."] },
+    ],
+  },
+  {
+    slug: "qatar-performance-marketing-strategies",
+    title: "Performance marketing strategies that work in Qatar's market",
+    description:
+      "Performance marketing in Qatar rewards a different playbook than global markets. What actually drives measurable results for GCC businesses in 2026.",
+    date: "2026-04-22",
+    category: "SEO",
+    minutes: 6,
+    relatedService: { label: "Digital marketing in Qatar", href: "/digital-marketing-agency-qatar" },
+    sections: [
+      { ps: ["Performance marketing — spend measured against results, not impressions — works differently in Qatar than in saturated global markets. Smaller, less crowded, and mobile-and-WhatsApp-first, this market rewards a specific playbook."] },
+      { h: "What actually drives results here", list: ["WhatsApp as a conversion channel — in the GCC, a WhatsApp conversation often converts better than a form; track it as a real goal.", "Bilingual campaigns — Arabic creative frequently faces less competition and lower costs while reaching a huge audience.", "Local intent — geo-targeted, Qatar-specific campaigns beat broad regional spend.", "Landing pages that match the ad — sending paid traffic to a purpose-built page, not the homepage, is where most budgets are quietly wasted."] },
+      { h: "Measure what matters", ps: ["Performance marketing lives or dies on tracking. Every riyal should be traceable to an outcome — a lead, a call, a WhatsApp conversation, a sale — not a vanity metric. Set up proper conversion tracking first, then scale what works and cut what doesn't. It sounds obvious; most campaigns still don't do it."] },
+      { ps: ["We run performance marketing as the same team that builds the website and the tracking — so the landing page, the analytics and the ad account actually work together. Tell us your goals and we'll propose a plan with honest expectations."] },
+    ],
+  },
+  {
+    slug: "unlocking-brand-potential-the-power-of-neuro-marketing-in-qatars-digital-landscape",
+    title: "Neuro-marketing in Qatar's digital landscape: designing for how people decide",
+    description:
+      "Neuro-marketing applies how the brain actually makes decisions to branding and design. A practical, honest look at what it means for GCC businesses.",
+    date: "2026-04-10",
+    category: "Branding",
+    minutes: 6,
+    relatedService: { label: "Branding agency in Qatar", href: "/branding-agency-qatar" },
+    sections: [
+      { ps: ["\"Neuro-marketing\" sounds like a buzzword, and in the wrong hands it is one. Stripped of the hype, it's simply designing with an honest understanding of how people actually make decisions — quickly, emotionally, and visually — rather than how we pretend they do."] },
+      { h: "The principles that hold up", list: ["First impressions are visual and fast — people judge a brand's credibility in milliseconds, mostly on design quality.", "Emotion precedes logic — people feel a decision, then justify it; brand and story do that work.", "Simplicity wins — every extra choice or step costs conversions; clarity is persuasion.", "Trust signals matter — reviews, recognizable clients and social proof lower the perceived risk of choosing you."] },
+      { h: "Applying it honestly", ps: ["Used well, these principles make a brand clearer and more respectful of the customer's attention — not manipulative. A strong identity, a focused message, a fast and simple website, and genuine social proof: that's neuro-marketing in practice, and it's just good design taken seriously."] },
+      { ps: ["We build brands and websites on exactly these foundations — clear, credible and designed for how people actually decide. Tell us about your brand and where it's headed."] },
+    ],
+  },
 ];
 
 export function getPost(slug: string) {
