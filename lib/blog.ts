@@ -776,6 +776,122 @@ export const posts: Post[] = [
       { ps: ["We build brands and websites on exactly these foundations — clear, credible and designed for how people actually decide. Tell us about your brand and where it's headed."] },
     ],
   },
+  {
+    slug: "qstp-startup-programs-guide-qatar",
+    title: "QSTP startup programs explained: a founder's guide to Qatar's innovation hub",
+    description:
+      "A practical guide to Qatar Science & Technology Park's programs — Explore, Incubate, Accelerate and Expand — and how startups get funding, licensing and support.",
+    date: "2026-07-28",
+    category: "Startups",
+    minutes: 8,
+    relatedService: { label: "Software development in Qatar", href: "/software-development-company-qatar" },
+    sections: [
+      {
+        ps: [
+          "If you're building a technology startup in Qatar, Qatar Science & Technology Park (QSTP) is almost certainly on your radar — and for good reason. Part of Qatar Foundation and based in Education City, it's the country's central innovation hub: over 300 companies, a startup-friendly free zone, and funding programs that have backed founders from first pitch to global scale. This guide breaks down what's actually on offer, so you can find the door that fits your stage.",
+          "Full disclosure: Odysense is a QSTP-based company ourselves, listed in the park's own community directory. Much of what follows is the ecosystem as we've experienced it from the inside.",
+        ],
+      },
+      {
+        h: "Why QSTP, in numbers",
+        ps: [
+          "QSTP isn't a co-working space with a logo — it's a research and innovation park with serious weight behind it. International companies registered there have invested around $3 billion in R&D over the past 14 years; the park spans roughly 91 hectares at about 90% occupancy; and it has put tens of millions into fostering the entrepreneurial ecosystem directly. More than 300 companies are based there today, including 20 multinationals — Microsoft, Cisco, Siemens, Baker Hughes and others sit alongside homegrown startups. For a founder, that mix is the point: you're building next to both global R&D teams and the startups one stage ahead of you.",
+        ],
+      },
+      {
+        h: "The programs, by stage",
+        ps: [
+          "QSTP organizes its support around where you are in the journey. The four main tracks:",
+        ],
+        list: [
+          "Explore — for the earliest stage: Internships, Hackathons, Ride and Pitch, and Creative Labs. This is where ideas get tested and talent gets discovered, before you've committed to a company.",
+          "Incubate — for turning an idea into a company: the Incubate program and the Impact Engine Series help founders build the foundations, with mentorship and structure around the messy early phase.",
+          "Accelerate — sector-focused acceleration in areas Qatar is investing in heavily: FemTech, WaterTech and AgriTech. These are for startups with a product, ready to grow fast in a defined domain.",
+          "Expand — for companies with traction: Scale Ups and Enterprise programs help established startups grow and help larger organizations plug into the innovation ecosystem.",
+        ],
+      },
+      {
+        h: "Beyond the core tracks: community and funding",
+        ps: [
+          "Around the main programs sits a wider community layer worth knowing about: The 300, Fellowship and Ambassadorship community programs; a Summer Bootcamp for young innovators; Stars of Science, the long-running televised innovation competition; and — the one founders ask about most — the Tech Venture Fund, QSTP's investment vehicle. Multiple founders credit that fund with letting them double down on sales and marketing at the moment it mattered. The recurring theme in how alumni describe QSTP is partnership rather than transaction: as one CEO put it, the team asked \"how are WE doing,\" not \"how are you doing.\"",
+        ],
+      },
+      {
+        h: "The practical benefits of being based there",
+        list: [
+          "A streamlined free-zone business setup and licensing process — a real advantage when you're trying to move fast.",
+          "Access to a talent pool from Education City's universities on your doorstep.",
+          "Customizable workspace that scales with you, plus world-class facilities and connectivity.",
+          "Proximity to Qatar Foundation's resources and to partner organizations like Invest Qatar and Startup Qatar.",
+          "A network of seasoned founders and mentors who've navigated the same path.",
+        ],
+      },
+      {
+        h: "How to get in",
+        ps: [
+          "Start at the source: qstp.qa lists every program with its own application route, and the Join Us page is the front door. Match your honest stage to the right track — applying to an acceleration program before you have a product, or an incubation program when you're really still exploring, wastes everyone's time. If you're early, the Explore programs and community events (hackathons, bootcamps, AI meetups) are a low-commitment way to get inside the ecosystem before you formally apply.",
+        ],
+      },
+      {
+        h: "Where Odysense fits",
+        ps: [
+          "Once you're in a program, one thing becomes clear fast: investors and mentors want to see a real product, not a slide. That's where we come in. As a fellow QSTP company, Odysense has spent twelve years designing and building the websites, apps, e-commerce and software that turn a startup's pitch into something people can actually use — including our own products like WASL, QFlow and Store Portal, built and run from inside this same ecosystem.",
+          "If you're a QSTP startup (or applying to be one) and you need a landing page for your raise, an MVP to test with users, or a full product build, that's exactly what we do — for neighbours. Tell us what you're building and we'll help you get it in front of users and investors.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "startup-mvp-development-qatar",
+    title: "From pitch to product: how Qatar startups should approach their first build",
+    description:
+      "A practical guide to building your startup's first product (MVP) in Qatar — what to build first, what to skip, and how to spend limited runway wisely.",
+    date: "2026-07-28",
+    category: "Startups",
+    minutes: 7,
+    relatedService: { label: "Software development in Qatar", href: "/software-development-company-qatar" },
+    sections: [
+      {
+        ps: [
+          "You've got the idea, maybe a spot in an accelerator, maybe early funding. Now comes the question that sinks more startups than any pitch: what do we actually build first? Twelve years of building products in Qatar — for clients and for ourselves — has taught us that the answer is almost always \"less than you think, sooner than you're comfortable with.\"",
+        ],
+      },
+      {
+        h: "Build the smallest thing that proves the point",
+        ps: [
+          "A minimum viable product isn't a small version of your grand vision — it's the smallest thing that tests your single riskiest assumption. Before writing code, name the one belief your whole startup rests on (\"restaurants will pay to cut queue times,\" \"customers will try clothes on virtually before buying\") and build only what's needed to find out if it's true. Everything else is a distraction you're paying for with runway you can't spare.",
+        ],
+      },
+      {
+        h: "What to build first — and what to skip",
+        list: [
+          "Build: the one core workflow that delivers your promised value, end to end, even if rough around the edges.",
+          "Build: a way to measure whether people actually use it — analytics from day one, not later.",
+          "Skip (for now): user settings pages, admin panels you can fake with a spreadsheet, edge cases affecting 2% of users, and that second feature you're excited about.",
+          "Skip (for now): premature scale — architecting for a million users you don't have yet is the most expensive form of procrastination.",
+        ],
+      },
+      {
+        h: "The build-vs-partner decision",
+        ps: [
+          "Most early founders can't hire a full product team, and shouldn't. The realistic options are a technical co-founder (great if you have one, slow and risky to go find one), freelancers (cheap, but you're now a project manager and quality is a lottery), or a development partner who's shipped products before. The right choice depends on whether software IS your product or merely enables it — but either way, in the early stage speed and getting real user feedback matter far more than owning every line of code from day one.",
+        ],
+      },
+      {
+        h: "A Qatar-specific note",
+        ps: [
+          "Building for this market has its own realities worth designing in from the start: bilingual Arabic/English from day one is far cheaper than retrofitting it; WhatsApp is your customers' default channel, so plan for it rather than bolting it on; and local payment and delivery integrations matter more here than global tutorials suggest. A team that already knows the GCC market saves you from learning these the expensive way.",
+        ],
+      },
+      {
+        h: "How Odysense helps founders",
+        ps: [
+          "We're a QSTP-based studio that has taken products from pitch to launch — our own (WASL, QFlow, Store Portal, ProSeek) and our clients'. For founders that means we can help scope the true MVP honestly (including talking you out of features), build it fast on modern, scalable foundations, and stay on as your product team as you grow — without you hiring one prematurely.",
+          "If you're a founder in Qatar staring at that \"what do we build first?\" question, tell us about your idea and your riskiest assumption. We'll help you build the smallest thing that proves it.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string) {
