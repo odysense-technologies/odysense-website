@@ -892,6 +892,122 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "qatar-ecommerce-license-2026-explained",
+    title: "Qatar's new e-commerce license (Decision No. 25 of 2026), explained simply",
+    description:
+      "Qatar now lets you run an online business without a physical office under MoCI Decision No. 25 of 2026. What the e-commerce license means, who needs it, and how to comply.",
+    date: "2026-07-29",
+    category: "E-commerce",
+    minutes: 7,
+    relatedService: { label: "E-commerce development in Qatar", href: "/ecommerce-development-company-qatar" },
+    sections: [
+      {
+        ps: [
+          "For years, selling online in Qatar — especially through Instagram and WhatsApp — sat in a regulatory grey area. Many sellers assumed that with no physical shop, the usual licensing rules didn't quite apply. As of March 2026, that grey area is gone, and in a way that's actually good news for online businesses: you can now get a proper licence without renting an office you never needed.",
+          "This is a plain-English explainer of what changed. One note up front: Odysense builds e-commerce stores, we are not lawyers or a licensing agent — for the legal filing itself, use a qualified Qatari corporate-services or law firm. What follows is background to help you understand the landscape.",
+        ],
+      },
+      {
+        h: "What actually changed",
+        ps: [
+          "On 4 March 2026, Qatar's Ministry of Commerce and Industry (MoCI) issued Ministerial Decision No. 25 of 2026. It was published in the Official Gazette on 15 March and came into force on 16 March 2026 — it's the law right now, not a proposal. For the first time, it creates a dedicated licensing track for commercial activities conducted through electronic platforms that don't require physical premises. In plain terms: certain online businesses can now be licensed without a brick-and-mortar office, storefront or warehouse.",
+        ],
+      },
+      {
+        h: "Who this affects",
+        ps: [
+          "The Decision defines e-commerce broadly — the sale of goods or provision of services through websites, and explicitly including apps and social media channels. So it reaches well beyond classic web-shops:",
+        ],
+        list: [
+          "Instagram and social-media sellers who've operated informally until now.",
+          "App-based and website-based online stores.",
+          "Home-based and online-first businesses that never needed a shopfront.",
+          "Existing licensed businesses adding online sales channels.",
+        ],
+      },
+      {
+        h: "The key requirements, as reported",
+        list: [
+          "A licence is mandatory — no commercial activity may be conducted online without obtaining an e-commerce licence from MoCI and paying the applicable fees.",
+          "It builds on commercial registration — the e-commerce licence isn't a standalone permit; it sits on top of your existing Commercial Register entry, so you generally need to be registered with MoCI first.",
+          "Register the specific platform — you register the actual website, app or social-media channel you sell on. Widely reported guidance is that operating across multiple platforms requires a separate licence for each.",
+          "Approved activities only — the exemption from physical premises applies to specific commercial activities approved by MoCI and published on its portal; the full activity list has been rolling out, so your exact activity needs checking.",
+          "Consumer-disclosure duties — licensed sellers must clearly display their commercial registration and e-commerce licence numbers, contact and customer-service details, product information with exchange/return policies, and complaint-handling procedures.",
+          "Personal sales excluded — genuinely personal, non-commercial-volume transactions are outside the framework.",
+        ],
+      },
+      {
+        h: "Why this is good news, not red tape",
+        ps: [
+          "It's easy to read \"new licence required\" as a burden, but for serious online sellers it's the opposite. Removing the physical-premises requirement strips out the single biggest fixed cost of going legitimate — an office lease you didn't need. It lowers the barrier to entry for startups and SMEs, and it lets you operate with the credibility of a licensed business: displaying a real licence number builds exactly the trust that converts hesitant online buyers. The grey market was never an advantage; it was a ceiling.",
+        ],
+      },
+      {
+        h: "Where Odysense fits in",
+        ps: [
+          "Getting the licence is the legal step — building the business is ours. Once you're set up to sell online legally, you need a store that actually sells: fast, bilingual, mobile-first, with local payment gateways and the licence and policy details displayed exactly as the new rules require. That's precisely what we build, and every Odysense e-commerce store is designed with these disclosure requirements in mind — licence numbers, return policies and customer-service channels built into the design, not bolted on.",
+          "Thinking about turning an Instagram shop or an idea into a proper licensed store? Request a free technical consultation — we'll walk you through what building the store involves and point you to the right partners for the licensing side.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "start-online-business-qatar-without-office",
+    title: "How to start an online business in Qatar without an office (2026)",
+    description:
+      "Qatar's 2026 rules let you launch an online store without a physical office. A step-by-step path from idea to a licensed, selling e-commerce business.",
+    date: "2026-07-29",
+    category: "E-commerce",
+    minutes: 7,
+    relatedService: { label: "E-commerce development in Qatar", href: "/ecommerce-development-company-qatar" },
+    sections: [
+      {
+        ps: [
+          "Starting an online business in Qatar just got dramatically simpler. Since March 2026, under MoCI's Ministerial Decision No. 25 of 2026, certain e-commerce activities can be licensed without a physical office — removing the biggest cost and complication that used to stand between an idea and a legitimate online store. Here's the practical path from where you are to a store that's live and selling.",
+          "A quick honesty note: Odysense designs and builds the store; we are not a licensing agent or law firm. For the licence itself, work with a qualified Qatari corporate-services provider. This is the build-side roadmap.",
+        ],
+      },
+      {
+        h: "Step 1 — Nail down what you're selling",
+        ps: [
+          "Before anything official, get specific about your products or services and your market. This matters legally too: the office-free framework applies only to specific commercial activities approved by MoCI, so part of this step is confirming your activity is on the approved list. It also shapes everything about the store — a fashion boutique, a home-kitchen brand and a digital-services seller need very different builds.",
+        ],
+      },
+      {
+        h: "Step 2 — Get registered and licensed",
+        ps: [
+          "This is the legal layer, best handled with a professional. In broad terms: you'll need to be in Qatar's Commercial Register with MoCI, then obtain the e-commerce licence for the specific platform you'll sell on — remembering that widely reported guidance says each platform (your website, an app, a social channel) may need its own licence. A good corporate-services firm handles this quickly now that the physical-office requirement is gone.",
+        ],
+      },
+      {
+        h: "Step 3 — Build the store (this is us)",
+        ps: [
+          "This is where an idea becomes a business people can actually buy from. A store built for the Qatar market needs:",
+        ],
+        list: [
+          "Custom, mobile-first design — most Gulf shoppers buy on their phones; the store must be flawless there first.",
+          "Local payment gateways — the cards and wallets Qatari customers actually use, integrated and tested.",
+          "Bilingual Arabic/English — a real sales advantage in this market, planned in from the start.",
+          "Compliance built in — your licence number, contact and customer-service details, and clear return/exchange policies displayed exactly as Decision No. 25 requires.",
+          "WhatsApp integration — order confirmations and support on the channel your customers actually answer.",
+        ],
+      },
+      {
+        h: "Step 4 — Launch, manage and grow",
+        ps: [
+          "A store isn't done at launch — it needs running. That's why every Odysense e-commerce build includes Store Portal, our management platform, free for the first year: products, orders, invoicing, a built-in POS and analytics in one mobile-first dashboard, so you can run the whole business from your phone. From there, growth work — SEO, WhatsApp marketing, content — compounds over time.",
+        ],
+      },
+      {
+        h: "Start with a free consultation",
+        ps: [
+          "The office-free licence has removed the hardest barrier to selling online in Qatar legitimately. The remaining question is simply building a store worth buying from. That part we know well — twelve years of e-commerce builds for GCC brands, from fashion boutiques to multi-product stores.",
+          "Request a free technical consultation and we'll map out exactly what your store needs, what it costs, and how to get from idea to launched — and point you to trusted partners for the licensing side.",
+        ],
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string) {
