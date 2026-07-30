@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/ui";
 import { Nav } from "@/components/nav";
+import { RouteLoader } from "@/components/loader";
 import { Analytics, WhatsAppTracker } from "@/components/analytics";
 import { ConsultPopup } from "@/components/lead-forms";
 import { site } from "@/lib/site";
@@ -33,19 +34,48 @@ export const metadata: Metadata = {
 
 const orgSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "ProfessionalService",
+  "@id": `${site.url}/#organization`,
   name: "Odysense",
   url: site.url,
   email: site.email,
   telephone: site.phone,
   foundingDate: String(site.founded),
+  image: `${site.url}/og.png`,
+  logo: `${site.url}/logos/odysense-icon.png`,
+  priceRange: "$$",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Innovation Centre, Qatar Science & Technology Park",
     addressLocality: "Doha",
     addressCountry: "QA",
   },
-  sameAs: ["https://www.facebook.com/odysense.qa/"],
+  geo: { "@type": "GeoCoordinates", latitude: 25.3204, longitude: 51.4353 },
+  areaServed: [
+    { "@type": "Country", name: "Qatar" },
+    { "@type": "Country", name: "Saudi Arabia" },
+    { "@type": "Country", name: "United Arab Emirates" },
+    { "@type": "Country", name: "Kuwait" },
+    { "@type": "Country", name: "Bahrain" },
+    { "@type": "Country", name: "Oman" },
+  ],
+  knowsAbout: [
+    "Web Design", "Web Development", "E-commerce Development", "Software Development",
+    "Mobile App Development", "Branding", "SEO", "Digital Marketing", "WhatsApp Business API",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Services",
+    itemListElement: [
+      "Website Design", "Website Development", "E-commerce Development",
+      "Software Development", "Mobile App Development", "Branding Agency",
+      "Digital Marketing", "SEO Services", "WhatsApp Business API",
+    ].map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s } })),
+  },
+  sameAs: [
+    "https://www.facebook.com/odysense.qa/",
+    "https://qstp.qa/directory/odysense/",
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -68,6 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Analytics />
         <WhatsAppTracker />
+        <RouteLoader />
         <Nav />
         {children}
         <ConsultPopup />
