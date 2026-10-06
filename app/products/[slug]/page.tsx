@@ -195,6 +195,21 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         </section>
       )}
 
+      {d.related && (
+        <section className="section section--flush-top">
+          <div className="wrap">
+            <Reveal>
+              <div className="post-related" style={{ marginTop: 0 }}>
+                <span>{d.related.text}</span>
+                <Link className="btn btn-secondary" href={d.related.href}>
+                  {d.related.label} →
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
       <section className="section section--flush-top">
         <div className="wrap">
           <Reveal>

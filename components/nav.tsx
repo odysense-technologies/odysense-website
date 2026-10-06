@@ -9,6 +9,7 @@ const serviceItems = [
   { label: "Website Design", desc: "Custom, conversion-focused design", href: "/website-design-company-in-qatar" },
   { label: "Website Development", desc: "Fast, secure modern builds", href: "/website-development-company-qatar" },
   { label: "E-commerce", desc: "WooCommerce, Shopify & custom stores", href: "/ecommerce-development-company-qatar" },
+  { label: "Gamification & Activations", desc: "Event games, live quizzes & polls", href: "/gamification-brand-activation-qatar" },
   { label: "Software Development", desc: "Web apps, dashboards & SaaS", href: "/software-development-company-qatar" },
   { label: "Mobile Apps", desc: "iOS & Android, concept to store", href: "/mobile-app-development-company-qatar" },
   { label: "Branding", desc: "Identity, strategy & guidelines", href: "/branding-agency-qatar" },

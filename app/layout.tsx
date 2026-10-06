@@ -61,6 +61,7 @@ const orgSchema = {
   knowsAbout: [
     "Web Design", "Web Development", "E-commerce Development", "Software Development",
     "Mobile App Development", "Branding", "SEO", "Digital Marketing", "WhatsApp Business API",
+    "Gamification", "Brand Activations",
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
@@ -69,6 +70,7 @@ const orgSchema = {
       "Website Design", "Website Development", "E-commerce Development",
       "Software Development", "Mobile App Development", "Branding Agency",
       "Digital Marketing", "SEO Services", "WhatsApp Business API",
+      "Gamification & Brand Activations",
     ].map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s } })),
   },
   sameAs: [

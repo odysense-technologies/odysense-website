@@ -13,8 +13,9 @@ company headquartered at the Innovation Centre, Qatar Science & Technology Park 
 
 **Primary goal: lead generation, mainly through organic SEO.**
 - Primary markets: Qatar and Saudi Arabia. Secondary markets: the rest of the GCC and the US.
-- Focus areas: design and development services, with e-commerce as the main specialty, and selling
-  the company's own products (WASL, QFlow, Store Portal and others).
+- Focus areas: design and development services, with e-commerce as the main specialty; gamification
+  and brand activations for events; and selling the company's own products (WASL, QFlow, Store Portal
+  and others).
 - The owner is a solo founder. Claude Code replaces the old drag-and-drop builder: it creates and
   updates pages and features on request, always within the existing design system.
 
@@ -75,6 +76,8 @@ app/
   api/contact/route.ts       lead endpoint: Resend email + optional Postgres storage
   services/page.tsx          services hub
   ecommerce-development-company-qatar/page.tsx   flagship e-commerce page (bespoke)
+  gamification-brand-activation-qatar/page.tsx   gamification & brand activations page (bespoke,
+                                                 Service + FAQPage schema, playable demo arcade)
   website-design-company-in-qatar/               ┐
   website-development-company-qatar/             │
   software-development-company-qatar/            │ thin route files that render
@@ -99,6 +102,11 @@ components/
   loader.tsx        RouteLoader: gradient top progress bar on navigation
   service-page.tsx  ServicePageView template (includes FAQPage schema)
   review-tool.tsx   review request tool UI
+  arcade/           playable demos for the gamification page (client-only, each lazy-loaded):
+    arcade.tsx      tabbed "arcade" panel; keeps opened games mounted for session-only scores
+    spin-wheel.tsx  prize wheel with optional name gate · quiz.tsx  live quiz with timer + leaderboard
+    memory.tsx      product-icon memory match · tap.tsx  10-second tap challenge
+    poll.tsx        live poll with a simulated audience · shared.tsx  reduced-motion hook, Leaderboard
 lib/
   site.ts           site info, services, products, productDetails, productShowcase,
                     carouselTiles, clientLogos
@@ -191,6 +199,23 @@ next.config.ts      trailingSlash + every legacy 301 redirect
   `https://apps.apple.com/qa/app/qseat-restaurant-booking/id6804232100`. Its case study is not on
   /work yet (see backlog).
 
+### Gamification & Brand Activations (service, added 2026-10-06)
+- URL: `/gamification-brand-activation-qatar/` (bespoke page; in the Services mega menu, mobile menu,
+  services hub, sitemap, homepage carousel, and linked from the WASL and digital-marketing pages).
+- Positioning: we design, build and run interactive games and digital activations for events,
+  exhibitions, product launches, malls and corporate gatherings across Qatar and the GCC, plus live
+  audience engagement (quizzes, polls, surveys, live forms, Q&A, interactive presentations). Every
+  activation collects consented leads, follows up on WhatsApp through WASL, and ends with an engagement
+  report.
+- Rules:
+  - Never publish prices. Cost depends on scope, and we give a fixed quote after a free consultation.
+  - Timelines only in hedged wording: "depends on scope; we confirm the timeline in your proposal".
+  - Capability claims stay within what we build on the web and mobile. No AR, VR or hardware claims.
+  - No invented past events, client names, statistics or results.
+- The demos are simulated: no backend, no storage, no data collected, and they are labelled "Demo".
+- The homepage carousel tile `public/images/card-gamification.webp` is a **placeholder** made from
+  brand colours. Replace it when the owner sends a creative (600×800).
+
 ### Products (all in `lib/site.ts`)
 
 | Product | URL | One-liner |
@@ -276,10 +301,10 @@ next.config.ts      trailingSlash + every legacy 301 redirect
    - an entry in the sitemap; data-driven pages are added automatically
    - JSON-LD where relevant: FAQPage on service pages, Article and Breadcrumb on posts,
      SoftwareApplication on products
-6. **Sitewide schema:** `ProfessionalService` with Doha geo coordinates, the nine services, and the six
+6. **Sitewide schema:** `ProfessionalService` with Doha geo coordinates, the ten services (including Gamification & Brand Activations), and the six
    GCC countries as `areaServed`. Google Search Console is verified through the `verification.google`
    meta tag in `layout.tsx`.
-7. **Blog:** the article count was 25 at last handoff; verify against `lib/blog.ts`. The target cadence
+7. **Blog:** the article count was 27 on 2026-10-06; verify against `lib/blog.ts`. The target cadence
    is two new articles a month, each targeting a real Qatar/GCC query and linking to its service page.
    Current topic clusters:
    - website and e-commerce cost
@@ -291,6 +316,7 @@ next.config.ts      trailingSlash + every legacy 301 redirect
    - QSTP and startups
    - Qatar's 2026 e-commerce licence (MoCI Decision No. 25)
    - Store Portal
+   - event gamification and live audience engagement
 
 ---
 

@@ -241,6 +241,7 @@ export const servicePages: ServiceDef[] = [
       { label: "SEO services", href: "/digital-marketing-agency-qatar/seo-services-qatar" },
       { label: "Social Bakery", href: "/products/social-bakery" },
       { label: "WASL — WhatsApp platform", href: "/products/wasl" },
+      { label: "Gamification & brand activations", href: "/gamification-brand-activation-qatar" },
     ],
     ctaTitle: "Growth you can see",
     ctaAccent: "in the numbers.",
