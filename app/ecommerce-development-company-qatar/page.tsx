@@ -7,7 +7,7 @@ import { caseStudies } from "@/lib/case-studies";
 export const metadata: Metadata = {
   title: "E-commerce Development Company in Qatar",
   description:
-    "Odysense builds high-performing online stores for brands in Qatar & the GCC — WooCommerce, Shopify and custom builds with local payment gateways, since 2013.",
+    "Odysense builds high-performing online stores for brands in Qatar & the GCC — WooCommerce, Shopify and custom builds with local payment gateways, from Doha.",
   alternates: { canonical: "/ecommerce-development-company-qatar/" },
 };
 
@@ -60,7 +60,7 @@ export default function EcommercePage() {
             E-commerce development <span className="serif">in Qatar.</span>
           </>
         }
-        lede="Online stores that carry your brand's standard and convert its visitors — WooCommerce, Shopify and custom builds with the payment gateways GCC customers trust. Built in Doha since 2013."
+        lede="Online stores that carry your brand's standard and convert its visitors — WooCommerce, Shopify and custom builds with the payment gateways GCC customers trust. Built in Doha, at Qatar Science & Technology Park."
       >
         <div className="hero-actions">
           <Link className="btn btn-primary" href="/contact">
@@ -78,9 +78,9 @@ export default function EcommercePage() {
           <Reveal className="stat-row">
             <div className="stat">
               <b>
-                12<span className="serif">+</span>
+                20<span className="serif">+</span>
               </b>
-              <span>years building for brands in Qatar &amp; the GCC</span>
+              <span>clients every year across Qatar &amp; the GCC</span>
             </div>
             <div className="stat">
               <b>3</b>

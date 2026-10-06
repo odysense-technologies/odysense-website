@@ -11,7 +11,6 @@ export const site = {
   whatsapp: "https://wa.link/odysense",
   phone: "+974 3066 6516",
   address: "Innovation Centre, Qatar Science & Technology Park, Doha, Qatar",
-  founded: 2013,
   description:
     "Odysense is a Doha-based digital agency and software company. We design, build and grow websites, e-commerce and products for ambitious brands across Qatar, Saudi Arabia and the Gulf.",
 };
@@ -271,7 +270,7 @@ export const productShowcase: Record<
   string,
   {
     steps?: { title: string; text: string; lottie: string }[];
-    gallery: { src: string; w: number; h: number; caption: string }[];
+    gallery?: { src: string; w: number; h: number; caption: string }[];
     quotes?: { text: string; author: string; role: string }[];
     pricing?: string;
     addons?: { name: string; price: string; desc: string }[];
@@ -335,10 +334,10 @@ export const productShowcase: Record<
       },
     ],
     gallery: [
-      { src: "/images/shot-wasl-console.webp", w: 1100, h: 460, caption: "The WASL Console — usage, delivery and quick actions" },
-      { src: "/images/shot-wasl-chat.webp", w: 612, h: 486, caption: "Live on WhatsApp — order status, auto-replies, Meta-verified" },
-      { src: "/images/shot-wasl-bots.webp", w: 794, h: 433, caption: "Auto-reply bots — keyword rules, priorities, first match wins" },
-      { src: "/images/shot-wasl-template.webp", w: 497, h: 852, caption: "Template builder — variables, buttons and approval workflow" },
+      { src: "/images/shot-wasl-console.webp", w: 1094, h: 869, caption: "The WASL Console — usage, delivery and quick actions" },
+      { src: "/images/shot-wasl-chat.webp", w: 612, h: 576, caption: "Live on WhatsApp — order status, auto-replies, Meta-verified" },
+      { src: "/images/shot-wasl-bots.webp", w: 1137, h: 476, caption: "Auto-reply bots — keyword rules, priorities, first match wins" },
+      { src: "/images/shot-wasl-template.webp", w: 677, h: 649, caption: "Template builder — variables, buttons and approval workflow" },
     ],
     quotes: [
       {
@@ -351,6 +350,22 @@ export const productShowcase: Record<
         author: "Head of Customer Experience",
         role: "Retail Business",
       },
+    ],
+  },
+  "store-portal": {
+    pricing: "Free for the first year with every Odysense e-commerce build — then QAR 170/month, or QAR 150/month billed yearly.",
+    addons: [
+      { name: "WASL WhatsApp", price: "QAR 125/mo, billed annually", desc: "Order confirmations and PDF invoices sent on WhatsApp, with the full conversation history in one place." },
+      { name: "SMS notifications", price: "QAR 170/mo, billed annually", desc: "Order, shipping and delivery updates by SMS — international numbers supported." },
+      { name: "Live storefront POS", price: "QAR 150/mo, billed annually", desc: "A point of sale for your physical shop — barcodes, receipts and cash drawer, synced with online stock." },
+      { name: "Automated backups", price: "QAR 80/mo, billed annually", desc: "Monthly off-site backups of your database, media, plugins and theme, with one-click restore." },
+      { name: "Order & website management", price: "QAR 1,000/mo, billed annually", desc: "A dedicated person handling daily orders, product uploads, content updates and store upkeep." },
+      { name: "SEO & performance", price: "QAR 800/mo, billed annually", desc: "Monthly SEO audits, keyword work, Core Web Vitals tuning and ranking reports." },
+      { name: "Email marketing automation", price: "QAR 700/mo, billed annually", desc: "Abandoned-cart, post-purchase and win-back emails that run on their own, plus newsletters." },
+      { name: "Advanced analytics", price: "QAR 120/mo, billed annually", desc: "Weekly and monthly reports on margins, customer lifetime value, cohorts and forecasts — straight to your inbox." },
+      { name: "Social media integration", price: "QAR 180/mo, billed annually", desc: "Your Instagram feed displayed on the store and kept in sync automatically." },
+      { name: "Social media management", price: "QAR 2,500/mo, billed annually", desc: "Content calendar, ad creation, posting and paid media across every platform, handled for you." },
+      { name: "AI Virtual Try-On", price: "QAR 1,000/mo, billed annually", desc: "Photorealistic try-on for your products, with usage analytics and a gallery dashboard." },
     ],
   },
 };

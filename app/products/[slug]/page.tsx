@@ -120,17 +120,30 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       {show && (
         <section className="section section--flush-top quote-sec">
           <div className="wrap">
-            <SectionHead
-              kicker="Inside the product"
-              title={
-                <>
-                  Real screens, <span className="serif">not mockups.</span>
-                </>
-              }
-            />
-            <Reveal>
-              <ShotCarousel shots={show.gallery} />
-            </Reveal>
+            {show.gallery ? (
+              <>
+                <SectionHead
+                  kicker="Inside the product"
+                  title={
+                    <>
+                      Real screens, <span className="serif">not mockups.</span>
+                    </>
+                  }
+                />
+                <Reveal>
+                  <ShotCarousel shots={show.gallery} />
+                </Reveal>
+              </>
+            ) : (
+              <SectionHead
+                kicker="Pricing"
+                title={
+                  <>
+                    One plan, <span className="serif">add what you need.</span>
+                  </>
+                }
+              />
+            )}
             {show.pricing && (
               <Reveal>
                 <p className="pricing-strip">{show.pricing}</p>

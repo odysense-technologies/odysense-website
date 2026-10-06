@@ -20,7 +20,7 @@ export default function BlogPage() {
             Insights from <span className="serif">the workshop.</span>
           </>
         }
-        lede="Practical, no-fluff guides on websites, e-commerce, SEO and WhatsApp commerce in the GCC — written from twelve years of building, not theory."
+        lede="Practical, no-fluff guides on websites, e-commerce, SEO and WhatsApp commerce in the GCC — written by the team that builds them, not theory."
       />
 
       <section className="section">

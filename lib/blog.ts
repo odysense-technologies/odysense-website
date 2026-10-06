@@ -835,7 +835,7 @@ export const posts: Post[] = [
       {
         h: "Where Odysense fits",
         ps: [
-          "Once you're in a program, one thing becomes clear fast: investors and mentors want to see a real product, not a slide. That's where we come in. As a fellow QSTP company, Odysense has spent twelve years designing and building the websites, apps, e-commerce and software that turn a startup's pitch into something people can actually use — including our own products like WASL, QFlow and Store Portal, built and run from inside this same ecosystem.",
+          "Once you're in a program, one thing becomes clear fast: investors and mentors want to see a real product, not a slide. That's where we come in. As a fellow QSTP company, Odysense designs and builds the websites, apps, e-commerce and software that turn a startup's pitch into something people can actually use — including our own products like WASL, QFlow and Store Portal, built and run from inside this same ecosystem.",
           "If you're a QSTP startup (or applying to be one) and you need a landing page for your raise, an MVP to test with users, or a full product build, that's exactly what we do — for neighbours. Tell us what you're building and we'll help you get it in front of users and investors.",
         ],
       },
@@ -853,7 +853,7 @@ export const posts: Post[] = [
     sections: [
       {
         ps: [
-          "You've got the idea, maybe a spot in an accelerator, maybe early funding. Now comes the question that sinks more startups than any pitch: what do we actually build first? Twelve years of building products in Qatar — for clients and for ourselves — has taught us that the answer is almost always \"less than you think, sooner than you're comfortable with.\"",
+          "You've got the idea, maybe a spot in an accelerator, maybe early funding. Now comes the question that sinks more startups than any pitch: what do we actually build first? Building products in Qatar — for clients and for ourselves — has taught us that the answer is almost always \"less than you think, sooner than you're comfortable with.\"",
         ],
       },
       {
@@ -1002,7 +1002,7 @@ export const posts: Post[] = [
       {
         h: "Start with a free consultation",
         ps: [
-          "The office-free licence has removed the hardest barrier to selling online in Qatar legitimately. The remaining question is simply building a store worth buying from. That part we know well — twelve years of e-commerce builds for GCC brands, from fashion boutiques to multi-product stores.",
+          "The office-free licence has removed the hardest barrier to selling online in Qatar legitimately. The remaining question is simply building a store worth buying from. That part we know well — e-commerce is our deepest specialty, with stores built for GCC brands from fashion boutiques to multi-product shops.",
           "Request a free technical consultation and we'll map out exactly what your store needs, what it costs, and how to get from idea to launched — and point you to trusted partners for the licensing side.",
         ],
       },

@@ -143,7 +143,7 @@ export function Nav() {
               ))}
             </div>
             <Link className="mega-feature" href="/products/wasl" onClick={() => setPanel(null)}>
-              <Image src="/images/shot-wasl-chat.webp" alt="WASL live on WhatsApp" width={612} height={486} />
+              <Image src="/images/shot-wasl-chat.webp" alt="WASL live on WhatsApp" width={612} height={576} />
               <b>
                 WASL <span className="serif">— WhatsApp at scale.</span>
               </b>
