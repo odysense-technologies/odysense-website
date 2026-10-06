@@ -1098,7 +1098,7 @@ export const posts: Post[] = [
         list: [
           "Ask for as little as possible. A first name and one contact method is usually enough at an event; you can learn the rest in the follow-up.",
           "Make consent explicit. A clear, unticked opt-in that says what you'll send and how often, in plain Arabic and English. Have your legal or compliance team approve the wording.",
-          "Explain the benefit. \"Enter your number to receive your prize code on WhatsApp\" converts better than a bare form field, and it's honest about why you're asking.",
+          "Explain the benefit. \"Enter your number to receive your prize code on WhatsApp\" gives people a reason to fill in the field, and it's honest about why you're asking.",
           "Design for one thumb. Large inputs, the right keyboard for phone numbers, the GCC country code pre-selected, and nothing that needs pinching or zooming.",
           "Test on the venue's network. Exhibition halls are notorious for weak Wi-Fi and crowded mobile signal. Keep the game light and make sure it still works on a slow connection.",
         ],
@@ -1108,7 +1108,7 @@ export const posts: Post[] = [
         ps: [
           "The best time to plan the follow-up is before the doors open. Decide what each player receives and when: a prize code immediately, a thank-you message the next morning, and a relevant offer or meeting request a few days later for the people who matched your target audience.",
           "In the Gulf, WhatsApp is often the most natural channel for that conversation, as long as people have opted in. With an official WhatsApp Business setup — such as Odysense's WASL platform — you can send approved message templates to opted-in players, handle replies from a shared inbox, and keep a record of who agreed to what.",
-          "Hand the leads to your sales team within a day or two of the event, while the memory of the stand is fresh, with notes on which game they played and how they scored. A short, specific message beats a generic newsletter every time.",
+          "Hand the leads to your sales team within a day or two of the event, while the memory of the stand is fresh, with notes on which game they played and how they scored. A short, specific message is far more useful to them than a generic newsletter.",
         ],
       },
       {
@@ -1162,7 +1162,7 @@ export const posts: Post[] = [
       {
         h: "Why audiences drift — and what interaction fixes",
         ps: [
-          "Attention drops when people have nothing to do. A long agenda, a large room and a speaker who can't see individual faces all make it easy to switch off. Interaction works because it gives each person a small task: decide, answer, ask. That brief moment of participation resets attention far more effectively than another slide.",
+          "Attention drops when people have nothing to do. A long agenda, a large room and a speaker who can't see individual faces all make it easy to switch off. Interaction works because it gives each person a small task: decide, answer, ask. That brief moment of participation is a simple way to reset attention, in a way another slide rarely does.",
           "It also changes the speaker's position. Instead of guessing how the room feels, they can see it — which question resonated, which point needs more explanation, which opinion is held by the majority. That makes sessions better in real time, not just in the feedback form afterwards.",
         ],
       },
