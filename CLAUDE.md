@@ -341,8 +341,28 @@ next.config.ts      trailingSlash + every legacy 301 redirect
 
 1. Read the relevant `lib/` data file before touching any page. Most content changes are data edits, not code.
 2. Reuse the existing components and CSS classes.
-3. Run `npm run build` and make sure it passes, then commit to `main` with a clear message. Vercel
-   deploys automatically.
-4. When giving the owner terminal commands, write them for PowerShell 5.1, one per line.
-5. For anything that changes URLs, pricing, claims, client names or legal and regulatory statements,
-   confirm with the owner first.
+3. When giving the owner terminal commands, write them for PowerShell 5.1, one per line.
+
+### Standing release workflow (owner-approved 2026-10-06)
+Never commit directly to `main`. Every change goes through a branch and a pull request.
+
+**Routine changes** (content, blog posts, bug fixes, design tweaks, new pages built from existing components):
+1. Work on a branch and run `npm run build`. It must pass.
+2. Open a PR into `main` and wait for the Vercel preview to build successfully.
+3. Merge into `main` yourself, then wait for the Vercel production deployment to succeed.
+4. Verify the affected production pages afterwards.
+
+**Approval-gated changes:** pricing, published claims or figures, client names, legal or regulatory
+statements, URLs or redirects, and DNS or environment settings.
+1. Open the PR and stop.
+2. Show the owner the Vercel preview URL and wait for explicit approval before merging.
+
+**Failed production deploy:** if the production deploy fails after a merge, revert the merge commit on
+`main` immediately and tell the owner.
+
+**Known limits of the Claude Code cloud sandbox** (as of 2026-10-06):
+- Its network policy blocks `odysense.com` and `*.vercel.app`, so production pages can't be fetched
+  directly. Confirm the Vercel commit status on `main`, check that the merged tree matches what was
+  tested, and verify the pages against a local `npm run build` of that commit. Ask the owner to
+  spot-check the live URLs.
+- The git proxy refuses branch deletion (HTTP 403), so the owner deletes merged branches on GitHub.
