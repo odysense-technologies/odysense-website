@@ -28,8 +28,8 @@ export const caseStudies: CaseStudy[] = [
     industry: "Fashion e-commerce", // TODO: confirm exact industry positioning with client
     year: "2025",
     services: ["E-commerce", "Web design", "Payments", "SEO foundation"],
-    siteUrl: "https://official-eleganza.com",
-    siteLabel: "official-eleganza.com",
+    siteUrl: "https://officialeleganza.com",
+    siteLabel: "officialeleganza.com",
     teaser:
       "A premium online store built to match the brand it carries — fast, elegant and ready to sell across the Gulf.",
     intro:
@@ -65,8 +65,8 @@ export const caseStudies: CaseStudy[] = [
     industry: "Abaya atelier — Doha",
     year: "2026",
     services: ["E-commerce", "WooCommerce", "Custom theme", "Checkout optimization"],
-    siteUrl: "https://refealine.com",
-    siteLabel: "refealine.com",
+    siteUrl: "https://rafealine.com",
+    siteLabel: "rafealine.com",
     teaser:
       "A custom WooCommerce build for a Doha abaya atelier — craftsmanship online, from catalogue to checkout.",
     intro:
