@@ -153,7 +153,13 @@ export const testimonial = {
 /** Extended content for /products/[slug] pages */
 export const productDetails: Record<
   string,
-  { tagline: string; features: { h: string; p: string }[]; cta: string; image?: { src: string; alt: string } }
+  {
+    tagline: string;
+    features: { h: string; p: string }[];
+    cta: string;
+    image?: { src: string; alt: string };
+    related?: { text: string; label: string; href: string };
+  }
 > = {
   wasl: {
     tagline: "Send WhatsApp messages at scale for your business.",
@@ -166,6 +172,11 @@ export const productDetails: Record<
       { h: "Audit logs & analytics", p: "A complete audit trail for every action, plus delivery analytics, error breakdowns and bot performance dashboards." },
     ],
     cta: "Get a WASL demo on your own number.",
+    related: {
+      text: "Running an event game or brand activation? WASL sends the WhatsApp follow-ups to every player who opted in.",
+      label: "Gamification & brand activations",
+      href: "/gamification-brand-activation-qatar",
+    },
   },
   qflow: {
     tagline: "Scan. Order. Flow.",
@@ -242,6 +253,7 @@ export const carouselTiles = [
   { title: "Content Creation", img: "/images/card-content.webp", href: "/products/social-bakery", tags: ["Copywriting", "Design", "Production", "Blogs & Articles"] },
   { title: "Social Media", img: "/images/card-social.webp", href: "/digital-marketing-agency-qatar", tags: ["Strategy", "Paid Ads", "Analytics", "Scheduling", "Management"] },
   { title: "Marketing", img: "/images/card-marketing.webp", href: "/digital-marketing-agency-qatar/seo-services-qatar", tags: ["SEO", "PPC", "Conversion", "A/B Testing", "Reporting"] },
+  { title: "Gamification", img: "/images/card-gamification.webp", href: "/gamification-brand-activation-qatar", tags: ["Event games", "Live quiz", "Leaderboards", "Activations", "Polls"] }, // TODO: placeholder art — replace with a real creative
   { title: "Software & AI", img: "/images/card-software.webp", href: "/software-development-company-qatar", tags: ["Web Apps", "Dashboards", "AI Features", "APIs"] },
   { title: "Videos", img: "/images/card-videos.webp", href: "/digital-marketing-agency-qatar", tags: ["Storyboarding", "Reels & Shorts", "Editing", "Motion Graphics"] },
 ];

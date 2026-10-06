@@ -8,7 +8,7 @@ export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const core = ["", "services/", "products/", "work/", "about/", "contact/", "blog/", "ecommerce-development-company-qatar/"].map((r) => ({
+  const core = ["", "services/", "products/", "work/", "about/", "contact/", "blog/", "ecommerce-development-company-qatar/", "gamification-brand-activation-qatar/"].map((r) => ({
     url: `${site.url}/${r}`,
     lastModified: now,
     changeFrequency: "weekly" as const,

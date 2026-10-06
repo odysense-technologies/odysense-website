@@ -6,7 +6,7 @@ import { servicePages } from "@/lib/service-pages";
 export const metadata: Metadata = {
   title: "Services — Strategy, Design & Development, Growth",
   description:
-    "Everything Odysense does: web design, e-commerce, software and app development, branding, SEO, digital marketing and WhatsApp Business API — in Qatar & the GCC.",
+    "Everything Odysense does: web design, e-commerce, event gamification, software and app development, branding, SEO, digital marketing and WhatsApp Business API — in Qatar & the GCC.",
   alternates: { canonical: "/services/" },
 };
 
@@ -15,6 +15,11 @@ const featured = [
     href: "/ecommerce-development-company-qatar",
     title: "E-commerce",
     desc: "Online stores on WooCommerce, Shopify and custom stacks — our deepest specialty.",
+  },
+  {
+    href: "/gamification-brand-activation-qatar",
+    title: "Gamification & Brand Activations",
+    desc: "Event games, live quizzes, polls and Q&A that engage the room and capture consented leads.",
   },
   ...servicePages.map((s) => ({
     href: `/${s.slug}`,
