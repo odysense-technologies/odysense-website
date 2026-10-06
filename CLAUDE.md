@@ -143,7 +143,10 @@ next.config.ts      trailingSlash + every legacy 301 redirect
   - Phone/WhatsApp: `+974 3066 6516`
   - WhatsApp link: `https://wa.link/odysense`
 - **Never mention CBQ** (Commercial Bank of Qatar) anywhere on the site.
-- **Client logos:** "Ninth" was removed from the website's client logo list. Logos are in `public/brands/`.
+- **Never mention the founding year or years in market** anywhere on the site or in materials (no
+  "since 2013", "12+ years" and the like). Use QSTP, "20+ clients every year" or "7 in-house products"
+  as proof points instead. The schema has no `foundingDate`.
+- **Client logos:** "Ninth" was removed from the client logo list and its file deleted. Logos are in `public/brands/`.
 
 ### Pricing (published starting figures)
 
@@ -156,6 +159,7 @@ next.config.ts      trailingSlash + every legacy 301 redirect
 | E-commerce | QAR 8,000–10,000, including 1 year of domain and 1 year of hosting; advanced stores cost more |
 
 - **Never publish SEO pricing.** It depends on the project, so always point to requesting a callback.
+- **Never publish ad-spend figures; route budget questions to a callback.**
 
 ### Store Portal
 - Free for the first year with every Odysense e-commerce build, then QAR 170/month, or QAR 150/month billed yearly.
@@ -181,8 +185,8 @@ next.config.ts      trailingSlash + every legacy 301 redirect
   - Quote attributed to "Fatima, E-commerce Business Owner"
 - **Rafea Line** (`https://rafealine.com`): +70% checkout completion, 10 days kickoff to launch,
   4.9★ customer rating.
-- ⚠️ Earlier builds used the wrong domains (`official-eleganza.com`, `refealine.com`). Confirm
-  `lib/case-studies.ts` uses the correct ones above.
+- Earlier builds used the wrong domains (`official-eleganza.com`, `refealine.com`); fixed in
+  `lib/case-studies.ts` on 2026-10-06.
 - **QSeat** is a client app, live on the App Store:
   `https://apps.apple.com/qa/app/qseat-restaurant-booking/id6804232100`. Its case study is not on
   /work yet (see backlog).
@@ -293,8 +297,9 @@ next.config.ts      trailingSlash + every legacy 301 redirect
 ## 8. Backlog and open items (as of last handoff)
 
 **Verify first:** these were sent as patches and may not have been applied yet.
-- [ ] Update 15: the corrected WASL screenshots in `public/images/shot-wasl-*.webp`.
-- [ ] The case-study domains in `lib/case-studies.ts` (see section 5).
+- [x] Update 15: the corrected WASL screenshots in `public/images/shot-wasl-*.webp`. Verified on
+      2026-10-06; the declared sizes in `productShowcase.wasl.gallery` and `nav.tsx` now match the files.
+- [x] The case-study domains in `lib/case-studies.ts` (see section 5). Fixed on 2026-10-06.
 - [ ] That `www.odysense.com` 301s to `odysense.com`. It was serving a duplicate on 2026-07-27. Fix it in
       Vercel → Domains by setting `www` to redirect to the apex.
 
@@ -309,8 +314,9 @@ next.config.ts      trailingSlash + every legacy 301 redirect
 - [ ] Add a QSeat case study to `lib/case-studies.ts` (live App Store app; see `/areas/qseat` facts:
       iOS app, venue portal with live floor-plan table management, QR check-in, admin with feature
       toggles, bilingual).
-- [ ] The website still says "since 2013" and "12+ years" in places. The owner removed these from the
-      company profile. **Ask the owner** whether the website should match before changing anything.
+- [x] Remove "since 2013" / "12+ years" from the website to match the company profile. Done on
+      2026-10-06, including `og.png` and the schema `foundingDate`.
+- [x] Publish Store Portal pricing and add-ons on `/products/store-portal/`. Done on 2026-10-06.
 - [ ] Weekly: check the Search Console Pages report for 404s and extend the redirects.
 - [ ] Build KSA service pages once the Qatar pages are indexed, e.g. `/web-design-company-saudi-arabia/`.
 - [ ] Arabic version later: `next-intl`, `/ar/`, RTL with logical CSS properties, hreflang.
