@@ -112,7 +112,7 @@ lib/
                     carouselTiles, clientLogos
   service-pages.ts  the 8 Qatar service pages (copy, FAQs, related links, images)
   case-studies.ts   Eleganza, Rafea Line
-  blog.ts           all blog articles
+  blog.ts           all blog articles (optional per post: image (hero + OG), sources, relatedPosts)
 public/
   images/  logos/  brands/  og.png
 next.config.ts      trailingSlash + every legacy 301 redirect
@@ -304,7 +304,7 @@ next.config.ts      trailingSlash + every legacy 301 redirect
 6. **Sitewide schema:** `ProfessionalService` with Doha geo coordinates, the ten services (including Gamification & Brand Activations), and the six
    GCC countries as `areaServed`. Google Search Console is verified through the `verification.google`
    meta tag in `layout.tsx`.
-7. **Blog:** the article count was 27 on 2026-10-06; verify against `lib/blog.ts`. The target cadence
+7. **Blog:** the article count was 30 on 2026-10-06; verify against `lib/blog.ts`. The target cadence
    is two new articles a month, each targeting a real Qatar/GCC query and linking to its service page.
    Current topic clusters:
    - website and e-commerce cost
@@ -314,7 +314,10 @@ next.config.ts      trailingSlash + every legacy 301 redirect
    - delivery aggregators
    - SEO in Qatar
    - QSTP and startups
-   - Qatar's 2026 e-commerce licence (MoCI Decision No. 25)
+   - Qatar's 2026 e-commerce licence (MoCI Decision No. 25): five articles. Facts as announced in
+     Sept 2026: QAR 500 issuance fee, 194 approved activities, applications via the Single Window,
+     `.qa`/`.com.qa` domain through one of eight CRA-approved providers, one licence per platform.
+     Keep every licence article hedged, sourced, and clear that Odysense builds the store, not the licence.
    - Store Portal
    - event gamification and live audience engagement
 
