@@ -335,10 +335,10 @@ export const productShowcase: Record<
       },
     ],
     gallery: [
-      { src: "/images/shot-wasl-console.webp", w: 1100, h: 460, caption: "The WASL Console — usage, delivery and quick actions" },
-      { src: "/images/shot-wasl-chat.webp", w: 612, h: 486, caption: "Live on WhatsApp — order status, auto-replies, Meta-verified" },
-      { src: "/images/shot-wasl-bots.webp", w: 794, h: 433, caption: "Auto-reply bots — keyword rules, priorities, first match wins" },
-      { src: "/images/shot-wasl-template.webp", w: 497, h: 852, caption: "Template builder — variables, buttons and approval workflow" },
+      { src: "/images/shot-wasl-console.webp", w: 1094, h: 869, caption: "The WASL Console — usage, delivery and quick actions" },
+      { src: "/images/shot-wasl-chat.webp", w: 612, h: 576, caption: "Live on WhatsApp — order status, auto-replies, Meta-verified" },
+      { src: "/images/shot-wasl-bots.webp", w: 1137, h: 476, caption: "Auto-reply bots — keyword rules, priorities, first match wins" },
+      { src: "/images/shot-wasl-template.webp", w: 677, h: 649, caption: "Template builder — variables, buttons and approval workflow" },
     ],
     quotes: [
       {
