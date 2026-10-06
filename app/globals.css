@@ -307,6 +307,14 @@ h1 .grad {
 .post-body p { font-size: 17px; line-height: 1.78; color: var(--slate); margin-bottom: 18px; }
 .post-body ul { margin: 0 0 22px 20px; color: var(--slate); font-size: 16.5px; line-height: 1.75; }
 .post-body ul li { margin-bottom: 10px; }
+.post-hero-img { margin-bottom: 44px; }
+.post-hero-img img { width: 100%; height: auto; max-height: 460px; object-fit: cover; }
+.post-sources { margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--border); }
+.post-sources .mono { color: var(--slate); }
+.post-body .post-sources ul { list-style: none; margin: 12px 0 0; font-size: 14px; line-height: 1.6; }
+.post-sources li { margin-bottom: 6px; }
+.post-sources a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.post-sources a:hover { color: var(--purple); }
 .post-related { border: 1px solid var(--border); background: var(--card); border-radius: 16px; padding: 24px 28px; margin-top: 48px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
 .post-related span { font-size: 14px; color: var(--slate); }
 

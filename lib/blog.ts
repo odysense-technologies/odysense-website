@@ -13,6 +13,9 @@ export type Post = {
   minutes: number;
   relatedService: { label: string; href: string };
   sections: PostSection[];
+  image?: { src: string; alt: string; w: number; h: number };
+  sources?: { label: string; url: string }[];
+  relatedPosts?: string[]; // slugs shown as "Keep reading" links
 };
 
 export const posts: Post[] = [
@@ -894,6 +897,8 @@ export const posts: Post[] = [
   },
   {
     slug: "qatar-ecommerce-license-2026-explained",
+    relatedPosts: ["qatar-ecommerce-licence-qar-500-194-activities", "qatar-ecommerce-licence-store-compliance-checklist"],
+    image: { src: "/images/blog-consultation.webp", alt: "Two people discussing a business plan at a laptop", w: 1200, h: 840 },
     title: "Qatar's new e-commerce license (Decision No. 25 of 2026), explained simply",
     description:
       "Qatar now lets you run an online business without a physical office under MoCI Decision No. 25 of 2026. What the e-commerce license means, who needs it, and how to comply.",
@@ -905,6 +910,7 @@ export const posts: Post[] = [
       {
         ps: [
           "For years, selling online in Qatar — especially through Instagram and WhatsApp — sat in a regulatory grey area. Many sellers assumed that with no physical shop, the usual licensing rules didn't quite apply. As of March 2026, that grey area is gone, and in a way that's actually good news for online businesses: you can now get a proper licence without renting an office you never needed.",
+          "Update, September 2026: MoCI has now launched the licence itself, with a QAR 500 issuance fee, 194 approved activities, applications through the Single Window platform, and a requirement to sell from a .qa or .com.qa domain registered through a CRA-approved provider. See our 2026 guide to the QAR 500 e-commerce licence for the details.",
           "This is a plain-English explainer of what changed. One note up front: Odysense builds e-commerce stores, we are not lawyers or a licensing agent — for the legal filing itself, use a qualified Qatari corporate-services or law firm. What follows is background to help you understand the landscape.",
         ],
       },
@@ -932,7 +938,8 @@ export const posts: Post[] = [
           "A licence is mandatory — no commercial activity may be conducted online without obtaining an e-commerce licence from MoCI and paying the applicable fees.",
           "It builds on commercial registration — the e-commerce licence isn't a standalone permit; it sits on top of your existing Commercial Register entry, so you generally need to be registered with MoCI first.",
           "Register the specific platform — you register the actual website, app or social-media channel you sell on. Widely reported guidance is that operating across multiple platforms requires a separate licence for each.",
-          "Approved activities only — the exemption from physical premises applies to specific commercial activities approved by MoCI and published on its portal; the full activity list has been rolling out, so your exact activity needs checking.",
+          "Approved activities only — the exemption from physical premises applies to specific commercial activities approved by MoCI. The September 2026 launch confirmed 194 approved activities, so your exact activity needs checking against that list.",
+          "A Qatari domain — announced with the September 2026 launch: the business's website must use a .qa or .com.qa domain registered through one of eight CRA-approved providers.",
           "Consumer-disclosure duties — licensed sellers must clearly display their commercial registration and e-commerce licence numbers, contact and customer-service details, product information with exchange/return policies, and complaint-handling procedures.",
           "Personal sales excluded — genuinely personal, non-commercial-volume transactions are outside the framework.",
         ],
@@ -954,6 +961,8 @@ export const posts: Post[] = [
   },
   {
     slug: "start-online-business-qatar-without-office",
+    relatedPosts: ["qatar-ecommerce-licence-qar-500-194-activities", "qa-domain-online-store-qatar"],
+    image: { src: "/images/blog-home-office.webp", alt: "A simple desk setup with a monitor and lamp in a home office", w: 840, h: 1200 },
     title: "How to start an online business in Qatar without an office (2026)",
     description:
       "Qatar's 2026 rules let you launch an online store without a physical office. A step-by-step path from idea to a licensed, selling e-commerce business.",
@@ -978,6 +987,7 @@ export const posts: Post[] = [
         h: "Step 2 — Get registered and licensed",
         ps: [
           "This is the legal layer, best handled with a professional. In broad terms: you'll need to be in Qatar's Commercial Register with MoCI, then obtain the e-commerce licence for the specific platform you'll sell on — remembering that widely reported guidance says each platform (your website, an app, a social channel) may need its own licence. A good corporate-services firm handles this quickly now that the physical-office requirement is gone.",
+          "Update, September 2026: MoCI has since opened applications through the Single Window platform, with a QAR 500 licence issuance fee and 194 approved activities. Your website must also use a .qa or .com.qa domain registered through a CRA-approved provider, so register it before the store is built.",
         ],
       },
       {
@@ -990,6 +1000,7 @@ export const posts: Post[] = [
           "Local payment gateways — the cards and wallets Qatari customers actually use, integrated and tested.",
           "Bilingual Arabic/English — a real sales advantage in this market, planned in from the start.",
           "Compliance built in — your licence number, contact and customer-service details, and clear return/exchange policies displayed exactly as Decision No. 25 requires.",
+          "A .qa domain — the store runs on the .qa or .com.qa address the licence requires, with SSL and business email set up alongside it.",
           "WhatsApp integration — order confirmations and support on the channel your customers actually answer.",
         ],
       },
@@ -1004,6 +1015,387 @@ export const posts: Post[] = [
         ps: [
           "The office-free licence has removed the hardest barrier to selling online in Qatar legitimately. The remaining question is simply building a store worth buying from. That part we know well — e-commerce is our deepest specialty, with stores built for GCC brands from fashion boutiques to multi-product shops.",
           "Request a free technical consultation and we'll map out exactly what your store needs, what it costs, and how to get from idea to launched — and point you to trusted partners for the licensing side.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "qatar-ecommerce-licence-qar-500-194-activities",
+    relatedPosts: ["qa-domain-online-store-qatar", "qatar-ecommerce-licence-store-compliance-checklist", "start-online-business-qatar-without-office"],
+    title: "Qatar e-commerce licence 2026: QAR 500 fee, 194 activities and the .qa domain rule",
+    description:
+      "MoCI's e-commerce licence is now live: a QAR 500 issuance fee, 194 approved activities, no office for eligible online businesses, and a .qa domain requirement. What it means and how to get your store ready.",
+    date: "2026-10-06",
+    category: "E-commerce",
+    minutes: 8,
+    relatedService: { label: "E-commerce development in Qatar", href: "/ecommerce-development-company-qatar" },
+    image: { src: "/images/blog-licence-phone.webp", alt: "Hands holding a smartphone, ready to shop online", w: 1200, h: 800 },
+    sources: [
+      { label: "Ministry of Commerce and Industry — e-commerce licence announcement", url: "https://www.moci.gov.qa/en/news/554" },
+      {
+        label: "The Peninsula — MoCI launches QR500 e-commerce licence for 194 business activities (17 Sept 2026)",
+        url: "https://thepeninsulaqatar.com/article/17/09/2026/moci-launches-qr500-e-commerce-licence-for-194-business-activities",
+      },
+      {
+        label: "Dentons — Qatar strengthens regulation of online businesses with new e-commerce licensing framework",
+        url: "https://www.dentons.com/en/insights/articles/2026/april/20/qatar-strengthens-regulation-of-online-businesses-with-new-ecommerce-licensing-framework",
+      },
+      {
+        label: "Sultan Al-Abdulla & Partners — Qatar issues Decision No. 25 of 2026",
+        url: "https://qatarlaw.com/news/qatar-issues-decision-no-25-of-2026-regulating-e-commerce-activities-without-a-physical-presence-in-the-country",
+      },
+    ],
+    sections: [
+      {
+        ps: [
+          "In mid-September 2026, Qatar's Ministry of Commerce and Industry (MoCI) announced that its new e-commerce licence is open for applications. It puts into practice Ministerial Decision No. 25 of 2026, the rules issued in March that let eligible online businesses operate without a physical shop or office. The headline details are simple: a QAR 500 licence issuance fee, 194 approved business activities, and a requirement to sell from a Qatari .qa domain.",
+          "This guide explains what was announced, what it means for online sellers, and what to do to get a store ready. One note up front: Odysense designs and builds e-commerce stores. We are not a law firm or a licensing agent, and we don't issue licences. The details below are summarised from MoCI's announcement and published legal commentary; always confirm the current requirements on the Single Window platform or with a qualified adviser before you apply.",
+        ],
+      },
+      {
+        h: "The short version",
+        list: [
+          "Fee: QAR 500 for the licence issuance, according to MoCI's announcement.",
+          "Scope: 194 approved business activities can be carried out under the licence.",
+          "No office: eligible online-only activities don't need a physical shop or commercial office.",
+          "Domain: the business's website must use a .qa or .com.qa domain, registered through one of the eight service providers approved and regulated by the Communications Regulatory Authority (CRA).",
+          "Application: online, through the government's Single Window platform.",
+          "Platforms: the rules cover selling through websites, apps and commercial social media channels such as Instagram or TikTok shops. Genuinely personal, non-commercial transactions are outside the framework.",
+        ],
+      },
+      {
+        h: "Where the licence comes from",
+        ps: [
+          "The legal basis is Ministerial Decision No. 25 of 2026, which MoCI issued on 4 March 2026. According to published legal summaries, it appeared in the Official Gazette on 15 March and came into force on 16 March 2026. The Decision created a dedicated licensing framework for commercial activities carried out through electronic platforms that don't need physical premises in Qatar.",
+          "What changed in September is that the licence itself became available, with the fee, the list of approved activities and the domain requirement announced alongside it. If you read about Decision No. 25 earlier in the year, the September announcement fills in the practical details.",
+        ],
+      },
+      {
+        h: "What the QAR 500 covers",
+        ps: [
+          "MoCI describes QAR 500 as the licence issuance fee. Several business-setup guides describe it as an annual fee with a one-year validity that you renew, so plan for it as a recurring cost and check the current terms in the Single Window when you apply.",
+          "The licence fee is only one line in the budget. A realistic plan for a new online business in Qatar also includes your commercial registration, your .qa domain, the website or store itself, a payment gateway, and the time to set up products, policies and delivery. None of these are expensive individually, but it helps to see them together before you commit.",
+        ],
+      },
+      {
+        h: "The 194 approved activities",
+        ps: [
+          "The licence is not a blanket permission to sell anything online. It covers a defined list of 194 approved activities. In its announcement, the Ministry highlighted examples including fashion design and related products, consulting services across various fields, digital design services, AI consulting and solutions, photography activities and translation services.",
+          "The first practical step is to find your exact activity on the approved list. If it's there, the office-free route is likely open to you. If it isn't, you may need a different licence type or additional approvals, depending on what you sell. Products that are regulated in their own right can carry extra requirements whatever the sales channel, so check those early rather than discovering them after the store is built.",
+        ],
+      },
+      {
+        h: "No office: what that really means",
+        ps: [
+          "For years, a common obstacle for small online sellers in Qatar was the need to rent premises they didn't actually use. For eligible activities, the new framework removes that requirement: you can run the business from a website, an app or a commercial social channel without a shop or office.",
+          "That lowers the cost of starting properly, and it makes it practical for home-based sellers, freelancers and online-first brands to operate as licensed businesses. It doesn't remove your other obligations as a business owner, so treat \"no office\" as \"no premises requirement\" rather than \"no paperwork\".",
+        ],
+      },
+      {
+        h: "The .qa domain requirement",
+        ps: [
+          "One detail matters a great deal for anyone building or rebuilding a store: according to the announcement, businesses operating under the e-commerce licence must use a domain ending in .qa or .com.qa, registered through one of eight CRA-approved providers.",
+          "If you already sell from a .com address, that doesn't mean starting over. It means planning the move: registering the .qa domain, pointing the store at it, and redirecting your old address properly so you keep your search rankings and customers' bookmarks. We cover how to do that without losing traffic in our guide to moving an online store to a .qa domain.",
+        ],
+      },
+      {
+        h: "Which platforms it covers",
+        ps: [
+          "The framework defines e-commerce broadly: selling goods or providing services through websites, apps and commercial social media channels. That reaches well beyond classic web shops. Instagram sellers, TikTok shops and businesses that take orders through social channels are all part of the picture once the activity is commercial.",
+          "Published legal commentary on Decision No. 25 also notes that each electronic platform needs its own licence, with the platform named in the licence details. If you sell through a website and an Instagram shop, for example, check how many licences your setup needs before you apply.",
+        ],
+      },
+      {
+        h: "How to apply, step by step",
+        ps: [
+          "The exact steps and documents are set by the Single Window platform and may change, so treat this as an orientation rather than a filing guide:",
+        ],
+        list: [
+          "Confirm your activity is on MoCI's list of 194 approved activities.",
+          "Make sure your commercial registration is in place. The e-commerce licence builds on it rather than replacing it.",
+          "Register your .qa or .com.qa domain through a CRA-approved provider.",
+          "Prepare the platform you'll sell on, with the business details and policies it must display.",
+          "Apply online through the Single Window platform and pay the licence fee.",
+          "Once licensed, display your licence and registration details on the platform, and diarise the renewal.",
+        ],
+      },
+      {
+        h: "What your store has to show",
+        ps: [
+          "The Decision isn't only about getting licensed; it also sets out what licensed sellers must show their customers. According to legal summaries, that includes the commercial registration and e-commerce licence numbers, contact details and customer-service channels, clear product and service information, return and exchange policies, and how customers can make a complaint.",
+          "These are easy to get right if they are designed into the store from the start, and awkward to bolt on later. Our e-commerce licence compliance checklist walks through each item and where it belongs on the site.",
+        ],
+      },
+      {
+        h: "What this means for Instagram and WhatsApp sellers",
+        ps: [
+          "If you've been selling informally through Instagram, TikTok or WhatsApp, the new licence is an opportunity rather than a threat. It gives you a clear, affordable route to operating as a licensed business, and a licence number you can display is a genuine trust signal for buyers who hesitate to pay an unfamiliar seller.",
+          "It is also a natural moment to move from DMs to a proper store: a .qa website where customers can browse, pay by card and receive order updates automatically, with your social channels driving traffic to it instead of carrying the whole business.",
+        ],
+      },
+      {
+        h: "Get your store ready — start with a free consultation",
+        ps: [
+          "The licence is the legal step, and the store is where the business actually happens. Odysense builds e-commerce stores for brands in Qatar: mobile-first, bilingual Arabic and English, connected to the payment gateways Qatari customers use, and designed with the licence details, policies and customer-service channels the new rules call for. Every Odysense e-commerce build also includes Store Portal, our store management platform, free for the first year.",
+          "We don't handle the licence application itself, and nothing here is legal advice. But if you're planning a new online store or moving an existing one onto a .qa domain, request a free technical consultation and we'll map out what the build involves, what it costs and how long it takes.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "qa-domain-online-store-qatar",
+    relatedPosts: ["qatar-ecommerce-licence-qar-500-194-activities", "qatar-ecommerce-licence-store-compliance-checklist", "website-redesign-without-losing-seo"],
+    title: "Your Qatar online store needs a .qa domain: how to set it up or switch without losing SEO",
+    description:
+      "Qatar's e-commerce licence requires a .qa or .com.qa domain. How to choose and register one, and how to move an existing store from .com without losing search rankings.",
+    date: "2026-10-06",
+    category: "E-commerce",
+    minutes: 8,
+    relatedService: { label: "E-commerce development in Qatar", href: "/ecommerce-development-company-qatar" },
+    image: { src: "/images/blog-qa-domain-store.webp", alt: "A store owner reviewing an online shop on a desktop screen", w: 1200, h: 673 },
+    sources: [
+      {
+        label: "The Peninsula — MoCI launches QR500 e-commerce licence for 194 business activities (17 Sept 2026)",
+        url: "https://thepeninsulaqatar.com/article/17/09/2026/moci-launches-qr500-e-commerce-licence-for-194-business-activities",
+      },
+      { label: "Ministry of Commerce and Industry — e-commerce licence announcement", url: "https://www.moci.gov.qa/en/news/554" },
+    ],
+    sections: [
+      {
+        ps: [
+          "When Qatar's Ministry of Commerce and Industry launched its e-commerce licence in September 2026, one requirement caught many online sellers by surprise: businesses operating under the licence must use a website domain ending in .qa or .com.qa, registered through one of the eight service providers approved and regulated by the Communications Regulatory Authority (CRA).",
+          "For new businesses, that's simply a decision to make on day one. For stores already trading on a .com address, it raises a sensible worry: will changing domain cost us our Google rankings? Done carelessly, it can. Done properly, a domain move is routine. This guide covers both situations.",
+          "As always: Odysense builds and migrates online stores; we're not a law firm or licensing agent. Confirm the current licence requirements on the Single Window platform before you apply.",
+        ],
+      },
+      {
+        h: "Why the domain matters",
+        ps: [
+          "The domain rule ties a licensed online business to Qatar's own namespace, managed under the CRA's oversight. For customers, a .qa address is also a useful signal that they are buying from a business operating in Qatar, which matters when they're deciding whether to trust an unfamiliar store with their card details.",
+          "For you, it means the domain is no longer just a branding choice. It's part of being licensed, so it's worth getting right before the store is built, not after.",
+        ],
+      },
+      {
+        h: ".qa or .com.qa?",
+        ps: [
+          "Both endings are accepted under the announced requirement, so the choice is mostly practical:",
+        ],
+        list: [
+          ".qa is shorter and easier to say, type and print on packaging or social bios.",
+          ".com.qa reads clearly as a commercial site and may be available when the .qa version of your name isn't.",
+          "If budget allows, register both and redirect one to the other. It protects your brand and catches customers who type the other version.",
+          "Keep the name itself short, easy to spell in English, and consistent with your social handles where possible.",
+        ],
+      },
+      {
+        h: "Register through an approved provider",
+        ps: [
+          "The announcement is specific that registration must go through one of the eight CRA-approved service providers. Check the current list on the official channels before you buy, and be wary of resellers who can't tell you which accredited provider actually holds the registration.",
+          ".qa domains have their own registration rules and documents, which can differ from a typical .com purchase. Your provider will tell you what they need. Make sure the domain is registered in the business's name and that you, not a freelancer or agency, control the account, so renewals and changes stay in your hands.",
+        ],
+      },
+      {
+        h: "Starting fresh: build on .qa from day one",
+        ps: [
+          "If you're launching a new store, the simplest path is to build directly on your .qa domain. A few things to set up at the same time:",
+        ],
+        list: [
+          "An SSL certificate, so the store loads securely over https from the first visit.",
+          "Business email on the same domain, with the records that help your order confirmations land in inboxes rather than spam.",
+          "Your payment gateway configured with the .qa address, since gateways typically review the website you'll be taking payments on.",
+          "Google Search Console and analytics set up on the new domain from launch, so you have data from day one.",
+          "Social bios, WhatsApp Business profile and printed materials all pointing to the same address.",
+        ],
+      },
+      {
+        h: "Already selling on .com? Plan the move",
+        ps: [
+          "Moving an established store to a new domain is a well-understood process. The goal is that every visitor and every search engine following an old link lands on the exact equivalent page on the new domain, with no dead ends. The key steps:",
+        ],
+        list: [
+          "Keep everything else the same. Move the domain first; save redesigns and URL changes for later, so if anything shifts you know why.",
+          "Map every URL. List your old pages (products, categories, policies, blog posts) and the matching new address for each.",
+          "Use permanent 301 redirects, one to one. Each old URL should redirect to its exact counterpart, not to the homepage.",
+          "Update the site itself: canonical tags, the XML sitemap, internal links and structured data should all use the new domain.",
+          "Tell Google. Add the new domain in Search Console, submit the new sitemap, and use the Change of Address tool for the old property.",
+          "Update integrations: payment gateway settings and webhooks, shipping and courier integrations, marketplace and social shop links, ad campaigns and tracking.",
+          "Update everywhere customers find you: Instagram and TikTok bios, WhatsApp Business, your Google Business Profile, email signatures and any QR codes you print from now on.",
+        ],
+      },
+      {
+        h: "Keep the old domain — for a long time",
+        ps: [
+          "The most expensive mistake in a domain move is letting the old domain expire. Old links in search results, social posts, printed flyers and customers' bookmarks will keep arriving for years, and the redirects only work while you own the old domain. Renew it, keep the redirects running, and treat it as part of the store's infrastructure.",
+        ],
+      },
+      {
+        h: "Common mistakes to avoid",
+        list: [
+          "Redirecting every old page to the new homepage, which throws away the rankings of individual products and categories.",
+          "Redirect chains (old → temporary → new) instead of a single direct hop.",
+          "Forgetting images, PDFs and other files that customers or search engines link to directly.",
+          "Launching the new domain before SSL is working, so the first visitors see a security warning.",
+          "Changing the domain, the URL structure and the design all at once, which makes any problem impossible to diagnose.",
+          "Leaving the payment gateway pointed at the old domain, so checkout breaks on launch day.",
+        ],
+      },
+      {
+        h: "What to expect after the switch",
+        ps: [
+          "With clean one-to-one redirects, search engines generally transfer a site's standing to the new domain, though it's normal to see some movement in rankings for a few weeks while they re-crawl. Watch Search Console for crawl errors and fix any missing redirects quickly. Customers who follow old links won't notice anything except the new address in the browser bar.",
+        ],
+      },
+      {
+        h: "If you only sell on social media",
+        ps: [
+          "The domain requirement is framed around the business's website. If your business currently sells only through social channels, check how the requirement applies to your setup when you apply through the Single Window. Either way, many social sellers will find this a good moment to add a proper store: a .qa website gives customers a trustworthy place to pay, and gives you a sales channel you control rather than one that depends on a platform's algorithm.",
+        ],
+      },
+      {
+        h: "Let us set up or move your store",
+        ps: [
+          "Odysense builds e-commerce stores for businesses in Qatar and handles domain moves with the same care we applied to our own site's migration: every legacy URL mapped and permanently redirected, so rankings and links carry over. We set up the store on your .qa domain with SSL, payment gateways, bilingual content and the business details the e-commerce licence calls for.",
+          "We don't register licences or give legal advice, but we can make the technical side painless. Request a free technical consultation and we'll review your current store, plan the move to .qa and tell you exactly what's involved.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "qatar-ecommerce-licence-store-compliance-checklist",
+    relatedPosts: ["qatar-ecommerce-licence-qar-500-194-activities", "qa-domain-online-store-qatar", "how-much-does-ecommerce-website-cost-qatar"],
+    title: "E-commerce licence checklist: what your Qatar online store must show customers",
+    description:
+      "A practical checklist for online stores licensed under Qatar's Decision No. 25 of 2026: the business details, policies and customer-service information to display, and where each belongs on your site.",
+    date: "2026-10-06",
+    category: "E-commerce",
+    minutes: 7,
+    relatedService: { label: "E-commerce development in Qatar", href: "/ecommerce-development-company-qatar" },
+    image: { src: "/images/blog-returns-policy.webp", alt: "A customer holding a parcel labelled for return", w: 840, h: 1200 },
+    sources: [
+      {
+        label: "Dentons — Qatar strengthens regulation of online businesses with new e-commerce licensing framework",
+        url: "https://www.dentons.com/en/insights/articles/2026/april/20/qatar-strengthens-regulation-of-online-businesses-with-new-ecommerce-licensing-framework",
+      },
+      {
+        label: "Sultan Al-Abdulla & Partners — Qatar issues Decision No. 25 of 2026",
+        url: "https://qatarlaw.com/news/qatar-issues-decision-no-25-of-2026-regulating-e-commerce-activities-without-a-physical-presence-in-the-country",
+      },
+      { label: "Ministry of Commerce and Industry — e-commerce licence announcement", url: "https://www.moci.gov.qa/en/news/554" },
+    ],
+    sections: [
+      {
+        ps: [
+          "Getting an e-commerce licence in Qatar is only half the job. Ministerial Decision No. 25 of 2026, the rules behind the QAR 500 licence MoCI launched in September, also sets out what licensed sellers must show their customers. According to published legal summaries of the Decision, licensed platforms need to clearly display their commercial registration and e-commerce licence details, contact information and customer-service channels, product and service information, return and exchange policies, and consumer complaint procedures.",
+          "None of that is difficult, but it's much easier to design into a store than to retrofit. This checklist turns those obligations into concrete items on your website, and adds the good-practice details that make a store feel trustworthy.",
+          "Important: Odysense builds online stores; we are not a law firm. This is a practical build checklist based on published summaries, not legal advice. Have your policies and wording reviewed by a qualified adviser.",
+        ],
+      },
+      {
+        h: "1. Business and licence details",
+        ps: [
+          "Customers should be able to see who they are buying from on every page. The usual place is the site footer, repeated on the contact or about page:",
+        ],
+        list: [
+          "Your registered business name as it appears on your commercial registration.",
+          "Your commercial registration (CR) number.",
+          "Your e-commerce licence number.",
+          "The platform the licence covers. If you sell on several platforms, each one needs its own licence according to legal commentary, so make sure the right number appears in the right place.",
+        ],
+      },
+      {
+        h: "2. Contact details and customer service",
+        ps: [
+          "The Decision expects clear contact information and customer-service channels. In practice, that means a contact page and a consistent set of channels shown across the site:",
+        ],
+        list: [
+          "A customer-service phone number and email address that are actually monitored.",
+          "A WhatsApp Business number, if you support customers there — for many shoppers in Qatar it's the channel they reach for first.",
+          "Your customer-service hours, and how quickly customers can expect a reply.",
+          "A contact form for customers who prefer to write.",
+        ],
+      },
+      {
+        h: "3. Product and service information",
+        ps: [
+          "Every product page should give customers what they need to make an informed decision before they pay:",
+        ],
+        list: [
+          "A clear name and description, with accurate photos.",
+          "The price in Qatari riyals, and whether it includes any additional charges.",
+          "Key specifications: sizes, materials, dimensions, ingredients or whatever applies to your category.",
+          "Availability, and an honest delivery estimate.",
+          "For services: what's included, how it's delivered and any conditions.",
+        ],
+      },
+      {
+        h: "4. Delivery and the full price at checkout",
+        ps: [
+          "Surprises at checkout are the fastest way to lose a sale and a customer's trust. Show delivery fees, delivery areas and estimated times before payment, and make sure the order summary shows the full amount the customer will pay. Send an order confirmation, by email and ideally by WhatsApp, that repeats what was ordered, the total and how to get help.",
+        ],
+      },
+      {
+        h: "5. Return and exchange policy",
+        ps: [
+          "Return and exchange policies are named explicitly in summaries of the Decision, so give them their own page, linked from the footer, product pages and checkout. A good policy page answers:",
+        ],
+        list: [
+          "Which items can be returned or exchanged, and any that can't, with the reason.",
+          "The time window for returns and exchanges.",
+          "The condition items must be in.",
+          "How to start a return: the channel to use and the information to include.",
+          "Who pays for return delivery, and how and when refunds are made.",
+        ],
+      },
+      {
+        h: "6. Complaint procedure",
+        ps: [
+          "Customers should know what to do if something goes wrong and the normal customer-service route doesn't resolve it. Publish a short complaint procedure: how to raise a complaint, what information to include, how you acknowledge it, and the timeframe in which you aim to respond. Link it from the contact page and the footer.",
+        ],
+      },
+      {
+        h: "7. Terms and privacy",
+        ps: [
+          "Alongside the items the Decision names, every serious store needs clear terms of sale and a privacy policy explaining what customer data you collect, why, and how it's protected. They protect you as much as the customer, and payment gateways commonly look for them when they review a merchant's website.",
+        ],
+      },
+      {
+        h: "8. Arabic and English",
+        ps: [
+          "Qatar's shoppers read in both languages. Publishing your policies, product information and contact details in Arabic and English, with proper right-to-left layout for Arabic, makes them genuinely clear to every customer rather than technically present. If you add Arabic later, plan the structure now so it's a content task rather than a rebuild.",
+        ],
+      },
+      {
+        h: "9. Social media shop profiles",
+        ps: [
+          "If you sell through Instagram, TikTok or other social channels, the same transparency applies there. Use your bio, highlights or pinned posts to show your business name and licence details, link to your store's policies, and make your customer-service channel obvious. Remember to check whether each platform needs its own licence.",
+        ],
+      },
+      {
+        h: "10. The domain and the renewal date",
+        ps: [
+          "Two housekeeping items close the list. The September announcement requires a .qa or .com.qa domain registered through a CRA-approved provider, so make sure the store runs on it. And put the licence renewal date in your calendar, along with the domain renewal, so neither lapses unnoticed.",
+        ],
+      },
+      {
+        h: "Quick checklist",
+        list: [
+          "Business name, CR number and e-commerce licence number in the footer.",
+          "Contact page with phone, email, WhatsApp and service hours.",
+          "Complete product information with prices in QAR.",
+          "Delivery fees, areas and times shown before payment.",
+          "Return and exchange policy page, linked from products and checkout.",
+          "Published complaint procedure.",
+          "Terms of sale and privacy policy.",
+          "Policies and key information in Arabic and English.",
+          "Licence details on every social selling profile.",
+          "Store on a .qa or .com.qa domain; licence and domain renewals diarised.",
+        ],
+      },
+      {
+        h: "Build it in from the start",
+        ps: [
+          "Every one of these items has a natural home in a well-designed store, and none of them should feel like small print added at the last minute. When Odysense builds an e-commerce store, the licence details, policy pages, customer-service channels and bilingual structure are part of the design from the first wireframe, and Store Portal, included free for the first year with every Odysense e-commerce build, keeps orders, invoices and customer records organised behind the scenes.",
+          "We build the store, not the licence, and we're not a law firm. But if you want a store that's ready for the new rules on day one, request a free technical consultation and we'll review what you have and what's missing.",
         ],
       },
     ],
@@ -1145,6 +1537,7 @@ export const posts: Post[] = [
   },
   {
     slug: "live-quiz-polls-qa-gcc-events",
+    image: { src: "/images/blog-speaker-stage.webp", alt: "A speaker presenting on stage to an audience", w: 840, h: 1200 },
     title: "Live quizzes, polls and Q&A: how to keep an audience engaged at GCC events",
     description:
       "How to use live quizzes, polls and audience Q&A at conferences, launches and corporate events in Qatar and the GCC — when to use each, how to run them well, and how to turn engagement into insight.",

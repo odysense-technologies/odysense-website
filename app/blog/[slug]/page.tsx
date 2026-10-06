@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Reveal, CtaBox, PageHero } from "@/components/ui";
 import { posts, getPost } from "@/lib/blog";
@@ -17,7 +18,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: post.title,
     description: post.description,
     alternates: { canonical: `/blog/${post.slug}/` },
-    openGraph: { type: "article", title: post.title, description: post.description },
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.description,
+      ...(post.image && { images: [{ url: post.image.src, width: post.image.w, height: post.image.h, alt: post.image.alt }] }),
+    },
   };
 }
 
@@ -35,6 +41,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     author: { "@type": "Organization", name: "Odysense", url: site.url },
     publisher: { "@type": "Organization", name: "Odysense", url: site.url },
     mainEntityOfPage: `${site.url}/blog/${post.slug}/`,
+    ...(post.image && { image: `${site.url}${post.image.src}` }),
   };
   const breadcrumbs = {
     "@context": "https://schema.org",
@@ -60,6 +67,11 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       <section className="section">
         <div className="wrap">
           <article className="post-body">
+            {post.image && (
+              <div className="img-inline post-hero-img">
+                <Image src={post.image.src} alt={post.image.alt} width={post.image.w} height={post.image.h} sizes="(max-width: 920px) 100vw, 760px" priority />
+              </div>
+            )}
             {post.sections.map((s, i) => (
               <Reveal key={i}>
                 {s.h && (
@@ -82,6 +94,36 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
                 )}
               </Reveal>
             ))}
+            {post.relatedPosts && (
+              <Reveal>
+                <div className="post-sources">
+                  <span className="mono">Keep reading</span>
+                  <ul>
+                    {post.relatedPosts.map((slug) => getPost(slug)).filter((p) => p !== undefined).map((p) => (
+                      <li key={p.slug}>
+                        <Link href={`/blog/${p.slug}`}>{p.title}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            )}
+            {post.sources && (
+              <Reveal>
+                <div className="post-sources">
+                  <span className="mono">Sources</span>
+                  <ul>
+                    {post.sources.map((s) => (
+                      <li key={s.url}>
+                        <a href={s.url} target="_blank" rel="noopener noreferrer nofollow">
+                          {s.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            )}
             <Reveal>
               <div className="post-related">
                 <span>Related service</span>
