@@ -230,7 +230,7 @@ export const servicePages: ServiceDef[] = [
       },
       {
         q: "What's the minimum budget to advertise in Qatar?",
-        a: "Meaningful Google Ads campaigns in Qatar typically start around QAR 3,000–5,000/month in ad spend for competitive niches, plus management. We'll be honest if your budget would be better spent on SEO or the website first.",
+        a: "It depends on your market and how competitive your keywords are — a niche B2B service and a crowded retail category need very different budgets. After a free consultation we recommend a starting budget based on your goals, and we'll be honest if it would be better spent on SEO or the website first. Request a callback and we'll walk you through it.",
       },
       {
         q: "Do you require long contracts?",
