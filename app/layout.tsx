@@ -40,7 +40,6 @@ const orgSchema = {
   url: site.url,
   email: site.email,
   telephone: site.phone,
-  foundingDate: String(site.founded),
   image: `${site.url}/og.png`,
   logo: `${site.url}/logos/odysense-icon.png`,
   priceRange: "$$",

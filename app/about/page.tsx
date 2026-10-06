@@ -3,9 +3,9 @@ import Image from "next/image";
 import { Reveal, SectionHead, CtaBox, PageHero } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "About — A Digital Studio in Doha, Since 2013",
+  title: "About — A Digital Studio at Qatar Science & Technology Park",
   description:
-    "Odysense is a digital agency and software company at Qatar Science & Technology Park — 12+ years of strategy, design, development and growth for GCC brands.",
+    "Odysense is a digital agency and software company at Qatar Science & Technology Park — a studio that thinks like an owner, bringing strategy, design, development and growth to GCC brands.",
   alternates: { canonical: "/about/" },
 };
 
@@ -23,18 +23,20 @@ export default function AboutPage() {
         crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
         title={
           <>
-            A studio built on <span className="serif">twelve years of shipping.</span>
+            A studio that thinks <span className="serif">like an owner.</span>
           </>
         }
-        lede="Odysense started in Doha in 2013 and grew into two things at once: a digital agency trusted by 20+ organizations a year — from F&B to banking to the European Union's delegation in Qatar — and a software company whose own products run businesses across the region every day."
+        lede="Odysense works from the Innovation Centre at Qatar Science & Technology Park, and it is two things at once: a digital agency trusted by 20+ organizations a year — from F&B to banking to the European Union's delegation in Qatar — and a software company whose own products run businesses across the region every day."
       />
 
       <section className="section">
         <div className="wrap">
           <Reveal className="stat-row">
             <div className="stat">
-              <b>2013</b>
-              <span>founded in Doha — headquartered at Qatar Science &amp; Technology Park</span>
+              <b>
+                7<span className="serif"> products</span>
+              </b>
+              <span>built and run in-house — headquartered at Qatar Science &amp; Technology Park</span>
             </div>
             <div className="stat">
               <b>
@@ -91,7 +93,7 @@ export default function AboutPage() {
             <CtaBox
               title={
                 <>
-                  The next twelve years start <span className="serif">with one brief.</span>
+                  Your next launch starts <span className="serif">with one brief.</span>
                 </>
               }
               body="Tell us what you're building. We reply within one business day, from Doha."

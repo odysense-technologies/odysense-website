@@ -30,7 +30,7 @@ export const servicePages: ServiceDef[] = [
     titleAccent: "company in Qatar.",
     metaTitle: "Website Design Company in Qatar",
     metaDescription:
-      "Odysense designs fast, beautiful, conversion-focused websites for brands in Qatar & the GCC. Custom design, not templates — since 2013.",
+      "Odysense designs fast, beautiful, conversion-focused websites for brands in Qatar & the GCC. Custom design, not templates — from Doha.",
     lede: "Websites designed around your brand and your customer — not a template with your logo on it. Fast, modern and built to turn visitors into enquiries.",
     includes: [
       { h: "Custom design", p: "Every layout designed for your content and audience — unmistakably yours, never off-the-shelf." },
@@ -75,7 +75,7 @@ export const servicePages: ServiceDef[] = [
     titleAccent: "company in Qatar.",
     metaTitle: "Website Development Company in Qatar",
     metaDescription:
-      "Custom website development in Qatar — fast, secure, scalable builds on modern stacks. Odysense has engineered websites for GCC brands since 2013.",
+      "Custom website development in Qatar — fast, secure, scalable builds on modern stacks. Odysense engineers websites for brands across Qatar & the GCC.",
     lede: "Engineering behind the design: fast, secure, scalable websites built on modern technology — from marketing sites to complex web platforms.",
     includes: [
       { h: "Modern stacks", p: "React, Next.js and WordPress where it fits — the right technology for the job, not one hammer for every nail." },
@@ -120,7 +120,7 @@ export const servicePages: ServiceDef[] = [
     titleAccent: "company in Qatar.",
     metaTitle: "Software Development Company in Qatar",
     metaDescription:
-      "Custom software development in Doha — web applications, dashboards, portals and SaaS products for businesses in Qatar & the GCC. Odysense, since 2013.",
+      "Custom software development in Doha — web applications, dashboards, portals and SaaS products for businesses in Qatar & the GCC, built by Odysense in Doha.",
     lede: "Custom software for businesses that outgrew spreadsheets and off-the-shelf tools — web applications, dashboards, portals and products, built in Doha.",
     includes: [
       { h: "Web applications", p: "Custom platforms built around your workflow — not your workflow bent around someone else's software." },
@@ -342,7 +342,7 @@ export const servicePages: ServiceDef[] = [
     titleAccent: "in Qatar.",
     metaTitle: "Branding Agency in Qatar",
     metaDescription:
-      "Brand strategy and identity design in Qatar — logos, visual identity, guidelines and full brand systems for GCC businesses. By Odysense, since 2013.",
+      "Brand strategy and identity design in Qatar — logos, visual identity, guidelines and full brand systems for GCC businesses, by Odysense in Doha.",
     lede: "Identity, strategy and design systems that make a brand unmistakable — from the logo to the last touchpoint, built for the GCC market.",
     includes: [
       { h: "Brand strategy", p: "Positioning, personality and audience clarity — the thinking that makes every design decision easier." },

@@ -11,7 +11,6 @@ export const site = {
   whatsapp: "https://wa.link/odysense",
   phone: "+974 3066 6516",
   address: "Innovation Centre, Qatar Science & Technology Park, Doha, Qatar",
-  founded: 2013,
   description:
     "Odysense is a Doha-based digital agency and software company. We design, build and grow websites, e-commerce and products for ambitious brands across Qatar, Saudi Arabia and the Gulf.",
 };

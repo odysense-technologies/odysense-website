@@ -12,7 +12,7 @@ export default function Home() {
         <div className="orb" aria-hidden="true" />
         <div className="wrap">
           <span className="hero-badge">
-            ✦ &nbsp;Digital agency &amp; software company — <b>Doha, since 2013</b>
+            ✦ &nbsp;Digital agency &amp; software company — <b>Qatar Science &amp; Technology Park</b>
           </span>
           <h1>
             Design, development <span className="serif">&amp; digital growth.</span>
