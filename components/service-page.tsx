@@ -62,6 +62,28 @@ export function ServicePageView({ def }: { def: ServiceDef }) {
         </div>
       </section>
 
+      {def.sections && (
+        <section className="section section--flush-top">
+          <div className="wrap">
+            <div className="cs-body">
+              {def.sections.map((sec) => (
+                <Reveal key={sec.h}>
+                  <h2>
+                    {sec.h}
+                    <span className="serif" style={{ color: "var(--purple)" }}>
+                      .
+                    </span>
+                  </h2>
+                  {sec.ps.map((para, i) => (
+                    <p key={i}>{para}</p>
+                  ))}
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {def.image && (
         <section className="section section--flush-top">
           <div className="wrap">

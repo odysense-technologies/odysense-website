@@ -14,6 +14,7 @@ export type ServiceDef = {
   includesKicker?: string;
   image?: { src: string; alt: string };
   includes: { h: string; p: string }[];
+  sections?: { h: string; ps: string[] }[]; // long-form copy under "What's included"
   faqs: { q: string; a: string }[];
   related?: { label: string; href: string }[];
   ctaTitle: string;
@@ -39,6 +40,29 @@ export const servicePages: ServiceDef[] = [
       { h: "Conversion-focused", p: "Clear paths to enquiry on every page: forms, WhatsApp and calls to action that get used." },
       { h: "Bilingual-ready", p: "Arabic/English architecture with proper RTL support planned in from the first wireframe." },
       { h: "SEO foundation", p: "Structured data, semantic markup and metadata built in — designed to be found, not just admired." },
+    ],
+    sections: [
+      {
+        h: "Who we design for",
+        ps: [
+          "Most of the websites we design are for businesses in Qatar and the wider GCC that need their site to do a job: bring in enquiries, take bookings, sell products or prove credibility to a bigger client. That includes new companies that need to look established from day one, established businesses whose site no longer reflects who they are, and teams that have outgrown a template and need something built around how they actually sell.",
+          "If your website is mainly a digital brochure that nobody updates, we'll usually suggest a smaller, sharper site rather than a bigger one. If it's your main sales channel, we design it like one.",
+        ],
+      },
+      {
+        h: "How a design project runs",
+        ps: [
+          "Every project starts with a conversation about your customers, your competitors and what a good enquiry looks like for you. From there we plan the structure and the content first, because the words and the page order decide whether a site converts long before colours and fonts do.",
+          "Next comes the visual design: your brand applied to real pages, desktop and mobile, reviewed together until it's right. Once approved, our own developers build it, so what you signed off is what goes live. Before launch we test on real phones, check speed, set up analytics and put the SEO basics in place: titles, descriptions, structured data and clean URLs. After launch you can edit content yourself, and we stay available for changes and growth work.",
+        ],
+      },
+      {
+        h: "What website design costs in Qatar",
+        ps: [
+          "A professionally designed business website in Qatar typically starts around QAR 2,000–10,000 with Odysense. Where a project lands in that range depends on the number of pages, how much custom design and functionality it needs, and whether it's bilingual from launch. Online stores are priced separately as e-commerce projects.",
+          "Every project gets a fixed, itemised quote before work starts, so you know exactly what's included. For a detailed breakdown, read our guide to how much a website costs in Qatar, or request a free consultation and we'll scope your site with you.",
+        ],
+      },
     ],
     faqs: [
       {
@@ -85,6 +109,29 @@ export const servicePages: ServiceDef[] = [
       { h: "Scalability", p: "Architecture that handles growth — traffic spikes, new sections, new languages — without a rebuild." },
       { h: "Care & maintenance", p: "Monitoring, updates and support after launch. Websites are living products, and we treat them that way." },
     ],
+    sections: [
+      {
+        h: "When you need development, not just design",
+        ps: [
+          "Design decides how a site looks and reads; development decides whether it's fast, secure and able to do what your business needs. You need serious development work when a website has to connect to other systems, handle logins or bookings, publish content at scale, load quickly on mobile networks, or simply keep running reliably without someone fixing it every month.",
+          "We also take over sites that other agencies or freelancers built: slow WordPress installs, half-finished platforms, or sites nobody on your team knows how to update. The first step is always an honest technical review of what's worth keeping.",
+        ],
+      },
+      {
+        h: "How we build",
+        ps: [
+          "We choose the stack to fit the job rather than the other way round: modern frameworks such as Next.js for fast marketing sites and web platforms, WordPress and WooCommerce where your team needs a familiar editor or a store, and custom back ends where the business logic demands it. Whatever the stack, we build for speed first: optimised images, lean code, good hosting and Core Web Vitals that hold up on real phones.",
+          "Security and maintenance are part of the build, not an afterthought: updates, backups, access control and monitoring. And because the same team handles design, development and SEO, technical decisions are made with rankings and conversions in mind.",
+        ],
+      },
+      {
+        h: "Pricing and ongoing care",
+        ps: [
+          "Development projects vary too much for a single price list: a fast marketing site and a booking platform are very different builds. We scope each one and give a fixed, itemised quote before work begins, and explain where the cost goes. For simpler sites, our website design pricing is a useful starting point; for web applications, see our custom software development page.",
+          "After launch we offer ongoing care, covering updates, monitoring, backups and small improvements, so the site stays fast and secure. Request a free technical consultation and we'll review your current site or your plans.",
+        ],
+      },
+    ],
     faqs: [
       {
         q: "What technologies do you develop with?",
@@ -129,6 +176,29 @@ export const servicePages: ServiceDef[] = [
       { h: "API & integrations", p: "Connecting your systems — payments, WhatsApp, ERPs, government portals — into one coherent flow." },
       { h: "AI features", p: "Practical AI where it earns its place: chat, automation, document processing — built into your product." },
       { h: "Long-term partnership", p: "Software is never finished. We stay on as your product team, shipping improvements release after release." },
+    ],
+    sections: [
+      {
+        h: "Signs you need custom software",
+        ps: [
+          "Most businesses don't start with custom software, and they shouldn't. The time to build is when the workarounds start costing more than the build would: teams copying data between spreadsheets, customers waiting because information lives in three systems, or an off-the-shelf tool that forces your process into its shape. Custom software is also the right call when the software itself is the product, such as a portal, a platform or a SaaS idea.",
+          "Our job in the first conversation is to tell you honestly whether you need something built, configured or simply connected, because the cheapest software is the software you don't have to write.",
+        ],
+      },
+      {
+        h: "How we build software",
+        ps: [
+          "We start with discovery: the people who'll use the system, the decisions it needs to support, and the smallest version that delivers real value. That becomes a scoped first release with clear priorities rather than a wish list. We design the screens, build in short iterations you can see and test, and connect the system to the tools you already use through APIs.",
+          "Because Odysense builds and runs its own products, including WASL, QFlow and Store Portal, we design for the long term: maintainable code, sensible architecture, documentation, and a plan for what happens after launch. You own the code you pay for.",
+        ],
+      },
+      {
+        h: "What custom software costs",
+        ps: [
+          "A focused custom software MVP with Odysense typically starts from around QAR 10,000, and the cost scales with the number of user roles, integrations and screens. We give a fixed, itemised quote for each phase before work begins, so the budget is clear and the scope is agreed.",
+          "If you're a startup, our guide to MVP development in Qatar explains how to scope a first release that investors and users can actually try. Otherwise, request a free consultation and bring the problem, not a specification; we'll help you shape it.",
+        ],
+      },
     ],
     faqs: [
       {
@@ -175,6 +245,29 @@ export const servicePages: ServiceDef[] = [
       { h: "Web-app alternative", p: "Honest advice on when a progressive web app beats a native build — sometimes it does, and we'll say so." },
       { h: "Post-launch support", p: "OS updates, new features, crash monitoring — apps need a team behind them, and you'll have one." },
     ],
+    sections: [
+      {
+        h: "Do you need an app?",
+        ps: [
+          "Plenty of businesses that ask for an app are better served by a fast mobile website or a web app, which is cheaper to build, needs no store approval and works on every phone through a link. A native app earns its place when customers use it often, when it needs device features like push notifications, the camera or offline access, or when being on the App Store and Google Play is part of the product.",
+          "We'll tell you which one fits in the first conversation. When an app is the right answer, we build it properly.",
+        ],
+      },
+      {
+        h: "From idea to the App Store",
+        ps: [
+          "An app project starts with the user journeys: who opens the app, what they need to do, and what brings them back. We design and test the key screens before development, then build the app and the back end it depends on (accounts, data, notifications and admin tools) in iterations you can try on your own phone.",
+          "We handle store preparation and submission, and after launch we support updates for new OS versions, fixes and new features. QSeat, a restaurant booking app we built with a live floor-plan, venue portal and admin, is a good example of the kind of connected system most apps turn out to need.",
+        ],
+      },
+      {
+        h: "What a mobile app costs in Qatar",
+        ps: [
+          "A focused first-release app with Odysense typically starts around QAR 15,000–20,000, including the back end and store publishing. Apps with many user roles, complex integrations or real-time features cost more, and we'll explain exactly why in an itemised, fixed quote.",
+          "The best way to keep cost under control is a tight first release: launch the core journey well, learn from real users, then add features. Request a free consultation and we'll help you decide what belongs in version one.",
+        ],
+      },
+    ],
     faqs: [
       {
         q: "How much does a mobile app cost in Qatar?",
@@ -219,6 +312,29 @@ export const servicePages: ServiceDef[] = [
       { h: "Analytics", p: "GA4, conversion tracking and honest reporting: what it cost, what it earned, what to do next." },
       { h: "Conversion optimization", p: "Landing pages, A/B tests and funnel fixes — traffic is wasted if the site doesn't convert it." },
       { h: "WhatsApp marketing", p: "Broadcasts, automations and re-engagement on WhatsApp via our WASL platform — the Gulf's highest-attention channel." },
+    ],
+    sections: [
+      {
+        h: "Marketing joined up with the website",
+        ps: [
+          "Most marketing problems we see aren't really about the ads. Traffic lands on a slow page, the form doesn't track, the WhatsApp number isn't clickable, or nobody can tell which campaign produced the enquiry. Because Odysense also builds websites and software, we fix those problems at the source instead of reporting around them.",
+          "That's the core of our approach: decide what a lead or a sale is worth, make sure it's measured properly, and then put budget behind the channels that produce it, whether that's search, paid social, content or WhatsApp.",
+        ],
+      },
+      {
+        h: "How we work",
+        ps: [
+          "We start with an audit of your website, tracking and current channels, then agree goals in terms of enquiries, calls, WhatsApp conversations or sales. Next comes the foundation: GA4 and conversion tracking, landing pages that match the campaign, and SEO basics. Only then do we scale campaigns, testing creative and audiences and moving budget towards what works.",
+          "Reporting is monthly and written in plain language: what was spent, what it produced and what we'll change next. Growth work compounds, so we review results quarterly as well as monthly.",
+        ],
+      },
+      {
+        h: "Budgets and pricing",
+        ps: [
+          "Marketing budgets depend on your market, your competition and your goals. A niche B2B service and a busy retail category need very different levels of spend, so we don't publish a one-size-fits-all number. After a free consultation we'll recommend a starting plan and budget, and tell you honestly if the money would be better spent on your website or SEO first.",
+          "Request a callback and we'll walk you through it, including what not to spend on.",
+        ],
+      },
     ],
     faqs: [
       {
@@ -266,6 +382,29 @@ export const servicePages: ServiceDef[] = [
       { h: "Link earning", p: "Authority built through content and partnerships worth linking to — never bought-link schemes that get sites penalized." },
       { h: "Transparent reporting", p: "Rankings, traffic and — most importantly — enquiries from organic search, reported monthly." },
     ],
+    sections: [
+      {
+        h: "How SEO works in Qatar",
+        ps: [
+          "People in Qatar search in English and Arabic, mostly on their phones, and often with local intent: a service near them, a company in Doha, a price in riyals. Ranking for those searches comes down to three things: a technically sound website that search engines can crawl and understand, content that genuinely answers what people are searching for, and signals of trust, such as reviews, a complete Google Business Profile, and links and mentions from relevant sites.",
+          "There's no shortcut that survives Google's updates. The good news is that many local markets are still less competitive than they look, and a well-built site with useful content can earn real visibility.",
+        ],
+      },
+      {
+        h: "What we actually do",
+        ps: [
+          "We begin with a technical audit: speed, indexing, structured data, duplicate pages, redirects and mobile usability. These are the issues most agencies can't fix because they don't build websites. Then we research the searches that matter for your business, map them to pages, and improve or create content that deserves to rank, from service pages to practical guides.",
+          "Local SEO runs alongside: your Google Business Profile, consistent business details across directories, and a steady flow of genuine reviews. Every month we report rankings, organic traffic and, most importantly, the enquiries search brings in.",
+        ],
+      },
+      {
+        h: "SEO pricing and timelines",
+        ps: [
+          "SEO pricing depends entirely on your market's competitiveness, your website's current state and the amount of content needed, so we don't publish a fixed price. Request a callback and we'll assess where you stand and quote honestly, including telling you if SEO isn't the right first investment yet.",
+          "On timing, early movement often appears within a few months on a technically sound site, with stronger results building over the following months as content and authority grow. For more detail, read our guide to how businesses in Qatar get found on Google.",
+        ],
+      },
+    ],
     faqs: [
       {
         q: "How long does SEO take to show results in Qatar?",
@@ -310,6 +449,29 @@ export const servicePages: ServiceDef[] = [
       { h: "E-commerce integration", p: "Connected to your store: carts, order status and support in the same thread your customer already has open." },
       { h: "Team inbox", p: "Multiple agents on one number, with assignment, notes and history — WhatsApp organized like a helpdesk." },
     ],
+    sections: [
+      {
+        h: "App or API: which do you need?",
+        ps: [
+          "The free WhatsApp Business app works well for a single phone and a handful of conversations. Once several people need to answer customers, messages need to go out automatically (order confirmations, delivery updates, reminders) or you want to send approved campaigns to opted-in customers, you need the official WhatsApp Business Platform, known as the Cloud API.",
+          "The API also gives you a verified business sender, templates approved by Meta, and the ability to connect WhatsApp to your website, store, CRM or POS.",
+        ],
+      },
+      {
+        h: "How we set it up",
+        ps: [
+          "We connect your number to the official API through Meta, set up your business profile and verification, and create your first message templates. Your team then works from WASL, our own WhatsApp Business platform, with a shared inbox, AI-assisted replies, auto-reply bots, broadcasts to opted-in contacts, and analytics.",
+          "Where it adds value, we integrate WhatsApp with your systems, for example sending WooCommerce order notifications automatically or routing enquiries from your website. Because we build WASL ourselves, integrations aren't limited to what an off-the-shelf tool allows.",
+        ],
+      },
+      {
+        h: "What it costs",
+        ps: [
+          "WhatsApp API costs have two parts: Meta's own per-message charges, which depend on the message category and the recipient's country, and the platform you use to manage conversations. WASL works on transparent, pay-as-you-go credits, so you can see consumption per message and set spending controls.",
+          "Request a free consultation and we'll estimate your monthly costs based on how many conversations and notifications you expect, and show you WASL on your own number.",
+        ],
+      },
+    ],
     faqs: [
       {
         q: "What's the difference between WhatsApp Business App and the API?",
@@ -353,6 +515,29 @@ export const servicePages: ServiceDef[] = [
       { h: "Brand guidelines", p: "Practical style guides your team and suppliers can actually follow — colors, type, voice and usage." },
       { h: "Collateral & print", p: "Business cards, packaging, signage, presentations — the identity applied consistently in the real world." },
       { h: "Digital-first", p: "Identities designed knowing they'll live on screens — websites, social and apps included from day one." },
+    ],
+    sections: [
+      {
+        h: "When a brand needs work",
+        ps: [
+          "Branding becomes urgent at predictable moments: launching a new company, moving into a new market such as Saudi Arabia, raising investment, or realising the business has grown up while its identity hasn't. Other signs are quieter: inconsistent logos across touchpoints, a name that doesn't work in Arabic, or a website that looks like every competitor's.",
+          "We work with founders and marketing teams who want a brand that's clear about who it's for, recognisable at a glance, and practical to use every day.",
+        ],
+      },
+      {
+        h: "Our branding process",
+        ps: [
+          "We start with strategy: your audience, your competitors and what you want to be known for. That becomes a positioning and personality that guide every creative decision. Then we design the identity (logo, colour, typography and visual language), test it on real applications such as the website, social posts, packaging and signage, and refine until it holds up everywhere.",
+          "For the GCC, bilingual identity matters. We design Arabic and English versions that feel like one brand rather than a translation. Finally, we document everything in brand guidelines your team and suppliers can follow.",
+        ],
+      },
+      {
+        h: "What branding costs in Qatar",
+        ps: [
+          "A core brand identity with Odysense, covering strategy, logo, identity system and guidelines, typically starts around QAR 5,000–10,000. Full brand systems with a bilingual identity, extensive collateral or naming cost more, and every project gets a fixed, itemised quote before work starts.",
+          "Because the same team designs websites, apps and campaigns, your new brand can roll straight into the touchpoints that matter most. Request a free consultation to talk through what your brand needs.",
+        ],
+      },
     ],
     faqs: [
       {

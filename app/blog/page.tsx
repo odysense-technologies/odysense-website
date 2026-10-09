@@ -5,7 +5,7 @@ import { Reveal, CtaBox, PageHero } from "@/components/ui";
 import { postsNewestFirst } from "@/lib/blog";
 
 export const metadata: Metadata = seoMeta({
-  title: "Blog — Insights on Web, E-commerce & Growth in the GCC",
+  title: "Blog — Web, E-commerce & SEO Guides for Qatar",
   description: "Practical guides on websites, e-commerce, SEO and WhatsApp commerce for businesses in Qatar & the GCC — from the Odysense team.",
   path: "/blog/",
 });
