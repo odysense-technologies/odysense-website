@@ -9,6 +9,8 @@ export type Post = {
   title: string;
   description: string;
   date: string; // ISO
+  updated?: string; // ISO, when the article was materially revised
+  metaTitle?: string; // shorter <title> for search results when the headline is long
   category: string;
   minutes: number;
   relatedService: { label: string; href: string };
@@ -897,6 +899,7 @@ export const posts: Post[] = [
   },
   {
     slug: "qatar-ecommerce-license-2026-explained",
+    updated: "2026-10-06",
     relatedPosts: ["qatar-ecommerce-licence-qar-500-194-activities", "qatar-ecommerce-licence-store-compliance-checklist"],
     image: { src: "/images/blog-consultation.webp", alt: "Two people discussing a business plan at a laptop", w: 1200, h: 840 },
     title: "Qatar's new e-commerce license (Decision No. 25 of 2026), explained simply",
@@ -961,6 +964,7 @@ export const posts: Post[] = [
   },
   {
     slug: "start-online-business-qatar-without-office",
+    updated: "2026-10-06",
     relatedPosts: ["qatar-ecommerce-licence-qar-500-194-activities", "qa-domain-online-store-qatar"],
     image: { src: "/images/blog-home-office.webp", alt: "A simple desk setup with a monitor and lamp in a home office", w: 840, h: 1200 },
     title: "How to start an online business in Qatar without an office (2026)",
@@ -1650,6 +1654,14 @@ export const posts: Post[] = [
     ],
   },
 ];
+
+/** Newest first; among posts with the same date, the one added later comes first. */
+export function postsNewestFirst() {
+  return posts
+    .map((p, i) => ({ p, i }))
+    .sort((a, b) => b.p.date.localeCompare(a.p.date) || b.i - a.i)
+    .map(({ p }) => p);
+}
 
 export function getPost(slug: string) {
   return posts.find((p) => p.slug === slug);

@@ -1,8 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { seoMeta } from "@/lib/seo";
 import Image from "next/image";
 import { Reveal, SectionHead, CtaBox } from "@/components/ui";
-import { services, products, clientLogos, testimonial } from "@/lib/site";
+import { site, services, products, clientLogos, testimonial } from "@/lib/site";
 import { ServiceCarousel } from "@/components/carousel";
+
+export const metadata: Metadata = seoMeta({
+  title: "Odysense — Web Design, E-commerce & Digital Growth in Qatar",
+  description: site.description,
+  path: "/",
+  absoluteTitle: true,
+});
 
 export default function Home() {
   return (
@@ -15,7 +24,7 @@ export default function Home() {
             ✦ &nbsp;Digital agency &amp; software company — <b>Qatar Science &amp; Technology Park</b>
           </span>
           <h1>
-            Design, development <span className="serif">&amp; digital growth.</span>
+            Web design, development <span className="serif">&amp; digital growth in Qatar.</span>
           </h1>
           <Reveal>
             <p className="hero-sub">

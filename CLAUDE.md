@@ -92,7 +92,9 @@ app/
   about/  contact/
   tools/review-request/page.tsx                  internal Google-review message generator (noindex)
 components/
-  ui.tsx            Reveal, Footer, SectionHead, CtaBox, PageHero
+  ui.tsx            Reveal, Footer (sitewide links + NAP), SectionHead, CtaBox,
+                    PageHero (emits BreadcrumbList JSON-LD from its crumbs)
+  related-posts.tsx "Related reading" block: newest posts whose relatedService is the page
   nav.tsx           pill nav + Services/Products mega menus + mobile burger menu
   carousel.tsx      ServiceCarousel: homepage auto-scroll, draggable, swipeable
   shot-carousel.tsx product screenshot carousel with click-to-open lightbox
@@ -108,8 +110,9 @@ components/
     memory.tsx      product-icon memory match · tap.tsx  10-second tap challenge
     poll.tsx        live poll with a simulated audience · shared.tsx  reduced-motion hook, Leaderboard
 lib/
-  site.ts           site info, services, products, productDetails, productShowcase,
-                    carouselTiles, clientLogos
+  site.ts           site info, serviceLinks (nav + footer), services, products, productDetails,
+                    productShowcase, carouselTiles, clientLogos
+  seo.ts            seoMeta(): title, description, canonical, Open Graph and Twitter for a page
   service-pages.ts  the 8 Qatar service pages (copy, FAQs, related links, images)
   case-studies.ts   Eleganza, Rafea Line, QSeat
   blog.ts           all blog articles (optional per post: image (hero + OG), sources, relatedPosts)
@@ -299,7 +302,9 @@ next.config.ts      trailingSlash + every legacy 301 redirect
    - `unlocking-brand-potential-the-power-of-neuro-marketing-in-qatars-digital-landscape`
 4. **Keep the Qatar keyword URL pattern** (`/website-design-company-in-qatar/` and similar).
 5. **Every new page needs:**
-   - `metadata` (title and description) and `alternates.canonical`
+   - `metadata` built with `seoMeta()` from `lib/seo.ts` (title, description, path). Never set
+     `alternates.canonical` or `openGraph` in `app/layout.tsx`: Next.js inherits them into every page
+     that doesn't override them, which previously gave 26 pages the homepage's og:title and og:url
    - an entry in the sitemap; data-driven pages are added automatically
    - JSON-LD where relevant: FAQPage on service pages, Article and Breadcrumb on posts,
      SoftwareApplication on products

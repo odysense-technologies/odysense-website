@@ -3,20 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { products } from "@/lib/site";
+import { products, serviceLinks as serviceItems } from "@/lib/site";
 
-const serviceItems = [
-  { label: "Website Design", desc: "Custom, conversion-focused design", href: "/website-design-company-in-qatar" },
-  { label: "Website Development", desc: "Fast, secure modern builds", href: "/website-development-company-qatar" },
-  { label: "E-commerce", desc: "WooCommerce, Shopify & custom stores", href: "/ecommerce-development-company-qatar" },
-  { label: "Gamification & Activations", desc: "Event games, live quizzes & polls", href: "/gamification-brand-activation-qatar" },
-  { label: "Software Development", desc: "Web apps, dashboards & SaaS", href: "/software-development-company-qatar" },
-  { label: "Mobile Apps", desc: "iOS & Android, concept to store", href: "/mobile-app-development-company-qatar" },
-  { label: "Branding", desc: "Identity, strategy & guidelines", href: "/branding-agency-qatar" },
-  { label: "Digital Marketing", desc: "Paid media, content & analytics", href: "/digital-marketing-agency-qatar" },
-  { label: "SEO Services", desc: "Get found organically in the GCC", href: "/digital-marketing-agency-qatar/seo-services-qatar" },
-  { label: "WhatsApp Business API", desc: "Official setup, powered by WASL", href: "/whatsapp-business-api-qatar" },
-];
 
 type Panel = "products" | "services" | null;
 

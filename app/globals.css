@@ -208,10 +208,17 @@ h1 .grad {
 .cta-box .btn { position: relative; margin-top: 42px; }
 
 /* ---------- Footer ---------- */
-.footer {
-  padding: 46px 0; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
-  font-size: 13px; color: var(--slate); border-top: 1px solid var(--border); margin-top: 20px;
-}
+.footer { padding: 64px 0 40px; font-size: 13px; color: var(--slate); border-top: 1px solid var(--border); margin-top: 20px; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 36px; }
+.footer-col { display: flex; flex-direction: column; gap: 9px; align-items: flex-start; }
+.footer-col .mono { color: var(--ink); margin-bottom: 6px; }
+.footer-col a { font-size: 14px; color: var(--slate); transition: color .18s; }
+.footer-col a:hover { color: var(--purple); }
+.footer-brand b { font-size: 18px; font-weight: 600; letter-spacing: -.02em; color: var(--ink); }
+.footer-brand p { font-size: 14px; line-height: 1.6; max-width: 34ch; }
+.footer-brand address { font-style: normal; font-size: 14px; line-height: 1.75; }
+.footer-base { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 48px; padding-top: 22px; border-top: 1px solid var(--border); }
+@media (max-width: 920px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1 / -1; } }
 
 /* ---------- Scroll reveal ---------- */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }

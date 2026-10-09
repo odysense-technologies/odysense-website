@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo";
 import Image from "next/image";
 import { Reveal, SectionHead, CtaBox, PageHero } from "@/components/ui";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seoMeta({
   title: "About — A Digital Studio at Qatar Science & Technology Park",
-  description:
-    "Odysense is a digital agency and software company at Qatar Science & Technology Park — a studio that thinks like an owner, bringing strategy, design, development and growth to GCC brands.",
-  alternates: { canonical: "/about/" },
-};
+  description: "Odysense is a digital agency and software company at Qatar Science & Technology Park — a studio that thinks like an owner, bringing strategy, design, development and growth to GCC brands.",
+  path: "/about/",
+});
 
 const values = [
   { h: "Forward-thinking", p: "We craft solutions with tomorrow in mind — seamless, scalable experiences that stay ahead of digital trends." },

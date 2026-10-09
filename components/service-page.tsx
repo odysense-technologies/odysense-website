@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Reveal, SectionHead, CtaBox, PageHero } from "@/components/ui";
 import type { ServiceDef } from "@/lib/service-pages";
+import { RelatedPosts } from "@/components/related-posts";
 
 const NUMERALS = ["i.", "ii.", "iii.", "iv.", "v.", "vi."];
 
@@ -106,6 +107,8 @@ export function ServicePageView({ def }: { def: ServiceDef }) {
           )}
         </div>
       </section>
+
+      <RelatedPosts href={`/${def.slug}`} />
 
       <section className="section">
         <div className="wrap">

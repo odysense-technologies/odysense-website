@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo";
 import Link from "next/link";
 import { Reveal, CtaBox, PageHero } from "@/components/ui";
 import { caseStudies } from "@/lib/case-studies";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seoMeta({
   title: "Our Work — Web Design & E-commerce Portfolio",
-  description:
-    "Selected projects by Odysense: e-commerce stores, websites and digital products built for brands across Qatar and the GCC.",
-  alternates: { canonical: "/work/" },
-};
+  description: "Selected projects by Odysense: e-commerce stores, websites and digital products built for brands across Qatar and the GCC.",
+  path: "/work/",
+});
 
 export default function WorkPage() {
   return (

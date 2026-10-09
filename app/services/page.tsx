@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo";
 import Link from "next/link";
 import { Reveal, CtaBox, PageHero } from "@/components/ui";
 import { servicePages } from "@/lib/service-pages";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seoMeta({
   title: "Services — Strategy, Design & Development, Growth",
-  description:
-    "Everything Odysense does: web design, e-commerce, event gamification, software and app development, branding, SEO, digital marketing and WhatsApp Business API — in Qatar & the GCC.",
-  alternates: { canonical: "/services/" },
-};
+  description: "Everything Odysense does: web design, e-commerce, event gamification, software and app development, branding, SEO, digital marketing and WhatsApp Business API — in Qatar & the GCC.",
+  path: "/services/",
+});
 
 const featured = [
   {

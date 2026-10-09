@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo";
 import { Reveal, PageHero } from "@/components/ui";
 import { ContactForm } from "@/components/lead-forms";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seoMeta({
   title: "Contact — Start a Project",
-  description:
-    "Start a project with Odysense. Email, WhatsApp or visit us at Qatar Science & Technology Park, Doha. We reply within one business day.",
-  alternates: { canonical: "/contact/" },
-};
+  description: "Start a project with Odysense. Email, WhatsApp or visit us at Qatar Science & Technology Park, Doha. We reply within one business day.",
+  path: "/contact/",
+});
 
 export default function ContactPage() {
   return (
