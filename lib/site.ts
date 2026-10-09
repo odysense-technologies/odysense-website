@@ -15,6 +15,20 @@ export const site = {
     "Odysense is a Doha-based digital agency and software company. We design, build and grow websites, e-commerce and products for ambitious brands across Qatar, Saudi Arabia and the Gulf.",
 };
 
+/** Every service landing page — used by the nav mega menu, mobile menu and footer */
+export const serviceLinks = [
+  { label: "Website Design", desc: "Custom, conversion-focused design", href: "/website-design-company-in-qatar" },
+  { label: "Website Development", desc: "Fast, secure modern builds", href: "/website-development-company-qatar" },
+  { label: "E-commerce", desc: "WooCommerce, Shopify & custom stores", href: "/ecommerce-development-company-qatar" },
+  { label: "Gamification & Activations", desc: "Event games, live quizzes & polls", href: "/gamification-brand-activation-qatar" },
+  { label: "Software Development", desc: "Web apps, dashboards & SaaS", href: "/software-development-company-qatar" },
+  { label: "Mobile Apps", desc: "iOS & Android, concept to store", href: "/mobile-app-development-company-qatar" },
+  { label: "Branding", desc: "Identity, strategy & guidelines", href: "/branding-agency-qatar" },
+  { label: "Digital Marketing", desc: "Paid media, content & analytics", href: "/digital-marketing-agency-qatar" },
+  { label: "SEO Services", desc: "Get found organically in the GCC", href: "/digital-marketing-agency-qatar/seo-services-qatar" },
+  { label: "WhatsApp Business API", desc: "Official setup, powered by WASL", href: "/whatsapp-business-api-qatar" },
+];
+
 export const services = [
   {
     numeral: "i.",

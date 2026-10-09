@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal, CtaBox, PageHero } from "@/components/ui";
 import { products } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seoMeta({
   title: "Products — Software Built & Run by Odysense",
-  description:
-    "WASL, QFlow, Social Bakery and Rehabitt — proven software products built and operated by Odysense, serving businesses across Qatar & the GCC.",
-  alternates: { canonical: "/products/" },
-};
+  description: "WASL, QFlow, Social Bakery and Rehabitt — proven software products built and operated by Odysense, serving businesses across Qatar & the GCC.",
+  path: "/products/",
+});
 
 export default function ProductsPage() {
   return (

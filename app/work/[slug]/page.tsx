@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Reveal, CtaBox, PageHero } from "@/components/ui";
@@ -12,11 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const cs = getCaseStudy(slug);
   if (!cs) return {};
-  return {
-    title: `${cs.name} — Case Study`,
-    description: cs.teaser,
-    alternates: { canonical: `/work/${cs.slug}/` },
-  };
+  return seoMeta({ title: `${cs.name} — Case Study`, description: cs.teaser, path: `/work/${cs.slug}/` });
 }
 
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {

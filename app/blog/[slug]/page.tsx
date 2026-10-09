@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -14,17 +15,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
-  return {
-    title: post.title,
+  return seoMeta({
+    title: post.metaTitle ?? post.title,
     description: post.description,
-    alternates: { canonical: `/blog/${post.slug}/` },
-    openGraph: {
-      type: "article",
-      title: post.title,
-      description: post.description,
-      ...(post.image && { images: [{ url: post.image.src, width: post.image.w, height: post.image.h, alt: post.image.alt }] }),
-    },
-  };
+    path: `/blog/${post.slug}/`,
+    type: "article",
+    published: post.date,
+    modified: post.updated ?? post.date,
+    ...(post.image && { image: { url: post.image.src, width: post.image.w, height: post.image.h, alt: post.image.alt } }),
+  });
 }
 
 export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
@@ -38,10 +37,11 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     headline: post.title,
     description: post.description,
     datePublished: post.date,
+    dateModified: post.updated ?? post.date,
+    image: `${site.url}${post.image?.src ?? "/og.png"}`,
     author: { "@type": "Organization", name: "Odysense", url: site.url },
     publisher: { "@type": "Organization", name: "Odysense", url: site.url },
     mainEntityOfPage: `${site.url}/blog/${post.slug}/`,
-    ...(post.image && { image: `${site.url}${post.image.src}` }),
   };
   const breadcrumbs = {
     "@context": "https://schema.org",
@@ -60,6 +60,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
 
       <PageHero
         crumbs={[{ label: "Home", href: "/" }, { label: "Blog", href: "/blog" }, { label: post.category }]}
+        breadcrumbSchema={false}
         title={<>{post.title}</>}
         lede={`${new Date(post.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })} · ${post.minutes} min read`}
       />

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -6,6 +7,7 @@ import { Reveal, SectionHead, CtaBox, PageHero } from "@/components/ui";
 import { products, productDetails, productShowcase } from "@/lib/site";
 import { LottiePlayer } from "@/components/lottie";
 import { ShotCarousel } from "@/components/shot-carousel";
+import { RelatedPosts } from "@/components/related-posts";
 
 const NUMERALS = ["i.", "ii.", "iii.", "iv.", "v.", "vi."];
 
@@ -17,11 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const p = products.find((x) => x.slug === `/products/${slug}`);
   if (!p) return {};
-  return {
-    title: `${p.name} — ${p.chip}`,
-    description: p.description,
-    alternates: { canonical: `/products/${slug}/` },
-  };
+  return seoMeta({ title: `${p.name} — ${p.chip}`, description: p.description, path: `/products/${slug}/` });
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -209,6 +207,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
       )}
+
+      <RelatedPosts href={p.slug} />
 
       <section className="section section--flush-top">
         <div className="wrap">

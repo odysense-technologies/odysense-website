@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import { Reveal, SectionHead, CtaBox, PageHero } from "@/components/ui";
 import { caseStudies } from "@/lib/case-studies";
+import { RelatedPosts } from "@/components/related-posts";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seoMeta({
   title: "E-commerce Development Company in Qatar",
-  description:
-    "Odysense builds high-performing online stores for brands in Qatar & the GCC — WooCommerce, Shopify and custom builds with local payment gateways, from Doha.",
-  alternates: { canonical: "/ecommerce-development-company-qatar/" },
-};
+  description: "Odysense builds high-performing online stores for brands in Qatar & the GCC — WooCommerce, Shopify and custom builds with local payment gateways, from Doha.",
+  path: "/ecommerce-development-company-qatar/",
+});
 
 const faqs = [
   {
@@ -182,6 +183,8 @@ export default function EcommercePage() {
           </Reveal>
         </div>
       </section>
+
+      <RelatedPosts href="/ecommerce-development-company-qatar" limit={6} />
 
       {/* FAQ */}
       <section className="section">

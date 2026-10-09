@@ -14,13 +14,11 @@ export const metadata: Metadata = {
     template: "%s | Odysense",
   },
   description: site.description,
-  alternates: { canonical: "/" },
+  // No canonical or og:url here: they would be inherited by every page that forgets its own.
+  // Pages set canonical + Open Graph through seoMeta() in lib/seo.ts.
   openGraph: {
     type: "website",
     siteName: "Odysense",
-    title: "Odysense — Web Design, E-commerce & Digital Growth in Qatar",
-    description: site.description,
-    url: site.url,
     locale: "en_US",
     images: [{ url: "/og.png", width: 1200, height: 630 }],
   },

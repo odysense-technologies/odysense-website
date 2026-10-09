@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo";
 import Link from "next/link";
 import { Reveal, SectionHead, CtaBox, PageHero } from "@/components/ui";
 import { Arcade } from "@/components/arcade/arcade";
 import { site } from "@/lib/site";
+import { RelatedPosts } from "@/components/related-posts";
 
 const PATH = "/gamification-brand-activation-qatar/";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seoMeta({
   title: "Gamification & Brand Activation Agency in Qatar",
-  description:
-    "Event games, live quizzes, polls and interactive booth activations for exhibitions, launches and malls in Qatar & the GCC — branded, bilingual and built to capture consented leads.",
-  alternates: { canonical: PATH },
-};
+  description: "Event games, live quizzes, polls and interactive booth activations for exhibitions, launches and malls in Qatar & the GCC — branded, bilingual and built to capture consented leads.",
+  path: PATH,
+});
 
 const NUMERALS = ["i.", "ii.", "iii.", "iv.", "v.", "vi.", "vii.", "viii."];
 
@@ -348,6 +349,8 @@ export default function GamificationPage() {
           </Reveal>
         </div>
       </section>
+
+      <RelatedPosts href="/gamification-brand-activation-qatar" />
 
       {/* CTA */}
       <section className="section section--flush-top">

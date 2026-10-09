@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
+import { seoMeta } from "@/lib/seo";
 import Link from "next/link";
 import { Reveal, CtaBox, PageHero } from "@/components/ui";
-import { posts } from "@/lib/blog";
+import { postsNewestFirst } from "@/lib/blog";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = seoMeta({
   title: "Blog — Insights on Web, E-commerce & Growth in the GCC",
-  description:
-    "Practical guides on websites, e-commerce, SEO and WhatsApp commerce for businesses in Qatar & the GCC — from the Odysense team.",
-  alternates: { canonical: "/blog/" },
-};
+  description: "Practical guides on websites, e-commerce, SEO and WhatsApp commerce for businesses in Qatar & the GCC — from the Odysense team.",
+  path: "/blog/",
+});
 
 export default function BlogPage() {
   return (
@@ -26,7 +26,7 @@ export default function BlogPage() {
       <section className="section">
         <div className="wrap">
           <Reveal className="grid-2">
-            {posts.map((p) => (
+            {postsNewestFirst().map((p) => (
               <Link className="card post-card" href={`/blog/${p.slug}`} key={p.slug}>
                 <div>
                   <span className="cat">{p.category}</span>
