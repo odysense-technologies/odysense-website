@@ -194,6 +194,7 @@ export const servicePages: ServiceDef[] = [
       },
     ],
     related: [
+      { label: "QSeat case study", href: "/work/qseat" },
       { label: "Software development", href: "/software-development-company-qatar" },
       { label: "Our products", href: "/products" },
     ],

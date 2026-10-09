@@ -167,7 +167,7 @@ export default function EcommercePage() {
             }
           />
           <Reveal className="cs-grid">
-            {caseStudies.map((c) => (
+            {caseStudies.filter((c) => c.services.includes("E-commerce")).map((c) => (
               <Link className="cs-card" href={`/work/${c.slug}`} key={c.slug}>
                 <div>
                   <span className="mono">

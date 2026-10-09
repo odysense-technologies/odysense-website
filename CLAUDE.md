@@ -111,7 +111,7 @@ lib/
   site.ts           site info, services, products, productDetails, productShowcase,
                     carouselTiles, clientLogos
   service-pages.ts  the 8 Qatar service pages (copy, FAQs, related links, images)
-  case-studies.ts   Eleganza, Rafea Line
+  case-studies.ts   Eleganza, Rafea Line, QSeat
   blog.ts           all blog articles (optional per post: image (hero + OG), sources, relatedPosts)
 public/
   images/  logos/  brands/  og.png
@@ -196,8 +196,10 @@ next.config.ts      trailingSlash + every legacy 301 redirect
 - Earlier builds used the wrong domains (`official-eleganza.com`, `refealine.com`); fixed in
   `lib/case-studies.ts` on 2026-10-06.
 - **QSeat** is a client app, live on the App Store:
-  `https://apps.apple.com/qa/app/qseat-restaurant-booking/id6804232100`. Its case study is not on
-  /work yet (see backlog).
+  `https://apps.apple.com/qa/app/qseat-restaurant-booking/id6804232100`. Case study at `/work/qseat/`
+  (added 2026-10-09). It has no published metrics or quote yet: add them only when the owner supplies
+  real figures. The launch year (2026) is unconfirmed.
+- The e-commerce page lists only case studies whose `services` include "E-commerce".
 
 ### Gamification & Brand Activations (service, added 2026-10-06)
 - URL: `/gamification-brand-activation-qatar/` (bespoke page; in the Services mega menu, mobile menu,
@@ -340,9 +342,8 @@ next.config.ts      trailingSlash + every legacy 301 redirect
 - [ ] Rotate the Resend API key.
 
 **Content and SEO**
-- [ ] Add a QSeat case study to `lib/case-studies.ts` (live App Store app; see `/areas/qseat` facts:
-      iOS app, venue portal with live floor-plan table management, QR check-in, admin with feature
-      toggles, bilingual).
+- [x] Add a QSeat case study to `lib/case-studies.ts`. Done on 2026-10-09; it still needs real
+      screenshots, metrics and a client quote when available.
 - [x] Remove "since 2013" / "12+ years" from the website to match the company profile. Done on
       2026-10-06, including `og.png` and the schema `foundingDate`.
 - [x] Publish Store Portal pricing and add-ons on `/products/store-portal/`. Done on 2026-10-06.
