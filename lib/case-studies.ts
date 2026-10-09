@@ -90,6 +90,39 @@ export const caseStudies: CaseStudy[] = [
       { value: "4.9★", label: "customer experience rating" },
     ],
   },
+  {
+    slug: "qseat",
+    name: "QSeat",
+    industry: "Restaurant booking app",
+    year: "2026", // TODO: confirm launch year with the owner
+    services: ["iOS app", "Venue portal", "Admin platform", "UX/UI design"],
+    siteUrl: "https://apps.apple.com/app/id6804232100",
+    siteLabel: "QSeat on the App Store",
+    teaser:
+      "A restaurant booking platform where diners pick their table on a live floor plan — an iOS app, a venue portal and an admin, built as one system.",
+    intro:
+      "QSeat lets diners book a restaurant table the way they'd choose a seat at the cinema: see the venue's floor plan, pick the table they want, and check in with a QR code when they arrive. Odysense built the whole platform — the iOS app diners use, the portal venues run their floor from, and the admin that manages the service behind both.",
+    challenge: [
+      "A table booking is only as good as the information behind it. If the app shows a table as free when the restaurant has just seated someone there, the guest arrives to a problem and the venue loses trust in the system. QSeat needed the diner's view and the venue's view to stay in step in real time, and it needed to work for restaurants that run very different floors — while staying simple enough for a diner to book in a few taps, in Arabic or English.",
+    ],
+    approach: [
+      "We designed QSeat as three connected surfaces rather than a standalone app. Diners use the iOS app to browse venues, see the live floor plan and choose a table. Venues use a web portal to manage that same floor plan as the evening unfolds, so availability reflects what's really happening in the room. On arrival, guests check in with a QR code, which closes the loop between the booking and the table.",
+      "Behind both sits an admin platform with feature toggles, so capabilities can be switched on or off without shipping a new version of the app. The whole experience is bilingual, with Arabic and English designed in from the start rather than added later.",
+    ],
+    built: [
+      "iOS app for diners, published on the App Store",
+      "Live floor-plan table selection and booking",
+      "Venue portal with real-time floor-plan table management",
+      "QR check-in on arrival",
+      "Admin platform with feature toggles",
+      "Bilingual Arabic/English experience",
+    ],
+    results: [
+      { value: "Live", label: "on the App Store" },
+      { value: "3", label: "connected surfaces — diner app, venue portal and admin" },
+      { value: "AR/EN", label: "bilingual from launch" },
+    ],
+  },
 ];
 
 export function getCaseStudy(slug: string) {
