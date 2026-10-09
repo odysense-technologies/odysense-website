@@ -59,7 +59,20 @@ records belong to this site.
 | `NEXT_PUBLIC_GA_ID` | GA4 Measurement ID (code falls back to `G-XXE190R73Z`) | Optional |
 | `POSTGRES_URL` (+ related) | Lead storage via Vercel Postgres / Neon | **Pending**: not connected yet |
 
+| `GSC_SERVICE_ACCOUNT_B64` | Claude Code **cloud environment** variable (not Vercel): base64 of the Search Console service-account key | Set 2026-10-09 |
+| `GSC_SITE_URL` | Claude Code cloud environment variable; should be `https://odysense.com/` (the script hardcodes this) | Set |
+
 **Never commit secrets or put them in client code.**
+
+### Google Search Console access (since 2026-10-09)
+- Property: URL-prefix `https://odysense.com/`. Service account
+  `seo-audit-agent@seo-audit-agent-511116.iam.gserviceaccount.com` is a **Full** user.
+- Use `python3 scripts/search_console.py` (`perf`, `inspect URL…`, `sitemaps`, `submit-sitemap`).
+  Never print or commit the key.
+- The API can read performance and index status and manage sitemaps. It **cannot** request indexing;
+  the owner clicks "Request indexing" in the Search Console UI.
+- The old WordPress `sitemap_index.xml` was removed from Search Console on 2026-10-09; only
+  `sitemap.xml` is submitted.
 
 ---
 
@@ -120,6 +133,8 @@ lib/
 public/
   images/  logos/  brands/  og.png
 next.config.ts      trailingSlash + every legacy 301 redirect
+scripts/
+  search_console.py Search Console API helper for Claude sessions (sites, perf, inspect, sitemaps)
 ```
 
 ---
