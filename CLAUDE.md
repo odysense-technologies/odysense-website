@@ -33,7 +33,7 @@ WordPress/WPBakery site on cPanel has been replaced.
 | Content | TypeScript data files in `lib/` (no CMS yet; see backlog) |
 | Hosting | Vercel, auto-deploying on every push to `main` |
 | Repo | `github.com/odysense-technologies/odysense-website` (private; files at the repo root) |
-| Domain | `odysense.com` is primary and non-www. `www` should 301 to the apex: check Vercel → Domains |
+| Domain | `odysense.com` is primary and non-www (Vercel → Domains: apex = Production, `www` = 308 → apex; fixed 2026-10-09) |
 | DNS | Managed in **cPanel Zone Editor**. Only the apex A record and the `www` record point to Vercel |
 | Owner's machine | Windows, **PowerShell 5.1**: no `&&` chaining, so give commands one per line |
 
@@ -343,8 +343,9 @@ next.config.ts      trailingSlash + every legacy 301 redirect
 - [x] Update 15: the corrected WASL screenshots in `public/images/shot-wasl-*.webp`. Verified on
       2026-10-06; the declared sizes in `productShowcase.wasl.gallery` and `nav.tsx` now match the files.
 - [x] The case-study domains in `lib/case-studies.ts` (see section 5). Fixed on 2026-10-06.
-- [ ] That `www.odysense.com` 301s to `odysense.com`. It was serving a duplicate on 2026-07-27. Fix it in
-      Vercel → Domains by setting `www` to redirect to the apex.
+- [x] `www.odysense.com` redirects to `odysense.com`. Until 2026-10-09 Vercel redirected the apex to `www`,
+      the opposite of every canonical tag. Now the apex serves Production and `www` returns 308 → apex.
+      Never add a host redirect in `next.config.ts`; Vercel handles it.
 
 **Infrastructure**
 - [ ] Verify `odysense.com` in Resend. The DNS records go in cPanel Zone Editor and are additive only.
@@ -372,7 +373,12 @@ next.config.ts      trailingSlash + every legacy 301 redirect
       materials list it as both.
 
 **SEO plan (from the 2026-10-09 audit; technical fixes shipped in PRs #8 and #9)**
-- [ ] Owner: fix `www` → apex 301 in Vercel → Domains (duplicate host splits ranking signals).
+- [x] Owner: fix `www` → apex in Vercel → Domains. Done on 2026-10-09 (308).
+- [ ] Optional: in Vercel → Domains, set `odysense.vercel.app` to redirect (308) to `odysense.com` so the
+      preview host doesn't serve a second copy of production (canonicals already point to the apex).
+- Search Console HTML verification file: `public/googled6e8611648213367.html` (added 2026-10-09).
+  **Never delete or edit it**; removing it un-verifies the property. The `verification.google` meta tag
+  in `layout.tsx` stays too.
 - [ ] Owner: in Search Console, resubmit the sitemap, request indexing for the service pages and new
       articles, and review Pages → "Discovered/Crawled – currently not indexed".
 - [ ] Owner: Google Business Profile: primary category, services, photos, weekly posts, and a steady
