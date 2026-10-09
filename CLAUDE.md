@@ -113,9 +113,10 @@ lib/
   site.ts           site info, serviceLinks (nav + footer), services, products, productDetails,
                     productShowcase, carouselTiles, clientLogos
   seo.ts            seoMeta(): title, description, canonical, Open Graph and Twitter for a page
-  service-pages.ts  the 8 Qatar service pages (copy, FAQs, related links, images)
+  service-pages.ts  the 8 Qatar service pages (copy, long-form `sections`, FAQs, related links, images)
   case-studies.ts   Eleganza, Rafea Line, QSeat
-  blog.ts           all blog articles (optional per post: image (hero + OG), sources, relatedPosts)
+  blog.ts           all blog articles (optional per post: metaTitle, updated, image (hero + OG),
+                    sources, relatedPosts); postsNewestFirst() for listings
 public/
   images/  logos/  brands/  og.png
 next.config.ts      trailingSlash + every legacy 301 redirect
@@ -311,7 +312,7 @@ next.config.ts      trailingSlash + every legacy 301 redirect
 6. **Sitewide schema:** `ProfessionalService` with Doha geo coordinates, the ten services (including Gamification & Brand Activations), and the six
    GCC countries as `areaServed`. Google Search Console is verified through the `verification.google`
    meta tag in `layout.tsx`.
-7. **Blog:** the article count was 30 on 2026-10-06; verify against `lib/blog.ts`. The target cadence
+7. **Blog:** the article count was 36 on 2026-10-09; verify against `lib/blog.ts`. The target cadence
    is two new articles a month, each targeting a real Qatar/GCC query and linking to its service page.
    Current topic clusters:
    - website and e-commerce cost
@@ -327,6 +328,12 @@ next.config.ts      trailingSlash + every legacy 301 redirect
      Keep every licence article hedged, sourced, and clear that Odysense builds the store, not the licence.
    - Store Portal
    - event gamification and live audience engagement
+   - cost guides (website, e-commerce, mobile app, custom software, branding) and agency selection
+   - local SEO (Google Business Profile) and bilingual Arabic/English websites
+8. **Titles:** keep the full `<title>` (with " | Odysense") at 60 characters or less. Blog posts with
+   long headlines set a shorter `metaTitle`; the H1 keeps the full headline.
+9. **Service pages** carry 250–350 words of long-form `sections` (who it's for, how it runs, pricing)
+   plus FAQs and a "Related reading" block fed by posts whose `relatedService` points at the page.
 
 ---
 
@@ -363,6 +370,20 @@ next.config.ts      trailingSlash + every legacy 301 redirect
 - [ ] Check that each Lottie animation sits beside the right step on the WASL and QFlow pages.
 - [ ] Confirm whether "Live POS for Storefront" is an add-on or a core Store Portal feature. The
       materials list it as both.
+
+**SEO plan (from the 2026-10-09 audit; technical fixes shipped in PRs #8 and #9)**
+- [ ] Owner: fix `www` → apex 301 in Vercel → Domains (duplicate host splits ranking signals).
+- [ ] Owner: in Search Console, resubmit the sitemap, request indexing for the service pages and new
+      articles, and review Pages → "Discovered/Crawled – currently not indexed".
+- [ ] Owner: Google Business Profile: primary category, services, photos, weekly posts, and a steady
+      flow of reviews via `/tools/review-request`. Add the profile URL to `sameAs` in `layout.tsx`.
+- [ ] Owner: add LinkedIn/Instagram profile URLs so they can go in `sameAs`.
+- [ ] Backlinks: QSTP directory, client footer credits, Clutch/GoodFirms/DesignRush, local press
+      for the e-commerce licence and gamification content.
+- [ ] Expand thin product pages (Social Bakery, Rehabitt, ProSeek, Odysense AI: about 150–180 words).
+- [ ] Next articles: website maintenance cost, Shopify in Qatar, WooCommerce payment gateways in Qatar,
+      app vs web app, KSA market entry for Qatari stores (hedged, sourced).
+- [ ] Arabic `/ar/` versions of the top service pages once English pages are indexed.
 
 **Off-site** (owner tasks; Claude can help draft)
 - [ ] Complete the Google Business Profile and ask for reviews with `/tools/review-request`.

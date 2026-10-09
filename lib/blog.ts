@@ -23,6 +23,7 @@ export type Post = {
 export const posts: Post[] = [
   {
     slug: "how-much-does-a-website-cost-in-qatar",
+    metaTitle: "Website Cost in Qatar (2026 Guide)",
     title: "How much does a website cost in Qatar? (2026 guide)",
     description:
       "Real price ranges for business websites in Qatar in 2026 — what drives the cost up or down, ongoing costs, and how to avoid overpaying.",
@@ -75,6 +76,7 @@ export const posts: Post[] = [
   },
   {
     slug: "payment-gateways-qatar-ksa-compared",
+    metaTitle: "Payment Gateways in Qatar & KSA Compared (2026)",
     title: "Payment gateways in Qatar & KSA: how to choose in 2026",
     description:
       "Tap, MyFatoorah, HyperPay, PayTabs and more — how to choose the right payment gateway for an online store selling in Qatar and Saudi Arabia.",
@@ -122,6 +124,7 @@ export const posts: Post[] = [
   },
   {
     slug: "whatsapp-business-api-qatar-guide",
+    metaTitle: "WhatsApp Business API in Qatar: Setup & Pricing",
     title: "WhatsApp Business API in Qatar: setup, pricing and use cases",
     description:
       "What the WhatsApp Business API is, how it differs from the free app, what it costs, and how Qatar businesses use it for sales, support and notifications.",
@@ -167,6 +170,7 @@ export const posts: Post[] = [
   },
   {
     slug: "website-redesign-without-losing-seo",
+    metaTitle: "Redesign Your Website Without Losing SEO",
     title: "How to redesign your website without losing your Google rankings",
     description:
       "The migration playbook: how to relaunch a website without traffic collapse — URL mapping, 301 redirects, performance and the launch-day checklist.",
@@ -220,6 +224,7 @@ export const posts: Post[] = [
   },
   {
     slug: "shopify-vs-woocommerce-vs-custom-gcc",
+    metaTitle: "Shopify vs WooCommerce vs Custom (GCC Guide)",
     title: "Shopify vs WooCommerce vs custom build: what GCC retailers should choose",
     description:
       "An honest comparison of Shopify, WooCommerce and custom e-commerce builds for retailers in Qatar, KSA and the GCC — costs, control, and when each wins.",
@@ -274,6 +279,7 @@ export const posts: Post[] = [
   },
   {
     slug: "seo-in-qatar-how-businesses-get-found",
+    metaTitle: "SEO in Qatar: How Businesses Get Found (2026)",
     title: "SEO in Qatar: how local businesses actually get found in 2026",
     description:
       "What ranking in Qatar really takes in 2026 — local intent, Arabic search, Google Business Profile, and the technical basics most local sites still get wrong.",
@@ -319,6 +325,7 @@ export const posts: Post[] = [
   },
   {
     slug: "launching-online-fashion-store-gulf-checklist",
+    metaTitle: "Online Fashion Store Launch Checklist (Gulf)",
     title: "Launching an online fashion store in the Gulf: the complete checklist",
     description:
       "From catalogue photography to payment gateways to delivery — everything a fashion or abaya brand needs in place before selling online in Qatar and the GCC.",
@@ -374,6 +381,7 @@ export const posts: Post[] = [
   },
   {
     slug: "whatsapp-vs-email-marketing-gulf",
+    metaTitle: "WhatsApp vs Email Marketing in the Gulf",
     title: "WhatsApp vs email marketing in the Gulf: where your message actually gets read",
     description:
       "Why WhatsApp outperforms email for customer communication in Qatar and the GCC, what each channel is still best at, and how to use both without annoying anyone.",
@@ -417,6 +425,7 @@ export const posts: Post[] = [
   },
   {
     slug: "qr-code-ordering-restaurants-qatar",
+    metaTitle: "QR Code Ordering for Restaurants in Qatar",
     title: "QR code ordering in Qatar: how it pays for itself in the first month",
     description:
       "What QR table ordering actually changes for a restaurant or cafe — faster tables, bigger orders, fewer mistakes — and what to look for in a system.",
@@ -463,6 +472,7 @@ export const posts: Post[] = [
   },
   {
     slug: "restaurant-delivery-aggregators-one-screen",
+    metaTitle: "Talabat, Snoonu, Keeta & Rafeeq on One Screen",
     title: "Talabat, Snoonu, Rafeeq, Keeta: escaping the restaurant tablet farm",
     description:
       "Why juggling a separate tablet per delivery app slows your kitchen down — and how integrating aggregators into one order screen fixes margins and mistakes.",
@@ -500,6 +510,7 @@ export const posts: Post[] = [
   },
   {
     slug: "whatsapp-auto-reply-bots-that-help",
+    metaTitle: "WhatsApp Auto-Reply Bots: A Setup Guide",
     title: "WhatsApp auto-reply bots that customers don't hate: a setup guide",
     description:
       "Most WhatsApp bots frustrate more than they help. How to design keyword rules, replies and human handoff so automation actually improves your service.",
@@ -543,6 +554,7 @@ export const posts: Post[] = [
   },
   {
     slug: "whatsapp-order-notifications-ecommerce",
+    metaTitle: "WhatsApp Order Notifications for Online Stores",
     title: "WhatsApp order notifications: the cheapest upgrade your online store can make",
     description:
       "Order confirmations and delivery updates on WhatsApp cut support messages and build trust GCC customers expect — here's what to send, when, and how.",
@@ -581,6 +593,7 @@ export const posts: Post[] = [
   },
   {
     slug: "how-much-does-ecommerce-website-cost-qatar",
+    metaTitle: "E-commerce Website Cost in Qatar (2026 Guide)",
     title: "How much does an e-commerce website cost in Qatar? (2026 guide)",
     description:
       "Real 2026 pricing for online stores in Qatar — what QAR 8,000–10,000 gets you, what pushes the price up, running costs, and what should be included.",
@@ -625,6 +638,7 @@ export const posts: Post[] = [
   },
   {
     slug: "store-portal-woocommerce-management",
+    metaTitle: "Manage WooCommerce Without the WordPress Admin",
     title: "Running a WooCommerce store without wrestling the WordPress admin",
     description:
       "Why store owners struggle with the default WooCommerce admin — and how Store Portal turns daily operations into a mobile-first dashboard staff can use on day one.",
@@ -670,6 +684,7 @@ export const posts: Post[] = [
   },
   {
     slug: "whatsapp-automation-for-website",
+    metaTitle: "WhatsApp Automation for Your Website",
     title: "WhatsApp automation for your website: turning visitors into conversations",
     description:
       "How to connect your website to WhatsApp automation — chat widgets, order notifications and auto-replies — so visitors become conversations, not bounces.",
@@ -687,6 +702,7 @@ export const posts: Post[] = [
   },
   {
     slug: "whatsapp-new-features",
+    metaTitle: "New WhatsApp Business Features Worth Using",
     title: "What's new in WhatsApp Business: the features worth using in 2026",
     description:
       "WhatsApp Business keeps evolving — from rich templates to interactive buttons and the Cloud API. Which new capabilities actually move the needle for GCC businesses.",
@@ -703,6 +719,7 @@ export const posts: Post[] = [
   },
   {
     slug: "how-software-streamlines-business-operations",
+    metaTitle: "How Custom Software Streamlines Operations",
     title: "How custom software streamlines business operations (with real examples)",
     description:
       "When spreadsheets and off-the-shelf tools stop scaling, custom software takes over. How tailored web applications remove the manual work slowing businesses down.",
@@ -719,6 +736,7 @@ export const posts: Post[] = [
   },
   {
     slug: "exploring-the-evolution-of-design-trends",
+    metaTitle: "Web Design Trends: Which Ones Actually Last",
     title: "The evolution of web design trends — and which ones actually last",
     description:
       "Web design trends come and go, but a few principles endure. A practical look at what's shaping websites in 2026 and what's just noise.",
@@ -735,6 +753,7 @@ export const posts: Post[] = [
   },
   {
     slug: "showcasing-beautiful-and-functional-designs",
+    metaTitle: "Beautiful and Functional Web Design",
     title: "Beautiful and functional: why great design is never just how it looks",
     description:
       "The best designs are beautiful and functional at once. How Odysense balances aesthetics with usability, performance and conversion in every build.",
@@ -751,6 +770,7 @@ export const posts: Post[] = [
   },
   {
     slug: "qatar-performance-marketing-strategies",
+    metaTitle: "Performance Marketing Strategies for Qatar",
     title: "Performance marketing strategies that work in Qatar's market",
     description:
       "Performance marketing in Qatar rewards a different playbook than global markets. What actually drives measurable results for GCC businesses in 2026.",
@@ -767,6 +787,7 @@ export const posts: Post[] = [
   },
   {
     slug: "unlocking-brand-potential-the-power-of-neuro-marketing-in-qatars-digital-landscape",
+    metaTitle: "Neuro-Marketing in Qatar's Digital Landscape",
     title: "Neuro-marketing in Qatar's digital landscape: designing for how people decide",
     description:
       "Neuro-marketing applies how the brain actually makes decisions to branding and design. A practical, honest look at what it means for GCC businesses.",
@@ -783,6 +804,7 @@ export const posts: Post[] = [
   },
   {
     slug: "qstp-startup-programs-guide-qatar",
+    metaTitle: "QSTP Startup Programs: A Founder's Guide",
     title: "QSTP startup programs explained: a founder's guide to Qatar's innovation hub",
     description:
       "A practical guide to Qatar Science & Technology Park's programs — Explore, Incubate, Accelerate and Expand — and how startups get funding, licensing and support.",
@@ -848,6 +870,7 @@ export const posts: Post[] = [
   },
   {
     slug: "startup-mvp-development-qatar",
+    metaTitle: "MVP Development for Startups in Qatar",
     title: "From pitch to product: how Qatar startups should approach their first build",
     description:
       "A practical guide to building your startup's first product (MVP) in Qatar — what to build first, what to skip, and how to spend limited runway wisely.",
@@ -899,6 +922,7 @@ export const posts: Post[] = [
   },
   {
     slug: "qatar-ecommerce-license-2026-explained",
+    metaTitle: "Qatar E-commerce License (Decision 25) Explained",
     updated: "2026-10-06",
     relatedPosts: ["qatar-ecommerce-licence-qar-500-194-activities", "qatar-ecommerce-licence-store-compliance-checklist"],
     image: { src: "/images/blog-consultation.webp", alt: "Two people discussing a business plan at a laptop", w: 1200, h: 840 },
@@ -964,6 +988,7 @@ export const posts: Post[] = [
   },
   {
     slug: "start-online-business-qatar-without-office",
+    metaTitle: "Start an Online Business in Qatar, No Office",
     updated: "2026-10-06",
     relatedPosts: ["qatar-ecommerce-licence-qar-500-194-activities", "qa-domain-online-store-qatar"],
     image: { src: "/images/blog-home-office.webp", alt: "A simple desk setup with a monitor and lamp in a home office", w: 840, h: 1200 },
@@ -1025,6 +1050,7 @@ export const posts: Post[] = [
   },
   {
     slug: "qatar-ecommerce-licence-qar-500-194-activities",
+    metaTitle: "Qatar E-commerce Licence 2026: QAR 500 Fee",
     relatedPosts: ["qa-domain-online-store-qatar", "qatar-ecommerce-licence-store-compliance-checklist", "start-online-business-qatar-without-office"],
     title: "Qatar e-commerce licence 2026: QAR 500 fee, 194 activities and the .qa domain rule",
     description:
@@ -1148,6 +1174,7 @@ export const posts: Post[] = [
   },
   {
     slug: "qa-domain-online-store-qatar",
+    metaTitle: ".qa Domain for Your Online Store: Setup & SEO",
     relatedPosts: ["qatar-ecommerce-licence-qar-500-194-activities", "qatar-ecommerce-licence-store-compliance-checklist", "website-redesign-without-losing-seo"],
     title: "Your Qatar online store needs a .qa domain: how to set it up or switch without losing SEO",
     description:
@@ -1266,6 +1293,7 @@ export const posts: Post[] = [
   },
   {
     slug: "qatar-ecommerce-licence-store-compliance-checklist",
+    metaTitle: "E-commerce Licence Compliance Checklist (Qatar)",
     relatedPosts: ["qatar-ecommerce-licence-qar-500-194-activities", "qa-domain-online-store-qatar", "how-much-does-ecommerce-website-cost-qatar"],
     title: "E-commerce licence checklist: what your Qatar online store must show customers",
     description:
@@ -1406,6 +1434,7 @@ export const posts: Post[] = [
   },
   {
     slug: "event-gamification-ideas-qatar",
+    metaTitle: "Event Gamification Ideas That Drive Leads",
     title: "Event gamification ideas that actually drive leads in Qatar",
     description:
       "Practical event gamification ideas for exhibitions, launches, malls and fan zones in Qatar — and how to design each one so it captures consented leads you can follow up.",
@@ -1541,6 +1570,7 @@ export const posts: Post[] = [
   },
   {
     slug: "live-quiz-polls-qa-gcc-events",
+    metaTitle: "Live Quizzes, Polls & Q&A for GCC Events",
     image: { src: "/images/blog-speaker-stage.webp", alt: "A speaker presenting on stage to an audience", w: 840, h: 1200 },
     title: "Live quizzes, polls and Q&A: how to keep an audience engaged at GCC events",
     description:
@@ -1649,6 +1679,482 @@ export const posts: Post[] = [
         ps: [
           "Live quizzes, polls and Q&A are not about technology for its own sake. They work because they give every person in the room a role, and they give organisers and speakers a clear view of how the audience is responding.",
           "Odysense designs, builds and runs live engagement for conferences, launches and corporate events across Qatar and the GCC — branded to your identity, bilingual, and run on the day by our team. Try the live quiz and live poll demos on our gamification page, then book a free consultation to plan the interaction for your next event.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "mobile-app-development-cost-qatar",
+    metaTitle: "Mobile App Development Cost in Qatar (2026)",
+    title: "How much does a mobile app cost in Qatar? (2026 guide)",
+    description: "What a mobile app really costs in Qatar in 2026: realistic price ranges, what drives cost up or down, ongoing costs after launch, and how to keep your first release on budget.",
+    date: "2026-10-09",
+    category: "Mobile apps",
+    minutes: 8,
+    relatedService: { label: "Mobile app development in Qatar", href: "/mobile-app-development-company-qatar" },
+    image: { src: "/images/blog-app-planning.webp", alt: "Two colleagues planning an app on a tablet", w: 1200, h: 800 },
+    relatedPosts: ["custom-software-development-cost-qatar", "startup-mvp-development-qatar", "how-much-does-a-website-cost-in-qatar"],
+    sections: [
+      {
+        ps: [
+          "\"How much does an app cost?\" is one of the first questions every founder and business owner asks, and one of the hardest to answer in a sentence. An app can be a simple booking tool or a platform with payments, real-time updates and several types of users. The price difference between those is not a few thousand riyals; it's a different project.",
+          "This guide explains what a mobile app typically costs in Qatar in 2026, what actually drives the price, what you'll keep paying after launch, and how to plan a first release that doesn't blow the budget. It's written from the perspective of a team that designs, builds and publishes apps in Doha.",
+        ],
+      },
+      {
+        h: "The short answer",
+        ps: [
+          "At Odysense, a focused first-release app typically starts around QAR 15,000–20,000, including the back end it needs and publishing to the App Store and Google Play. That's for an app with a clear core journey, a sensible number of screens and standard features such as accounts, content and notifications.",
+          "Apps with many user roles, complex integrations, payments, real-time features or heavy custom design cost more. The honest way to price those is to scope them properly, which is why every project gets a fixed, itemised quote before work starts.",
+        ],
+      },
+      {
+        h: "What actually drives the cost",
+        ps: [
+          "Most of an app's cost comes from a handful of decisions. Knowing them helps you control the budget:",
+        ],
+        list: [
+          "Number of user types. An app for customers only is simpler than one with customers, staff and an admin panel, because each role has its own screens and permissions.",
+          "The back end. Almost every useful app needs a server: accounts, data, notifications and an admin dashboard. This is often half the work, and the part that's easiest to underestimate.",
+          "Integrations. Payment gateways, maps, booking systems, ERPs or a POS each add design, development and testing time.",
+          "Real-time features. Live availability, chat or tracking need more engineering than screens that simply load data.",
+          "Design depth. A clean, well-designed interface built on platform conventions costs less than heavily custom animation and illustration.",
+          "Languages. Arabic and English with proper right-to-left layouts is very achievable, but it needs planning from the start.",
+        ],
+      },
+      {
+        h: "Native, cross-platform or web app?",
+        ps: [
+          "You have three main ways to build. Native apps are written separately for iOS and Android; they offer the most control but cost the most to build and maintain. Cross-platform frameworks let one codebase serve both stores, which is how most business apps are built today, and usually the best value. A progressive web app runs in the browser and can be added to the home screen; it needs no store approval and is the cheapest route, but has limits on device features and discoverability.",
+          "The right choice depends on what the app must do. If customers will use it often and need notifications, camera access or offline features, a store app earns its place. If they'll use it occasionally, a fast mobile website or web app may serve them better for a fraction of the cost.",
+        ],
+      },
+      {
+        h: "Costs after launch",
+        ps: [
+          "The build is not the only cost. Budget for these from the start:",
+        ],
+        list: [
+          "Store accounts: Apple's developer programme has an annual fee, and Google Play has a one-off registration fee.",
+          "Hosting and services: servers, databases, file storage and notification services, which scale with usage.",
+          "Maintenance: new iOS and Android versions arrive every year, and apps need updates to keep working smoothly.",
+          "Improvements: once real users arrive, you'll want to act on what you learn. Plan a budget for a second release.",
+        ],
+      },
+      {
+        h: "How to keep your first release on budget",
+        ps: [
+          "The most effective cost control is scope control. Decide the one journey that must work brilliantly on day one, such as booking a table, placing an order or requesting a service, and build that well. Everything else goes on a list for version two, prioritised by what users actually ask for.",
+          "It also helps to prepare before you talk to developers: who the users are, what they do in the app, which systems it must connect to, and what success looks like after three months. A clear brief gets you a clearer quote.",
+        ],
+      },
+      {
+        h: "Questions to ask any app developer",
+        list: [
+          "Who owns the source code and the store accounts when the project ends?",
+          "Is the back end included in the quote, and who hosts it?",
+          "How will we test the app before it goes to the stores?",
+          "What happens when a new iOS or Android version breaks something?",
+          "Can we see an app you've built that's live in the stores today?",
+        ],
+      },
+      {
+        h: "Plan your app with a free consultation",
+        ps: [
+          "Odysense designs and builds mobile apps for businesses in Qatar and the GCC, from the user journeys and the back end to store publishing and post-launch updates. QSeat, a restaurant booking platform with an iOS app, a venue portal and an admin, is one example of the connected systems we build.",
+          "If you're planning an app, request a free consultation. We'll help you decide whether you need a store app or a web app, define a sensible first release, and give you a fixed quote.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "how-to-choose-web-design-company-qatar",
+    metaTitle: "How to Choose a Web Design Company in Qatar",
+    title: "How to choose a web design company in Qatar: 12 questions to ask",
+    description: "A practical checklist for hiring a web design company in Qatar: the questions to ask about ownership, pricing, SEO, speed, Arabic support and what happens after launch.",
+    date: "2026-10-09",
+    category: "Web design",
+    minutes: 8,
+    relatedService: { label: "Website design in Qatar", href: "/website-design-company-in-qatar" },
+    image: { src: "/images/blog-agency-meeting.webp", alt: "A team discussing a website project around a laptop", w: 1200, h: 840 },
+    relatedPosts: ["how-much-does-a-website-cost-in-qatar", "website-redesign-without-losing-seo", "seo-in-qatar-how-businesses-get-found"],
+    sections: [
+      {
+        ps: [
+          "Choosing a web design company is harder than it looks. Portfolios all look polished, quotes vary wildly, and the problems with a bad choice tend to show up months later: a site you can't update, rankings that disappear, or an agency that stops replying once the invoice is paid.",
+          "These twelve questions will help you compare web design companies in Qatar on what actually matters. Use them in your first calls, and pay as much attention to how clearly a company answers as to what it says.",
+        ],
+      },
+      {
+        h: "Ownership and control",
+        list: [
+          "1. Who will own the website, the domain and the hosting account? The answer should be you. Domains and hosting registered in an agency's name are a common source of trouble later.",
+          "2. Will I be able to update the content myself? Ask to see the editing experience, not just hear about it. If every text change needs a support ticket, the site will go stale.",
+          "3. What happens if we stop working together? You should be able to take your site, its files and its accounts elsewhere without a fight.",
+        ],
+      },
+      {
+        h: "Price and scope",
+        list: [
+          "4. Is the quote fixed and itemised? A good quote lists the pages, features, integrations and rounds of revisions included, so you can compare like with like.",
+          "5. What's not included? Content writing, photography, Arabic translation, hosting, email and maintenance are often extras. Better to know now.",
+          "6. What will the site cost to run each year? Domain renewal, hosting, licences for any paid plugins and maintenance all add up.",
+        ],
+      },
+      {
+        h: "Quality, speed and search",
+        list: [
+          "7. How will the site perform on mobile? Most visitors in Qatar arrive on a phone. Ask how they test speed, and look at their live sites on your own phone.",
+          "8. What SEO is included at launch? At minimum: proper page titles and descriptions, clean URLs, structured data, a sitemap, analytics and redirects from your old site if you're replacing one.",
+          "9. Do you design for Arabic as well as English? Even if you launch in English, a site built with right-to-left support in mind makes adding Arabic a content task rather than a rebuild.",
+        ],
+      },
+      {
+        h: "Process and after launch",
+        list: [
+          "10. Who will actually work on my project? Find out whether the designers and developers are in-house or outsourced, and who your day-to-day contact will be.",
+          "11. How do you handle feedback and revisions? A clear process with defined review stages prevents endless rounds and missed launch dates.",
+          "12. What support do you offer after launch? Updates, security, backups and small changes should have a clear arrangement, whether that's a care plan or pay-as-you-go.",
+        ],
+      },
+      {
+        h: "Red flags to watch for",
+        list: [
+          "A price given before anyone has asked about your business or your goals.",
+          "Portfolio sites that are slow, broken or no longer online.",
+          "Vague answers about who owns the domain, the code and the accounts.",
+          "Promises of first-page Google rankings within weeks.",
+          "No mention of what happens to your existing pages and rankings in a redesign.",
+        ],
+      },
+      {
+        h: "What good answers sound like",
+        ps: [
+          "A strong web design partner will ask you as many questions as you ask them: who your customers are, how they find you, what an enquiry is worth and what's not working today. They'll explain trade-offs plainly, recommend a smaller site if that serves you better, and be specific about what happens after launch.",
+          "They'll also be able to show you live sites that load quickly on a phone, and talk about results in terms of enquiries and sales rather than awards.",
+        ],
+      },
+      {
+        h: "Talk to Odysense",
+        ps: [
+          "Odysense is a web design and development company at Qatar Science & Technology Park. We design and build websites in-house, give fixed itemised quotes, build bilingual-ready and mobile-first, and put the SEO foundations in place at launch. You own your site, your domain and your accounts.",
+          "Bring these twelve questions to a free consultation. We'll answer every one, and tell you honestly what your website needs.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "branding-cost-qatar",
+    metaTitle: "Branding & Logo Design Cost in Qatar (2026)",
+    title: "How much does branding cost in Qatar? (2026 guide)",
+    description: "What branding and logo design cost in Qatar in 2026: price ranges, what a brand identity should include, bilingual Arabic/English identities, and how to brief an agency.",
+    date: "2026-10-09",
+    category: "Branding",
+    minutes: 7,
+    relatedService: { label: "Branding agency in Qatar", href: "/branding-agency-qatar" },
+    image: { src: "/images/blog-brand-conversation.webp", alt: "Two professionals in conversation in a modern building", w: 1200, h: 673 },
+    relatedPosts: ["how-to-choose-web-design-company-qatar", "how-much-does-a-website-cost-in-qatar", "unlocking-brand-potential-the-power-of-neuro-marketing-in-qatars-digital-landscape"],
+    sections: [
+      {
+        ps: [
+          "A logo can cost a few hundred riyals or tens of thousands, and both can be the right answer for different businesses. The difference is what you're actually buying: a single graphic, or a brand identity that works across your website, packaging, social media and signage for years.",
+          "This guide explains what branding typically costs in Qatar in 2026, what should be included at each level, and how to get the most from a branding project, including bilingual Arabic and English identities.",
+        ],
+      },
+      {
+        h: "The short answer",
+        ps: [
+          "At Odysense, a core brand identity typically starts around QAR 5,000–10,000. That covers brand strategy, a logo and identity system, and brand guidelines your team and suppliers can follow. Full brand systems with naming, a complete bilingual identity, extensive collateral or packaging cost more and are quoted individually.",
+          "Every project gets a fixed, itemised quote before work starts, so you know exactly which deliverables are included.",
+        ],
+      },
+      {
+        h: "What a brand identity should include",
+        ps: [
+          "\"Branding\" means different things to different suppliers. A proper identity project usually includes:",
+        ],
+        list: [
+          "Strategy: who the brand is for, what it stands for and how it differs from competitors.",
+          "Logo: a primary logo plus variations for different spaces, such as horizontal, stacked and icon-only versions.",
+          "Colour and typography: a defined palette and font choices that work on screen and in print.",
+          "Visual language: patterns, imagery style, icons or graphic devices that make the brand recognisable beyond the logo.",
+          "Guidelines: a document that shows how to use everything correctly.",
+          "Files: every asset in the formats you'll need for web, print and social.",
+        ],
+      },
+      {
+        h: "What pushes the price up or down",
+        list: [
+          "Strategy depth: workshops, research and positioning work take time but make every later decision easier.",
+          "Number of concepts and revision rounds explored before a direction is chosen.",
+          "Bilingual identity: designing an Arabic wordmark that feels like the same brand as the English one is specialist work.",
+          "Applications: packaging, signage, uniforms, vehicle graphics and stationery each add design time.",
+          "Naming: if the business needs a new name, research and checks for availability add a separate stage.",
+        ],
+      },
+      {
+        h: "Bilingual brands in the GCC",
+        ps: [
+          "Many brands in Qatar need to work in Arabic and English. The common mistake is to design an English logo and then add a translated Arabic version in whatever font is available. The result rarely feels like one brand.",
+          "A better approach designs both together, matching weight, proportion and personality, so the brand is equally recognisable in either language. If you expect to sell into Saudi Arabia or the wider GCC, plan the Arabic identity from day one.",
+        ],
+      },
+      {
+        h: "How to brief a branding agency",
+        list: [
+          "Describe your customers and what they care about, not just your product.",
+          "Name a few competitors and what you want to do differently.",
+          "List where the brand will appear in the first year: website, social, packaging, signage.",
+          "Share brands you admire, inside or outside your industry, and say why.",
+          "Be clear about your budget and timing; a good agency will shape the scope around them.",
+        ],
+      },
+      {
+        h: "Branding and your website",
+        ps: [
+          "A new identity is most valuable when it reaches customers quickly, and for most businesses the website is the first place they'll see it. Planning branding and the website together avoids paying twice for design decisions, and makes sure the brand works on screen, at mobile sizes, from the start.",
+        ],
+      },
+      {
+        h: "Start with a free consultation",
+        ps: [
+          "Odysense creates brand identities for businesses in Qatar and the GCC, including bilingual Arabic and English identities, and the same team designs the websites, apps and campaigns where your brand will live.",
+          "Request a free consultation to talk through what your brand needs and get a fixed quote.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "custom-software-development-cost-qatar",
+    metaTitle: "Custom Software Development Cost in Qatar",
+    title: "Custom software development cost in Qatar: what to budget in 2026",
+    description: "What custom software costs in Qatar in 2026: starting prices, the factors that drive cost, build vs buy, and how to scope a first release that delivers value quickly.",
+    date: "2026-10-09",
+    category: "Software",
+    minutes: 7,
+    relatedService: { label: "Custom software development in Qatar", href: "/software-development-company-qatar" },
+    image: { src: "/images/blog-software-office.webp", alt: "A professional working on a laptop in a bright office", w: 904, h: 1200 },
+    relatedPosts: ["startup-mvp-development-qatar", "how-software-streamlines-business-operations", "mobile-app-development-cost-qatar"],
+    sections: [
+      {
+        ps: [
+          "Custom software has a reputation for being expensive and unpredictable. It doesn't have to be. Most cost overruns come from the same few causes: a vague scope, too many features in the first release, and integrations nobody planned for.",
+          "This guide covers what custom software typically costs in Qatar in 2026, what drives that cost, when buying an existing tool makes more sense, and how to scope a project so the budget holds.",
+        ],
+      },
+      {
+        h: "The short answer",
+        ps: [
+          "At Odysense, a focused custom software MVP typically starts from around QAR 10,000. That's a first release built around one core workflow, such as a customer portal, an internal dashboard or a booking system, with the essential screens, user accounts and an admin view.",
+          "From there, cost scales with the number of user roles, integrations, screens and business rules. We quote each phase with a fixed, itemised price before work begins.",
+        ],
+      },
+      {
+        h: "Build or buy?",
+        ps: [
+          "Before pricing custom software, check whether you need it. If an established tool does 90% of what you need and your process can adapt to it, buying or configuring is usually cheaper and faster. Custom software makes sense when:",
+        ],
+        list: [
+          "Your process is a genuine competitive advantage and off-the-shelf tools would flatten it.",
+          "Your team is losing hours to copying data between tools that don't talk to each other.",
+          "You need a portal or platform for your own customers, with your brand and your rules.",
+          "The software itself is the product you're selling.",
+        ],
+      },
+      {
+        h: "What drives the cost",
+        list: [
+          "User roles and permissions: each type of user means more screens, rules and testing.",
+          "Integrations: connecting to accounting, ERP, CRM, payment or government systems is often the most complex part.",
+          "Data migration: moving years of spreadsheets or an old system's data into the new one.",
+          "Business rules: approvals, pricing logic and calculations need careful design and testing.",
+          "Reporting: dashboards and exports that answer real management questions.",
+          "Security and compliance: sensitive data needs the right access controls, logging and hosting.",
+        ],
+      },
+      {
+        h: "Scoping a first release that works",
+        ps: [
+          "The best software projects start smaller than the client expects. Pick the workflow that causes the most pain or creates the most value, build that properly, put it in front of real users, and let their feedback shape the next phase.",
+          "A good first release is usable on day one, replaces something people actually do today, and is built on foundations that can grow. A bad one tries to do everything and ships nothing for months.",
+        ],
+      },
+      {
+        h: "Ongoing costs",
+        list: [
+          "Hosting and infrastructure, which scale with usage.",
+          "Maintenance: security updates, dependency upgrades and small fixes.",
+          "Support for your team as they adopt the system.",
+          "Further development as the business asks for more.",
+        ],
+      },
+      {
+        h: "Questions to ask before you hire",
+        list: [
+          "Who owns the source code and the hosting accounts?",
+          "How will we see progress, and how often?",
+          "How do you handle changes to scope once work has started?",
+          "What documentation and handover do we receive?",
+          "Can we talk to a client whose system you still support?",
+        ],
+      },
+      {
+        h: "Scope your project with us",
+        ps: [
+          "Odysense builds custom web applications, dashboards, portals and SaaS products for businesses in Qatar and the GCC, and runs its own products, including WASL, QFlow and Store Portal, so we design software to be maintained for years, not just launched.",
+          "Request a free consultation. Bring the problem rather than a specification, and we'll help you decide whether to build, buy or connect, and what a sensible first release would cost.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "google-business-profile-qatar",
+    metaTitle: "Google Business Profile Guide for Qatar",
+    title: "Google Business Profile for Qatar businesses: the local SEO setup guide",
+    description: "How businesses in Qatar can set up and optimise a Google Business Profile to appear in Google Maps and local search: categories, details, photos, reviews and posts.",
+    date: "2026-10-09",
+    category: "SEO",
+    minutes: 7,
+    relatedService: { label: "SEO services in Qatar", href: "/digital-marketing-agency-qatar/seo-services-qatar" },
+    image: { src: "/images/blog-customer-service.webp", alt: "A smiling professional speaking with a client at her desk", w: 840, h: 1200 },
+    relatedPosts: ["seo-in-qatar-how-businesses-get-found", "how-to-choose-web-design-company-qatar", "website-redesign-without-losing-seo"],
+    sections: [
+      {
+        ps: [
+          "When someone in Doha searches for a service \"near me\" or types a business type into Google Maps, the results at the top come from Google Business Profiles, not ordinary websites. For many local businesses, that map listing brings in more calls and visits than any other part of their online presence.",
+          "The profile is free, and most of what makes it work is in your control. This guide walks through setting up and optimising a Google Business Profile for a business in Qatar.",
+        ],
+      },
+      {
+        h: "Claim and verify your profile",
+        ps: [
+          "Search for your business name on Google Maps. If a listing already exists, claim it; if not, create one from Google Business Profile. Google will ask you to verify that you represent the business, which can involve a video, a phone call, an email or another method depending on your business.",
+          "Use an account the business controls, not a personal account belonging to an employee or a freelancer, and add a second manager so you never lose access.",
+        ],
+      },
+      {
+        h: "Get the basics exactly right",
+        list: [
+          "Business name: your real trading name, without added keywords. Stuffing keywords into the name can get a profile suspended.",
+          "Primary category: the single most important choice. Pick the most specific category that describes your main service, then add relevant secondary categories.",
+          "Address or service area: a visible address if customers visit you; a service area if you go to them.",
+          "Phone and website: a number that's answered, and a link to the most relevant page on your site.",
+          "Hours: including special hours for Ramadan, Eid and public holidays, which customers check.",
+        ],
+      },
+      {
+        h: "Make the profile worth clicking",
+        ps: [
+          "Fill in the business description in plain language: what you do, who for, and where. Add your services or products with short descriptions. Upload real photos of your premises, your team and your work, since listings with good photos give customers confidence before they call.",
+          "Use posts to share offers, news and events. They don't need to be frequent, but an active profile signals to customers that the business is open and responsive.",
+        ],
+      },
+      {
+        h: "Reviews: the factor you can't skip",
+        ps: [
+          "Reviews influence both your visibility and whether people choose you. The most reliable way to get them is simply to ask satisfied customers, at the moment they're happiest, with a direct link to your review form. A short WhatsApp message with the link works well in Qatar.",
+          "Reply to every review, positive or negative, politely and specifically. Never buy reviews or offer incentives for positive ones; it breaks Google's policies and can get reviews removed or the profile penalised.",
+        ],
+      },
+      {
+        h: "Keep your details consistent everywhere",
+        ps: [
+          "Google cross-checks your business name, address and phone number across the web. Make sure they match exactly on your website, social profiles and directory listings. Inconsistent details, such as an old address on one site or a different phone number on another, weaken trust in your listing.",
+          "Your website should show the same details, ideally with structured data that marks up your business name, address and phone so search engines can read them reliably.",
+        ],
+      },
+      {
+        h: "Connect it to your website",
+        ps: [
+          "Your profile and your website work together. The profile wins the click from Maps; the website convinces the visitor. Link the profile to a fast, mobile-friendly page that matches what people searched for, with a clear call or WhatsApp button, and make sure your analytics track those enquiries.",
+        ],
+      },
+      {
+        h: "Get help with local SEO",
+        ps: [
+          "Odysense handles local SEO for businesses in Qatar: Google Business Profile optimisation, consistent business details, review strategy, and the website and content that turn local searches into enquiries.",
+          "Request a free consultation and we'll review your profile and your website and tell you what's holding your local visibility back.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "bilingual-arabic-english-website-guide",
+    metaTitle: "Bilingual Arabic–English Website Guide",
+    title: "Building a bilingual Arabic–English website: RTL design, SEO and content",
+    description: "How to plan and build a bilingual Arabic and English website for Qatar and the GCC: right-to-left design, separate URLs and hreflang for SEO, typography, and content workflow.",
+    date: "2026-10-09",
+    category: "Web development",
+    minutes: 8,
+    relatedService: { label: "Website development in Qatar", href: "/website-development-company-qatar" },
+    image: { src: "/images/blog-bilingual-laptop.webp", alt: "A man working on a laptop in a cafe", w: 1200, h: 904 },
+    relatedPosts: ["how-to-choose-web-design-company-qatar", "seo-in-qatar-how-businesses-get-found", "website-redesign-without-losing-seo"],
+    sections: [
+      {
+        ps: [
+          "For many businesses in Qatar and the wider GCC, a website in one language leaves customers out. But a bilingual site is more than a translated copy of the English pages. Arabic reads right to left, uses different typography, and needs its own pages that search engines can find and rank.",
+          "This guide covers the decisions that make an Arabic–English website work well: structure, design, SEO and the content workflow that keeps both languages up to date.",
+        ],
+      },
+      {
+        h: "Plan the structure first",
+        ps: [
+          "Each language should have its own URL, so search engines can index both and show the right one to the right person. The most common pattern is a language folder, such as /ar/ for Arabic pages alongside the English pages. It keeps everything on one domain, which helps both languages benefit from the site's authority.",
+          "Avoid switching languages with a script on the same URL, or relying on automatic translation widgets. Search engines generally index only one version, and the result often reads poorly to native speakers.",
+        ],
+      },
+      {
+        h: "Right-to-left design done properly",
+        ps: [
+          "Arabic pages need the whole layout mirrored, not just the text aligned to the right:",
+        ],
+        list: [
+          "Navigation, columns and reading order flow from right to left.",
+          "Directional icons such as arrows and progress indicators are flipped.",
+          "Numbers, product codes, phone numbers and embedded English stay left to right inside Arabic text.",
+          "Forms, carousels and step indicators work in the reverse direction.",
+        ],
+      },
+      {
+        ps: [
+          "Modern CSS makes this much easier with logical properties, which describe spacing as \"start\" and \"end\" rather than \"left\" and \"right\", so one stylesheet serves both directions.",
+        ],
+      },
+      {
+        h: "Typography for Arabic",
+        ps: [
+          "Arabic fonts need careful choice. Many fonts designed for English don't include Arabic at all, and pairing a random Arabic font with your English typeface rarely looks like one brand. Choose a typeface family with good Arabic and Latin designs, or pair fonts deliberately so weight and personality match.",
+          "Arabic text often needs slightly larger sizes and more generous line spacing for comfortable reading, especially on phones.",
+        ],
+      },
+      {
+        h: "SEO for two languages",
+        list: [
+          "Separate, indexable URLs for each language version.",
+          "hreflang tags that tell search engines which pages are translations of each other.",
+          "Titles, descriptions and headings written for how people actually search in each language, not word-for-word translations.",
+          "An XML sitemap that includes both languages.",
+          "Arabic keyword research: people often search differently in Arabic than the English equivalent suggests.",
+        ],
+      },
+      {
+        h: "Content workflow",
+        ps: [
+          "The hardest part of a bilingual site isn't the build; it's keeping both languages current. Decide who writes and approves Arabic content, how updates flow between languages, and what happens when one language gets ahead of the other.",
+          "Use professional translation or, better, transcreation by a native writer who adapts the message rather than translating it literally. Machine translation can help with drafts but needs a native editor before publishing.",
+        ],
+      },
+      {
+        h: "Launch in English, add Arabic later?",
+        ps: [
+          "That's a perfectly good plan, as long as the site is built bilingual-ready from the start: a layout system that mirrors correctly, URL structure planned for a second language, and components that don't assume left-to-right. Then adding Arabic is a content project, not a rebuild.",
+        ],
+      },
+      {
+        h: "Build it right from the start",
+        ps: [
+          "Odysense designs and builds bilingual Arabic and English websites and stores for businesses in Qatar and the GCC, with proper right-to-left layouts, Arabic typography, and the technical SEO that lets both languages rank.",
+          "Request a free consultation and we'll plan the structure and the workflow for your bilingual site.",
         ],
       },
     ],
