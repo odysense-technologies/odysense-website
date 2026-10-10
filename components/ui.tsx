@@ -19,7 +19,10 @@ export function Reveal({ children, className = "" }: { children: ReactNode; clas
             io.unobserve(e.target);
           }
         }),
-      { threshold: 0.12 }
+      // Trigger as soon as any part of the element is 8% inside the viewport. A ratio threshold
+      // (e.g. 0.12) can never be met by elements taller than the screen, such as the 36-card blog
+      // grid, which then stayed invisible.
+      { threshold: 0, rootMargin: "0px 0px -8% 0px" }
     );
     io.observe(el);
     return () => io.disconnect();

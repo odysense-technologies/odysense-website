@@ -168,7 +168,10 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
   - rounded cards with a gradient border on hover
   - the dark CTA box
   - Roman-numeral markers (i., ii., iii.)
-  - scroll reveals
+  - scroll reveals (`Reveal` in `components/ui.tsx`: content starts at opacity 0 and appears when any part
+    of it scrolls into view. Never switch it back to a ratio threshold: a section taller than the screen,
+    like the blog grid, would never appear. Screenshot new pages **without** reduced motion, because the
+    reduced-motion style shows everything and hides this kind of bug)
 - **New pages reuse existing components and classes.** Never introduce a new visual language, and
   never use `localStorage` for site data.
 - **Pictures come from the owner.** Whenever a page or article needs new photos, ask the owner for them
