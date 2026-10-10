@@ -83,7 +83,9 @@ app/
   layout.tsx                 metadata, OG, GSC verification, ProfessionalService JSON-LD,
                              Nav, Analytics, WhatsAppTracker, RouteLoader, ConsultPopup, Footer
   globals.css                the whole design system (tokens + every component style)
-  page.tsx                   homepage
+  page.tsx                   homepage: hero → carousel → web design & development feature (offers,
+                             starting prices, real case-study stats) → services → Design/Engineering/
+                             Growth photo band → compact product tiles → testimonial → CTA
   icon.png                   favicon (Odysense ring icon)
   sitemap.ts / robots.ts     generated from the lib/ data files; robots names the search, answer and
                              training bots (all allowed) and keeps /api/ out
@@ -110,6 +112,7 @@ components/
   ui.tsx            Reveal, Footer (sitewide links + NAP), SectionHead, CtaBox,
                     PageHero (emits BreadcrumbList JSON-LD from its crumbs)
   related-posts.tsx "Related reading" block: newest posts whose relatedService is the page
+  post-card.tsx     article card with thumbnail (blog hub + Related reading)
   nav.tsx           pill nav + Services/Products mega menus + mobile burger menu
   carousel.tsx      ServiceCarousel: homepage auto-scroll, draggable, swipeable
   shot-carousel.tsx product screenshot carousel with click-to-open lightbox
@@ -128,6 +131,7 @@ lib/
   site.ts           site info, serviceLinks (nav + footer), services, products, productDetails,
                     productShowcase, carouselTiles, clientLogos
   seo.ts            seoMeta(): title, description, canonical, Open Graph and Twitter for a page
+  schema.ts         ORG_ID / WEBSITE_ID, webPageSchema() (dateModified), fmtDate()
   service-pages.ts  the 8 Qatar service pages (copy, long-form `sections`, FAQs, related links, images)
   case-studies.ts   Eleganza, Rafea Line, QSeat
   blog.ts           all blog articles (optional per post: metaTitle, updated, image (hero + OG),
@@ -162,6 +166,12 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
   - scroll reveals
 - **New pages reuse existing components and classes.** Never introduce a new visual language, and
   never use `localStorage` for site data.
+- **Pictures come from the owner.** Whenever a page or article needs new photos, ask the owner for them
+  (with the subject and size you need) before building it; don't generate or source stock images
+  yourself (owner request, 2026-10-10). Convert uploads to WebP (max 1200px) in `public/images/`, and use
+  a new file name when replacing an image, because the image optimizer caches by URL.
+- Every blog post has a hero `image` (also its OG image and card thumbnail). Some posts reuse service or
+  product images until the owner supplies dedicated ones.
 
 ---
 
@@ -260,8 +270,7 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
   - Capability claims stay within what we build on the web and mobile. No AR, VR or hardware claims.
   - No invented past events, client names, statistics or results.
 - The demos are simulated: no backend, no storage, no data collected, and they are labelled "Demo".
-- The homepage carousel tile `public/images/card-gamification.webp` is a **placeholder** made from
-  brand colours. Replace it when the owner sends a creative (600×800).
+- The homepage carousel tile is `public/images/card-gamification-team.webp` (owner photo, 2026-10-10).
 
 ### Products (all in `lib/site.ts`)
 
@@ -350,8 +359,18 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
    - an entry in the sitemap; data-driven pages are added automatically
    - JSON-LD where relevant: FAQPage on service pages, Article and Breadcrumb on posts,
      SoftwareApplication on products
-6. **Sitewide schema:** `ProfessionalService` with Doha geo coordinates, the ten services (including Gamification & Brand Activations), and the six
-   GCC countries as `areaServed`. Google Search Console is verified through the `verification.google`
+   - a real "Last updated" date: `updated` on a ServiceDef, `updated` on a post, or `pageUpdated` in
+     `lib/site.ts` for bespoke pages. It drives the visible byline ("By the Odysense team · Last
+     updated …"), `dateModified` and the sitemap `lastmod`. Bump it only when the content materially
+     changes; never use the build date
+6. **Sitewide schema:** `ProfessionalService` (`@id` `https://odysense.com/#organization`) with Doha geo
+   coordinates, the ten services (including Gamification & Brand Activations), the six GCC countries as
+   `areaServed`, `knowsAbout` (incl. WooCommerce, Shopify, headless commerce, payment gateway
+   integration, Arabic RTL e-commerce), a sales `contactPoint` and `sameAs`, plus a `WebSite` node.
+   Articles and WebPage nodes point to the organisation by `@id` (no person/founder entities).
+   `sameAs` (found by web search 2026-10-10): Facebook and Instagram `odysense.qa`, QSTP directory,
+   Clutch, DesignRush, Crunchbase. Add LinkedIn and the Google Business Profile once the owner confirms
+   the URLs. Google Search Console is verified through the `verification.google`
    meta tag in `layout.tsx`.
 7. **Blog:** the article count was 36 on 2026-10-09; verify against `lib/blog.ts`. The target cadence
    is two new articles a month, each targeting a real Qatar/GCC query and linking to its service page.
@@ -438,8 +457,13 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
 **SEO + AI-search initiative (started 2026-10-10; one approval-gated PR per phase)**
 - [x] Phase 1: AI-crawler and index readiness (robots, llms.txt, IndexNow, SSR audit, mega menus in
       server HTML, confirmed gateways on the e-commerce page). Owner checklist in `docs/indexing.md`.
-- [ ] Phase 2: entity signals (Organization `sameAs`, `knowsAbout`, organisation bylines, visible
-      "Last updated" + `dateModified`). No founder page: the owner doesn't want the founder named.
+- [x] Phase 2: entity signals (Organization `sameAs`, `knowsAbout`, WebSite node, organisation bylines,
+      visible "Last updated" + `dateModified` + sitemap lastmod on service, bespoke and blog pages). No
+      founder page: the owner doesn't want the founder named. Shipped with the homepage refresh and
+      blog images.
+- [ ] Owner: Clutch and DesignRush still show "founded 2014" / "12+ years" and an Al Markhiya Street
+      address. Update them to match the site (Innovation Centre, QSTP; no founding year).
+- [ ] Owner: send the LinkedIn company page URL and the Google Business Profile link for `sameAs`.
 - [ ] Phase 3: GCC e-commerce hub (`/ecommerce/`, KSA, UAE/GCC, WooCommerce, Shopify, platform
       comparison, cost pages).
 - [-] Phase 4: benchmark report. Skipped (owner declined publishing client data).
