@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
-import { site, serviceLinks, products } from "@/lib/site";
+import { site, serviceLinks, products, gccLinks } from "@/lib/site";
 import { fmtDate } from "@/lib/schema";
 
 /* ---------- Scroll reveal wrapper ---------- */
@@ -57,6 +57,14 @@ export function Footer() {
             {serviceLinks.map((s) => (
               <Link href={s.href} key={s.href}>
                 {s.label}
+              </Link>
+            ))}
+          </nav>
+          <nav className="footer-col" aria-label="E-commerce across the GCC">
+            <span className="mono">GCC e-commerce</span>
+            {gccLinks.map((g) => (
+              <Link href={g.href} key={g.href}>
+                {g.label}
               </Link>
             ))}
           </nav>

@@ -2,6 +2,7 @@ import { site, products, serviceLinks, paymentGateways } from "@/lib/site";
 import { servicePages } from "@/lib/service-pages";
 import { caseStudies } from "@/lib/case-studies";
 import { postsNewestFirst } from "@/lib/blog";
+import { gccPages } from "@/lib/gcc-pages";
 
 // /llms.txt (https://llmstxt.org): a plain-Markdown summary of the site for AI assistants.
 // Generated at build time from the lib/ data files so it never drifts from the pages.
@@ -49,6 +50,10 @@ function body() {
     "## Services",
     "",
     ...serviceLinks.map((s) => `- [${s.label}](${url(s.href)}): ${svcDesc.get(s.href) ?? s.desc}`),
+    "",
+    "## E-commerce across the GCC",
+    "",
+    ...gccPages.map((g) => `- [${g.cardTitle}](${url(`/${g.slug}`)}): ${g.answer[0]}`),
     "",
     "## Products",
     "",

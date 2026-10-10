@@ -29,6 +29,19 @@ export const serviceLinks = [
   { label: "WhatsApp Business API", desc: "Official setup, powered by WASL", href: "/whatsapp-business-api-qatar" },
 ];
 
+/** GCC e-commerce hub pages (lib/gcc-pages.ts) — Services mega menu group, mobile menu and footer */
+export const gccLinks = [
+  { label: "E-commerce across the GCC", href: "/ecommerce" },
+  { label: "E-commerce in Saudi Arabia", href: "/ecommerce-development-saudi-arabia" },
+  { label: "E-commerce in the UAE", href: "/ecommerce-development-uae" },
+  { label: "Kuwait, Bahrain & Oman", href: "/ecommerce-development-kuwait-bahrain-oman" },
+  { label: "WooCommerce development", href: "/woocommerce-development-gcc" },
+  { label: "Shopify development", href: "/shopify-development-gcc" },
+  { label: "Platform comparison", href: "/ecommerce-platform-comparison-gcc" },
+  { label: "E-commerce cost", href: "/ecommerce-website-cost-gcc" },
+  { label: "Web design in Saudi Arabia", href: "/web-design-company-saudi-arabia" },
+];
+
 /**
  * Payment gateways we have integrated on live stores, by country (owner-confirmed 2026-10-10).
  * We can integrate other gateways on request; never add one here without the owner's confirmation.

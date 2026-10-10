@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { products, serviceLinks as serviceItems } from "@/lib/site";
+import { products, serviceLinks as serviceItems, gccLinks } from "@/lib/site";
 
 
 type Panel = "products" | "services" | null;
@@ -100,6 +100,10 @@ export function Nav() {
             {serviceItems.map((sv) => (
               <Link href={sv.href} key={sv.href} onClick={() => setMobileOpen(false)}>{sv.label}</Link>
             ))}
+            <span className="mono" style={{ marginTop: 22 }}>E-commerce across the GCC</span>
+            {gccLinks.map((g) => (
+              <Link href={g.href} key={g.href} onClick={() => setMobileOpen(false)}>{g.label}</Link>
+            ))}
             <span className="mono" style={{ marginTop: 22 }}>Products</span>
             {products.map((p) => (
               <Link href={p.slug} key={p.slug} onClick={() => setMobileOpen(false)}>{p.name}</Link>
@@ -160,6 +164,16 @@ export function Nav() {
             </b>
             <small>Stores that carry your brand's standard and convert</small>
           </Link>
+        </div>
+        <div className="mega-sub">
+          <span className="mono">E-commerce across the GCC</span>
+          <div>
+            {gccLinks.map((g) => (
+              <Link href={g.href} key={g.href} onClick={() => setPanel(null)}>
+                {g.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </nav>
