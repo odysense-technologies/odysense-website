@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Reveal, SectionHead, CtaBox, PageHero } from "@/components/ui";
 import { caseStudies } from "@/lib/case-studies";
 import { RelatedPosts } from "@/components/related-posts";
+import { gatewayList } from "@/lib/site";
 
 export const metadata: Metadata = seoMeta({
   title: "E-commerce Development Company in Qatar",
@@ -19,7 +20,7 @@ const faqs = [
   },
   {
     q: "Which payment gateways do you integrate for Qatar and KSA?",
-    a: "We regularly integrate the gateways GCC customers actually use: QPay, Tap Payments, MyFatoorah and HyperPay, alongside international options like Stripe and PayPal where relevant. We advise on the right mix for your market and handle the full technical setup and testing.",
+    a: `In Qatar we integrate ${gatewayList("Qatar")}. For Saudi Arabia we integrate ${gatewayList("Saudi Arabia")}. If you need a gateway that isn't listed, we can integrate that too. We advise on the right mix for your market and handle the full technical setup and testing.`,
   },
   {
     q: "WooCommerce, Shopify or a custom build — which should I choose?",
@@ -124,7 +125,7 @@ export default function EcommercePage() {
             <div className="card">
               <span className="num">iii.</span>
               <h3>Local payments</h3>
-              <p>QPay, Tap, MyFatoorah, HyperPay and international gateways — integrated, tested and reconciled.</p>
+              <p>MyFatoorah, Tap, PayTabs, SADAD, QNB and more across the GCC — integrated, tested and reconciled.</p>
             </div>
             <div className="card">
               <span className="num">iv.</span>

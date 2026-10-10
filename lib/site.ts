@@ -29,6 +29,65 @@ export const serviceLinks = [
   { label: "WhatsApp Business API", desc: "Official setup, powered by WASL", href: "/whatsapp-business-api-qatar" },
 ];
 
+/**
+ * Payment gateways we have integrated on live stores, by country (owner-confirmed 2026-10-10).
+ * We can integrate other gateways on request; never add one here without the owner's confirmation.
+ */
+export const paymentGateways: { country: string; flag: string; gateways: { name: string; url: string }[] }[] = [
+  { country: "Qatar", flag: "🇶🇦", gateways: [
+    { name: "MyFatoorah", url: "https://www.myfatoorah.com" },
+    { name: "Tap Payments", url: "https://www.tap.company" },
+    { name: "PayTabs", url: "https://paytabs.com" },
+    { name: "Amazon Payment Services", url: "https://paymentservices.amazon.com" },
+    { name: "SADAD", url: "https://sadad.qa" },
+    { name: "QNB", url: "https://www.qnb.com" },
+  ] },
+  { country: "Saudi Arabia", flag: "🇸🇦", gateways: [
+    { name: "HyperPay", url: "https://hyperpay.com" },
+    { name: "Moyasar", url: "https://moyasar.com" },
+    { name: "Tap Payments", url: "https://www.tap.company" },
+    { name: "PayTabs", url: "https://paytabs.com" },
+    { name: "Amazon Payment Services", url: "https://paymentservices.amazon.com" },
+    { name: "Geidea", url: "https://geidea.net" },
+  ] },
+  { country: "UAE", flag: "🇦🇪", gateways: [
+    { name: "Stripe", url: "https://stripe.com" },
+    { name: "Checkout.com", url: "https://www.checkout.com" },
+    { name: "Network International", url: "https://www.network.ae" },
+    { name: "Telr", url: "https://telr.com" },
+    { name: "Amazon Payment Services", url: "https://paymentservices.amazon.com" },
+    { name: "PayTabs", url: "https://paytabs.com" },
+    { name: "Tap Payments", url: "https://www.tap.company" },
+  ] },
+  { country: "Kuwait", flag: "🇰🇼", gateways: [
+    { name: "MyFatoorah", url: "https://www.myfatoorah.com" },
+    { name: "Tap Payments", url: "https://www.tap.company" },
+    { name: "PayTabs", url: "https://paytabs.com" },
+    { name: "Amazon Payment Services", url: "https://paymentservices.amazon.com" },
+    { name: "UPayments", url: "https://upayments.com" },
+  ] },
+  { country: "Bahrain", flag: "🇧🇭", gateways: [
+    { name: "MyFatoorah", url: "https://www.myfatoorah.com" },
+    { name: "Tap Payments", url: "https://www.tap.company" },
+    { name: "PayTabs", url: "https://paytabs.com" },
+    { name: "Amazon Payment Services", url: "https://paymentservices.amazon.com" },
+    { name: "EazyPay", url: "https://www.eazypay.com.bh" },
+  ] },
+  { country: "Oman", flag: "🇴🇲", gateways: [
+    { name: "MyFatoorah", url: "https://www.myfatoorah.com" },
+    { name: "Tap Payments", url: "https://www.tap.company" },
+    { name: "PayTabs", url: "https://paytabs.com" },
+    { name: "Amazon Payment Services", url: "https://paymentservices.amazon.com" },
+    { name: "Thawani", url: "https://thawani.om" },
+  ] },
+];
+
+/** "A, B and C" */
+export const gatewayList = (country: string) => {
+  const names = paymentGateways.find((c) => c.country === country)?.gateways.map((g) => g.name) ?? [];
+  return names.length > 1 ? `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}` : names.join("");
+};
+
 export const services = [
   {
     numeral: "i.",
