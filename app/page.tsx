@@ -137,7 +137,7 @@ export default function Home() {
                   {p.logo && <h3 style={{ marginTop: 14 }}>{p.name}</h3>}
                   <p>{p.description}</p>
                 </div>
-                <span className="prod-link">{p.urlLabel} →</span>
+                <span className="prod-link">{p.urlLabel || "Learn more"} →</span>
               </Link>
             ))}
           </Reveal>
