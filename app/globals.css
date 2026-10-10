@@ -505,6 +505,7 @@ h1 .grad {
   box-shadow: 0 30px 70px rgba(22, 21, 26, .14); padding: 26px;
   animation: popIn .22s var(--ease);
 }
+.mega[hidden] { display: none; }
 .mega-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 26px; }
 .mega-items { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; align-content: start; }
 .mega-item {

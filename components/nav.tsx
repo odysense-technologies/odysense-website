@@ -115,56 +115,53 @@ export function Nav() {
         </div>
       )}
 
-      {panel === "products" && (
-        <div className="mega" onMouseEnter={() => openPanel("products")}>
-          <div className="mega-grid">
-            <div className="mega-items">
-              {products.map((p) => (
-                <Link className="mega-item" href={p.slug} key={p.slug} onClick={() => setPanel(null)}>
-                  <span className="mega-ico">
-                    <Image src={p.logo!} alt="" width={56} height={56} />
-                  </span>
-                  <span>
-                    <b>{p.name}</b>
-                    <small>{p.chip}</small>
-                  </span>
-                </Link>
-              ))}
-            </div>
-            <Link className="mega-feature" href="/products/wasl" onClick={() => setPanel(null)}>
-              <Image src="/images/shot-wasl-chat.webp" alt="WASL live on WhatsApp" width={612} height={576} />
-              <b>
-                WASL <span className="serif">— WhatsApp at scale.</span>
-              </b>
-              <small>Official API, AI inbox, broadcasts & notifications</small>
-            </Link>
+      {/* Mega menus stay in the server HTML (hidden until opened) so crawlers that don't run JS still see the links. */}
+      <div className="mega" hidden={panel !== "products"} onMouseEnter={() => openPanel("products")}>
+        <div className="mega-grid">
+          <div className="mega-items">
+            {products.map((p) => (
+              <Link className="mega-item" href={p.slug} key={p.slug} onClick={() => setPanel(null)}>
+                <span className="mega-ico">
+                  <Image src={p.logo!} alt="" width={56} height={56} />
+                </span>
+                <span>
+                  <b>{p.name}</b>
+                  <small>{p.chip}</small>
+                </span>
+              </Link>
+            ))}
           </div>
+          <Link className="mega-feature" href="/products/wasl" onClick={() => setPanel(null)}>
+            <Image src="/images/shot-wasl-chat.webp" alt="WASL live on WhatsApp" width={612} height={576} />
+            <b>
+              WASL <span className="serif">— WhatsApp at scale.</span>
+            </b>
+            <small>Official API, AI inbox, broadcasts & notifications</small>
+          </Link>
         </div>
-      )}
+      </div>
 
-      {panel === "services" && (
-        <div className="mega" onMouseEnter={() => openPanel("services")}>
-          <div className="mega-grid">
-            <div className="mega-items">
-              {serviceItems.map((s) => (
-                <Link className="mega-item" href={s.href} key={s.href} onClick={() => setPanel(null)}>
-                  <span>
-                    <b>{s.label}</b>
-                    <small>{s.desc}</small>
-                  </span>
-                </Link>
-              ))}
-            </div>
-            <Link className="mega-feature" href="/ecommerce-development-company-qatar" onClick={() => setPanel(null)}>
-              <Image src="/images/ecom-packages.webp" alt="E-commerce by Odysense" width={1200} height={673} />
-              <b>
-                E-commerce <span className="serif">— our specialty.</span>
-              </b>
-              <small>Stores that carry your brand's standard and convert</small>
-            </Link>
+      <div className="mega" hidden={panel !== "services"} onMouseEnter={() => openPanel("services")}>
+        <div className="mega-grid">
+          <div className="mega-items">
+            {serviceItems.map((s) => (
+              <Link className="mega-item" href={s.href} key={s.href} onClick={() => setPanel(null)}>
+                <span>
+                  <b>{s.label}</b>
+                  <small>{s.desc}</small>
+                </span>
+              </Link>
+            ))}
           </div>
+          <Link className="mega-feature" href="/ecommerce-development-company-qatar" onClick={() => setPanel(null)}>
+            <Image src="/images/ecom-packages.webp" alt="E-commerce by Odysense" width={1200} height={673} />
+            <b>
+              E-commerce <span className="serif">— our specialty.</span>
+            </b>
+            <small>Stores that carry your brand's standard and convert</small>
+          </Link>
         </div>
-      )}
+      </div>
     </nav>
   );
 }
