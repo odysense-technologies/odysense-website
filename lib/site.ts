@@ -88,6 +88,15 @@ export const gatewayList = (country: string) => {
   return names.length > 1 ? `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}` : names.join("");
 };
 
+/**
+ * Last content change of the bespoke pages (ISO). Shown as "Last updated", sent as dateModified and
+ * used as the sitemap lastmod. Update the date whenever the page's content changes materially.
+ */
+export const pageUpdated: Record<string, string> = {
+  "/ecommerce-development-company-qatar": "2026-10-10",
+  "/gamification-brand-activation-qatar": "2026-10-06",
+};
+
 export const services = [
   {
     numeral: "i.",
@@ -326,7 +335,7 @@ export const carouselTiles = [
   { title: "Content Creation", img: "/images/card-content.webp", href: "/products/social-bakery", tags: ["Copywriting", "Design", "Production", "Blogs & Articles"] },
   { title: "Social Media", img: "/images/card-social.webp", href: "/digital-marketing-agency-qatar", tags: ["Strategy", "Paid Ads", "Analytics", "Scheduling", "Management"] },
   { title: "Marketing", img: "/images/card-marketing.webp", href: "/digital-marketing-agency-qatar/seo-services-qatar", tags: ["SEO", "PPC", "Conversion", "A/B Testing", "Reporting"] },
-  { title: "Gamification", img: "/images/card-gamification.webp", href: "/gamification-brand-activation-qatar", tags: ["Event games", "Live quiz", "Leaderboards", "Activations", "Polls"] }, // TODO: placeholder art — replace with a real creative
+  { title: "Gamification", img: "/images/card-gamification-team.webp", href: "/gamification-brand-activation-qatar", tags: ["Event games", "Live quiz", "Leaderboards", "Activations", "Polls"] },
   { title: "Software & AI", img: "/images/card-software.webp", href: "/software-development-company-qatar", tags: ["Web Apps", "Dashboards", "AI Features", "APIs"] },
   { title: "Videos", img: "/images/card-videos.webp", href: "/digital-marketing-agency-qatar", tags: ["Storyboarding", "Reels & Shorts", "Editing", "Motion Graphics"] },
 ];

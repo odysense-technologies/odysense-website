@@ -1,21 +1,26 @@
 import type { MetadataRoute } from "next";
-import { site, products } from "@/lib/site";
+import { site, products, pageUpdated } from "@/lib/site";
 import { caseStudies } from "@/lib/case-studies";
 import { servicePages } from "@/lib/service-pages";
 import { posts } from "@/lib/blog";
 
 export const dynamic = "force-static";
 
-// lastModified only where we know the real date (blog posts). A build timestamp on every page
+// lastModified only where we know the real date (blog posts, service pages, pageUpdated). A build timestamp on every page
 // teaches Google to ignore lastmod entirely.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const core = ["", "services/", "products/", "work/", "about/", "contact/", "blog/", "ecommerce-development-company-qatar/", "gamification-brand-activation-qatar/"].map((r) => ({
-    url: `${site.url}/${r}`,
-    changeFrequency: "weekly" as const,
-    priority: r === "" ? 1 : 0.8,
-  }));
+  const core = ["", "services/", "products/", "work/", "about/", "contact/", "blog/", "ecommerce-development-company-qatar/", "gamification-brand-activation-qatar/"].map((r) => {
+    const updated = pageUpdated[`/${r.replace(/\/$/, "")}`];
+    return {
+      url: `${site.url}/${r}`,
+      ...(updated && { lastModified: new Date(updated) }),
+      changeFrequency: "weekly" as const,
+      priority: r === "" ? 1 : 0.8,
+    };
+  });
   const svc = servicePages.map((s) => ({
     url: `${site.url}/${s.slug}/`,
+    lastModified: new Date(s.updated),
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));

@@ -3,7 +3,8 @@ import { seoMeta } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { Reveal, CtaBox, PageHero } from "@/components/ui";
+import { Reveal, CtaBox, PageHero, Byline } from "@/components/ui";
+import { ORG_ID, WEBSITE_ID, fmtDate } from "@/lib/schema";
 import { posts, getPost } from "@/lib/blog";
 import { site } from "@/lib/site";
 
@@ -39,9 +40,17 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     datePublished: post.date,
     dateModified: post.updated ?? post.date,
     image: `${site.url}${post.image?.src ?? "/og.png"}`,
-    author: { "@type": "Organization", name: "Odysense", url: site.url },
-    publisher: { "@type": "Organization", name: "Odysense", url: site.url },
+    author: { "@type": "Organization", "@id": ORG_ID, name: site.name, url: site.url },
+    publisher: {
+      "@type": "Organization",
+      "@id": ORG_ID,
+      name: site.name,
+      url: site.url,
+      logo: { "@type": "ImageObject", url: `${site.url}/logos/odysense-icon.png` },
+    },
     mainEntityOfPage: `${site.url}/blog/${post.slug}/`,
+    isPartOf: { "@id": WEBSITE_ID },
+    inLanguage: "en",
   };
   const breadcrumbs = {
     "@context": "https://schema.org",
@@ -62,7 +71,12 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         crumbs={[{ label: "Home", href: "/" }, { label: "Blog", href: "/blog" }, { label: post.category }]}
         breadcrumbSchema={false}
         title={<>{post.title}</>}
-        lede={`${new Date(post.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })} · ${post.minutes} min read`}
+        meta={
+          <Byline
+            updated={post.updated ?? post.date}
+            extra={`${post.updated && post.updated !== post.date ? `Published ${fmtDate(post.date)} · ` : ""}${post.minutes} min read`}
+          />
+        }
       />
 
       <section className="section">

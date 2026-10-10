@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { seoMeta } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
-import { Reveal, SectionHead, CtaBox, PageHero } from "@/components/ui";
+import { Reveal, SectionHead, CtaBox, PageHero, Byline } from "@/components/ui";
+import { webPageSchema } from "@/lib/schema";
 import { caseStudies } from "@/lib/case-studies";
 import { RelatedPosts } from "@/components/related-posts";
-import { gatewayList } from "@/lib/site";
+import { gatewayList, pageUpdated } from "@/lib/site";
 
 export const metadata: Metadata = seoMeta({
   title: "E-commerce Development Company in Qatar",
@@ -40,6 +41,9 @@ const faqs = [
   },
 ];
 
+const updated = pageUpdated["/ecommerce-development-company-qatar"];
+const pageSchema = webPageSchema({ path: "/ecommerce-development-company-qatar", name: "E-commerce Development Company in Qatar", description: "Odysense builds high-performing online stores for brands in Qatar & the GCC — WooCommerce, Shopify and custom builds with local payment gateways, from Doha.", modified: updated });
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -54,6 +58,7 @@ export default function EcommercePage() {
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }} />
 
       <PageHero
         crumbs={[{ label: "Home", href: "/" }, { label: "Services", href: "/services" }, { label: "E-commerce" }]}
@@ -63,6 +68,7 @@ export default function EcommercePage() {
           </>
         }
         lede="Online stores that carry your brand's standard and convert its visitors — WooCommerce, Shopify and custom builds with the payment gateways GCC customers trust. Built in Doha, at Qatar Science & Technology Park."
+        meta={<Byline updated={updated} />}
       >
         <div className="hero-actions">
           <Link className="btn btn-primary" href="/contact">

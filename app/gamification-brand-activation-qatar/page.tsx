@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { seoMeta } from "@/lib/seo";
 import Link from "next/link";
-import { Reveal, SectionHead, CtaBox, PageHero } from "@/components/ui";
+import { Reveal, SectionHead, CtaBox, PageHero, Byline } from "@/components/ui";
+import { webPageSchema } from "@/lib/schema";
 import { Arcade } from "@/components/arcade/arcade";
-import { site } from "@/lib/site";
+import { site, pageUpdated } from "@/lib/site";
 import { RelatedPosts } from "@/components/related-posts";
 
 const PATH = "/gamification-brand-activation-qatar/";
@@ -104,6 +105,9 @@ const faqs = [
   },
 ];
 
+const updated = pageUpdated["/gamification-brand-activation-qatar"];
+const pageSchema = webPageSchema({ path: "/gamification-brand-activation-qatar", name: "Gamification & Brand Activation Agency in Qatar", description: "Event games, live quizzes, polls and interactive booth activations for exhibitions, launches and malls in Qatar & the GCC — branded, bilingual and built to capture consented leads.", modified: updated });
+
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -148,6 +152,7 @@ export default function GamificationPage() {
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }} />
 
       <PageHero
         crumbs={[{ label: "Home", href: "/" }, { label: "Services", href: "/services" }, { label: "Gamification" }]}
@@ -157,6 +162,7 @@ export default function GamificationPage() {
           </>
         }
         lede="Interactive games, live quizzes, polls and Q&A for events, exhibitions, launches and malls across Qatar and the GCC. We design, build and run them in your brand — and every activation leaves you with consented leads and a report on how people engaged."
+        meta={<Byline updated={updated} />}
       >
         <div className="hero-actions">
           <Link className="btn btn-primary" href="/contact">
