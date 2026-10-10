@@ -5,6 +5,7 @@
 
 export type ServiceDef = {
   slug: string; // route path without leading/trailing slashes
+  updated: string; // ISO date the page content last changed (shown on the page, sent as dateModified and sitemap lastmod)
   crumb: string;
   title: string; // plain part of H1
   titleAccent: string; // serif italic part of H1
@@ -25,6 +26,7 @@ export type ServiceDef = {
 export const servicePages: ServiceDef[] = [
   {
     slug: "website-design-company-in-qatar",
+    updated: "2026-10-09",
     image: { src: "/images/svc-webdesign.webp", alt: "Designers collaborating on a website concept" },
     crumb: "Website Design",
     title: "Website design",
@@ -93,6 +95,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "website-development-company-qatar",
+    updated: "2026-10-09",
     image: { src: "/images/svc-webdev.webp", alt: "Engineer at work on a development build" },
     crumb: "Website Development",
     title: "Website development",
@@ -161,6 +164,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "software-development-company-qatar",
+    updated: "2026-10-09",
     image: { src: "/images/svc-software.webp", alt: "AI and software engineering at Odysense" },
     crumb: "Software Development",
     title: "Software development",
@@ -229,6 +233,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "mobile-app-development-company-qatar",
+    updated: "2026-10-09",
     image: { src: "/images/svc-mobile.webp", alt: "Developing and testing a mobile experience" },
     crumb: "Mobile Apps",
     title: "Mobile app development",
@@ -297,6 +302,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "digital-marketing-agency-qatar",
+    updated: "2026-10-09",
     image: { src: "/images/svc-marketing.webp", alt: "Planning a marketing campaign on the board" },
     crumb: "Digital Marketing",
     title: "Digital marketing",
@@ -366,6 +372,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "digital-marketing-agency-qatar/seo-services-qatar",
+    updated: "2026-10-09",
     image: { src: "/images/svc-seo.webp", alt: "Reviewing search performance together" },
     crumb: "SEO Services",
     title: "SEO services",
@@ -433,6 +440,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "whatsapp-business-api-qatar",
+    updated: "2026-10-09",
     image: { src: "/images/svc-whatsapp.webp", alt: "Customer conversations on WhatsApp" },
     crumb: "WhatsApp Business API",
     title: "WhatsApp Business API",
@@ -500,6 +508,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "branding-agency-qatar",
+    updated: "2026-10-09",
     image: { src: "/images/svc-branding.webp", alt: "Brand identity materials in production" },
     crumb: "Branding",
     title: "Branding agency",

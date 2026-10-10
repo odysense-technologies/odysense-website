@@ -31,6 +31,7 @@ export const posts: Post[] = [
     category: "Web design",
     minutes: 6,
     relatedService: { label: "Website design in Qatar", href: "/website-design-company-in-qatar" },
+    image: { src: "/images/studio-design.webp", alt: "A designer's desk in front of a wall of colourful posters", w: 1200, h: 1200 },
     sections: [
       {
         ps: [
@@ -84,6 +85,7 @@ export const posts: Post[] = [
     category: "E-commerce",
     minutes: 7,
     relatedService: { label: "E-commerce development in Qatar", href: "/ecommerce-development-company-qatar" },
+    image: { src: "/images/blog-payment-cards.webp", alt: "Brushed metal cards stacked against a black background", w: 1200, h: 673 },
     sections: [
       {
         ps: [
@@ -132,6 +134,7 @@ export const posts: Post[] = [
     category: "WhatsApp",
     minutes: 6,
     relatedService: { label: "WhatsApp Business API in Qatar", href: "/whatsapp-business-api-qatar" },
+    image: { src: "/images/shot-wasl-console.webp", alt: "The WASL console for managing WhatsApp Business API conversations", w: 1094, h: 869 },
     sections: [
       {
         ps: [
@@ -178,6 +181,7 @@ export const posts: Post[] = [
     category: "SEO",
     minutes: 7,
     relatedService: { label: "SEO services in Qatar", href: "/digital-marketing-agency-qatar/seo-services-qatar" },
+    image: { src: "/images/home-webdev.webp", alt: "A designer walking past a wall of page layouts and sketches", w: 1146, h: 1200 },
     sections: [
       {
         ps: [
@@ -232,6 +236,7 @@ export const posts: Post[] = [
     category: "E-commerce",
     minutes: 7,
     relatedService: { label: "E-commerce development in Qatar", href: "/ecommerce-development-company-qatar" },
+    image: { src: "/images/ecom-packages.webp", alt: "Two branded product boxes on a red display stand", w: 1200, h: 673 },
     sections: [
       {
         ps: [
@@ -287,6 +292,7 @@ export const posts: Post[] = [
     category: "SEO",
     minutes: 6,
     relatedService: { label: "SEO services in Qatar", href: "/digital-marketing-agency-qatar/seo-services-qatar" },
+    image: { src: "/images/blog-study-hall.webp", alt: "People researching at long tables in a sunlit reading hall", w: 1199, h: 753 },
     sections: [
       {
         ps: [
@@ -333,6 +339,7 @@ export const posts: Post[] = [
     category: "E-commerce",
     minutes: 8,
     relatedService: { label: "E-commerce development in Qatar", href: "/ecommerce-development-company-qatar" },
+    image: { src: "/images/blog-silhouette-art.webp", alt: "An abstract fashion silhouette with streaks of colour", w: 673, h: 1200 },
     sections: [
       {
         ps: [
@@ -389,6 +396,7 @@ export const posts: Post[] = [
     category: "WhatsApp",
     minutes: 5,
     relatedService: { label: "WhatsApp Business API in Qatar", href: "/whatsapp-business-api-qatar" },
+    image: { src: "/images/card-content.webp", alt: "A professional writing campaign notes in a notebook", w: 675, h: 900 },
     sections: [
       {
         ps: [
@@ -433,6 +441,7 @@ export const posts: Post[] = [
     category: "QFlow",
     minutes: 6,
     relatedService: { label: "QFlow — restaurant management", href: "/products/qflow" },
+    image: { src: "/images/qflow-cafe.webp", alt: "A guest ordering from her phone at a cafe table", w: 900, h: 1200 },
     sections: [
       {
         ps: [
@@ -480,6 +489,7 @@ export const posts: Post[] = [
     category: "QFlow",
     minutes: 5,
     relatedService: { label: "QFlow — restaurant management", href: "/products/qflow" },
+    image: { src: "/images/shot-qflow-delivery.webp", alt: "QFlow showing delivery orders from several aggregators on one screen", w: 1100, h: 767 },
     sections: [
       {
         ps: [
@@ -518,6 +528,7 @@ export const posts: Post[] = [
     category: "WASL",
     minutes: 6,
     relatedService: { label: "WASL — WhatsApp AI platform", href: "/products/wasl" },
+    image: { src: "/images/shot-wasl-bots.webp", alt: "Bot rules set up in WASL for automatic WhatsApp replies", w: 1137, h: 476 },
     sections: [
       {
         ps: [
@@ -562,6 +573,7 @@ export const posts: Post[] = [
     category: "WASL",
     minutes: 5,
     relatedService: { label: "WhatsApp Business API in Qatar", href: "/whatsapp-business-api-qatar" },
+    image: { src: "/images/shot-wasl-template.webp", alt: "Building a WhatsApp order notification template in WASL", w: 677, h: 649 },
     sections: [
       {
         ps: [
@@ -601,6 +613,7 @@ export const posts: Post[] = [
     category: "E-commerce",
     minutes: 6,
     relatedService: { label: "E-commerce development in Qatar", href: "/ecommerce-development-company-qatar" },
+    image: { src: "/images/svc-webdev.webp", alt: "A developer working on a laptop in a bright office", w: 1200, h: 675 },
     sections: [
       {
         ps: [
@@ -646,6 +659,7 @@ export const posts: Post[] = [
     category: "Store Portal",
     minutes: 6,
     relatedService: { label: "Store Portal — e-commerce operations", href: "/products/store-portal" },
+    image: { src: "/images/shot-portal-dashboard.webp", alt: "The Store Portal dashboard for a WooCommerce store", w: 1209, h: 678 },
     sections: [
       {
         ps: [
@@ -692,6 +706,7 @@ export const posts: Post[] = [
     category: "WASL",
     minutes: 6,
     relatedService: { label: "WASL — WhatsApp AI platform", href: "/products/wasl" },
+    image: { src: "/images/shot-wasl-chat.webp", alt: "An automated WhatsApp conversation previewed in WASL", w: 612, h: 576 },
     sections: [
       { ps: ["Most website visitors in the Gulf don't fill in contact forms — they'd rather send a quick WhatsApp. Connecting your website to WhatsApp automation captures exactly those people, and then handles the repetitive parts of the conversation automatically. Here's how the pieces fit together."] },
       { h: "Start with the click-to-chat entry point", ps: ["A WhatsApp button on your site (floating, or on key pages) turns interest into a message in one tap — no form, no friction. The moment that chat opens, automation can take over the routine parts: greeting the visitor, answering the five questions everyone asks, and collecting basic details before a human ever joins."] },
@@ -710,6 +725,7 @@ export const posts: Post[] = [
     category: "WASL",
     minutes: 5,
     relatedService: { label: "WhatsApp Business API in Qatar", href: "/whatsapp-business-api-qatar" },
+    image: { src: "/images/blog-licence-phone.webp", alt: "Hands holding a smartphone with a gradient screen", w: 1200, h: 800 },
     sections: [
       { ps: ["WhatsApp Business has quietly become a full commerce and support platform. If your mental model is still \"a green chat app,\" here are the capabilities worth knowing about — and which ones actually matter for a business in Qatar or the GCC."] },
       { h: "The features that earn their place", list: ["Interactive message templates — buttons, quick replies and calls-to-action inside a message, so customers act without typing.", "The Cloud API — official, Meta-hosted access with enterprise reliability and no third-party proxies.", "Rich media templates — headers with images, documents and location for confirmations and updates that look professional.", "Catalogs and product messages — showing products directly inside the chat.", "Better automation hooks — cleaner ways to trigger messages from your own systems."] },
@@ -727,6 +743,7 @@ export const posts: Post[] = [
     category: "Software",
     minutes: 6,
     relatedService: { label: "Software development in Qatar", href: "/software-development-company-qatar" },
+    image: { src: "/images/studio-code.webp", alt: "A developer writing code at a workstation", w: 840, h: 1200 },
     sections: [
       { ps: ["Every growing business hits the same wall: the spreadsheet that ran everything becomes the thing slowing everything down. Custom software exists for that moment — not to look impressive, but to remove the manual, repetitive, error-prone work that quietly eats hours every week."] },
       { h: "Where custom software pays off fastest", list: ["Manual data re-entry between systems — the classic time sink, eliminated by connecting them.", "Approval and workflow chains run over email and chat — replaced by a system that tracks state.", "Reporting assembled by hand each week — replaced by a live dashboard.", "Customer-facing portals — letting clients self-serve what your team currently handles manually."] },
@@ -744,6 +761,7 @@ export const posts: Post[] = [
     category: "Web design",
     minutes: 5,
     relatedService: { label: "Website design in Qatar", href: "/website-design-company-in-qatar" },
+    image: { src: "/images/card-webdesign.webp", alt: "A designer sketching a car on screen and on paper", w: 600, h: 800 },
     sections: [
       { ps: ["Design trends are seductive and mostly disposable. The websites that age well aren't the ones that chased every fashion — they're the ones built on principles that don't expire. Here's how to tell the difference in 2026."] },
       { h: "Trends worth adopting", list: ["Performance as design — fast-loading, lightweight pages, because speed is now a core part of the experience (and a ranking factor).", "Purposeful motion — subtle animation that guides attention, not decoration that distracts.", "Bold, confident typography — type doing the heavy lifting instead of stock imagery.", "Genuine accessibility — designs that work for everyone, which also happen to be clearer for everyone."] },
@@ -761,6 +779,7 @@ export const posts: Post[] = [
     category: "Web design",
     minutes: 5,
     relatedService: { label: "Website design in Qatar", href: "/website-design-company-in-qatar" },
+    image: { src: "/images/home-design.webp", alt: "Brand identity covers in yellow, orange and red laid out on a white wall", w: 1200, h: 801 },
     sections: [
       { ps: ["\"Make it beautiful\" and \"make it work\" are often treated as a trade-off. They aren't. The best digital products are beautiful because they work — every visual decision also serving a purpose. Here's how we hold both at once."] },
       { h: "Function is part of the beauty", list: ["A gorgeous site that loads slowly isn't gorgeous to the person waiting — speed is aesthetic.", "A striking layout that hides the buy button is a failure, however award-worthy it looks.", "Beautiful typography that's hard to read has failed at the one job type has.", "Motion that delays the task frustrates more than it delights."] },
@@ -778,6 +797,7 @@ export const posts: Post[] = [
     category: "SEO",
     minutes: 6,
     relatedService: { label: "Digital marketing in Qatar", href: "/digital-marketing-agency-qatar" },
+    image: { src: "/images/card-marketing.webp", alt: "A marketer planning a campaign on a wall of sticky notes", w: 900, h: 678 },
     sections: [
       { ps: ["Performance marketing — spend measured against results, not impressions — works differently in Qatar than in saturated global markets. Smaller, less crowded, and mobile-and-WhatsApp-first, this market rewards a specific playbook."] },
       { h: "What actually drives results here", list: ["WhatsApp as a conversion channel — in the GCC, a WhatsApp conversation often converts better than a form; track it as a real goal.", "Bilingual campaigns — Arabic creative frequently faces less competition and lower costs while reaching a huge audience.", "Local intent — geo-targeted, Qatar-specific campaigns beat broad regional spend.", "Landing pages that match the ad — sending paid traffic to a purpose-built page, not the homepage, is where most budgets are quietly wasted."] },
@@ -795,6 +815,7 @@ export const posts: Post[] = [
     category: "Branding",
     minutes: 6,
     relatedService: { label: "Branding agency in Qatar", href: "/branding-agency-qatar" },
+    image: { src: "/images/blog-organic-texture.webp", alt: "A sculptural green surface with folds like a brain", w: 849, h: 1200 },
     sections: [
       { ps: ["\"Neuro-marketing\" sounds like a buzzword, and in the wrong hands it is one. Stripped of the hype, it's simply designing with an honest understanding of how people actually make decisions — quickly, emotionally, and visually — rather than how we pretend they do."] },
       { h: "The principles that hold up", list: ["First impressions are visual and fast — people judge a brand's credibility in milliseconds, mostly on design quality.", "Emotion precedes logic — people feel a decision, then justify it; brand and story do that work.", "Simplicity wins — every extra choice or step costs conversions; clarity is persuasion.", "Trust signals matter — reviews, recognizable clients and social proof lower the perceived risk of choosing you."] },
@@ -812,6 +833,7 @@ export const posts: Post[] = [
     category: "Startups",
     minutes: 8,
     relatedService: { label: "Software development in Qatar", href: "/software-development-company-qatar" },
+    image: { src: "/images/blog-corridor.webp", alt: "A long modern corridor with timber columns and glass", w: 904, h: 1200 },
     sections: [
       {
         ps: [
@@ -878,6 +900,7 @@ export const posts: Post[] = [
     category: "Startups",
     minutes: 7,
     relatedService: { label: "Software development in Qatar", href: "/software-development-company-qatar" },
+    image: { src: "/images/studio-collab.webp", alt: "Two colleagues reviewing a product together on a laptop", w: 904, h: 1200 },
     sections: [
       {
         ps: [
@@ -1442,6 +1465,7 @@ export const posts: Post[] = [
     category: "Events & gamification",
     minutes: 8,
     relatedService: { label: "Gamification & brand activations in Qatar", href: "/gamification-brand-activation-qatar" },
+    image: { src: "/images/blog-event-team.webp", alt: "A team planning an event activation around a table", w: 840, h: 1200 },
     sections: [
       {
         ps: [

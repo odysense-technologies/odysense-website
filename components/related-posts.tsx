@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PostCard } from "@/components/post-card";
 import { Reveal, SectionHead } from "@/components/ui";
 import { postsNewestFirst } from "@/lib/blog";
 
@@ -20,14 +20,7 @@ export function RelatedPosts({ href, limit = 4 }: { href: string; limit?: number
         />
         <Reveal className="grid-2">
           {list.map((p) => (
-            <Link className="card post-card" href={`/blog/${p.slug}`} key={p.slug}>
-              <div>
-                <span className="cat">{p.category}</span>
-                <h3>{p.title}</h3>
-                <p>{p.description}</p>
-              </div>
-              <span className="meta">{p.minutes} min read →</span>
-            </Link>
+            <PostCard post={p} key={p.slug} meta={`${p.minutes} min read →`} />
           ))}
         </Reveal>
       </div>

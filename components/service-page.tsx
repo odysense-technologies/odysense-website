@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Reveal, SectionHead, CtaBox, PageHero } from "@/components/ui";
+import { Reveal, SectionHead, CtaBox, PageHero, Byline } from "@/components/ui";
+import { webPageSchema } from "@/lib/schema";
 import type { ServiceDef } from "@/lib/service-pages";
 import { RelatedPosts } from "@/components/related-posts";
 
@@ -17,9 +18,12 @@ export function ServicePageView({ def }: { def: ServiceDef }) {
     })),
   };
 
+  const pageSchema = webPageSchema({ path: `/${def.slug}`, name: def.metaTitle, description: def.metaDescription, modified: def.updated });
+
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }} />
 
       <PageHero
         crumbs={[{ label: "Home", href: "/" }, { label: "Services", href: "/services" }, { label: def.crumb }]}
@@ -29,6 +33,7 @@ export function ServicePageView({ def }: { def: ServiceDef }) {
           </>
         }
         lede={def.lede}
+        meta={<Byline updated={def.updated} />}
       >
         <div className="hero-actions">
           <Link className="btn btn-primary" href="/contact">

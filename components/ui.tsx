@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
-import { site, serviceLinks, products } from "@/lib/site";
+import { site, serviceLinks, products, gccLinks } from "@/lib/site";
+import { fmtDate } from "@/lib/schema";
 
 /* ---------- Scroll reveal wrapper ---------- */
 export function Reveal({ children, className = "" }: { children: ReactNode; className?: string }) {
@@ -56,6 +57,14 @@ export function Footer() {
             {serviceLinks.map((s) => (
               <Link href={s.href} key={s.href}>
                 {s.label}
+              </Link>
+            ))}
+          </nav>
+          <nav className="footer-col" aria-label="E-commerce across the GCC">
+            <span className="mono">GCC e-commerce</span>
+            {gccLinks.map((g) => (
+              <Link href={g.href} key={g.href}>
+                {g.label}
               </Link>
             ))}
           </nav>
@@ -132,12 +141,15 @@ export function PageHero({
   crumbs,
   title,
   lede,
+  meta,
   children,
   breadcrumbSchema = true,
 }: {
   crumbs: { label: string; href?: string }[];
   title: ReactNode;
   lede?: string;
+  /** Small byline under the lede, e.g. author and "Last updated" date */
+  meta?: ReactNode;
   children?: ReactNode;
   /** Emit BreadcrumbList JSON-LD from the crumbs (blog posts pass false and emit their own) */
   breadcrumbSchema?: boolean;
@@ -167,8 +179,19 @@ export function PageHero({
         </nav>
         <h1>{title}</h1>
         {lede && <p className="lede">{lede}</p>}
+        {meta && <p className="byline">{meta}</p>}
         {children}
       </div>
     </header>
+  );
+}
+
+/** "By the Odysense team · Last updated 9 October 2026" — authorship and freshness, visible on the page. */
+export function Byline({ updated, extra }: { updated: string; extra?: string }) {
+  return (
+    <>
+      By <Link href="/about">the Odysense team</Link> · Last updated <time dateTime={updated}>{fmtDate(updated)}</time>
+      {extra && <> · {extra}</>}
+    </>
   );
 }

@@ -29,6 +29,87 @@ export const serviceLinks = [
   { label: "WhatsApp Business API", desc: "Official setup, powered by WASL", href: "/whatsapp-business-api-qatar" },
 ];
 
+/** GCC e-commerce hub pages (lib/gcc-pages.ts) — Services mega menu group, mobile menu and footer */
+export const gccLinks = [
+  { label: "E-commerce across the GCC", href: "/ecommerce" },
+  { label: "E-commerce in Saudi Arabia", href: "/ecommerce-development-saudi-arabia" },
+  { label: "E-commerce in the UAE", href: "/ecommerce-development-uae" },
+  { label: "Kuwait, Bahrain & Oman", href: "/ecommerce-development-kuwait-bahrain-oman" },
+  { label: "WooCommerce development", href: "/woocommerce-development-gcc" },
+  { label: "Shopify development", href: "/shopify-development-gcc" },
+  { label: "Platform comparison", href: "/ecommerce-platform-comparison-gcc" },
+  { label: "E-commerce cost", href: "/ecommerce-website-cost-gcc" },
+  { label: "Web design in Saudi Arabia", href: "/web-design-company-saudi-arabia" },
+];
+
+/**
+ * Payment gateways we have integrated on live stores, by country (owner-confirmed 2026-10-10).
+ * We can integrate other gateways on request; never add one here without the owner's confirmation.
+ */
+export const paymentGateways: { country: string; flag: string; gateways: { name: string; url: string }[] }[] = [
+  { country: "Qatar", flag: "🇶🇦", gateways: [
+    { name: "MyFatoorah", url: "https://www.myfatoorah.com" },
+    { name: "Tap Payments", url: "https://www.tap.company" },
+    { name: "PayTabs", url: "https://paytabs.com" },
+    { name: "Amazon Payment Services", url: "https://paymentservices.amazon.com" },
+    { name: "SADAD", url: "https://sadad.qa" },
+    { name: "QNB", url: "https://www.qnb.com" },
+  ] },
+  { country: "Saudi Arabia", flag: "🇸🇦", gateways: [
+    { name: "HyperPay", url: "https://hyperpay.com" },
+    { name: "Moyasar", url: "https://moyasar.com" },
+    { name: "Tap Payments", url: "https://www.tap.company" },
+    { name: "PayTabs", url: "https://paytabs.com" },
+    { name: "Amazon Payment Services", url: "https://paymentservices.amazon.com" },
+    { name: "Geidea", url: "https://geidea.net" },
+  ] },
+  { country: "UAE", flag: "🇦🇪", gateways: [
+    { name: "Stripe", url: "https://stripe.com" },
+    { name: "Checkout.com", url: "https://www.checkout.com" },
+    { name: "Network International", url: "https://www.network.ae" },
+    { name: "Telr", url: "https://telr.com" },
+    { name: "Amazon Payment Services", url: "https://paymentservices.amazon.com" },
+    { name: "PayTabs", url: "https://paytabs.com" },
+    { name: "Tap Payments", url: "https://www.tap.company" },
+  ] },
+  { country: "Kuwait", flag: "🇰🇼", gateways: [
+    { name: "MyFatoorah", url: "https://www.myfatoorah.com" },
+    { name: "Tap Payments", url: "https://www.tap.company" },
+    { name: "PayTabs", url: "https://paytabs.com" },
+    { name: "Amazon Payment Services", url: "https://paymentservices.amazon.com" },
+    { name: "UPayments", url: "https://upayments.com" },
+  ] },
+  { country: "Bahrain", flag: "🇧🇭", gateways: [
+    { name: "MyFatoorah", url: "https://www.myfatoorah.com" },
+    { name: "Tap Payments", url: "https://www.tap.company" },
+    { name: "PayTabs", url: "https://paytabs.com" },
+    { name: "Amazon Payment Services", url: "https://paymentservices.amazon.com" },
+    { name: "EazyPay", url: "https://www.eazypay.com.bh" },
+  ] },
+  { country: "Oman", flag: "🇴🇲", gateways: [
+    { name: "MyFatoorah", url: "https://www.myfatoorah.com" },
+    { name: "Tap Payments", url: "https://www.tap.company" },
+    { name: "PayTabs", url: "https://paytabs.com" },
+    { name: "Amazon Payment Services", url: "https://paymentservices.amazon.com" },
+    { name: "Thawani", url: "https://thawani.om" },
+  ] },
+];
+
+/** "A, B and C" */
+export const gatewayList = (country: string) => {
+  const names = paymentGateways.find((c) => c.country === country)?.gateways.map((g) => g.name) ?? [];
+  return names.length > 1 ? `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}` : names.join("");
+};
+
+/**
+ * Last content change of the bespoke pages (ISO). Shown as "Last updated", sent as dateModified and
+ * used as the sitemap lastmod. Update the date whenever the page's content changes materially.
+ */
+export const pageUpdated: Record<string, string> = {
+  "/ecommerce-development-company-qatar": "2026-10-10",
+  "/gamification-brand-activation-qatar": "2026-10-06",
+};
+
 export const services = [
   {
     numeral: "i.",
@@ -267,7 +348,7 @@ export const carouselTiles = [
   { title: "Content Creation", img: "/images/card-content.webp", href: "/products/social-bakery", tags: ["Copywriting", "Design", "Production", "Blogs & Articles"] },
   { title: "Social Media", img: "/images/card-social.webp", href: "/digital-marketing-agency-qatar", tags: ["Strategy", "Paid Ads", "Analytics", "Scheduling", "Management"] },
   { title: "Marketing", img: "/images/card-marketing.webp", href: "/digital-marketing-agency-qatar/seo-services-qatar", tags: ["SEO", "PPC", "Conversion", "A/B Testing", "Reporting"] },
-  { title: "Gamification", img: "/images/card-gamification.webp", href: "/gamification-brand-activation-qatar", tags: ["Event games", "Live quiz", "Leaderboards", "Activations", "Polls"] }, // TODO: placeholder art — replace with a real creative
+  { title: "Gamification", img: "/images/card-gamification-team.webp", href: "/gamification-brand-activation-qatar", tags: ["Event games", "Live quiz", "Leaderboards", "Activations", "Polls"] },
   { title: "Software & AI", img: "/images/card-software.webp", href: "/software-development-company-qatar", tags: ["Web Apps", "Dashboards", "AI Features", "APIs"] },
   { title: "Videos", img: "/images/card-videos.webp", href: "/digital-marketing-agency-qatar", tags: ["Storyboarding", "Reels & Shorts", "Editing", "Motion Graphics"] },
 ];

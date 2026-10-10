@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { seoMeta } from "@/lib/seo";
 import Link from "next/link";
-import { Reveal, CtaBox, PageHero } from "@/components/ui";
+import { Reveal, CtaBox, PageHero, SectionHead } from "@/components/ui";
+import { gccPages } from "@/lib/gcc-pages";
 import { servicePages } from "@/lib/service-pages";
 
 export const metadata: Metadata = seoMeta({
@@ -49,6 +50,30 @@ export default function ServicesPage() {
                 <span className="num serif">→</span>
                 <h3>{s.title}</h3>
                 <p>{s.desc}</p>
+              </Link>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section section--flush-top">
+        <div className="wrap">
+          <SectionHead
+            kicker="Across the GCC"
+            title={
+              <>
+                E-commerce and web design <span className="serif">beyond Qatar.</span>
+              </>
+            }
+          >
+            Guides by market and platform for brands selling in Saudi Arabia, the UAE, Kuwait, Bahrain and Oman.
+          </SectionHead>
+          <Reveal className="grid-3">
+            {gccPages.map((g) => (
+              <Link className="card" href={`/${g.slug}`} key={g.slug}>
+                <span className="num serif">→</span>
+                <h3>{g.cardTitle}</h3>
+                <p>{g.cardDesc}</p>
               </Link>
             ))}
           </Reveal>

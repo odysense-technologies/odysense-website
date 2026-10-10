@@ -5,6 +5,7 @@ import { RouteLoader } from "@/components/loader";
 import { Analytics, WhatsAppTracker } from "@/components/analytics";
 import { ConsultPopup } from "@/components/lead-forms";
 import { site } from "@/lib/site";
+import { ORG_ID, WEBSITE_ID } from "@/lib/schema";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -33,13 +34,14 @@ export const metadata: Metadata = {
 const orgSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "@id": `${site.url}/#organization`,
+  "@id": ORG_ID,
   name: "Odysense",
   url: site.url,
   email: site.email,
   telephone: site.phone,
   image: `${site.url}/og.png`,
-  logo: `${site.url}/logos/odysense-icon.png`,
+  logo: { "@type": "ImageObject", url: `${site.url}/logos/odysense-icon.png` },
+  description: site.description,
   priceRange: "$$",
   address: {
     "@type": "PostalAddress",
@@ -57,10 +59,18 @@ const orgSchema = {
     { "@type": "Country", name: "Oman" },
   ],
   knowsAbout: [
-    "Web Design", "Web Development", "E-commerce Development", "Software Development",
-    "Mobile App Development", "Branding", "SEO", "Digital Marketing", "WhatsApp Business API",
-    "Gamification", "Brand Activations",
+    "Web Design", "Web Development", "E-commerce Development", "WooCommerce", "Shopify",
+    "Headless Commerce", "Payment Gateway Integration", "Arabic RTL E-commerce", "E-commerce Migration",
+    "Software Development", "Mobile App Development", "Branding", "SEO", "Digital Marketing",
+    "WhatsApp Business API", "Gamification", "Brand Activations",
   ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    telephone: site.phone,
+    email: site.email,
+    areaServed: ["QA", "SA", "AE", "KW", "BH", "OM"],
+  },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Services",
@@ -71,10 +81,26 @@ const orgSchema = {
       "Gamification & Brand Activations",
     ].map((s) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: s } })),
   },
+  // Profiles found by web search on 2026-10-10. Add the LinkedIn company page and the Google Business
+  // Profile once the owner confirms their URLs.
   sameAs: [
     "https://www.facebook.com/odysense.qa/",
+    "https://www.instagram.com/odysense.qa/",
     "https://qstp.qa/directory/odysense/",
+    "https://clutch.co/profile/odysense",
+    "https://www.designrush.com/agency/profile/odysense",
+    "https://www.crunchbase.com/organization/odysense",
   ],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": WEBSITE_ID,
+  url: site.url,
+  name: site.name,
+  inLanguage: "en",
+  publisher: { "@id": ORG_ID },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -93,6 +119,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
         />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
       </head>
       <body>
         <Analytics />

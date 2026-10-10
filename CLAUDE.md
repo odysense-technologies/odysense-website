@@ -83,9 +83,13 @@ app/
   layout.tsx                 metadata, OG, GSC verification, ProfessionalService JSON-LD,
                              Nav, Analytics, WhatsAppTracker, RouteLoader, ConsultPopup, Footer
   globals.css                the whole design system (tokens + every component style)
-  page.tsx                   homepage
+  page.tsx                   homepage: hero → carousel → web design & development feature (offers,
+                             starting prices, real case-study stats) → services → Design/Engineering/
+                             Growth photo band → compact product tiles → testimonial → CTA
   icon.png                   favicon (Odysense ring icon)
-  sitemap.ts / robots.ts     generated from the lib/ data files
+  sitemap.ts / robots.ts     generated from the lib/ data files; robots names the search, answer and
+                             training bots (all allowed) and keeps /api/ out
+  llms.txt/route.ts          /llms.txt for AI assistants, generated from lib/ at build time
   api/contact/route.ts       lead endpoint: Resend email + optional Postgres storage
   services/page.tsx          services hub
   ecommerce-development-company-qatar/page.tsx   flagship e-commerce page (bespoke)
@@ -99,6 +103,8 @@ app/
   digital-marketing-agency-qatar/seo-services-qatar/
   whatsapp-business-api-qatar/                   │
   branding-agency-qatar/                         ┘
+  ecommerce/ + 8 GCC routes                      thin route files rendering GuidePageView with data
+                                                 from lib/gcc-pages.ts (see section 5, GCC pages)
   products/page.tsx + products/[slug]/page.tsx   product hub + template
   work/page.tsx + work/[slug]/page.tsx           case-study hub + template
   blog/page.tsx + blog/[slug]/page.tsx           blog hub + article template (Article/Breadcrumb schema)
@@ -108,6 +114,7 @@ components/
   ui.tsx            Reveal, Footer (sitewide links + NAP), SectionHead, CtaBox,
                     PageHero (emits BreadcrumbList JSON-LD from its crumbs)
   related-posts.tsx "Related reading" block: newest posts whose relatedService is the page
+  post-card.tsx     article card with thumbnail (blog hub + Related reading)
   nav.tsx           pill nav + Services/Products mega menus + mobile burger menu
   carousel.tsx      ServiceCarousel: homepage auto-scroll, draggable, swipeable
   shot-carousel.tsx product screenshot carousel with click-to-open lightbox
@@ -116,6 +123,8 @@ components/
   analytics.tsx     GA4 loader, track(), WhatsAppTracker
   loader.tsx        RouteLoader: gradient top progress bar on navigation
   service-page.tsx  ServicePageView template (includes FAQPage schema)
+  guide-page.tsx    GuidePageView for the GCC pages: short answer, question H2s, tables, gateway grid,
+                    proof, FAQ, sources, CTA; Service + WebPage + FAQPage schema
   review-tool.tsx   review request tool UI
   arcade/           playable demos for the gamification page (client-only, each lazy-loaded):
     arcade.tsx      tabbed "arcade" panel; keeps opened games mounted for session-only scores
@@ -126,7 +135,9 @@ lib/
   site.ts           site info, serviceLinks (nav + footer), services, products, productDetails,
                     productShowcase, carouselTiles, clientLogos
   seo.ts            seoMeta(): title, description, canonical, Open Graph and Twitter for a page
+  schema.ts         ORG_ID / WEBSITE_ID, webPageSchema() (dateModified), fmtDate()
   service-pages.ts  the 8 Qatar service pages (copy, long-form `sections`, FAQs, related links, images)
+  gcc-pages.ts      the 9 GCC hub pages (Phase 3); gccLinks in site.ts feeds the mega menu, mobile menu, footer
   case-studies.ts   Eleganza, Rafea Line, QSeat
   blog.ts           all blog articles (optional per post: metaTitle, updated, image (hero + OG),
                     sources, relatedPosts); postsNewestFirst() for listings
@@ -135,6 +146,9 @@ public/
 next.config.ts      trailingSlash + every legacy 301 redirect
 scripts/
   search_console.py Search Console API helper for Claude sessions (sites, perf, inspect, sitemaps)
+  indexnow.py       IndexNow ping (--all, --changed STATE, or URLs; --dry-run)
+.github/workflows/indexnow.yml   pings IndexNow with changed pages after each Vercel Production deploy
+docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-engine checklist
 ```
 
 ---
@@ -157,6 +171,12 @@ scripts/
   - scroll reveals
 - **New pages reuse existing components and classes.** Never introduce a new visual language, and
   never use `localStorage` for site data.
+- **Pictures come from the owner.** Whenever a page or article needs new photos, ask the owner for them
+  (with the subject and size you need) before building it; don't generate or source stock images
+  yourself (owner request, 2026-10-10). Convert uploads to WebP (max 1200px) in `public/images/`, and use
+  a new file name when replacing an image, because the image optimizer caches by URL.
+- Every blog post has a hero `image` (also its OG image and card thumbnail). Some posts reuse service or
+  product images until the owner supplies dedicated ones.
 
 ---
 
@@ -187,6 +207,42 @@ scripts/
 
 - **Never publish SEO pricing.** It depends on the project, so always point to requesting a callback.
 - **Never publish ad-spend figures; route budget questions to a callback.**
+
+### E-commerce capabilities (owner-confirmed 2026-10-10)
+- **Payment gateways** integrated on live stores, by country, are in `lib/site.ts` → `paymentGateways`
+  (use `gatewayList(country)` in copy). Never name a gateway that isn't there; we can integrate others
+  on request, so say that instead. QPay and PayPal are **not** on the confirmed list.
+  - Qatar: MyFatoorah, Tap Payments, PayTabs, Amazon Payment Services, SADAD, QNB
+  - Saudi Arabia: HyperPay, Moyasar, Tap Payments, PayTabs, Amazon Payment Services, Geidea
+  - UAE: Stripe, Checkout.com, Network International, Telr, Amazon Payment Services, PayTabs, Tap Payments
+  - Kuwait: MyFatoorah, Tap, PayTabs, Amazon Payment Services, UPayments
+  - Bahrain: MyFatoorah, Tap, PayTabs, Amazon Payment Services, EazyPay
+  - Oman: MyFatoorah, Tap, PayTabs, Amazon Payment Services, Thawani
+- **Shipping:** we integrate any courier that offers an API (don't list couriers as past integrations),
+  and we set up cash on delivery.
+- **Platforms:** WooCommerce, Shopify and custom builds. We build on Shopify but are **not** a Shopify
+  Partner. We migrate stores from any platform to any platform, by scraping the storefront or with our
+  own backend migration scripts.
+- **Presence:** no offices outside Qatar. We serve KSA, the UAE and the rest of the GCC remotely from
+  Doha, with many satisfied clients there. Never invent client counts or locations.
+- **People:** don't name or describe the founder anywhere. Bylines and schema use the Odysense
+  organisation.
+- **Benchmark report:** the owner declined publishing aggregated client-store data (Phase 4 skipped).
+
+### GCC pages (Phase 3, 2026-10-10)
+- `/ecommerce/` (hub), `/ecommerce-development-saudi-arabia/`, `/ecommerce-development-uae/`,
+  `/ecommerce-development-kuwait-bahrain-oman/`, `/woocommerce-development-gcc/`, `/shopify-development-gcc/`,
+  `/ecommerce-platform-comparison-gcc/`, `/ecommerce-website-cost-gcc/`, `/web-design-company-saudi-arabia/`.
+  The Qatar flagship stays at `/ecommerce-development-company-qatar/`.
+- Answer first: each page opens with "The short answer"; H2s are buyer questions; every page links to
+  Eleganza, Rafea Line, Store Portal and WASL, ends with a free-consultation CTA, and lists its sources.
+- Prices are quoted in QAR; SAR/AED/USD figures are approximate conversions at the USD pegs, labelled as such.
+- Laws and tax (ZATCA e-invoicing, Saudi E-Commerce Law and Business-platform registration, PDPL, UAE
+  Decree-Law 14/2023, GCC VAT rates) are hedged and sourced; the pages say we build the store and aren't
+  a law firm or tax adviser. Re-check these facts when updating the pages.
+- No photos yet: ask the owner for pictures before adding any.
+- Next candidates: website development and mobile apps for Saudi Arabia, web design UAE. Avoid
+  name-swapped duplicates; each page needs genuinely market-specific content.
 
 ### Store Portal
 - Free for the first year with every Odysense e-commerce build, then QAR 170/month, or QAR 150/month billed yearly.
@@ -234,8 +290,7 @@ scripts/
   - Capability claims stay within what we build on the web and mobile. No AR, VR or hardware claims.
   - No invented past events, client names, statistics or results.
 - The demos are simulated: no backend, no storage, no data collected, and they are labelled "Demo".
-- The homepage carousel tile `public/images/card-gamification.webp` is a **placeholder** made from
-  brand colours. Replace it when the owner sends a creative (600×800).
+- The homepage carousel tile is `public/images/card-gamification-team.webp` (owner photo, 2026-10-10).
 
 ### Products (all in `lib/site.ts`)
 
@@ -324,8 +379,18 @@ scripts/
    - an entry in the sitemap; data-driven pages are added automatically
    - JSON-LD where relevant: FAQPage on service pages, Article and Breadcrumb on posts,
      SoftwareApplication on products
-6. **Sitewide schema:** `ProfessionalService` with Doha geo coordinates, the ten services (including Gamification & Brand Activations), and the six
-   GCC countries as `areaServed`. Google Search Console is verified through the `verification.google`
+   - a real "Last updated" date: `updated` on a ServiceDef, `updated` on a post, or `pageUpdated` in
+     `lib/site.ts` for bespoke pages. It drives the visible byline ("By the Odysense team · Last
+     updated …"), `dateModified` and the sitemap `lastmod`. Bump it only when the content materially
+     changes; never use the build date
+6. **Sitewide schema:** `ProfessionalService` (`@id` `https://odysense.com/#organization`) with Doha geo
+   coordinates, the ten services (including Gamification & Brand Activations), the six GCC countries as
+   `areaServed`, `knowsAbout` (incl. WooCommerce, Shopify, headless commerce, payment gateway
+   integration, Arabic RTL e-commerce), a sales `contactPoint` and `sameAs`, plus a `WebSite` node.
+   Articles and WebPage nodes point to the organisation by `@id` (no person/founder entities).
+   `sameAs` (found by web search 2026-10-10): Facebook and Instagram `odysense.qa`, QSTP directory,
+   Clutch, DesignRush, Crunchbase. Add LinkedIn and the Google Business Profile once the owner confirms
+   the URLs. Google Search Console is verified through the `verification.google`
    meta tag in `layout.tsx`.
 7. **Blog:** the article count was 36 on 2026-10-09; verify against `lib/blog.ts`. The target cadence
    is two new articles a month, each targeting a real Qatar/GCC query and linking to its service page.
@@ -345,9 +410,12 @@ scripts/
    - event gamification and live audience engagement
    - cost guides (website, e-commerce, mobile app, custom software, branding) and agency selection
    - local SEO (Google Business Profile) and bilingual Arabic/English websites
-8. **Titles:** keep the full `<title>` (with " | Odysense") at 60 characters or less. Blog posts with
+8. **AI search and indexing** (`docs/indexing.md`): all search, answer and training crawlers are allowed;
+   `/llms.txt` is generated from `lib/`; IndexNow runs after every production deploy. Never delete
+   `public/fef5c264e59917ec1437b4d43bce08f0.txt` (the IndexNow key file).
+9. **Titles:** keep the full `<title>` (with " | Odysense") at 60 characters or less. Blog posts with
    long headlines set a shorter `metaTitle`; the H1 keeps the full headline.
-9. **Service pages** carry 250–350 words of long-form `sections` (who it's for, how it runs, pricing)
+10. **Service pages** carry 250–350 words of long-form `sections` (who it's for, how it runs, pricing)
    plus FAQs and a "Related reading" block fed by posts whose `relatedService` points at the page.
 
 ---
@@ -376,7 +444,7 @@ scripts/
       2026-10-06, including `og.png` and the schema `foundingDate`.
 - [x] Publish Store Portal pricing and add-ons on `/products/store-portal/`. Done on 2026-10-06.
 - [ ] Weekly: check the Search Console Pages report for 404s and extend the redirects.
-- [ ] Build KSA service pages once the Qatar pages are indexed, e.g. `/web-design-company-saudi-arabia/`.
+- [x] First KSA pages: `/web-design-company-saudi-arabia/` and `/ecommerce-development-saudi-arabia/` (Phase 3).
 - [ ] Arabic version later: `next-intl`, `/ar/`, RTL with logical CSS properties, hreflang.
 - [ ] Optional: host the company profile PDF at `/company-profile.pdf` as a lead magnet. The owner
       hasn't decided.
@@ -405,6 +473,25 @@ scripts/
 - [ ] Next articles: website maintenance cost, Shopify in Qatar, WooCommerce payment gateways in Qatar,
       app vs web app, KSA market entry for Qatari stores (hedged, sourced).
 - [ ] Arabic `/ar/` versions of the top service pages once English pages are indexed.
+
+**SEO + AI-search initiative (started 2026-10-10; one approval-gated PR per phase)**
+- [x] Phase 1: AI-crawler and index readiness (robots, llms.txt, IndexNow, SSR audit, mega menus in
+      server HTML, confirmed gateways on the e-commerce page). Owner checklist in `docs/indexing.md`.
+- [x] Phase 2: entity signals (Organization `sameAs`, `knowsAbout`, WebSite node, organisation bylines,
+      visible "Last updated" + `dateModified` + sitemap lastmod on service, bespoke and blog pages). No
+      founder page: the owner doesn't want the founder named. Shipped with the homepage refresh and
+      blog images.
+- [ ] Owner: Clutch and DesignRush still show "founded 2014" / "12+ years" and an Al Markhiya Street
+      address. Update them to match the site (Innovation Centre, QSTP; no founding year).
+- [ ] Owner: send the LinkedIn company page URL and the Google Business Profile link for `sameAs`.
+- [x] Phase 3: GCC e-commerce hub, 9 pages (see section 5 "GCC pages"), in the Services mega menu
+      ("E-commerce across the GCC" row), mobile menu, footer ("GCC e-commerce" column), services hub,
+      sitemap and llms.txt. Owner to supply photos for these pages.
+- [-] Phase 4: benchmark report. Skipped (owner declined publishing client data).
+- [ ] Phase 5: answer-first intros (before/after table in the PR).
+- [ ] Phase 6: Arabic `/ar/` e-commerce hub + homepage (needs native-speaker review before merge).
+- [ ] Phase 7: off-site kit in `docs/offsite/`.
+- [ ] Phase 8: measurement (`docs/ai-visibility.md`, GA4 "AI Search" channel group).
 
 **Off-site** (owner tasks; Claude can help draft)
 - [ ] Complete the Google Business Profile and ask for reviews with `/tools/review-request`.
