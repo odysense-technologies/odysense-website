@@ -85,7 +85,9 @@ app/
   globals.css                the whole design system (tokens + every component style)
   page.tsx                   homepage
   icon.png                   favicon (Odysense ring icon)
-  sitemap.ts / robots.ts     generated from the lib/ data files
+  sitemap.ts / robots.ts     generated from the lib/ data files; robots names the search, answer and
+                             training bots (all allowed) and keeps /api/ out
+  llms.txt/route.ts          /llms.txt for AI assistants, generated from lib/ at build time
   api/contact/route.ts       lead endpoint: Resend email + optional Postgres storage
   services/page.tsx          services hub
   ecommerce-development-company-qatar/page.tsx   flagship e-commerce page (bespoke)
@@ -135,6 +137,9 @@ public/
 next.config.ts      trailingSlash + every legacy 301 redirect
 scripts/
   search_console.py Search Console API helper for Claude sessions (sites, perf, inspect, sitemaps)
+  indexnow.py       IndexNow ping (--all, --changed STATE, or URLs; --dry-run)
+.github/workflows/indexnow.yml   pings IndexNow with changed pages after each Vercel Production deploy
+docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-engine checklist
 ```
 
 ---
@@ -187,6 +192,27 @@ scripts/
 
 - **Never publish SEO pricing.** It depends on the project, so always point to requesting a callback.
 - **Never publish ad-spend figures; route budget questions to a callback.**
+
+### E-commerce capabilities (owner-confirmed 2026-10-10)
+- **Payment gateways** integrated on live stores, by country, are in `lib/site.ts` → `paymentGateways`
+  (use `gatewayList(country)` in copy). Never name a gateway that isn't there; we can integrate others
+  on request, so say that instead. QPay and PayPal are **not** on the confirmed list.
+  - Qatar: MyFatoorah, Tap Payments, PayTabs, Amazon Payment Services, SADAD, QNB
+  - Saudi Arabia: HyperPay, Moyasar, Tap Payments, PayTabs, Amazon Payment Services, Geidea
+  - UAE: Stripe, Checkout.com, Network International, Telr, Amazon Payment Services, PayTabs, Tap Payments
+  - Kuwait: MyFatoorah, Tap, PayTabs, Amazon Payment Services, UPayments
+  - Bahrain: MyFatoorah, Tap, PayTabs, Amazon Payment Services, EazyPay
+  - Oman: MyFatoorah, Tap, PayTabs, Amazon Payment Services, Thawani
+- **Shipping:** we integrate any courier that offers an API (don't list couriers as past integrations),
+  and we set up cash on delivery.
+- **Platforms:** WooCommerce, Shopify and custom builds. We build on Shopify but are **not** a Shopify
+  Partner. We migrate stores from any platform to any platform, by scraping the storefront or with our
+  own backend migration scripts.
+- **Presence:** no offices outside Qatar. We serve KSA, the UAE and the rest of the GCC remotely from
+  Doha, with many satisfied clients there. Never invent client counts or locations.
+- **People:** don't name or describe the founder anywhere. Bylines and schema use the Odysense
+  organisation.
+- **Benchmark report:** the owner declined publishing aggregated client-store data (Phase 4 skipped).
 
 ### Store Portal
 - Free for the first year with every Odysense e-commerce build, then QAR 170/month, or QAR 150/month billed yearly.
@@ -345,9 +371,12 @@ scripts/
    - event gamification and live audience engagement
    - cost guides (website, e-commerce, mobile app, custom software, branding) and agency selection
    - local SEO (Google Business Profile) and bilingual Arabic/English websites
-8. **Titles:** keep the full `<title>` (with " | Odysense") at 60 characters or less. Blog posts with
+8. **AI search and indexing** (`docs/indexing.md`): all search, answer and training crawlers are allowed;
+   `/llms.txt` is generated from `lib/`; IndexNow runs after every production deploy. Never delete
+   `public/fef5c264e59917ec1437b4d43bce08f0.txt` (the IndexNow key file).
+9. **Titles:** keep the full `<title>` (with " | Odysense") at 60 characters or less. Blog posts with
    long headlines set a shorter `metaTitle`; the H1 keeps the full headline.
-9. **Service pages** carry 250–350 words of long-form `sections` (who it's for, how it runs, pricing)
+10. **Service pages** carry 250–350 words of long-form `sections` (who it's for, how it runs, pricing)
    plus FAQs and a "Related reading" block fed by posts whose `relatedService` points at the page.
 
 ---
@@ -405,6 +434,19 @@ scripts/
 - [ ] Next articles: website maintenance cost, Shopify in Qatar, WooCommerce payment gateways in Qatar,
       app vs web app, KSA market entry for Qatari stores (hedged, sourced).
 - [ ] Arabic `/ar/` versions of the top service pages once English pages are indexed.
+
+**SEO + AI-search initiative (started 2026-10-10; one approval-gated PR per phase)**
+- [x] Phase 1: AI-crawler and index readiness (robots, llms.txt, IndexNow, SSR audit, mega menus in
+      server HTML, confirmed gateways on the e-commerce page). Owner checklist in `docs/indexing.md`.
+- [ ] Phase 2: entity signals (Organization `sameAs`, `knowsAbout`, organisation bylines, visible
+      "Last updated" + `dateModified`). No founder page: the owner doesn't want the founder named.
+- [ ] Phase 3: GCC e-commerce hub (`/ecommerce/`, KSA, UAE/GCC, WooCommerce, Shopify, platform
+      comparison, cost pages).
+- [-] Phase 4: benchmark report. Skipped (owner declined publishing client data).
+- [ ] Phase 5: answer-first intros (before/after table in the PR).
+- [ ] Phase 6: Arabic `/ar/` e-commerce hub + homepage (needs native-speaker review before merge).
+- [ ] Phase 7: off-site kit in `docs/offsite/`.
+- [ ] Phase 8: measurement (`docs/ai-visibility.md`, GA4 "AI Search" channel group).
 
 **Off-site** (owner tasks; Claude can help draft)
 - [ ] Complete the Google Business Profile and ask for reviews with `/tools/review-request`.
