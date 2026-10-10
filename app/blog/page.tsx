@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { seoMeta } from "@/lib/seo";
-import Link from "next/link";
+import { PostCard } from "@/components/post-card";
 import { Reveal, CtaBox, PageHero } from "@/components/ui";
 import { postsNewestFirst } from "@/lib/blog";
 
@@ -27,16 +27,11 @@ export default function BlogPage() {
         <div className="wrap">
           <Reveal className="grid-2">
             {postsNewestFirst().map((p) => (
-              <Link className="card post-card" href={`/blog/${p.slug}`} key={p.slug}>
-                <div>
-                  <span className="cat">{p.category}</span>
-                  <h3>{p.title}</h3>
-                  <p>{p.description}</p>
-                </div>
-                <span className="meta">
-                  {new Date(p.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })} · {p.minutes} min read
-                </span>
-              </Link>
+              <PostCard
+                post={p}
+                key={p.slug}
+                meta={`${new Date(p.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })} · ${p.minutes} min read`}
+              />
             ))}
           </Reveal>
         </div>
