@@ -147,7 +147,7 @@ next.config.ts      trailingSlash + every legacy 301 redirect
 scripts/
   search_console.py Search Console API helper for Claude sessions (sites, perf, inspect, sitemaps)
   indexnow.py       IndexNow ping (--all, --changed STATE, or URLs; --dry-run)
-.github/workflows/indexnow.yml   pings IndexNow with changed pages after each Vercel Production deploy
+.github/workflows/indexnow.yml   on push to main: waits for the Vercel Production deploy, then pings IndexNow with changed pages
 docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-engine checklist
 ```
 

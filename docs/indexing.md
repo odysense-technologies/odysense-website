@@ -41,12 +41,13 @@ Client-only by design (not content):
 so they recrawl it within minutes instead of days. Google does not use IndexNow; it relies on the
 sitemap and Search Console.
 
-**Automatic:** `.github/workflows/indexnow.yml` runs after every successful Vercel **Production**
-deployment. It waits 30 seconds for the new build to go live, fetches every URL in the sitemap,
-fingerprints what a reader sees (title, description, structured data and visible text), and submits
-only new, changed or removed pages. The fingerprints are kept in the GitHub Actions cache between
-runs. The first run, or a run after the cache expires (7 days without a deploy), submits everything.
-That's expected.
+**Automatic:** `.github/workflows/indexnow.yml` runs on every push to `main`. It waits for that commit's
+Vercel **Production** deployment to succeed (plus 30 seconds for the alias to switch), fetches every URL
+in the sitemap, fingerprints what a reader sees (title, description, structured data and visible text),
+and submits only new, changed or removed pages. The fingerprints are kept in the GitHub Actions cache
+between runs. The first run, or a run after the cache expires (7 days without a deploy), submits
+everything; that's expected. (It doesn't trigger on Vercel's `deployment_status` event because the
+Actions cache can't save on that event.)
 
 **Manual:** in GitHub → Actions → IndexNow → *Run workflow*, tick "Submit every URL in the sitemap" to
 resubmit the whole site. From any machine with Python 3:

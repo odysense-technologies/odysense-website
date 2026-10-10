@@ -1,11 +1,14 @@
-# After every successful Vercel production deploy, tell IndexNow (Bing, Yandex and others)
-# which pages changed. Page fingerprints are kept in the Actions cache between runs, so only
-# new, changed or removed pages are submitted. Run it by hand from the Actions tab with
-# "submit all" ticked to resubmit every URL in the sitemap.
+# After every push to main, wait for that commit's Vercel Production deployment, then tell IndexNow
+# (Bing, Yandex and others) which pages changed. Page fingerprints are kept in the Actions cache
+# between runs, so only new, changed or removed pages are submitted.
+# (Runs on push rather than deployment_status because the Actions cache can't save on
+# deployment_status events, which aren't tied to a branch.)
+# Run it by hand from the Actions tab with "submit all" ticked to resubmit every URL in the sitemap.
 name: IndexNow
 
 on:
-  deployment_status:
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       all:
@@ -19,14 +22,12 @@ concurrency:
 
 permissions:
   contents: read
+  deployments: read
 
 jobs:
   ping:
-    if: >-
-      github.event_name == 'workflow_dispatch' ||
-      (github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production')
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -39,11 +40,28 @@ jobs:
           key: indexnow-${{ github.run_id }}
           restore-keys: indexnow-
 
-      - name: Wait for the production alias to serve the new build
-        if: github.event_name == 'deployment_status'
-        run: sleep 30
+      - name: Wait for the Vercel Production deployment of this commit
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 90); do
+            id=$(gh api "repos/${{ github.repository }}/deployments?sha=${{ github.sha }}&environment=Production" --jq '.[0].id // empty')
+            if [ -n "$id" ]; then
+              state=$(gh api "repos/${{ github.repository }}/deployments/$id/statuses" --jq '.[0].state // empty')
+              echo "deployment $id: ${state:-pending}"
+              case "$state" in
+                success) sleep 30; exit 0 ;;   # give the production alias a moment to switch
+                inactive) echo "Superseded by a newer deployment; its own run will submit."; echo "SKIP=1" >> "$GITHUB_ENV"; exit 0 ;;
+                failure|error) echo "Production deployment did not succeed; nothing to submit."; exit 1 ;;
+              esac
+            fi
+            sleep 10
+          done
+          echo "Timed out waiting for the Production deployment."; exit 1
 
       - name: Submit to IndexNow
+        if: env.SKIP != '1'
         run: |
           if [ "${{ github.event_name == 'workflow_dispatch' && inputs.all }}" = "true" ]; then
             python3 scripts/indexnow.py --all
