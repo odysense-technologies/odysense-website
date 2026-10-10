@@ -103,6 +103,8 @@ app/
   digital-marketing-agency-qatar/seo-services-qatar/
   whatsapp-business-api-qatar/                   │
   branding-agency-qatar/                         ┘
+  ecommerce/ + 8 GCC routes                      thin route files rendering GuidePageView with data
+                                                 from lib/gcc-pages.ts (see section 5, GCC pages)
   products/page.tsx + products/[slug]/page.tsx   product hub + template
   work/page.tsx + work/[slug]/page.tsx           case-study hub + template
   blog/page.tsx + blog/[slug]/page.tsx           blog hub + article template (Article/Breadcrumb schema)
@@ -121,6 +123,8 @@ components/
   analytics.tsx     GA4 loader, track(), WhatsAppTracker
   loader.tsx        RouteLoader: gradient top progress bar on navigation
   service-page.tsx  ServicePageView template (includes FAQPage schema)
+  guide-page.tsx    GuidePageView for the GCC pages: short answer, question H2s, tables, gateway grid,
+                    proof, FAQ, sources, CTA; Service + WebPage + FAQPage schema
   review-tool.tsx   review request tool UI
   arcade/           playable demos for the gamification page (client-only, each lazy-loaded):
     arcade.tsx      tabbed "arcade" panel; keeps opened games mounted for session-only scores
@@ -133,6 +137,7 @@ lib/
   seo.ts            seoMeta(): title, description, canonical, Open Graph and Twitter for a page
   schema.ts         ORG_ID / WEBSITE_ID, webPageSchema() (dateModified), fmtDate()
   service-pages.ts  the 8 Qatar service pages (copy, long-form `sections`, FAQs, related links, images)
+  gcc-pages.ts      the 9 GCC hub pages (Phase 3); gccLinks in site.ts feeds the mega menu, mobile menu, footer
   case-studies.ts   Eleganza, Rafea Line, QSeat
   blog.ts           all blog articles (optional per post: metaTitle, updated, image (hero + OG),
                     sources, relatedPosts); postsNewestFirst() for listings
@@ -223,6 +228,21 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
 - **People:** don't name or describe the founder anywhere. Bylines and schema use the Odysense
   organisation.
 - **Benchmark report:** the owner declined publishing aggregated client-store data (Phase 4 skipped).
+
+### GCC pages (Phase 3, 2026-10-10)
+- `/ecommerce/` (hub), `/ecommerce-development-saudi-arabia/`, `/ecommerce-development-uae/`,
+  `/ecommerce-development-kuwait-bahrain-oman/`, `/woocommerce-development-gcc/`, `/shopify-development-gcc/`,
+  `/ecommerce-platform-comparison-gcc/`, `/ecommerce-website-cost-gcc/`, `/web-design-company-saudi-arabia/`.
+  The Qatar flagship stays at `/ecommerce-development-company-qatar/`.
+- Answer first: each page opens with "The short answer"; H2s are buyer questions; every page links to
+  Eleganza, Rafea Line, Store Portal and WASL, ends with a free-consultation CTA, and lists its sources.
+- Prices are quoted in QAR; SAR/AED/USD figures are approximate conversions at the USD pegs, labelled as such.
+- Laws and tax (ZATCA e-invoicing, Saudi E-Commerce Law and Business-platform registration, PDPL, UAE
+  Decree-Law 14/2023, GCC VAT rates) are hedged and sourced; the pages say we build the store and aren't
+  a law firm or tax adviser. Re-check these facts when updating the pages.
+- No photos yet: ask the owner for pictures before adding any.
+- Next candidates: website development and mobile apps for Saudi Arabia, web design UAE. Avoid
+  name-swapped duplicates; each page needs genuinely market-specific content.
 
 ### Store Portal
 - Free for the first year with every Odysense e-commerce build, then QAR 170/month, or QAR 150/month billed yearly.
@@ -424,7 +444,7 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
       2026-10-06, including `og.png` and the schema `foundingDate`.
 - [x] Publish Store Portal pricing and add-ons on `/products/store-portal/`. Done on 2026-10-06.
 - [ ] Weekly: check the Search Console Pages report for 404s and extend the redirects.
-- [ ] Build KSA service pages once the Qatar pages are indexed, e.g. `/web-design-company-saudi-arabia/`.
+- [x] First KSA pages: `/web-design-company-saudi-arabia/` and `/ecommerce-development-saudi-arabia/` (Phase 3).
 - [ ] Arabic version later: `next-intl`, `/ar/`, RTL with logical CSS properties, hreflang.
 - [ ] Optional: host the company profile PDF at `/company-profile.pdf` as a lead magnet. The owner
       hasn't decided.
@@ -464,8 +484,9 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
 - [ ] Owner: Clutch and DesignRush still show "founded 2014" / "12+ years" and an Al Markhiya Street
       address. Update them to match the site (Innovation Centre, QSTP; no founding year).
 - [ ] Owner: send the LinkedIn company page URL and the Google Business Profile link for `sameAs`.
-- [ ] Phase 3: GCC e-commerce hub (`/ecommerce/`, KSA, UAE/GCC, WooCommerce, Shopify, platform
-      comparison, cost pages).
+- [x] Phase 3: GCC e-commerce hub, 9 pages (see section 5 "GCC pages"), in the Services mega menu
+      ("E-commerce across the GCC" row), mobile menu, footer ("GCC e-commerce" column), services hub,
+      sitemap and llms.txt. Owner to supply photos for these pages.
 - [-] Phase 4: benchmark report. Skipped (owner declined publishing client data).
 - [ ] Phase 5: answer-first intros (before/after table in the PR).
 - [ ] Phase 6: Arabic `/ar/` e-commerce hub + homepage (needs native-speaker review before merge).
