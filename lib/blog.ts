@@ -89,7 +89,7 @@ export const posts: Post[] = [
     sections: [
       {
         ps: [
-          "Choosing a payment gateway is one of the highest-stakes decisions in a GCC e-commerce build — it decides which cards your customers can use, how fast you receive your money, and how many buyers abandon at the final step. Here's how we advise clients to think about it.",
+          "For most Qatar-based online stores, the payment gateway shortlist starts with Tap Payments and MyFatoorah; merchants with a serious Saudi focus should also weigh HyperPay, and PayTabs is another solid regional option. The deciding factors are rarely the headline fee: they're local payment methods, settlement time and currency, platform fit and onboarding requirements, so compare current quotes from at least two gateways. It's one of the highest-stakes decisions in a GCC build, because it decides which cards your customers can use, how fast you get paid and how many buyers abandon at the final step.",
         ],
       },
       {
@@ -138,7 +138,8 @@ export const posts: Post[] = [
     sections: [
       {
         ps: [
-          "In the Gulf, WhatsApp isn't a channel — it's the channel. Customers who ignore email and never answer unknown calls reply to WhatsApp in minutes. The Business API is how companies use that channel properly: multiple team members, automation, and integration with the systems that run the business.",
+          "The WhatsApp Business API lets a Qatar business use WhatsApp properly: several agents in one shared inbox, notifications sent automatically by your store or booking system, and approved broadcasts to customers who opted in. It costs Meta's per-message usage fees plus a platform to use it (such as our WASL), and setup, which means Meta Business verification, connecting a number and approving templates, typically takes days, not months.",
+          "It matters because in the Gulf, WhatsApp isn't a channel; it's the channel. Customers who ignore email and never answer unknown calls reply to WhatsApp in minutes.",
         ],
       },
       {
@@ -240,7 +241,7 @@ export const posts: Post[] = [
     sections: [
       {
         ps: [
-          "Every e-commerce project starts with the same fork in the road, and most advice about it is secretly a sales pitch — agencies recommend whatever they build. We build all three, so here is the comparison we give clients in the room.",
+          "Choose Shopify if you want managed simplicity and a lean team, WooCommerce if you want full ownership and low running costs, and a custom build only when e-commerce is the core of the business, traffic is significant or your requirements genuinely don't fit the platforms. Most advice on this is secretly a sales pitch, because agencies recommend whatever they build. We build all three, so here is the comparison we give clients in the room.",
         ],
       },
       {
@@ -577,7 +578,8 @@ export const posts: Post[] = [
     sections: [
       {
         ps: [
-          "The most common message an online store in the Gulf receives is not a complaint or a question about products. It's some version of \"where is my order?\" — sent because the confirmation email went unread, as emails here do. Every one of those messages is a small failure of trust, and each one costs staff time to answer. WhatsApp notifications remove the reason to ask.",
+          "The cheapest upgrade an online store in the Gulf can make is sending order notifications on WhatsApp: an instant order confirmation, an out-for-delivery message with the expected window, and a delivered or ready-for-pickup message, plus a confirmation request for cash-on-delivery orders. They're read in minutes, unlike email, so the \"where is my order?\" messages drop off almost immediately.",
+          "That question is the most common message an online store here receives, sent because the confirmation email went unread. Every one is a small failure of trust that costs staff time to answer. WhatsApp notifications remove the reason to ask.",
         ],
       },
       {
@@ -663,7 +665,8 @@ export const posts: Post[] = [
     sections: [
       {
         ps: [
-          "WooCommerce runs a huge share of the world's online stores for good reason: you own everything and it can do almost anything. Its weakness is equally famous — the admin was built for WordPress users, not shopkeepers. Finding today's orders, updating twenty prices, printing an invoice: all possible, none pleasant, and every new staff member needs training in WordPress before they can do their actual job.",
+          "You can run a WooCommerce store without the WordPress admin by using Store Portal: a mobile-first portal for products, orders and invoices, a built-in POS and sales analytics, plus AI Virtual Try-On for fashion stores. It sits on top of your own WooCommerce store as a plugin, so your data never leaves it, and it's free for the first year with every Odysense e-commerce build.",
+          "The problem it solves is famous: WooCommerce lets you own everything and do almost anything, but its admin was built for WordPress users, not shopkeepers. Finding today's orders, updating twenty prices, printing an invoice: all possible, none pleasant, and every new staff member needs WordPress training before they can do their actual job.",
         ],
       },
       {
@@ -708,7 +711,7 @@ export const posts: Post[] = [
     relatedService: { label: "WASL — WhatsApp AI platform", href: "/products/wasl" },
     image: { src: "/images/shot-wasl-chat.webp", alt: "An automated WhatsApp conversation previewed in WASL", w: 612, h: 576 },
     sections: [
-      { ps: ["Most website visitors in the Gulf don't fill in contact forms — they'd rather send a quick WhatsApp. Connecting your website to WhatsApp automation captures exactly those people, and then handles the repetitive parts of the conversation automatically. Here's how the pieces fit together."] },
+      { ps: ["To add WhatsApp automation to your website, put a click-to-chat button on your key pages, let automated replies handle the greeting and the questions everyone asks, send order, booking and status notifications automatically from the site, and route anything unusual to a person in a shared inbox, all through the official WhatsApp Business API. It works because most website visitors in the Gulf don't fill in contact forms; they'd rather send a quick WhatsApp. Here's how the pieces fit together."] },
       { h: "Start with the click-to-chat entry point", ps: ["A WhatsApp button on your site (floating, or on key pages) turns interest into a message in one tap — no form, no friction. The moment that chat opens, automation can take over the routine parts: greeting the visitor, answering the five questions everyone asks, and collecting basic details before a human ever joins."] },
       { h: "Automate notifications from the website", list: ["Order and enquiry confirmations sent the instant someone acts on your site.", "Delivery and status updates triggered by your store or system — no staff time.", "Abandoned-cart nudges for e-commerce, on the channel people actually read.", "Appointment or booking reminders that cut no-shows."] },
       { h: "Keep a human in the loop", ps: ["Automation clears the routine so your team spends time where it matters. Good setups answer instantly within the 24-hour window, route anything unusual to a person, and keep the full conversation history in one place. Done through the official WhatsApp Business API, it's compliant and scales to any volume."] },
@@ -727,7 +730,7 @@ export const posts: Post[] = [
     relatedService: { label: "WhatsApp Business API in Qatar", href: "/whatsapp-business-api-qatar" },
     image: { src: "/images/blog-licence-phone.webp", alt: "Hands holding a smartphone with a gradient screen", w: 1200, h: 800 },
     sections: [
-      { ps: ["WhatsApp Business has quietly become a full commerce and support platform. If your mental model is still \"a green chat app,\" here are the capabilities worth knowing about — and which ones actually matter for a business in Qatar or the GCC."] },
+      { ps: ["The WhatsApp Business features worth using in 2026 are interactive message templates with buttons and quick replies, the official Cloud API, rich media templates, catalogs and product messages, and cleaner automation hooks for triggering messages from your own systems. Together they turn WhatsApp from \"a green chat app\" into a full commerce and support platform; here is what each one does, and which ones actually matter for a business in Qatar or the GCC."] },
       { h: "The features that earn their place", list: ["Interactive message templates — buttons, quick replies and calls-to-action inside a message, so customers act without typing.", "The Cloud API — official, Meta-hosted access with enterprise reliability and no third-party proxies.", "Rich media templates — headers with images, documents and location for confirmations and updates that look professional.", "Catalogs and product messages — showing products directly inside the chat.", "Better automation hooks — cleaner ways to trigger messages from your own systems."] },
       { h: "What to ignore (for now)", ps: ["Not every feature suits every business. Chase the ones that remove real friction — instant confirmations, one-tap replies, automated support for common questions — and skip novelty features that add complexity without changing your customer's experience. The test is always: does this get a customer an answer faster, or a business a sale sooner?"] },
       { ps: ["WASL keeps pace with the official API so you don't have to track every release — templates, buttons, automation and the Cloud API, managed from one dashboard. Ask us what's worth turning on for your business."] },
@@ -959,8 +962,8 @@ export const posts: Post[] = [
     sections: [
       {
         ps: [
-          "For years, selling online in Qatar — especially through Instagram and WhatsApp — sat in a regulatory grey area. Many sellers assumed that with no physical shop, the usual licensing rules didn't quite apply. As of March 2026, that grey area is gone, and in a way that's actually good news for online businesses: you can now get a proper licence without renting an office you never needed.",
-          "Update, September 2026: MoCI has now launched the licence itself, with a QAR 500 issuance fee, 194 approved activities, applications through the Single Window platform, and a requirement to sell from a .qa or .com.qa domain registered through a CRA-approved provider. See our 2026 guide to the QAR 500 e-commerce licence for the details.",
+          "Qatar's Decision No. 25 of 2026 lets eligible online businesses get a proper e-commerce licence without renting a physical office. Since September 2026 the licence itself is live: a QAR 500 issuance fee, 194 approved activities, applications through the Single Window platform, and a requirement to sell from a .qa or .com.qa domain registered through a CRA-approved provider. See our 2026 guide to the QAR 500 e-commerce licence for the details.",
+          "For years, selling online in Qatar, especially through Instagram and WhatsApp, sat in a regulatory grey area: many sellers assumed that with no physical shop, the usual licensing rules didn't quite apply. That grey area is now gone, in a way that's good news for online businesses.",
           "This is a plain-English explainer of what changed. One note up front: Odysense builds e-commerce stores, we are not lawyers or a licensing agent — for the legal filing itself, use a qualified Qatari corporate-services or law firm. What follows is background to help you understand the landscape.",
         ],
       },
@@ -1025,7 +1028,7 @@ export const posts: Post[] = [
     sections: [
       {
         ps: [
-          "Starting an online business in Qatar just got dramatically simpler. Since March 2026, under MoCI's Ministerial Decision No. 25 of 2026, certain e-commerce activities can be licensed without a physical office — removing the biggest cost and complication that used to stand between an idea and a legitimate online store. Here's the practical path from where you are to a store that's live and selling.",
+          "To start an online business in Qatar without an office, confirm your activity is on MoCI's approved list, register in the Commercial Register and apply for the e-commerce licence through the Single Window platform (QAR 500 issuance fee), register a .qa or .com.qa domain through a CRA-approved provider, then build and launch the store. Since March 2026, MoCI's Ministerial Decision No. 25 of 2026 lets eligible e-commerce activities be licensed without a physical office, removing the biggest cost that used to stand between an idea and a legitimate online store. Here's the practical path, step by step.",
           "A quick honesty note: Odysense designs and builds the store; we are not a licensing agent or law firm. For the licence itself, work with a qualified Qatari corporate-services provider. This is the build-side roadmap.",
         ],
       },
@@ -1101,7 +1104,7 @@ export const posts: Post[] = [
     sections: [
       {
         ps: [
-          "In mid-September 2026, Qatar's Ministry of Commerce and Industry (MoCI) announced that its new e-commerce licence is open for applications. It puts into practice Ministerial Decision No. 25 of 2026, the rules issued in March that let eligible online businesses operate without a physical shop or office. The headline details are simple: a QAR 500 licence issuance fee, 194 approved business activities, and a requirement to sell from a Qatari .qa domain.",
+          "Qatar's e-commerce licence costs QAR 500 to issue, covers 194 approved business activities, and requires your store to sell from a Qatari .qa domain. The Ministry of Commerce and Industry (MoCI) opened applications in mid-September 2026, putting into practice Ministerial Decision No. 25 of 2026, the rules issued in March that let eligible online businesses operate without a physical shop or office.",
           "This guide explains what was announced, what it means for online sellers, and what to do to get a store ready. One note up front: Odysense designs and builds e-commerce stores. We are not a law firm or a licensing agent, and we don't issue licences. The details below are summarised from MoCI's announcement and published legal commentary; always confirm the current requirements on the Single Window platform or with a qualified adviser before you apply.",
         ],
       },

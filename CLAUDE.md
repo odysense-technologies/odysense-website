@@ -326,6 +326,9 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
   - The full URLs are in `lib/site.ts` → `productShowcase`.
 
 ### Writing voice
+- **Answer first** (Phase 5, 2026-10-18): the first sentence of every page hero and article answers the
+  question the page targets, using facts already on the page (price, what's included, the steps); the
+  context and story come second. Product pages set `intro` in `productDetails` for this.
 - Confident, specific and honest. No unverifiable claims; the old site's "8k users / 4.9★ 2k reviews"
   type claims were deliberately removed.
 - Every article ends by tying back to an Odysense service or product, with a CTA. Where useful, it
@@ -491,7 +494,8 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
       ("E-commerce across the GCC" row), mobile menu, footer ("GCC e-commerce" column), services hub,
       sitemap and llms.txt. Owner to supply photos for these pages.
 - [-] Phase 4: benchmark report. Skipped (owner declined publishing client data).
-- [ ] Phase 5: answer-first intros (before/after table in the PR).
+- [x] Phase 5: answer-first intros on the e-commerce, WhatsApp API, WASL and Store Portal pages and
+      10 posts (before/after table in the PR). GCC pages were already answer-first.
 - [ ] Phase 6: Arabic `/ar/` e-commerce hub + homepage (needs native-speaker review before merge).
 - [ ] Phase 7: off-site kit in `docs/offsite/`.
 - [ ] Phase 8: measurement (`docs/ai-visibility.md`, GA4 "AI Search" channel group).

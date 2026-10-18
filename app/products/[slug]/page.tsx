@@ -54,7 +54,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             <span className="serif">.</span>
           </>
         }
-        lede={`${d.tagline} ${p.description}`}
+        lede={d.intro ?? `${d.tagline} ${p.description}`}
       >
         <div className="hero-actions">
           <Link className="btn btn-primary" href="/contact">

@@ -448,7 +448,7 @@ export const servicePages: ServiceDef[] = [
     metaTitle: "WhatsApp Business API Integration in Qatar",
     metaDescription:
       "Official WhatsApp Business API setup in Qatar — verified sender, AI inbox, broadcasts and notifications via WASL, Odysense's WhatsApp platform.",
-    lede: "The Gulf runs on WhatsApp — your business should too. Official API setup, verified sender, AI-powered inbox and automated notifications, powered by our own WASL platform.",
+    lede: "We set up the official WhatsApp Business API for businesses in Qatar and the GCC and run it on WASL, our own platform: an AI-powered team inbox, approved message templates, auto-reply bots and automated notifications from your store or systems. The Gulf runs on WhatsApp; this is how your business uses it properly.",
     includes: [
       { h: "Official API setup", p: "Meta verification, number setup and template approval handled end to end — done right the first time." },
       { h: "AI inbox", p: "WASL's AI answers common questions instantly and hands off to your team when it matters." },
