@@ -67,7 +67,7 @@ export default function EcommercePage() {
             E-commerce development <span className="serif">in Qatar.</span>
           </>
         }
-        lede="Online stores that carry your brand's standard and convert its visitors — WooCommerce, Shopify and custom builds with the payment gateways GCC customers trust. Built in Doha, at Qatar Science & Technology Park."
+        lede="Odysense builds online stores for brands in Qatar and the GCC on WooCommerce, Shopify or a custom stack. A launch-ready store typically costs QAR 8,000–10,000, including a year of domain and hosting, with local payment gateways, Arabic and English, and Store Portal free for the first year. Built in Doha, at Qatar Science & Technology Park."
         meta={<Byline updated={updated} />}
       >
         <div className="hero-actions">

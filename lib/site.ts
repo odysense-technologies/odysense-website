@@ -250,6 +250,8 @@ export const productDetails: Record<
   string,
   {
     tagline: string;
+    /** Answer-first hero intro; defaults to "tagline + description" */
+    intro?: string;
     features: { h: string; p: string }[];
     cta: string;
     image?: { src: string; alt: string };
@@ -258,6 +260,8 @@ export const productDetails: Record<
 > = {
   wasl: {
     tagline: "Send WhatsApp messages at scale for your business.",
+    intro:
+      "WASL is our official WhatsApp Business (Cloud API) platform: a shared AI inbox, Meta-approved templates, auto-reply bots, broadcasts and automated notifications, paid for with pay-as-you-go credits. Businesses in Qatar and the GCC use it to sell, support and notify customers on the channel the Gulf actually answers.",
     features: [
       { h: "WhatsApp Cloud API", p: "Official Meta-verified connection — no third-party proxies. Messages go directly through Meta's infrastructure with enterprise SLAs." },
       { h: "Template management", p: "Create, submit and manage Meta-approved templates, with an admin review workflow that ensures compliance before going live." },
@@ -328,6 +332,8 @@ export const productDetails: Record<
   },
   "store-portal": {
     tagline: "Run your store. Skip the WordPress admin.",
+    intro:
+      "Store Portal is our operations app for WooCommerce stores: products, orders and invoices, a built-in POS, analytics and AI Virtual Try-On in one mobile-first portal, in Arabic and English. It's free for the first year with every Odysense e-commerce build, then QAR 170 per month, or QAR 150 per month billed yearly.",
     features: [
       { h: "Product management", p: "Bulk actions, CSV import with rollback, one-click duplication, barcode & QR generation, and a health score per product." },
       { h: "Orders & invoices", p: "Live order dashboard, branded PDF invoices, packing slips for A4 and thermal printers, and a peak-sales heatmap." },
