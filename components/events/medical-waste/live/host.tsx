@@ -131,6 +131,7 @@ export function LiveHost() {
           <h1>
             Set up a <span className="serif">live round.</span>
           </h1>
+          {db === true && <p className="mw-okbox">✓ Database connected: live rooms are ready.</p>}
           {db === false && (
             <p className="mw-warnbox">
               <b>Database not connected.</b> Live rooms need one so phones and screens can share scores. In Vercel, open the project → Storage →

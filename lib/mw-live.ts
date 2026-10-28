@@ -37,6 +37,8 @@ export interface Store {
   players(code: string): Promise<Player[]>;
   upsertScore(code: string, round: number, s: Omit<Score, "updatedAt">): Promise<void>;
   scores(code: string, round: number): Promise<Score[]>;
+  /** Round-trip check: sets up the tables if needed and counts the rooms */
+  health(): Promise<number>;
 }
 
 const newCode = () => String(1000 + Math.floor(Math.random() * 9000));
@@ -96,6 +98,9 @@ const memoryStore: Store = {
   },
   async scores(code, round) {
     return [...(mem.scores.get(`${code}:${round}`)?.values() ?? [])];
+  },
+  async health() {
+    return mem.rooms.size;
   },
 };
 
@@ -204,6 +209,10 @@ export function createPgStore(connect: () => Promise<Q>): Store {
         finished: Boolean(r.finished),
         updatedAt: ms(r.updated),
       }));
+    },
+    async health() {
+      const rows = await (await pg())(`SELECT count(*) AS n FROM mw_rooms`);
+      return Number(rows[0]?.n ?? 0);
     },
   };
 }

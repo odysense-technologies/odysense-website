@@ -1,0 +1,25 @@
+# Manual health check of the live site, run from GitHub (Claude's sandbox can't reach odysense.com).
+# Actions tab → "Live check" → Run workflow. Shows whether the live-game database answers and whether
+# the event pages load.
+name: Live check
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Live-game database
+        run: |
+          echo "GET /api/mw-live/?status=1"
+          curl -sS --max-time 30 "https://odysense.com/api/mw-live/?status=1"; echo
+      - name: Event pages
+        run: |
+          for p in / /events/moph-medical-waste-challenge/ /events/moph-medical-waste-challenge/live/ /events/moph-medical-waste-challenge/join/ /events/moph-medical-waste-challenge/screen/; do
+            echo "$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 "https://odysense.com$p")  $p"
+          done
