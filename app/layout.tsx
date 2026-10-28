@@ -4,6 +4,7 @@ import { Nav } from "@/components/nav";
 import { RouteLoader } from "@/components/loader";
 import { Analytics, WhatsAppTracker } from "@/components/analytics";
 import { ConsultPopup } from "@/components/lead-forms";
+import { SiteChrome } from "@/components/site-chrome";
 import { site } from "@/lib/site";
 import { ORG_ID, WEBSITE_ID } from "@/lib/schema";
 import "./globals.css";
@@ -125,10 +126,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Analytics />
         <WhatsAppTracker />
         <RouteLoader />
-        <Nav />
+        <SiteChrome>
+          <Nav />
+        </SiteChrome>
         {children}
-        <ConsultPopup />
-        <Footer />
+        <SiteChrome>
+          <ConsultPopup />
+          <Footer />
+        </SiteChrome>
       </body>
     </html>
   );

@@ -110,6 +110,7 @@ app/
   blog/page.tsx + blog/[slug]/page.tsx           blog hub + article template (Article/Breadcrumb schema)
   about/  contact/
   tools/review-request/page.tsx                  internal Google-review message generator (noindex)
+  events/moph-medical-waste-challenge/page.tsx   client event kiosk (noindex, not in sitemap): see section 5
 components/
   ui.tsx            Reveal, Footer (sitewide links + NAP), SectionHead, CtaBox,
                     PageHero (emits BreadcrumbList JSON-LD from its crumbs)
@@ -126,6 +127,11 @@ components/
   guide-page.tsx    GuidePageView for the GCC pages: short answer, question H2s, tables, gateway grid,
                     proof, FAQ, sources, CTA; Service + WebPage + FAQPage schema
   review-tool.tsx   review request tool UI
+  site-chrome.tsx   hides the nav, footer and consultation popup on /events/ (kiosk pages)
+  events/medical-waste/  MoPH Medical Waste Segregation Challenge: challenge.tsx (page, stage, leaderboard,
+                    admin), bin-rush.tsx, code-breaker.tsx, symbol-match.tsx, data.ts (poster content),
+                    store.ts (leaderboard/settings in localStorage, CSV export, hashed admin password),
+                    symbols.tsx (SVG hazard symbols), sound.ts (Web Audio cues)
   arcade/           playable demos for the gamification page (client-only, each lazy-loaded):
     arcade.tsx      tabbed "arcade" panel; keeps opened games mounted for session-only scores
     spin-wheel.tsx  prize wheel with optional name gate · quiz.tsx  live quiz with timer + leaderboard
@@ -246,6 +252,20 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
 - No photos yet: ask the owner for pictures before adding any.
 - Next candidates: website development and mobile apps for Saudi Arabia, web design UAE. Avoid
   name-swapped duplicates; each page needs genuinely market-specific content.
+
+### Client event kiosks (`/events/`)
+- `/events/moph-medical-waste-challenge/` (added 2026-10-28): three games (Bin Rush, Code Breaker, Symbol
+  Match), leaderboard, full-screen leaderboard, quick-reference guide and an admin panel, for the Ministry
+  of Public Health's medical waste management conference in Qatar on 12 November 2026.
+- **Content comes only from the two MoPH posters** the owner supplied (colour coding/labeling/signing, and
+  segregation/collection), recorded in `components/events/medical-waste/data.ts`. Don't add categories,
+  colours, labels or rules that aren't on them.
+- Event pages are `noindex`, not in the sitemap and not linked from the site; `SiteChrome` hides the
+  Odysense nav, footer and popup. The footer credits "Interactive experience by Odysense".
+- **Leaderboard storage exception:** scores and settings live in the kiosk device's `localStorage`
+  (no database yet); the admin exports CSV. Scores don't sync between devices.
+- Admin password is the owner-chosen one; only its SHA-256 hash is in the code. It's a light gate for a
+  staffed booth, not real security.
 
 ### Store Portal
 - Free for the first year with every Odysense e-commerce build, then QAR 170/month, or QAR 150/month billed yearly.
