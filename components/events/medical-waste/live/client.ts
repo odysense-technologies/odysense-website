@@ -35,7 +35,8 @@ export async function post<T = Record<string, unknown>>(body: Record<string, unk
 export async function dbStatus(): Promise<boolean | null> {
   try {
     const r = await fetch(`${API}?status=1`, { cache: "no-store" });
-    return Boolean((await r.json()).db);
+    const j = await r.json();
+    return Boolean(j.db && j.dbOk);
   } catch {
     return null;
   }

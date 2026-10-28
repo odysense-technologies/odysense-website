@@ -7,7 +7,7 @@ import { DB_URL, maxRoundMs, store, type Room } from "@/lib/mw-live";
 /**
  * Live rooms API for the MoPH Medical Waste Segregation Challenge.
  *   GET  ?room=1234[&content=1]   room state, players and the current round's scores (polled every ~2 s)
- *   GET  ?status=1                whether a database is connected
+ *   GET  ?status=1                whether a database is configured (db) and answering (dbOk)
  *   POST { action, ... }          create | start | end | next | kick (host, password) · join | score (players)
  */
 export const dynamic = "force-dynamic";
@@ -30,7 +30,17 @@ async function settle(room: Room, playerCount: number, finished: number): Promis
 
 export async function GET(req: Request) {
   const url = new URL(req.url);
-  if (url.searchParams.get("status")) return json({ ok: true, db: Boolean(DB_URL) });
+  if (url.searchParams.get("status")) {
+    // db: a connection string is set; dbOk: a real query succeeded (tables are created on first use).
+    if (!DB_URL) return json({ ok: true, db: false, dbOk: false });
+    try {
+      const rooms = await store.health();
+      return json({ ok: true, db: true, dbOk: true, rooms });
+    } catch (e) {
+      const msg = String(e instanceof Error ? e.message : e).replace(/postgres(ql)?:\/\/\S+/gi, "[connection string]").slice(0, 160);
+      return json({ ok: true, db: true, dbOk: false, error: msg });
+    }
+  }
   const code = roomCode(url.searchParams.get("room"));
   if (!code) return json({ ok: false, error: "Enter the 4-digit room code." }, 400);
   try {

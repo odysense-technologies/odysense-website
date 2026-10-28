@@ -1203,6 +1203,7 @@ a:active { transform: scale(0.995); }
 .mw-live-game b { font-size: 19px; }
 .mw-live-game.is-on { border-color: var(--purple); box-shadow: 0 0 0 4px rgba(108, 77, 246, .15); }
 .mw-live-max { max-width: 320px; }
+.mw-okbox { margin-top: 18px; padding: 12px 16px; border-radius: 14px; background: rgba(39, 174, 96, .12); color: #146c3a; font-size: 14.5px; font-weight: 600; }
 .mw-warnbox { margin-top: 18px; padding: 16px 18px; border-radius: 16px; background: rgba(255, 122, 69, .12); color: #7a3413; font-size: 14.5px; line-height: 1.6; }
 .mw-live-setup .mw-admin-btns { margin-top: 26px; }
 .mw-live-console { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 26px; padding: 40px 0 60px; align-items: start; }

@@ -159,6 +159,8 @@ scripts/
   search_console.py Search Console API helper for Claude sessions (sites, perf, inspect, sitemaps)
   indexnow.py       IndexNow ping (--all, --changed STATE, or URLs; --dry-run)
 .github/workflows/indexnow.yml   on push to main: waits for the Vercel Production deploy, then pings IndexNow with changed pages
+.github/workflows/live-check.yml manual (Actions → Live check): reports whether the live-game database answers
+                                 (/api/mw-live/?status=1 → dbOk) and the event pages' HTTP status, from GitHub's servers
 docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-engine checklist
 ```
 
