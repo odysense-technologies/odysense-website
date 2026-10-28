@@ -1,21 +1,38 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { bins, items, shuffle, type BinId } from "./data";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { bins, makeRng, shuffle, type BinId, type Content } from "./data";
 import type { Settings } from "./store";
 import type { Sound } from "./sound";
 
 type Feedback = { ok: boolean; text: string; rule?: string } | null;
 
-const START_ITEM_MS = 6000;
-const MIN_ITEM_MS = 2600;
 
 /**
  * Bin Rush: one waste item at a time, tap the right bin before the item timer runs out.
  * Streaks and fast answers score extra; a wrong bin or a timeout costs a life and shows the rule.
  */
-export function BinRush({ settings, sound, onFinish }: { settings: Settings; sound: Sound; onFinish: (score: number, detail: string) => void }) {
-  const [queue, setQueue] = useState(() => shuffle(items));
+export function BinRush({
+  settings,
+  content,
+  sound,
+  seed,
+  onFinish,
+  onProgress,
+}: {
+  settings: Settings;
+  content: Content;
+  sound: Sound;
+  /** Same seed = same item order (live rounds) */
+  seed?: number;
+  onFinish: (score: number, detail: string) => void;
+  onProgress?: (score: number, detail: string) => void;
+}) {
+  const START_ITEM_MS = Math.round(settings.binRushItemStart * 1000);
+  const MIN_ITEM_MS = Math.min(START_ITEM_MS, Math.round(settings.binRushItemMin * 1000));
+  const rng = useMemo(() => makeRng(seed ?? Math.floor(Math.random() * 2 ** 31)), [seed]);
+  const items = content.items;
+  const [queue, setQueue] = useState(() => shuffle(items, rng));
   const [index, setIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(settings.binRushSeconds * 1000);
   const [itemLeft, setItemLeft] = useState(START_ITEM_MS);
@@ -43,11 +60,15 @@ export function BinRush({ settings, sound, onFinish }: { settings: Settings; sou
     setFeedback(null);
     setPop(null);
     if (index + 1 >= queue.length) {
-      setQueue(shuffle(items));
+      setQueue(shuffle(items, rng));
       setIndex(0);
     } else setIndex(index + 1);
     setItemLeft(itemTotal);
-  }, [index, queue.length, itemTotal]);
+  }, [index, queue.length, itemTotal, items, rng]);
+
+  useEffect(() => {
+    onProgress?.(score, `${stats.right}/${stats.total} sorted correctly`);
+  }, [score, stats, onProgress]);
 
   // Clock: game time and the per-item countdown, frozen while feedback is showing.
   useEffect(() => {

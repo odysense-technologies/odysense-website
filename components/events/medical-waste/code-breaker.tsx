@@ -1,23 +1,26 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { shuffle, statements, symbolNames, wasteCodes, type SymbolId } from "./data";
+import { makeRng, shuffle, symbolNames, type Content, type SymbolId } from "./data";
 import { HazardSymbol } from "./symbols";
-import type { Settings } from "./store";
+import type { QuizType, Settings } from "./store";
 import type { Sound } from "./sound";
 
 type Option = { key: string; label: string; symbol?: SymbolId; swatch?: "yellow" | "red" };
 type Question = { kind: string; prompt: string; display?: string; options: Option[]; answer: string; why: string };
 
 /** Builds a varied quiz: masked labels, colour codes, required symbols and true/false rules. */
-function buildQuiz(count: number): Question[] {
+export function buildQuiz(count: number, content: Content, types: Record<QuizType, boolean>, rng: () => number): Question[] {
+  const wasteCodes = content.codes;
+  const statements = content.statements;
+  const shuffleR = <T,>(a: T[]) => shuffle(a, rng);
   const label: Question[] = wasteCodes.map((c) => {
-    const others = shuffle(wasteCodes.filter((o) => o.masked !== c.masked)).slice(0, 3);
+    const others = shuffleR(wasteCodes.filter((o) => o.masked !== c.masked)).slice(0, 3);
     return {
       kind: "Label",
       prompt: "Whose container carries this label?",
       display: c.masked,
-      options: shuffle([c, ...others]).map((o) => ({ key: o.id, label: o.name })),
+      options: shuffleR([c, ...others]).map((o) => ({ key: o.id, label: o.name })),
       answer: c.id,
       why: `The full label reads: "${c.label}".`,
     };
@@ -33,11 +36,11 @@ function buildQuiz(count: number): Question[] {
     why: `${c.name} is colour-coded ${c.color}.`,
   }));
   const symbol: Question[] = wasteCodes.map((c) => {
-    const others = shuffle((Object.keys(symbolNames) as SymbolId[]).filter((s) => s !== c.symbol)).slice(0, 3);
+    const others = shuffleR((Object.keys(symbolNames) as SymbolId[]).filter((s) => s !== c.symbol)).slice(0, 3);
     return {
       kind: "Symbol",
       prompt: `Which symbol must the ${c.name.toLowerCase()} container show?`,
-      options: shuffle([c.symbol, ...others]).map((s) => ({ key: s, label: symbolNames[s], symbol: s })),
+      options: shuffleR([c.symbol, ...others]).map((s) => ({ key: s, label: symbolNames[s], symbol: s })),
       answer: c.symbol,
       why: `${c.name} needs the ${symbolNames[c.symbol].toLowerCase()} symbol.`,
     };
@@ -52,17 +55,44 @@ function buildQuiz(count: number): Question[] {
     answer: String(s.answer),
     why: s.why,
   }));
-  const take = (pool: Question[], n: number) => shuffle(pool).slice(0, n);
-  const nLabel = Math.round(count * 0.3);
-  const nColour = Math.round(count * 0.2);
-  const nSymbol = Math.round(count * 0.2);
-  const nTf = Math.max(0, count - nLabel - nColour - nSymbol);
-  return shuffle([...take(label, nLabel), ...take(colour, nColour), ...take(symbol, nSymbol), ...take(tf, nTf)]);
+  // Share the questions out across the enabled types (label 30%, colour 20%, symbol 20%, true/false 30%),
+  // then top up from whatever is left if a pool runs short.
+  const pools: [QuizType, Question[], number][] = [
+    ["label", label, 0.3],
+    ["colour", colour, 0.2],
+    ["symbol", symbol, 0.2],
+    ["tf", tf, 0.3],
+  ];
+  const on = pools.filter(([t, pool]) => types[t] && pool.length);
+  const weight = on.reduce((n, [, , w]) => n + w, 0) || 1;
+  const shuffled = on.map(([, pool, w]) => ({ pool: shuffleR(pool), want: Math.round((count * w) / weight) }));
+  const picked: Question[] = [];
+  shuffled.forEach((p) => picked.push(...p.pool.splice(0, p.want)));
+  const rest = shuffleR(shuffled.flatMap((p) => p.pool));
+  while (picked.length < count && rest.length) picked.push(rest.shift()!);
+  return shuffleR(picked.slice(0, count));
 }
 
 /** Code Breaker: a timed quiz on colour codes, labels and symbols. Faster right answers score more. */
-export function CodeBreaker({ settings, sound, onFinish }: { settings: Settings; sound: Sound; onFinish: (score: number, detail: string) => void }) {
-  const quiz = useMemo(() => buildQuiz(settings.quizQuestions), [settings.quizQuestions]);
+export function CodeBreaker({
+  settings,
+  content,
+  sound,
+  seed,
+  onFinish,
+  onProgress,
+}: {
+  settings: Settings;
+  content: Content;
+  sound: Sound;
+  seed?: number;
+  onFinish: (score: number, detail: string) => void;
+  onProgress?: (score: number, detail: string) => void;
+}) {
+  const quiz = useMemo(
+    () => buildQuiz(settings.quizQuestions, content, settings.quizTypes, makeRng(seed ?? Math.floor(Math.random() * 2 ** 31))),
+    [settings.quizQuestions, settings.quizTypes, content, seed],
+  );
   const limit = settings.quizSeconds * 1000;
   const [q, setQ] = useState(0);
   const [left, setLeft] = useState(limit);
@@ -72,6 +102,10 @@ export function CodeBreaker({ settings, sound, onFinish }: { settings: Settings;
   const [gain, setGain] = useState(0);
   const done = useRef(false);
   const cur = quiz[q];
+
+  useEffect(() => {
+    onProgress?.(score, `${right}/${quiz.length} correct`);
+  }, [score, right, quiz.length, onProgress]);
   const revealed = picked !== null;
 
   useEffect(() => {
@@ -96,7 +130,7 @@ export function CodeBreaker({ settings, sound, onFinish }: { settings: Settings;
   }
 
   function answer(key: string) {
-    if (revealed) return;
+    if (revealed || !cur) return;
     setPicked(key);
     if (key === cur.answer) {
       const g = 100 + Math.ceil(left / 1000) * 10;
@@ -115,6 +149,7 @@ export function CodeBreaker({ settings, sound, onFinish }: { settings: Settings;
     if (left <= 0 && !revealed) answer("__timeout__");
   });
 
+  if (!cur) return <div className="mw-game"><p className="mw-empty">No questions available. Check the question types in the admin settings.</p></div>;
   const secs = Math.ceil(left / 1000);
   return (
     <div className="mw-game mw-quiz">

@@ -64,7 +64,7 @@ export const items: { name: string; icon: string; bin: BinId }[] = [
   { name: "Gloves soiled by a patient with a highly infectious disease", icon: "🧤", bin: "highly" },
   { name: "Used syringe with needle", icon: "💉", bin: "sharps" },
   { name: "Scalpel blade", icon: "🔪", bin: "sharps" },
-  { name: "Used lancet", icon: "📍", bin: "sharps" },
+  { name: "Used lancet", icon: "🪡", bin: "sharps" },
   { name: "Broken glass ampoule", icon: "🧪", bin: "sharps" },
   { name: "Expired tablets", icon: "💊", bin: "pharmaceutical" },
   { name: "Unused medicine returned by a patient", icon: "💊", bin: "pharmaceutical" },
@@ -107,11 +107,44 @@ export const pairs: { id: string; clue: Clue; category: string }[] = [
   { id: "pharma", clue: { kind: "text", text: "Returned / non-returned medication", icon: "💊" }, category: "Pharmaceutical" },
 ];
 
-export const shuffle = <T,>(a: T[]): T[] => {
+/** Deterministic random numbers, so every phone in a live round gets the same items and questions. */
+export function makeRng(seed: number) {
+  let a = seed >>> 0;
+  return () => {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+export const shuffle = <T,>(a: T[], rng: () => number = Math.random): T[] => {
   const b = [...a];
   for (let i = b.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const j = Math.floor(rng() * (i + 1));
     [b[i], b[j]] = [b[j], b[i]];
   }
   return b;
 };
+
+export type Item = { name: string; icon: string; bin: BinId };
+export type Statement = { text: string; answer: boolean; why: string };
+export type Pair = { id: string; clue: Clue; category: string };
+
+/**
+ * Everything the admin can edit. Defaults are the poster content above; edits are saved on the device
+ * (and copied into a live room when the host creates one). `symbols` holds uploaded replacement images
+ * (small PNG data URLs) for the drawn hazard symbols.
+ */
+export type Content = {
+  codes: WasteCode[];
+  items: Item[];
+  statements: Statement[];
+  pairs: Pair[];
+  symbols: Partial<Record<SymbolId, string>>;
+};
+
+export function defaultContent(): Content {
+  return structuredClone({ codes: wasteCodes, items, statements, pairs, symbols: {} });
+}
