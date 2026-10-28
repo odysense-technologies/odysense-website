@@ -28,7 +28,7 @@ WordPress/WPBakery site on cPanel has been replaced.
 
 | Area | Detail |
 |---|---|
-| Framework | Next.js 16 (App Router), React 19, TypeScript |
+| Framework | Next.js 16 (App Router; 16.4.3 since 2026-10-28), React 19, TypeScript |
 | Styling | Plain CSS design system in `app/globals.css` (no Tailwind) |
 | Content | TypeScript data files in `lib/` (no CMS yet; see backlog) |
 | Hosting | Vercel, auto-deploying on every push to `main` |
@@ -111,6 +111,8 @@ app/
   about/  contact/
   tools/review-request/page.tsx                  internal Google-review message generator (noindex)
   events/moph-medical-waste-challenge/page.tsx   client event kiosk (noindex, not in sitemap): see section 5
+    live/ join/ screen/                          live multiplayer: host console, phone player (?room=), big screen
+  api/mw-live/route.ts                           live rooms API (create/join/score/start/end/next/kick)
 components/
   ui.tsx            Reveal, Footer (sitewide links + NAP), SectionHead, CtaBox,
                     PageHero (emits BreadcrumbList JSON-LD from its crumbs)
@@ -131,7 +133,9 @@ components/
   events/medical-waste/  MoPH Medical Waste Segregation Challenge: challenge.tsx (page, stage, leaderboard,
                     admin), bin-rush.tsx, code-breaker.tsx, symbol-match.tsx, data.ts (poster content),
                     store.ts (leaderboard/settings in localStorage, CSV export, hashed admin password),
-                    symbols.tsx (SVG hazard symbols), sound.ts (Web Audio cues)
+                    symbols.tsx (SVG hazard symbols + uploaded replacements), sound.ts (Web Audio cues),
+                    admin-editor.tsx (settings + content editors), auth.ts (admin password hash),
+                    live/ (host.tsx, player.tsx, screen.tsx, client.ts, qr.tsx)
   arcade/           playable demos for the gamification page (client-only, each lazy-loaded):
     arcade.tsx      tabbed "arcade" panel; keeps opened games mounted for session-only scores
     spin-wheel.tsx  prize wheel with optional name gate · quiz.tsx  live quiz with timer + leaderboard
@@ -145,6 +149,7 @@ lib/
   service-pages.ts  the 8 Qatar service pages (copy, long-form `sections`, FAQs, related links, images)
   gcc-pages.ts      the 9 GCC hub pages (Phase 3); gccLinks in site.ts feeds the mega menu, mobile menu, footer
   case-studies.ts   Eleganza, Rafea Line, QSeat
+  mw-live.ts        live-room store: Neon Postgres (DATABASE_URL or POSTGRES_URL), in-memory fallback locally
   blog.ts           all blog articles (optional per post: metaTitle, updated, image (hero + OG),
                     sources, relatedPosts); postsNewestFirst() for listings
 public/
@@ -264,8 +269,19 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
   Odysense nav, footer and popup. The footer credits "Interactive experience by Odysense".
 - **Leaderboard storage exception:** scores and settings live in the kiosk device's `localStorage`
   (no database yet); the admin exports CSV. Scores don't sync between devices.
-- Admin password is the owner-chosen one; only its SHA-256 hash is in the code. It's a light gate for a
-  staffed booth, not real security.
+- Admin password is the owner-chosen one; only its SHA-256 hash is in the code (`auth.ts`). It's a light
+  gate for a staffed booth, not real security. The live API checks it server-side for host actions.
+- **Admin panel** (2026-10-28): Scores (export/reset/delete), Game settings (Bin Rush time, lives, item
+  speed; quiz length, timer and question types; Symbol Match pairs and time limit; sound), and Content &
+  symbols (edit Bin Rush items, true/false questions, categories/labels/colours/symbols, match pairs; upload
+  replacement symbol images; export/import/reset content). Edits are saved on the device; the defaults stay
+  the poster content in `data.ts`.
+- **Live multiplayer** (2026-10-28): `/events/moph-medical-waste-challenge/live/` (host, password) creates a
+  room (game, number of attendees, settings, plus the host device's content) and shows a QR code to
+  `/join/?room=1234`; phones play the same seeded round; `/screen/?room=1234` is the big-screen leaderboard.
+  Phones and screens poll the API every ~2 s. Rounds end when everyone finishes, the host ends them, or the
+  time is well past. **Needs a database**: connect Neon in Vercel (Storage → Neon → Production, then
+  redeploy). Without one, the API refuses to create rooms in production.
 
 ### Store Portal
 - Free for the first year with every Odysense e-commerce build, then QAR 170/month, or QAR 150/month billed yearly.
@@ -459,7 +475,7 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
 **Infrastructure**
 - [ ] Verify `odysense.com` in Resend. The DNS records go in cPanel Zone Editor and are additive only.
       Then set `CONTACT_FROM`.
-- [ ] Connect Vercel Postgres (Neon) for lead storage.
+- [ ] Connect Vercel Postgres (Neon) for lead storage **and the MoPH live multiplayer rooms** (`DATABASE_URL`/`POSTGRES_URL`).
 - [ ] Self-host fonts with `next/font/local` for better LCP.
 - [ ] Rotate the Resend API key.
 

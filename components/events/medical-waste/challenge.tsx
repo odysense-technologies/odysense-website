@@ -1,8 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from "react";
-import { bins, wasteCodes } from "./data";
-import { HazardSymbol } from "./symbols";
+import { bins, defaultContent, type Content } from "./data";
+import { HazardSymbol, SymbolProvider } from "./symbols";
+import { ContentEditor, SettingsEditor } from "./admin-editor";
 import { makeSound } from "./sound";
 import { BinRush } from "./bin-rush";
 import { CodeBreaker } from "./code-breaker";
@@ -13,8 +14,10 @@ import {
   addEntry,
   checkPassword,
   download,
+  loadContent,
   loadEntries,
   loadSettings,
+  saveContent,
   ranked,
   saveEntries,
   saveSettings,
@@ -53,9 +56,9 @@ const GAMES: { id: GameId; icon: string; tagline: string; length: (s: Settings) 
     id: "symbol-match",
     icon: "🧩",
     tagline: "Pair every hazard symbol and label with its waste category.",
-    length: () => "8 pairs · beat the clock",
+    length: (s) => `${s.matchPairs} pairs · ${s.matchSeconds ? `${s.matchSeconds}s limit` : "beat the clock"}`,
     how: [
-      "Sixteen cards are face down. Tap two to flip them.",
+      "The cards start face down. Tap two to flip them.",
       "Match each clue (a hazard symbol or a label) with its waste category card.",
       "Matched pairs stay open; mismatches flip back.",
       "Finish fast with few mismatches for the highest score.",
@@ -89,6 +92,7 @@ const MEDALS = ["🥇", "🥈", "🥉"];
 export function MedicalWasteChallenge() {
   const [entries, setEntries] = useState<Entry[]>([]);
   const [settings, setSettings] = useState<Settings>(DEFAULT_SETTINGS);
+  const [content, setContent] = useState<Content>(defaultContent);
   const [active, setActive] = useState<GameId | null>(null);
   const [phase, setPhase] = useState<Phase>("intro");
   const [player, setPlayer] = useState({ name: "", org: "" });
@@ -102,6 +106,7 @@ export function MedicalWasteChallenge() {
   useEffect(() => {
     setEntries(loadEntries());
     setSettings(loadSettings());
+    setContent(loadContent());
     // Keep a second tab (e.g. a leaderboard on a projector) in sync.
     const onStorage = () => setEntries(loadEntries());
     window.addEventListener("storage", onStorage);
@@ -167,6 +172,7 @@ export function MedicalWasteChallenge() {
   const top = (g: GameId, n = 10) => ranked(entries, g).slice(0, n);
 
   return (
+    <SymbolProvider symbols={content.symbols}>
     <main className="mw">
       {/* ---------- Hero ---------- */}
       <header className="mw-hero">
@@ -187,6 +193,9 @@ export function MedicalWasteChallenge() {
             <button type="button" className="btn btn-secondary" onClick={() => setBoardFull(true)}>
               🏆 Leaderboard
             </button>
+            <a className="btn btn-secondary" href="/events/moph-medical-waste-challenge/live/">
+              📱 Live multiplayer
+            </a>
           </div>
         </div>
       </header>
@@ -235,7 +244,7 @@ export function MedicalWasteChallenge() {
             <p>From the Ministry of Public Health&apos;s healthcare waste container colour coding, labeling and signing guide.</p>
           </div>
           <div className="mw-ref">
-            {wasteCodes.map((c) => (
+            {content.codes.map((c) => (
               <div className="mw-ref-row" key={c.id}>
                 <b>{c.name}</b>
                 <span className={`mw-swatch mw-swatch--${c.color}`}>{c.color === "red" ? "Red" : "Yellow"}</span>
@@ -324,9 +333,9 @@ export function MedicalWasteChallenge() {
 
           {phase === "play" && (
             <div className="mw-play-area" key={round}>
-              {active === "bin-rush" && <BinRush settings={settings} sound={sound} onFinish={finish} />}
-              {active === "code-breaker" && <CodeBreaker settings={settings} sound={sound} onFinish={finish} />}
-              {active === "symbol-match" && <SymbolMatch sound={sound} onFinish={finish} />}
+              {active === "bin-rush" && <BinRush settings={settings} content={content} sound={sound} onFinish={finish} />}
+              {active === "code-breaker" && <CodeBreaker settings={settings} content={content} sound={sound} onFinish={finish} />}
+              {active === "symbol-match" && <SymbolMatch settings={settings} content={content} sound={sound} onFinish={finish} />}
             </div>
           )}
 
@@ -396,10 +405,16 @@ export function MedicalWasteChallenge() {
             setSettings(s);
             saveSettings(s);
           }}
+          content={content}
+          setContent={(c) => {
+            setContent(c);
+            return saveContent(c);
+          }}
           onClose={() => setAdminOpen(false)}
         />
       )}
     </main>
+    </SymbolProvider>
   );
 }
 
@@ -460,6 +475,8 @@ function Admin({
   setEntries,
   settings,
   setSettings,
+  content,
+  setContent,
   onClose,
 }: {
   unlocked: boolean;
@@ -468,8 +485,12 @@ function Admin({
   setEntries: (e: Entry[]) => void;
   settings: Settings;
   setSettings: (s: Settings) => void;
+  content: Content;
+  setContent: (c: Content) => boolean;
   onClose: () => void;
 }) {
+  const [panel, setPanel] = useState<"scores" | "settings" | "content">("scores");
+  const [saveErr, setSaveErr] = useState(false);
   const [pw, setPw] = useState("");
   const [err, setErr] = useState("");
   const [tab, setTab] = useState<GameId>("bin-rush");
@@ -503,7 +524,6 @@ function Admin({
   }
 
   const stamp = new Date().toISOString().slice(0, 16).replace(/[:T]/g, "-");
-  const num = (k: keyof Settings, v: number) => setSettings({ ...settings, [k]: v });
 
   return (
     <div className="mw-modal" role="dialog" aria-modal="true" aria-label="Admin">
@@ -527,6 +547,33 @@ function Admin({
           </form>
         ) : (
           <div className="mw-admin">
+            <div className="mw-tabs" role="tablist">
+              {(
+                [
+                  ["scores", "Scores"],
+                  ["settings", "Game settings"],
+                  ["content", "Content & symbols"],
+                ] as const
+              ).map(([k, label]) => (
+                <button type="button" role="tab" key={k} aria-selected={panel === k} className={panel === k ? "is-on" : ""} onClick={() => setPanel(k)}>
+                  {label}
+                </button>
+              ))}
+            </div>
+            {panel === "settings" && (
+              <>
+                <SettingsEditor settings={settings} onChange={setSettings} />
+                <p className="mw-hint">Saved automatically on this device. Changes apply to new games; live rooms copy these settings when created.</p>
+              </>
+            )}
+            {panel === "content" && (
+              <>
+                {saveErr && <p className="mw-err">Couldn&apos;t save: this device&apos;s storage is full. Use smaller symbol images.</p>}
+                <ContentEditor content={content} onChange={(c) => setSaveErr(!setContent(c))} />
+              </>
+            )}
+            {panel === "scores" && (
+            <>
             <div className="mw-admin-row">
               <span>
                 <b>{entries.length}</b> scores saved on this device
@@ -559,47 +606,8 @@ function Admin({
             </div>
             <BoardList list={ranked(entries, tab)} onDelete={(id) => twice(`del-${id}`, () => update(entries.filter((e) => e.id !== id)))} />
             {confirm?.startsWith("del-") && <p className="mw-hint">Tap ✕ again to delete that score.</p>}
-
-            <h4>Game settings</h4>
-            <div className="mw-settings">
-              <label>
-                Bin Rush time
-                <select value={settings.binRushSeconds} onChange={(e) => num("binRushSeconds", +e.target.value)}>
-                  {[45, 60, 90, 120].map((v) => (
-                    <option key={v} value={v}>{v} seconds</option>
-                  ))}
-                </select>
-              </label>
-              <label>
-                Bin Rush lives
-                <select value={settings.binRushLives} onChange={(e) => num("binRushLives", +e.target.value)}>
-                  {[3, 5].map((v) => (
-                    <option key={v} value={v}>{v} lives</option>
-                  ))}
-                </select>
-              </label>
-              <label>
-                Code Breaker questions
-                <select value={settings.quizQuestions} onChange={(e) => num("quizQuestions", +e.target.value)}>
-                  {[5, 10, 15].map((v) => (
-                    <option key={v} value={v}>{v} questions</option>
-                  ))}
-                </select>
-              </label>
-              <label>
-                Seconds per question
-                <select value={settings.quizSeconds} onChange={(e) => num("quizSeconds", +e.target.value)}>
-                  {[10, 15, 20].map((v) => (
-                    <option key={v} value={v}>{v} seconds</option>
-                  ))}
-                </select>
-              </label>
-              <label className="mw-check">
-                <input type="checkbox" checked={settings.sound} onChange={(e) => setSettings({ ...settings, sound: e.target.checked })} />
-                Sound effects
-              </label>
-            </div>
-            <p className="mw-hint">Changing settings affects new games only. Scores from different settings stay on the same leaderboard.</p>
+            </>
+            )}
 
             <div className="mw-admin-row">
               <button type="button" className="btn btn-secondary" onClick={() => setUnlocked(false)}>

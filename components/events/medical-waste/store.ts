@@ -6,6 +6,9 @@
  * the results as CSV. Every read and write is wrapped, so the page still works if storage is blocked.
  */
 
+import { defaultContent, type Content } from "./data";
+import { ADMIN_HASH } from "./auth";
+
 export type GameId = "bin-rush" | "code-breaker" | "symbol-match";
 
 export type Entry = {
@@ -18,22 +21,47 @@ export type Entry = {
   at: string; // ISO timestamp
 };
 
+export type QuizType = "label" | "colour" | "symbol" | "tf";
+
 export type Settings = {
   binRushSeconds: number;
   binRushLives: number;
+  /** Seconds a player gets for the first item, and the floor it speeds up to */
+  binRushItemStart: number;
+  binRushItemMin: number;
   quizQuestions: number;
   quizSeconds: number;
+  quizTypes: Record<QuizType, boolean>;
+  matchPairs: number;
+  /** Symbol Match time limit in seconds; 0 = no limit */
+  matchSeconds: number;
   sound: boolean;
 };
 
-export const DEFAULT_SETTINGS: Settings = { binRushSeconds: 60, binRushLives: 3, quizQuestions: 10, quizSeconds: 15, sound: true };
+export const DEFAULT_SETTINGS: Settings = {
+  binRushSeconds: 60,
+  binRushLives: 3,
+  binRushItemStart: 6,
+  binRushItemMin: 2.6,
+  quizQuestions: 10,
+  quizSeconds: 15,
+  quizTypes: { label: true, colour: true, symbol: true, tf: true },
+  matchPairs: 8,
+  matchSeconds: 0,
+  sound: true,
+};
+
+/** Fills in any setting missing from older saved data. */
+export function normalizeSettings(s: Partial<Settings> | null | undefined): Settings {
+  const merged = { ...DEFAULT_SETTINGS, ...(s ?? {}) };
+  merged.quizTypes = { ...DEFAULT_SETTINGS.quizTypes, ...(s?.quizTypes ?? {}) };
+  if (!Object.values(merged.quizTypes).some(Boolean)) merged.quizTypes = DEFAULT_SETTINGS.quizTypes;
+  return merged;
+}
 
 const KEY = "moph-mw-leaderboard-v1";
 const SETTINGS_KEY = "moph-mw-settings-v1";
 
-// SHA-256 of the admin password; the password itself never ships in the page.
-// This is a light gate for a staffed booth, not real security: anyone with dev tools can edit storage.
-const ADMIN_HASH = "5b09bd3cdf42f1a500413821a2536cf89f5f1924f4c0a1661b35a3ad5480f839";
 
 export function loadEntries(): Entry[] {
   try {
@@ -68,9 +96,56 @@ export function ranked(list: Entry[], game: GameId): Entry[] {
 export function loadSettings(): Settings {
   try {
     const raw = window.localStorage.getItem(SETTINGS_KEY);
-    return raw ? { ...DEFAULT_SETTINGS, ...(JSON.parse(raw) as Partial<Settings>) } : DEFAULT_SETTINGS;
+    return normalizeSettings(raw ? (JSON.parse(raw) as Partial<Settings>) : null);
   } catch {
     return DEFAULT_SETTINGS;
+  }
+}
+
+const CONTENT_KEY = "moph-mw-content-v1";
+
+/** Admin-edited content, falling back to the MoPH poster defaults for anything missing or invalid. */
+export function normalizeContent(c: Partial<Content> | null | undefined): Content {
+  const d = defaultContent();
+  if (!c) return d;
+  const okItems = Array.isArray(c.items) && c.items.filter((i) => i && i.name && i.bin).length >= 3;
+  const okCodes = Array.isArray(c.codes) && c.codes.length >= 4;
+  const okStatements = Array.isArray(c.statements) && c.statements.length >= 1;
+  const okPairs = Array.isArray(c.pairs) && c.pairs.length >= 4;
+  const symbols: Content["symbols"] = {};
+  for (const [k, v] of Object.entries(c.symbols ?? {})) if (typeof v === "string" && v.startsWith("data:image/")) symbols[k as keyof Content["symbols"]] = v;
+  return {
+    codes: okCodes ? c.codes! : d.codes,
+    items: okItems ? c.items!.filter((i) => i && i.name && i.bin) : d.items,
+    statements: okStatements ? c.statements! : d.statements,
+    pairs: okPairs ? c.pairs! : d.pairs,
+    symbols,
+  };
+}
+
+export function loadContent(): Content {
+  try {
+    const raw = window.localStorage.getItem(CONTENT_KEY);
+    return normalizeContent(raw ? (JSON.parse(raw) as Partial<Content>) : null);
+  } catch {
+    return defaultContent();
+  }
+}
+
+export function saveContent(c: Content): boolean {
+  try {
+    window.localStorage.setItem(CONTENT_KEY, JSON.stringify(c));
+    return true;
+  } catch {
+    return false; // most likely storage full because of large symbol images
+  }
+}
+
+export function clearContent() {
+  try {
+    window.localStorage.removeItem(CONTENT_KEY);
+  } catch {
+    /* ignore */
   }
 }
 
