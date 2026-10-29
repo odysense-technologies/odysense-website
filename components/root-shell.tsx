@@ -89,7 +89,7 @@ const websiteSchema = {
 
 const FONTS: Record<Locale, string> = {
   en: "https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500&display=swap",
-  ar: "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Amiri:wght@400;700&family=Instrument+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap",
+  ar: "https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap",
 };
 
 export function RootShell({ locale, children }: { locale: Locale; children: React.ReactNode }) {
@@ -101,6 +101,8 @@ export function RootShell({ locale, children }: { locale: Locale; children: Reac
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href={FONTS[locale]} rel="stylesheet" />
+        {/* English pages only need Tajawal for the "العربية" language switch: load just those glyphs */}
+        {locale === "en" && <link href={`https://fonts.googleapis.com/css2?family=Tajawal:wght@500&text=${encodeURIComponent("العربية")}&display=swap`} rel="stylesheet" />}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}

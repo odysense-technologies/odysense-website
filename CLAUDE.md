@@ -176,6 +176,9 @@ scripts/
 .github/workflows/live-check.yml manual (Actions → Live check): reports whether the live-game database answers
                                  (/api/mw-live/?status=1 → dbOk) and the event pages' HTTP status, from GitHub's servers
 docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-engine checklist
+docs/offsite/     off-site kit (Phase 7): product-site-prompts.md (an "About / Built by Odysense" page for WASL,
+                  QFlow, ProSeek and Rehabitt), client-site-credit.md + odysense-credit.php (footer credit for
+                  client sites: HTML, WordPress mu-plugin, Shopify, React)
 ```
 
 ---
@@ -207,8 +210,8 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
   a new file name when replacing an image, because the image optimizer caches by URL.
 - **Arabic (RTL):** layout mirrors through logical CSS properties (`margin-inline`, `inset-inline`,
   `text-align: start`); never add new `left`/`right`/`margin-left` rules for layout. The Arabic block at the
-  end of `globals.css` swaps fonts (IBM Plex Sans Arabic for UI/body, Amiri for the `.serif` accent, upright,
-  never italic), removes letter-spacing (it breaks Arabic joins) and raises line heights. Arrows flip: `→` in
+  end of `globals.css` sets every Arabic page in **Tajawal** (owner choice, 2026-10-30): headlines 700, the
+  `.serif` accent words in the same family at weight 300 (upright, never italic), removes letter-spacing (it breaks Arabic joins) and raises line heights. Arrows flip: `→` in
   English is `←` in Arabic. Carousels scroll LTR internally (their loop maths uses scrollLeft) with RTL tiles.
 - Every blog post has a hero `image` (also its OG image and card thumbnail). Some posts reuse service or
   product images until the owner supplies dedicated ones.
@@ -575,14 +578,16 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
       10 posts (before/after table in the PR). GCC pages were already answer-first.
 - [x] Phase 6: full Arabic site under `/ar/`, live 2026-10-29 (PR #22; every public page and article; sitemap
       resubmitted, all 144 URLs sent to IndexNow). Native-speaker review of the Arabic copy still pending.
-- [ ] Phase 7: off-site kit in `docs/offsite/`.
+- [~] Phase 7: off-site kit in `docs/offsite/` (2026-10-30): product-site prompts and the client footer credit.
+      Owner to run the prompts on each product site and add the credit to client sites (with their consent).
+      Credit rules: only "Odysense" is linked, one visible footer link, matching service page, no UTM.
 - [ ] Phase 8: measurement (`docs/ai-visibility.md`, GA4 "AI Search" channel group).
 
 **Off-site** (owner tasks; Claude can help draft)
 - [ ] Complete the Google Business Profile and ask for reviews with `/tools/review-request`.
 - [ ] Get directory listings: Clutch, GoodFirms, DesignRush, G2 and Capterra (for WASL and QFlow).
-- [ ] On 2–3 e-commerce client sites, change the footer credit to "E-commerce development by Odysense",
-      linking to `/ecommerce-development-company-qatar/`.
+- [ ] On e-commerce client sites, add the footer credit "E-commerce development by Odysense" (only "Odysense"
+      linked) to `/ecommerce-development-company-qatar/`; snippets in `docs/offsite/client-site-credit.md`.
 
 ---
 
