@@ -304,7 +304,7 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
   time is well past. **Needs a database**: connect Neon in Vercel (Storage → Neon → Production, then
   redeploy). Without one, the API refuses to create rooms in production.
 
-### Arabic site (Phase 6, built 2026-10-29)
+### Arabic site (Phase 6, live since 2026-10-29)
 - Every public page exists in Arabic at `/ar/` + the same path (72 pages: core pages, 8 services, 9 GCC
   pages, 7 products, 3 case studies, 36 articles). Event kiosks and `/tools/` are English-only
   (`alternate: false` in `seoMeta`).
@@ -573,8 +573,8 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
 - [-] Phase 4: benchmark report. Skipped (owner declined publishing client data).
 - [x] Phase 5: answer-first intros on the e-commerce, WhatsApp API, WASL and Store Portal pages and
       10 posts (before/after table in the PR). GCC pages were already answer-first.
-- [~] Phase 6: full Arabic site under `/ar/` built 2026-10-29 (every public page and article). Owner approval
-      and native-speaker review of the Arabic copy pending.
+- [x] Phase 6: full Arabic site under `/ar/`, live 2026-10-29 (PR #22; every public page and article; sitemap
+      resubmitted, all 144 URLs sent to IndexNow). Native-speaker review of the Arabic copy still pending.
 - [ ] Phase 7: off-site kit in `docs/offsite/`.
 - [ ] Phase 8: measurement (`docs/ai-visibility.md`, GA4 "AI Search" channel group).
 
