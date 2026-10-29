@@ -1,4 +1,5 @@
 import { site } from "./site";
+import { isArabicPath } from "./i18n";
 
 /** Stable JSON-LD ids, so every page points at the one Organization and WebSite defined in app/layout.tsx. */
 export const ORG_ID = `${site.url}/#organization`;
@@ -19,7 +20,7 @@ export function webPageSchema({ path, name, description, modified }: { path: str
     url,
     name,
     description,
-    inLanguage: "en",
+    inLanguage: isArabicPath(path) ? "ar" : "en",
     dateModified: modified,
     isPartOf: { "@id": WEBSITE_ID },
     about: orgRef,

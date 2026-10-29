@@ -2,8 +2,9 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
-import { site, serviceLinks, products, gccLinks } from "@/lib/site";
-import { fmtDate } from "@/lib/schema";
+import { site } from "@/lib/site";
+import { lp, ui, fmtDateL, type Locale } from "@/lib/i18n";
+import type { NavData } from "@/lib/content";
 
 /* ---------- Scroll reveal wrapper ---------- */
 export function Reveal({ children, className = "" }: { children: ReactNode; className?: string }) {
@@ -35,62 +36,66 @@ export function Reveal({ children, className = "" }: { children: ReactNode; clas
 }
 
 /* ---------- Footer ---------- */
-export function Footer() {
+export function Footer({ locale = "en", data }: { locale?: Locale; data: NavData }) {
+  const t = ui(locale).footer;
+  const n = ui(locale).nav;
+  const L = (href: string) => lp(locale, href);
+  const { site: info, services: serviceLinks, gcc: gccLinks, products } = data;
   return (
     <footer className="footer">
       <div className="wrap">
         <div className="footer-grid">
           <div className="footer-col footer-brand">
             <b>Odysense</b>
-            <p>Digital agency and software company — web design, e-commerce, apps and growth for brands in Qatar and the GCC.</p>
+            <p>{t.about}</p>
             <address>
-              {site.address}
+              {info.address}
               <br />
-              <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
+              <a href={`tel:${info.phone.replace(/\s/g, "")}`} dir="ltr">{info.phone}</a>
               <br />
-              <a href={`mailto:${site.email}`}>{site.email}</a>
+              <a href={`mailto:${info.email}`}>{info.email}</a>
               <br />
-              <a href={site.whatsapp} target="_blank" rel="noopener noreferrer">
-                WhatsApp us
+              <a href={info.whatsapp} target="_blank" rel="noopener noreferrer">
+                {t.whatsapp}
               </a>
             </address>
           </div>
-          <nav className="footer-col" aria-label="Services">
-            <span className="mono">Services</span>
+          <nav className="footer-col" aria-label={t.services}>
+            <span className="mono">{t.services}</span>
             {serviceLinks.map((s) => (
               <Link href={s.href} key={s.href}>
                 {s.label}
               </Link>
             ))}
           </nav>
-          <nav className="footer-col" aria-label="E-commerce across the GCC">
-            <span className="mono">GCC e-commerce</span>
+          <nav className="footer-col" aria-label={t.gccAria}>
+            <span className="mono">{t.gcc}</span>
             {gccLinks.map((g) => (
               <Link href={g.href} key={g.href}>
                 {g.label}
               </Link>
             ))}
           </nav>
-          <nav className="footer-col" aria-label="Products">
-            <span className="mono">Products</span>
+          <nav className="footer-col" aria-label={t.products}>
+            <span className="mono">{t.products}</span>
             {products.map((p) => (
               <Link href={p.slug} key={p.slug}>
                 {p.name}
               </Link>
             ))}
           </nav>
-          <nav className="footer-col" aria-label="Company">
-            <span className="mono">Company</span>
-            <Link href="/about">About</Link>
-            <Link href="/work">Work</Link>
-            <Link href="/blog">Blog</Link>
-            <Link href="/services">All services</Link>
-            <Link href="/contact">Contact</Link>
+          <nav className="footer-col" aria-label={t.company}>
+            <span className="mono">{t.company}</span>
+            <Link href={L("/about")}>{n.about}</Link>
+            <Link href={L("/work")}>{n.work}</Link>
+            <Link href={L("/blog")}>{n.blog}</Link>
+            <Link href={L("/services")}>{t.allServices}</Link>
+            <Link href={L("/contact")}>{t.contact}</Link>
           </nav>
         </div>
         <div className="footer-base">
-          <span>© {new Date().getFullYear()} Odysense — Made in Qatar ❤︎</span>
-          <span>Innovation Centre, Qatar Science &amp; Technology Park, Doha</span>
+          <span>© {new Date().getFullYear()} {t.made}</span>
+          <span>{t.address}</span>
         </div>
       </div>
     </footer>
@@ -118,22 +123,25 @@ export function SectionHead({
 
 /* ---------- CTA box ---------- */
 export function CtaBox({
-  kicker = "New business",
+  kicker,
   title,
   body,
+  locale = "en",
 }: {
   kicker?: string;
   title: ReactNode;
   body: string;
+  locale?: Locale;
 }) {
+  const t = ui(locale).cta;
   return (
     <div className="cta-box">
       <div className="orb orb--cta" aria-hidden="true" />
-      <span className="kicker">{kicker}</span>
+      <span className="kicker">{kicker ?? t.kicker}</span>
       <h2>{title}</h2>
       <p>{body}</p>
-      <Link className="btn btn-invert" href="/contact">
-        Start your project →
+      <Link className="btn btn-invert" href={lp(locale, "/contact")}>
+        {t.button}
       </Link>
     </div>
   );
@@ -190,10 +198,11 @@ export function PageHero({
 }
 
 /** "By the Odysense team · Last updated 9 October 2026" — authorship and freshness, visible on the page. */
-export function Byline({ updated, extra }: { updated: string; extra?: string }) {
+export function Byline({ updated, extra, locale = "en" }: { updated: string; extra?: string; locale?: Locale }) {
+  const t = ui(locale).byline;
   return (
     <>
-      By <Link href="/about">the Odysense team</Link> · Last updated <time dateTime={updated}>{fmtDate(updated)}</time>
+      {t.by} <Link href={lp(locale, "/about")}>{t.team}</Link> · {t.updated} <time dateTime={updated}>{fmtDateL(updated, locale)}</time>
       {extra && <> · {extra}</>}
     </>
   );

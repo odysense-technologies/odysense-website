@@ -3,7 +3,9 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { carouselTiles } from "@/lib/site";
+import type { getCarouselTiles } from "@/lib/content";
+
+type Tile = ReturnType<typeof getCarouselTiles>[number];
 
 /**
  * Auto-scrolling service carousel.
@@ -11,8 +13,10 @@ import { carouselTiles } from "@/lib/site";
  * - Mouse: click-and-drag to scroll (with click suppression after a real drag)
  * - Touch: native swipe (it's a real scroll container)
  * - Pauses while the user interacts; seamless loop via content duplication
+ * - The scroller always runs left-to-right (the loop maths uses scrollLeft); on Arabic pages each tile's
+ *   text is set right-to-left
  */
-export function ServiceCarousel() {
+export function ServiceCarousel({ tiles, rtl = false, label = "What we do" }: { tiles: Tile[]; rtl?: boolean; label?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const paused = useRef(false);
   const dragging = useRef(false);
@@ -87,12 +91,12 @@ export function ServiceCarousel() {
   }, []);
 
   return (
-    <div className="carousel" aria-label="What we do">
-      <div className="carousel-scroll" ref={ref}>
+    <div className="carousel" aria-label={label}>
+      <div className="carousel-scroll" ref={ref} dir="ltr">
         {[0, 1].map((pass) => (
           <div key={pass} className="carousel-set" aria-hidden={pass === 1}>
-            {carouselTiles.map((t) => (
-              <Link className="svc-tile" href={t.href} key={`${pass}-${t.title}`} draggable={false} tabIndex={pass === 1 ? -1 : 0}>
+            {tiles.map((t) => (
+              <Link className="svc-tile" href={t.href} key={`${pass}-${t.title}`} draggable={false} tabIndex={pass === 1 ? -1 : 0} dir={rtl ? "rtl" : undefined}>
                 <Image src={t.img} alt={t.title} width={600} height={800} sizes="300px" draggable={false} />
                 <h3>{t.title}</h3>
                 <div className="tile-tags">

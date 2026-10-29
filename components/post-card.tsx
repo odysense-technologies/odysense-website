@@ -1,11 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Post } from "@/lib/blog";
+import { lp, type Locale } from "@/lib/i18n";
 
 /** Article card used on the blog hub and in "Related reading" blocks. */
-export function PostCard({ post, meta }: { post: Post; meta: string }) {
+export function PostCard({ post, meta, locale = "en" }: { post: Post; meta: string; locale?: Locale }) {
   return (
-    <Link className="card post-card" href={`/blog/${post.slug}`}>
+    <Link className="card post-card" href={lp(locale, `/blog/${post.slug}`)}>
       <div>
         {post.image && (
           <div className="post-thumb">

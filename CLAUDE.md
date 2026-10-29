@@ -30,7 +30,8 @@ WordPress/WPBakery site on cPanel has been replaced.
 |---|---|
 | Framework | Next.js 16 (App Router; 16.4.3 since 2026-10-28), React 19, TypeScript |
 | Styling | Plain CSS design system in `app/globals.css` (no Tailwind) |
-| Content | TypeScript data files in `lib/` (no CMS yet; see backlog) |
+| Content | TypeScript data files in `lib/` (no CMS yet; see backlog); Arabic text in `lib/ar/` |
+| Languages | English at the root, Arabic under `/ar/` with the same slugs (RTL, hreflang); see section 5 "Arabic site" |
 | Hosting | Vercel, auto-deploying on every push to `main` |
 | Repo | `github.com/odysense-technologies/odysense-website` (private; files at the repo root) |
 | Domain | `odysense.com` is primary and non-www (Vercel → Domains: apex = Production, `www` = 308 → apex; fixed 2026-10-09) |
@@ -79,11 +80,19 @@ records belong to this site.
 ## 3. Repository map
 
 ```
-app/
-  layout.tsx                 metadata, OG, GSC verification, ProfessionalService JSON-LD,
+Two root layouts (route groups; URLs are unaffected by the group folders):
+  app/(en)/layout.tsx        English root layout: default metadata + GSC verification → RootShell locale="en".
+                             Every English route below lives in app/(en)/.
+  app/(ar)/layout.tsx        Arabic root layout (<html lang="ar" dir="rtl">) → RootShell locale="ar".
+  app/(ar)/ar/…              Arabic routes: thin files rendering the same components with locale="ar"
+  app/global-not-found.tsx   bilingual 404 for unmatched URLs (experimental.globalNotFound in next.config.ts)
+components/root-shell.tsx    the shared <html>: fonts per language, ProfessionalService + WebSite JSON-LD,
                              Nav, Analytics, WhatsAppTracker, RouteLoader, ConsultPopup, Footer
-  globals.css                the whole design system (tokens + every component style)
-  page.tsx                   homepage: hero → carousel → web design & development feature (offers,
+components/pages/*.tsx       the bespoke pages (home, services, about, contact, products, work, blog,
+                             ecommerce, gamification): one layout, English and Arabic copy side by side in COPY
+app/
+  globals.css                the whole design system (tokens + every component style; Arabic block at the end)
+  page.tsx (in (en))         homepage: hero → carousel → web design & development feature (offers,
                              starting prices, real case-study stats) → services → Design/Engineering/
                              Growth photo band → compact product tiles → testimonial → CTA
   icon.png                   favicon (Odysense ring icon)
@@ -142,6 +151,11 @@ components/
     memory.tsx      product-icon memory match · tap.tsx  10-second tap challenge
     poll.tsx        live poll with a simulated audience · shared.tsx  reduced-motion hook, Leaderboard
 lib/
+  i18n.ts           Locale, lp() (localised links), altPath(), fmtDateL(), UI strings (nav, footer, forms, templates)
+  content.ts        localised site data (merges lib/ar/site.ts over lib/site.ts); navData() for nav/footer
+  localized.ts      localised posts, service pages, GCC pages and case studies (merges lib/ar/* over lib/*);
+                    a missing Arabic entry stops the build with a message naming the file and slug
+  ar/               Arabic text only: site.ts, service-pages.ts, gcc-pages.ts, case-studies.ts, blog.ts
   site.ts           site info, serviceLinks (nav + footer), services, products, productDetails,
                     productShowcase, carouselTiles, clientLogos
   seo.ts            seoMeta(): title, description, canonical, Open Graph and Twitter for a page
@@ -191,6 +205,11 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
   (with the subject and size you need) before building it; don't generate or source stock images
   yourself (owner request, 2026-10-10). Convert uploads to WebP (max 1200px) in `public/images/`, and use
   a new file name when replacing an image, because the image optimizer caches by URL.
+- **Arabic (RTL):** layout mirrors through logical CSS properties (`margin-inline`, `inset-inline`,
+  `text-align: start`); never add new `left`/`right`/`margin-left` rules for layout. The Arabic block at the
+  end of `globals.css` swaps fonts (IBM Plex Sans Arabic for UI/body, Amiri for the `.serif` accent, upright,
+  never italic), removes letter-spacing (it breaks Arabic joins) and raises line heights. Arrows flip: `→` in
+  English is `←` in Arabic. Carousels scroll LTR internally (their loop maths uses scrollLeft) with RTL tiles.
 - Every blog post has a hero `image` (also its OG image and card thumbnail). Some posts reuse service or
   product images until the owner supplies dedicated ones.
 
@@ -284,6 +303,20 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
   Phones and screens poll the API every ~2 s. Rounds end when everyone finishes, the host ends them, or the
   time is well past. **Needs a database**: connect Neon in Vercel (Storage → Neon → Production, then
   redeploy). Without one, the API refuses to create rooms in production.
+
+### Arabic site (Phase 6, built 2026-10-29)
+- Every public page exists in Arabic at `/ar/` + the same path (72 pages: core pages, 8 services, 9 GCC
+  pages, 7 products, 3 case studies, 36 articles). Event kiosks and `/tools/` are English-only
+  (`alternate: false` in `seoMeta`).
+- `seoMeta()` emits canonical + hreflang en/ar/x-default from the path; the sitemap lists both languages with
+  alternates; the nav "العربية / English" switch reads the page's own hreflang link.
+- **Facts are single-sourced:** prices, gateways, dates, images and links come from the English `lib/` files;
+  `lib/ar/*` holds words only. When English copy changes, update the Arabic text in the same PR.
+- Brand and platform names stay in Latin script (Odysense, WASL, QFlow, Store Portal, WooCommerce…). Prices
+  read "2,000 ريال قطري" with Western digits. Same rules as English: no founder, no invented claims, hedged law.
+- The Arabic copy was written by Claude and **needs review by a native Arabic speaker** before or soon after
+  launch; record reviewed pages here.
+- Leads from Arabic pages arrive with "[Arabic site]" in the email subject (`lang: "ar"` on the form).
 
 ### Store Portal
 - Free for the first year with every Odysense e-commerce build, then QAR 170/month, or QAR 150/month billed yearly.
@@ -495,7 +528,7 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
 - [x] Publish Store Portal pricing and add-ons on `/products/store-portal/`. Done on 2026-10-06.
 - [ ] Weekly: check the Search Console Pages report for 404s and extend the redirects.
 - [x] First KSA pages: `/web-design-company-saudi-arabia/` and `/ecommerce-development-saudi-arabia/` (Phase 3).
-- [ ] Arabic version later: `next-intl`, `/ar/`, RTL with logical CSS properties, hreflang.
+- [x] Arabic version: `/ar/`, RTL with logical CSS properties, hreflang (built 2026-10-29 without next-intl; see section 5).
 - [ ] Optional: host the company profile PDF at `/company-profile.pdf` as a lead magnet. The owner
       hasn't decided.
 
@@ -522,7 +555,7 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
 - [ ] Expand thin product pages (Social Bakery, Rehabitt, ProSeek, Odysense AI: about 150–180 words).
 - [ ] Next articles: website maintenance cost, Shopify in Qatar, WooCommerce payment gateways in Qatar,
       app vs web app, KSA market entry for Qatari stores (hedged, sourced).
-- [ ] Arabic `/ar/` versions of the top service pages once English pages are indexed.
+- [x] Arabic `/ar/` versions of every page (2026-10-29).
 
 **SEO + AI-search initiative (started 2026-10-10; one approval-gated PR per phase)**
 - [x] Phase 1: AI-crawler and index readiness (robots, llms.txt, IndexNow, SSR audit, mega menus in
@@ -540,7 +573,8 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
 - [-] Phase 4: benchmark report. Skipped (owner declined publishing client data).
 - [x] Phase 5: answer-first intros on the e-commerce, WhatsApp API, WASL and Store Portal pages and
       10 posts (before/after table in the PR). GCC pages were already answer-first.
-- [ ] Phase 6: Arabic `/ar/` e-commerce hub + homepage (needs native-speaker review before merge).
+- [~] Phase 6: full Arabic site under `/ar/` built 2026-10-29 (every public page and article). Owner approval
+      and native-speaker review of the Arabic copy pending.
 - [ ] Phase 7: off-site kit in `docs/offsite/`.
 - [ ] Phase 8: measurement (`docs/ai-visibility.md`, GA4 "AI Search" channel group).
 
@@ -555,6 +589,7 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
 ## 9. How to work in this repo
 
 1. Read the relevant `lib/` data file before touching any page. Most content changes are data edits, not code.
+   Every content change has an Arabic twin in `lib/ar/` or the page's `COPY.ar`: update both.
 2. Reuse the existing components and CSS classes.
 3. When giving the owner terminal commands, write them for PowerShell 5.1, one per line.
 

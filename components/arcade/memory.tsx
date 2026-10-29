@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import type { Locale } from "@/lib/i18n";
+import { ARC_TEXT } from "./text";
 
 const ICONS = [
   { name: "WASL", src: "/logos/wasl.svg" },
@@ -23,7 +25,8 @@ function deal(): Card[] {
   return cards;
 }
 
-export default function Memory() {
+export default function Memory({ locale = "en" }: { locale?: Locale }) {
+  const t = ARC_TEXT[locale].memory;
   const [cards, setCards] = useState<Card[]>([]);
   const [open, setOpen] = useState<number[]>([]);
   const [matched, setMatched] = useState<Set<number>>(new Set());
@@ -80,7 +83,7 @@ export default function Memory() {
 
   return (
     <div className="arc-game arc-memory-layout">
-      <div className="arc-memory" role="group" aria-label="Memory cards">
+      <div className="arc-memory" role="group" aria-label={t.cardsAria}>
         {cards.map((c, pos) => {
           const shown = open.includes(pos) || matched.has(c.icon);
           const icon = ICONS[c.icon];
@@ -90,7 +93,7 @@ export default function Memory() {
               type="button"
               className={`arc-card ${shown ? "up" : ""} ${matched.has(c.icon) ? "got" : ""}`}
               onClick={() => flip(pos)}
-              aria-label={shown ? icon.name : `Card ${pos + 1}, face down`}
+              aria-label={shown ? icon.name : t.faceDown(pos + 1)}
             >
               <span className="arc-card-inner">
                 <span className="arc-card-back" aria-hidden="true" />
@@ -104,30 +107,30 @@ export default function Memory() {
       </div>
       <div className="arc-side">
         <h3 className="arc-title">
-          Memory match <span className="serif">— find the pairs.</span>
+          {t.title} <span className="serif">{t.accent}</span>
         </h3>
-        <p className="arc-sub">Six pairs of Odysense product icons. At your event these would be your products or brand assets.</p>
+        <p className="arc-sub">{t.sub}</p>
         <div className="arc-stats">
           <div>
             <b>{moves}</b>
-            <span className="mono">Moves</span>
+            <span className="mono">{t.moves}</span>
           </div>
           <div>
             <b>
               {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, "0")}
             </b>
-            <span className="mono">Time</span>
+            <span className="mono">{t.time}</span>
           </div>
           <div>
             <b>{best ?? "—"}</b>
-            <span className="mono">Best</span>
+            <span className="mono">{t.best}</span>
           </div>
         </div>
         <p className="arc-result" aria-live="polite">
-          {done && `All pairs found in ${moves} moves.`}
+          {done && t.done(moves)}
         </p>
         <button className="btn btn-invert" type="button" onClick={reset}>
-          {done ? "Play again" : "Shuffle & restart"}
+          {done ? t.again : t.restart}
         </button>
       </div>
     </div>

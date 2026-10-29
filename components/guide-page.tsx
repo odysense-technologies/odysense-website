@@ -2,17 +2,23 @@ import Link from "next/link";
 import { Reveal, SectionHead, CtaBox, PageHero, Byline } from "@/components/ui";
 import { RelatedPosts } from "@/components/related-posts";
 import { site, paymentGateways } from "@/lib/site";
-import { caseStudies } from "@/lib/case-studies";
-import { gccPages, type GccPage } from "@/lib/gcc-pages";
+import { type GccPage } from "@/lib/gcc-pages";
 import { ORG_ID, webPageSchema } from "@/lib/schema";
+import { getGccPages, getStoreCaseStudies } from "@/lib/localized";
+import { countryName } from "@/lib/content";
+import { lp, ui, type Locale } from "@/lib/i18n";
 
 /**
  * Template for the GCC e-commerce hub pages (lib/gcc-pages.ts): answer-first copy under question-style
  * headings, optional comparison table and gateway grid, proof (case studies, Store Portal, WASL),
  * FAQ, sources and a free-consultation CTA. Emits Service, WebPage and FAQPage JSON-LD.
  */
-export function GuidePageView({ page }: { page: GccPage }) {
-  const path = `/${page.slug}`;
+export function GuidePageView({ page, locale = "en" }: { page: GccPage; locale?: Locale }) {
+  const t = ui(locale);
+  const g = t.guide;
+  const L = (href: string) => lp(locale, href);
+  const path = L(`/${page.slug}`);
+  const gccPages = getGccPages(locale);
   const schemas = [
     {
       "@context": "https://schema.org",
@@ -31,7 +37,7 @@ export function GuidePageView({ page }: { page: GccPage }) {
       mainEntity: page.faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
     },
   ];
-  const stores = caseStudies.filter((c) => c.services.includes("E-commerce"));
+  const stores = getStoreCaseStudies(locale);
   const gatewayCountries = page.gateways ? paymentGateways.filter((c) => page.gateways!.includes(c.country)) : [];
   const siblings = gccPages.filter((p) => p.slug !== page.slug && (page.related ?? []).includes(p.slug));
 
@@ -43,8 +49,8 @@ export function GuidePageView({ page }: { page: GccPage }) {
 
       <PageHero
         crumbs={[
-          { label: "Home", href: "/" },
-          ...(page.slug === "ecommerce" ? [] : [{ label: page.parent?.label ?? "E-commerce", href: page.parent?.href ?? "/ecommerce" }]),
+          { label: t.crumbs.home, href: L("/") },
+          ...(page.slug === "ecommerce" ? [] : [{ label: page.parent?.label ?? t.crumbs.ecommerce, href: L(page.parent?.href ?? "/ecommerce") }]),
           { label: page.crumb },
         ]}
         title={
@@ -53,14 +59,14 @@ export function GuidePageView({ page }: { page: GccPage }) {
           </>
         }
         lede={page.lede}
-        meta={<Byline updated={page.updated} />}
+        meta={<Byline updated={page.updated} locale={locale} />}
       >
         <div className="hero-actions">
-          <Link className="btn btn-primary" href="/contact">
-            Book a free consultation →
+          <Link className="btn btn-primary" href={L("/contact")}>
+            {g.consult}
           </Link>
-          <Link className="btn btn-secondary" href="/work">
-            See our stores
+          <Link className="btn btn-secondary" href={L("/work")}>
+            {g.stores}
           </Link>
         </div>
       </PageHero>
@@ -70,7 +76,7 @@ export function GuidePageView({ page }: { page: GccPage }) {
         <div className="wrap">
           <Reveal>
             <div className="answer-box">
-              <span className="kicker">The short answer</span>
+              <span className="kicker">{g.shortAnswer}</span>
               {page.answer.map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
@@ -83,10 +89,10 @@ export function GuidePageView({ page }: { page: GccPage }) {
         <section className="section section--flush-top">
           <div className="wrap">
             <SectionHead
-              kicker="Explore"
+              kicker={g.explore}
               title={
                 <>
-                  E-commerce guides <span className="serif">by market and platform.</span>
+                  {g.guidesTitle} <span className="serif">{g.guidesAccent}</span>
                 </>
               }
             />
@@ -94,7 +100,7 @@ export function GuidePageView({ page }: { page: GccPage }) {
               {page.hub.map((slug, i) => {
                 const p = gccPages.find((g) => g.slug === slug)!;
                 return (
-                  <Link className="card" href={`/${p.slug}`} key={p.slug}>
+                  <Link className="card" href={L(`/${p.slug}`)} key={p.slug}>
                     <span className="num">{["i.", "ii.", "iii.", "iv.", "v.", "vi.", "vii.", "viii.", "ix."][i]}</span>
                     <h3>{p.cardTitle}</h3>
                     <p>{p.cardDesc}</p>
@@ -158,20 +164,20 @@ export function GuidePageView({ page }: { page: GccPage }) {
         <section className="section section--flush-top">
           <div className="wrap">
             <SectionHead
-              kicker="Payments"
+              kicker={g.payments}
               title={
                 <>
-                  Gateways we&apos;ve integrated <span className="serif">on live stores.</span>
+                  {g.gatewaysTitle} <span className="serif">{g.gatewaysAccent}</span>
                 </>
               }
             >
-              Need one that isn&apos;t listed? We can integrate it too.
+              {g.gatewaysNote}
             </SectionHead>
             <Reveal className={gatewayCountries.length > 1 ? "grid-3" : "gw-single"}>
               {gatewayCountries.map((c) => (
                 <div className="card gw-card" key={c.country}>
                   <h3>
-                    <span aria-hidden="true">{c.flag}</span> {c.country}
+                    <span aria-hidden="true">{c.flag}</span> {countryName(c.country, locale)}
                   </h3>
                   <ul>
                     {c.gateways.map((g) => (
@@ -189,10 +195,10 @@ export function GuidePageView({ page }: { page: GccPage }) {
       <section className="section quote-sec">
         <div className="wrap">
           <SectionHead
-            kicker="Proof"
+            kicker={g.proof}
             title={
               <>
-                Stores we built, <span className="serif">tools we run.</span>
+                {g.proofTitle} <span className="serif">{g.proofAccent}</span>
               </>
             }
           />
@@ -200,31 +206,31 @@ export function GuidePageView({ page }: { page: GccPage }) {
             {stores.map((c) => {
               const r = c.results.filter((x) => !x.todo).slice(0, 2);
               return (
-                <Link className="cs-card" href={`/work/${c.slug}`} key={c.slug}>
+                <Link className="cs-card" href={L(`/work/${c.slug}`)} key={c.slug}>
                   <div>
                     <span className="mono">{c.industry}</span>
                     <h3>{c.name}</h3>
                     <p>{r.map((x) => `${x.value} ${x.label}`).join(" · ")}</p>
                   </div>
-                  <span className="prod-link">Read the case study →</span>
+                  <span className="prod-link">{g.readCase}</span>
                 </Link>
               );
             })}
-            <Link className="cs-card" href="/products/store-portal">
+            <Link className="cs-card" href={L("/products/store-portal")}>
               <div>
-                <span className="mono">Included free for year one</span>
+                <span className="mono">{g.spKicker}</span>
                 <h3>Store Portal</h3>
-                <p>Run your WooCommerce store from your phone: products, orders, POS and analytics in one portal.</p>
+                <p>{g.spBody}</p>
               </div>
-              <span className="prod-link">See Store Portal →</span>
+              <span className="prod-link">{g.spLink}</span>
             </Link>
-            <Link className="cs-card" href="/products/wasl">
+            <Link className="cs-card" href={L("/products/wasl")}>
               <div>
-                <span className="mono">WhatsApp commerce</span>
+                <span className="mono">{g.waKicker}</span>
                 <h3>WASL</h3>
-                <p>Order confirmations, delivery updates and support on WhatsApp through the official Business API.</p>
+                <p>{g.waBody}</p>
               </div>
-              <span className="prod-link">See WASL →</span>
+              <span className="prod-link">{g.waLink}</span>
             </Link>
           </Reveal>
         </div>
@@ -233,10 +239,10 @@ export function GuidePageView({ page }: { page: GccPage }) {
       <section className="section">
         <div className="wrap">
           <SectionHead
-            kicker="Questions"
+            kicker={t.service.questions}
             title={
               <>
-                Asked <span className="serif">often.</span>
+                {t.service.asked} <span className="serif">{t.service.often}</span>
               </>
             }
           />
@@ -253,7 +259,7 @@ export function GuidePageView({ page }: { page: GccPage }) {
           {page.sources.length > 0 && (
             <Reveal>
               <div className="post-sources guide-sources">
-                <span className="mono">Sources</span>
+                <span className="mono">{g.sources}</span>
                 <ul>
                   {page.sources.map((s) => (
                     <li key={s.url}>
@@ -263,7 +269,7 @@ export function GuidePageView({ page }: { page: GccPage }) {
                     </li>
                   ))}
                 </ul>
-                <p>Laws, tax rules and fees change. Treat this page as a guide, not legal or tax advice: Odysense builds the store, and we&apos;re not a law firm.</p>
+                <p>{g.disclaimer}</p>
               </div>
             </Reveal>
           )}
@@ -271,13 +277,13 @@ export function GuidePageView({ page }: { page: GccPage }) {
             <Reveal>
               <div className="guide-links">
                 {siblings.map((p) => (
-                  <Link className="btn btn-secondary" href={`/${p.slug}`} key={p.slug}>
-                    {p.cardTitle} →
+                  <Link className="btn btn-secondary" href={L(`/${p.slug}`)} key={p.slug}>
+                    {p.cardTitle} {t.arrow}
                   </Link>
                 ))}
                 {page.links?.map((l) => (
-                  <Link className="btn btn-secondary" href={l.href} key={l.href}>
-                    {l.label} →
+                  <Link className="btn btn-secondary" href={L(l.href)} key={l.href}>
+                    {l.label} {t.arrow}
                   </Link>
                 ))}
               </div>
@@ -286,12 +292,12 @@ export function GuidePageView({ page }: { page: GccPage }) {
         </div>
       </section>
 
-      {page.relatedService && <RelatedPosts href={page.relatedService} />}
+      {page.relatedService && <RelatedPosts href={page.relatedService} locale={locale} />}
 
       <section className="section">
         <div className="wrap">
           <Reveal>
-            <CtaBox kicker="Free consultation" title={<>{page.ctaTitle} <span className="serif">{page.ctaAccent}</span></>} body={page.ctaBody} />
+            <CtaBox kicker={g.ctaKicker} title={<>{page.ctaTitle} <span className="serif">{page.ctaAccent}</span></>} body={page.ctaBody} locale={locale} />
           </Reveal>
         </div>
       </section>

@@ -3,6 +3,7 @@ import { servicePages } from "@/lib/service-pages";
 import { caseStudies } from "@/lib/case-studies";
 import { postsNewestFirst } from "@/lib/blog";
 import { gccPages } from "@/lib/gcc-pages";
+import { getServiceLinks, getGccLinks } from "@/lib/content";
 
 // /llms.txt (https://llmstxt.org): a plain-Markdown summary of the site for AI assistants.
 // Generated at build time from the lib/ data files so it never drifts from the pages.
@@ -73,6 +74,12 @@ function body() {
     `- [Products overview](${url("/products")})`,
     `- [Work](${url("/work")}): case studies`,
     `- [Contact](${url("/contact")}): project enquiries and the free consultation`,
+    "",
+    "## Arabic version (العربية)",
+    "",
+    `Every page is also published in Arabic at the same path under /ar/, for example ${url("/ar")} and ${url("/ar/ecommerce-development-company-qatar")}. Prices, gateways and facts are identical in both languages.`,
+    "",
+    ...[...getServiceLinks("ar"), ...getGccLinks("ar")].map((s) => `- [${s.label}](${url(s.href)})`),
     "",
     "## Articles",
     "",

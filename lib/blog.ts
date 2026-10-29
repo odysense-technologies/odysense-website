@@ -131,6 +131,7 @@ export const posts: Post[] = [
     description:
       "What the WhatsApp Business API is, how it differs from the free app, what it costs, and how Qatar businesses use it for sales, support and notifications.",
     date: "2026-07-15",
+    updated: "2026-10-29",
     category: "WhatsApp",
     minutes: 6,
     relatedService: { label: "WhatsApp Business API in Qatar", href: "/whatsapp-business-api-qatar" },
@@ -151,7 +152,7 @@ export const posts: Post[] = [
       {
         h: "What it costs",
         ps: [
-          "Two components: Meta's usage fees (charged per conversation/message, varying by category — marketing messages cost more than service replies; utility notifications sit between) and a platform to actually use the API, since the raw API has no interface. Platforms like our own WASL provide the inbox, AI auto-replies, broadcast tools and integrations on a monthly plan. For most SMEs, total cost lands well below one employee-hour per day — while responding faster than any employee could.",
+          "Two components: Meta's usage fees (charged per message and varying by category and country: marketing messages cost more than utility notifications, and since 1 October 2026 service replies are charged too after the first 1,000 a month on each number) and a platform to actually use the API, since the raw API has no interface. Platforms like our own WASL provide the inbox, AI auto-replies, broadcast tools and integrations on a monthly plan. For most SMEs, total cost lands well below one employee-hour per day — while responding faster than any employee could.",
         ],
       },
       {

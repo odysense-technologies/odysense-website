@@ -8,8 +8,10 @@ type Shot = { src: string; w: number; h: number; caption: string };
 /**
  * Auto-scrolling, draggable screenshot carousel.
  * Click (without drag) opens the full-resolution image in a lightbox.
+ * The scroller always runs left-to-right (the loop maths uses scrollLeft); captions follow the page language.
  */
-export function ShotCarousel({ shots }: { shots: Shot[] }) {
+export function ShotCarousel({ shots, rtl = false }: { shots: Shot[]; rtl?: boolean }) {
+  const view = rtl ? "عرض:" : "View:";
   const ref = useRef<HTMLDivElement>(null);
   const paused = useRef(false);
   const dragging = useRef(false);
@@ -90,7 +92,7 @@ export function ShotCarousel({ shots }: { shots: Shot[] }) {
 
   return (
     <>
-      <div className="shot-car" ref={ref}>
+      <div className="shot-car" ref={ref} dir="ltr">
         {[0, 1].map((pass) => (
           <div key={pass} className="shot-car-set" aria-hidden={pass === 1}>
             {shots.map((s) => (
@@ -99,7 +101,8 @@ export function ShotCarousel({ shots }: { shots: Shot[] }) {
                 key={`${pass}-${s.src}`}
                 onClick={() => onShotClick(s)}
                 tabIndex={pass === 1 ? -1 : 0}
-                aria-label={`View: ${s.caption}`}
+                aria-label={`${view} ${s.caption}`}
+                dir={rtl ? "rtl" : undefined}
               >
                 <Image src={s.src} alt={s.caption} width={s.w} height={s.h} sizes="480px" draggable={false} />
                 <span>{s.caption}</span>
@@ -115,7 +118,7 @@ export function ShotCarousel({ shots }: { shots: Shot[] }) {
             <Image src={open.src} alt={open.caption} width={open.w} height={open.h} sizes="92vw" />
             <figcaption>{open.caption}</figcaption>
           </figure>
-          <button className="popup-close" onClick={() => setOpen(null)} aria-label="Close">
+          <button className="popup-close" onClick={() => setOpen(null)} aria-label={rtl ? "إغلاق" : "Close"}>
             ✕
           </button>
         </div>
