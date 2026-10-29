@@ -147,6 +147,7 @@ export const products = [
     urlLabel: "wasl.odysense.com",
     // "About / Built by Odysense" page on the product's own site (docs/offsite/product-site-prompts.md)
     aboutUrl: "https://wasl.odysense.com/about",
+    aboutUrlAr: "https://wasl.odysense.com/ar/about",
     slug: "/products/wasl",
     description:
       "AI-powered WhatsApp inbox and notifications. Sell, support and notify customers on the channel the Gulf actually answers.",

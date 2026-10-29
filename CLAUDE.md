@@ -384,10 +384,10 @@ docs/offsite/     off-site kit (Phase 7): product-site-prompts.md (an "About / B
 | Rehabitt | rehabitt.com | Gamified paediatric physiotherapy (on-device pose tracking) |
 
 - **Product About pages** (Phase 7, linked from each product page via `aboutUrl`/`aboutUrlAr` in `products`):
-  wasl.odysense.com/about, qflow.odysense.com/about (+ /ar/about), pro-seek.com/about, rehabitt.com/about
-  (+ /ar/about). Audit them with Actions → Live check → `urls` (`scripts/page_audit.py`). As of 2026-10-29,
-  QFlow and Rehabitt are server-rendered and correct; WASL and ProSeek render only in the browser (homepage
-  title/canonical in the HTML) and need the fix prompt in `docs/offsite/product-site-prompts.md`.
+  wasl.odysense.com/about (+ /ar/about), qflow.odysense.com/about (+ /ar/about), pro-seek.com/about,
+  rehabitt.com/about (+ /ar/about). Audit them with Actions → Live check → `urls` (`scripts/page_audit.py`).
+  Re-audit 2026-10-29: all four are server-rendered with their own title, canonical, Odysense JSON-LD and
+  links to odysense.com. Open item: QFlow's About page also prints the homepage's hreflang set (remove it).
 - WASL and QFlow are the two most important products. Prioritise content about them.
 - **WASL screenshot mapping** (the uploads were mislabelled originally):
   - `Whatsapp-Cloud-API.png` = chat preview
