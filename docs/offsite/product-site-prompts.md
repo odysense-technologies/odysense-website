@@ -279,11 +279,68 @@ BUILD:
 
 ---
 
+## Fix: the About page is invisible to Google (WASL, ProSeek)
+
+The 2026-10-29 audit (Live check → `urls`; see the "Audit" section below) found that
+`wasl.odysense.com/about` and `pro-seek.com/about` are built only in the browser. The HTML a crawler first
+receives is the homepage shell, so Google may never index the About page or follow its links:
+- the title and description are the homepage's;
+- WASL's canonical points to the homepage, which tells Google to treat /about as a duplicate;
+- fewer than 10 words of text are in the HTML;
+- there are no links to odysense.com in the HTML.
+
+`qflow.odysense.com/about` and `rehabitt.com/about` are fine. QFlow's About page does print two sets of
+hreflang tags (the homepage's and its own); remove the homepage set from that page.
+
+Paste this into the WASL and ProSeek codebases:
+
+```text
+The /about page on this site renders only in the browser. When a crawler requests /about it receives the
+homepage's HTML: the homepage <title> and description, (on WASL) a canonical pointing at the homepage, almost
+no text, and no links. Search engines may treat /about as a duplicate of the homepage and never see its
+content. Fix it so the HTML served for /about is the finished page.
+
+1. Find how the site is built (package.json, framework, router, hosting). Then pick the smallest fix:
+   - Next.js / Nuxt / Astro / Remix: render /about on the server or statically, with its own metadata.
+   - Vite or Create React App single-page app: prerender /about (and /ar/about if it exists) to static
+     HTML at build time, with a prerender plugin or a build step that renders the route to HTML.
+     Hosting must serve that file for /about instead of the SPA fallback index.html.
+2. The HTML served for /about must contain, without running JavaScript:
+   - its own <title> (60 characters or less) and meta description;
+   - <link rel="canonical" href="https://<this domain>/about"> (not the homepage);
+   - og:title, og:description and og:url for /about;
+   - the full page text, and every link to odysense.com as a normal <a href>;
+   - the JSON-LD from the original brief, with "publisher" and "creator" set to
+     {"@id": "https://odysense.com/#organization"} and the Organization node using that same @id.
+   If the site is bilingual, do the same for the Arabic About page and give both pages matching hreflang
+   tags (en, ar, x-default), and only those. Remove any homepage hreflang tags from the About page.
+3. The footer credit "A product by Odysense" (only "Odysense" linked to this product's page on
+   odysense.com) must also be in the server-sent HTML on every page.
+4. Make sure /about is in sitemap.xml with its final URL.
+5. Verify from the command line, not the browser:
+     curl -s https://<this domain>/about | grep -E "<title>|canonical|odysense.com"
+   The output must show the About title, the /about canonical and the odysense.com links. Run the build,
+   deploy, run the curl check against production, and report the output.
+Do not change any page content, facts or links beyond what is needed for this fix.
+```
+
+## Audit any page that references Odysense
+
+On GitHub, open the odysense-website repository and go to **Actions → Live check → Run workflow**.
+Paste space-separated URLs into **urls**. The log then reports, for each page:
+- status, title, description and canonical;
+- hreflang tags and JSON-LD (including whether it points at `https://odysense.com/#organization`);
+- every link to odysense.com with its anchor text;
+- how much text is in the server-rendered HTML;
+- any founder or founding-year wording.
+
+It works for client sites carrying the footer credit too.
+
 ## After the pages are live
 
 1. **Index them.** Add each product site to Google Search Console (if it isn't already), submit its
    sitemap and request indexing for the new About page.
-2. **Tell us the URLs.** Odysense's product pages already link to each product site. Once the About pages
-   exist, `lib/site.ts` can link to them too, closing the loop.
+2. **Link back.** Done 2026-10-29: `aboutUrl` (and `aboutUrlAr` where an Arabic About page exists) in
+   `lib/site.ts` → `products` adds an "About {product}" link on each odysense.com product page.
 3. **Keep the facts in step.** If a product's features, prices or contact details change, update the
    About page and the matching `productDetails` entry in `lib/site.ts` together.

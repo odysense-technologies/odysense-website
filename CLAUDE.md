@@ -175,6 +175,8 @@ scripts/
 .github/workflows/indexnow.yml   on push to main: waits for the Vercel Production deploy, then pings IndexNow with changed pages
 .github/workflows/live-check.yml manual (Actions → Live check): reports whether the live-game database answers
                                  (/api/mw-live/?status=1 → dbOk) and the event pages' HTTP status, from GitHub's servers
+                                 optional `urls` input: audits any pages with scripts/page_audit.py (product About
+                                 pages, client sites with the footer credit)
 docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-engine checklist
 docs/offsite/     off-site kit (Phase 7): product-site-prompts.md (an "About / Built by Odysense" page for WASL,
                   QFlow, ProSeek and Rehabitt), client-site-credit.md + odysense-credit.php (footer credit for
@@ -381,6 +383,11 @@ docs/offsite/     off-site kit (Phase 7): product-site-prompts.md (an "About / B
 | Social Bakery | social-bakery.com | Content-as-a-subscription |
 | Rehabitt | rehabitt.com | Gamified paediatric physiotherapy (on-device pose tracking) |
 
+- **Product About pages** (Phase 7, linked from each product page via `aboutUrl`/`aboutUrlAr` in `products`):
+  wasl.odysense.com/about, qflow.odysense.com/about (+ /ar/about), pro-seek.com/about, rehabitt.com/about
+  (+ /ar/about). Audit them with Actions → Live check → `urls` (`scripts/page_audit.py`). As of 2026-10-29,
+  QFlow and Rehabitt are server-rendered and correct; WASL and ProSeek render only in the browser (homepage
+  title/canonical in the HTML) and need the fix prompt in `docs/offsite/product-site-prompts.md`.
 - WASL and QFlow are the two most important products. Prioritise content about them.
 - **WASL screenshot mapping** (the uploads were mislabelled originally):
   - `Whatsapp-Cloud-API.png` = chat preview
