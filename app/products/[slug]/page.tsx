@@ -19,7 +19,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const p = products.find((x) => x.slug === `/products/${slug}`);
   if (!p) return {};
-  return seoMeta({ title: `${p.name} — ${p.chip}`, description: p.description, path: `/products/${slug}/` });
+  const d = productDetails[slug];
+  return seoMeta({ title: d?.metaTitle ?? `${p.name} — ${p.chip}`, description: d?.metaDescription ?? p.description, path: `/products/${slug}/` });
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {

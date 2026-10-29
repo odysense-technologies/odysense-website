@@ -169,9 +169,9 @@ export const servicePages: ServiceDef[] = [
     crumb: "Software Development",
     title: "Software development",
     titleAccent: "company in Qatar.",
-    metaTitle: "Software Development Company in Qatar",
+    metaTitle: "Custom Software Development Company in Qatar",
     metaDescription:
-      "Custom software development in Doha — web applications, dashboards, portals and SaaS products for businesses in Qatar & the GCC, built by Odysense in Doha.",
+      "Custom software development company in Doha: web applications, portals, dashboards and SaaS products for Qatar and the GCC. MVPs from QAR 10,000, fixed quotes.",
     lede: "Custom software for businesses that outgrew spreadsheets and off-the-shelf tools — web applications, dashboards, portals and products, built in Doha.",
     includes: [
       { h: "Web applications", p: "Custom platforms built around your workflow — not your workflow bent around someone else's software." },
@@ -233,15 +233,15 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "mobile-app-development-company-qatar",
-    updated: "2026-10-09",
+    updated: "2026-10-29",
     image: { src: "/images/svc-mobile.webp", alt: "Developing and testing a mobile experience" },
     crumb: "Mobile Apps",
     title: "Mobile app development",
     titleAccent: "company in Qatar.",
     metaTitle: "Mobile App Development Company in Qatar",
     metaDescription:
-      "iOS and Android app development in Qatar — from concept to App Store. Cross-platform builds, modern UX, and long-term support by Odysense.",
-    lede: "iOS and Android apps from concept to store — designed for real users, engineered to be maintained, and supported long after launch day.",
+      "Mobile app development company in Doha: iOS and Android apps from QAR 15,000, including the back end and App Store publishing. Arabic and English. Free consultation.",
+    lede: "We design and build iOS and Android apps in Doha, from QAR 15,000 for a focused first release including the back end and App Store and Google Play publishing — in Arabic, English or both, and supported long after launch day.",
     includes: [
       { h: "iOS & Android", p: "Cross-platform builds that ship to both stores from one codebase — faster to build, cheaper to maintain." },
       { h: "Product design", p: "UX and UI designed around user journeys, tested before a line of code is written." },
@@ -266,6 +266,19 @@ export const servicePages: ServiceDef[] = [
         ],
       },
       {
+        h: "iOS and Android app development in Qatar",
+        ps: [
+          "Most of the apps we build ship to both the App Store and Google Play from one cross-platform codebase, which keeps the build and every later update faster and cheaper. Where an app needs deep access to the device, such as heavy camera work, background location or tight hardware integration, we add native modules or recommend a fully native build, and explain the trade-off in cost.",
+          "Apps for Qatar and the GCC usually need Arabic and English with a proper right-to-left layout, local payment gateways, WhatsApp and SMS notifications, and sign-in by phone number. We plan those in from the first screen rather than translating at the end.",
+        ],
+      },
+      {
+        h: "The apps we build",
+        ps: [
+          "Booking and reservation apps, like QSeat with its live floor plan and venue portal; ordering and loyalty apps for restaurants and retail, connected to the same back end as the website; customer portals and self-service apps; internal field and operations apps that replace paper and spreadsheets; and MVPs for startups that need something real in users' hands quickly. Each one comes with the admin panel and back end that run it, because an app is only as good as the system behind it.",
+        ],
+      },
+      {
         h: "What a mobile app costs in Qatar",
         ps: [
           "A focused first-release app with Odysense typically starts around QAR 15,000–20,000, including the back end and store publishing. Apps with many user roles, complex integrations or real-time features cost more, and we'll explain exactly why in an itemised, fixed quote.",
@@ -287,12 +300,21 @@ export const servicePages: ServiceDef[] = [
         a: "Yes — we take over existing apps for updates, redesigns and store compliance. We start with a code and infrastructure review so you know the state of what you have.",
       },
       {
+        q: "Do you build Arabic apps?",
+        a: "Yes. We build apps in Arabic, English or both, with a right-to-left layout designed properly rather than mirrored at the end, Arabic typography that reads well on small screens, and content you can manage in both languages.",
+      },
+      {
+        q: "Will the app be published under our own name?",
+        a: "We recommend publishing under your own Apple Developer and Google Play accounts, so the listing, reviews and download history belong to your business. We set the accounts up with you and handle the submission and store review.",
+      },
+      {
         q: "How long does an app take to build?",
         a: "A typical first release ships in 8–14 weeks depending on scope: design first, then iterative development builds you can install and test throughout.",
       },
     ],
     related: [
       { label: "QSeat case study", href: "/work/qseat" },
+      { label: "Mobile app cost in Qatar", href: "/blog/mobile-app-development-cost-qatar" },
       { label: "Software development", href: "/software-development-company-qatar" },
       { label: "Our products", href: "/products" },
     ],
@@ -440,7 +462,7 @@ export const servicePages: ServiceDef[] = [
   },
   {
     slug: "whatsapp-business-api-qatar",
-    updated: "2026-10-09",
+    updated: "2026-10-29",
     image: { src: "/images/svc-whatsapp.webp", alt: "Customer conversations on WhatsApp" },
     crumb: "WhatsApp Business API",
     title: "WhatsApp Business API",
@@ -487,7 +509,7 @@ export const servicePages: ServiceDef[] = [
       },
       {
         q: "How much does the WhatsApp Business API cost?",
-        a: "Costs have two parts: Meta's per-conversation fees (a few halalas to under a riyal per conversation depending on type) and the platform. WASL plans start affordably for small teams — contact us for current pricing tiers.",
+        a: "Costs have two parts: Meta's per-message charges, which depend on the message category and the recipient's country (since 1 October 2026 replies inside the 24-hour window are also charged after the first 1,000 a month per number), and the platform. WASL works on pay-as-you-go credits — contact us for current pricing.",
       },
       {
         q: "Is broadcast messaging on WhatsApp legal?",

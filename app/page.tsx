@@ -3,13 +3,14 @@ import Link from "next/link";
 import { seoMeta } from "@/lib/seo";
 import Image from "next/image";
 import { Reveal, SectionHead, CtaBox } from "@/components/ui";
-import { site, services, products, clientLogos, testimonial } from "@/lib/site";
+import { services, products, clientLogos, testimonial } from "@/lib/site";
 import { caseStudies } from "@/lib/case-studies";
 import { ServiceCarousel } from "@/components/carousel";
 
 export const metadata: Metadata = seoMeta({
-  title: "Odysense — Web Design, E-commerce & Digital Growth in Qatar",
-  description: site.description,
+  title: "Web Design & E-commerce Development in Qatar | Odysense",
+  description:
+    "Web design and e-commerce development company in Doha, Qatar. Websites from QAR 2,000, online stores from QAR 8,000 with local payment gateways. Free consultation.",
   path: "/",
   absoluteTitle: true,
 });
