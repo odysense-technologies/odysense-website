@@ -1,10 +1,16 @@
 # Manual health check of the live site, run from GitHub (Claude's sandbox can't reach odysense.com).
 # Actions tab → "Live check" → Run workflow. Shows whether the live-game database answers and whether
-# the event pages load.
+# the event pages load. Optionally audits other pages that reference Odysense (product About pages,
+# client sites with the footer credit): pass them as space-separated URLs in "urls".
 name: Live check
 
 on:
   workflow_dispatch:
+    inputs:
+      urls:
+        description: "Optional: space-separated URLs to audit (status, title, canonical, links to odysense.com, JSON-LD)"
+        required: false
+        default: ""
 
 permissions:
   contents: read
@@ -23,3 +29,10 @@ jobs:
           for p in / /events/moph-medical-waste-challenge/ /events/moph-medical-waste-challenge/live/ /events/moph-medical-waste-challenge/join/ /events/moph-medical-waste-challenge/screen/; do
             echo "$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 "https://odysense.com$p")  $p"
           done
+      - uses: actions/checkout@v4
+        if: ${{ inputs.urls != '' }}
+      - name: Audit pages that reference Odysense
+        if: ${{ inputs.urls != '' }}
+        env:
+          URLS: ${{ inputs.urls }}
+        run: python3 scripts/page_audit.py $URLS
