@@ -145,6 +145,8 @@ export const products = [
     chipColor: "purple",
     url: "https://wasl.odysense.com",
     urlLabel: "wasl.odysense.com",
+    // "About / Built by Odysense" page on the product's own site (docs/offsite/product-site-prompts.md)
+    aboutUrl: "https://wasl.odysense.com/about",
     slug: "/products/wasl",
     description:
       "AI-powered WhatsApp inbox and notifications. Sell, support and notify customers on the channel the Gulf actually answers.",
@@ -156,6 +158,8 @@ export const products = [
     chipColor: "orange",
     url: "https://qflow.odysense.com",
     urlLabel: "qflow.odysense.com",
+    aboutUrl: "https://qflow.odysense.com/about",
+    aboutUrlAr: "https://qflow.odysense.com/ar/about",
     slug: "/products/qflow",
     description:
       "QR-powered restaurant and queue management. Guests scan, order and flow — you see the whole floor in real time.",
@@ -178,6 +182,8 @@ export const products = [
     chipColor: "sky",
     url: "https://rehabitt.com",
     urlLabel: "rehabitt.com",
+    aboutUrl: "https://rehabitt.com/about",
+    aboutUrlAr: "https://rehabitt.com/ar/about",
     slug: "/products/rehabitt",
     description:
       "Gamified paediatric physiotherapy with camera-based motion tracking — home exercise, turned into play.",
@@ -189,6 +195,7 @@ export const products = [
     chipColor: "purple",
     url: "https://pro-seek.com",
     urlLabel: "pro-seek.com",
+    aboutUrl: "https://pro-seek.com/about",
     slug: "/products/proseek",
     description:
       "An AI-powered platform connecting skilled professionals with the people who need them — semantic search, direct contact, no middleman, no commission.",

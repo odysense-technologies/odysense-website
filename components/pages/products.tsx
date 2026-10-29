@@ -41,6 +41,8 @@ const COPY = {
     pricingAccent: "add what you need.",
     startKicker: "Get started",
     forBusiness: "for your business.",
+    aboutText: (n: string) => `The story behind ${n}, on its own website, from the team that builds and runs it.`,
+    aboutLink: (n: string) => `About ${n}`,
   },
   ar: {
     metaTitle: "منتجاتنا: برمجيات تبنيها وتشغّلها Odysense",
@@ -70,6 +72,8 @@ const COPY = {
     pricingAccent: "وأضف ما تحتاجه.",
     startKicker: "ابدأ الآن",
     forBusiness: "لأعمالك.",
+    aboutText: (n: string) => `قصة ${n} على موقعه الرسمي، من الفريق الذي يبنيه ويشغّله.`,
+    aboutLink: (n: string) => `عن ${n}`,
   },
 };
 
@@ -330,6 +334,21 @@ export function ProductPage({ slug, locale }: { slug: string; locale: Locale }) 
                 <Link className="btn btn-secondary" href={L(d.related.href)}>
                   {d.related.label} {t.arrow}
                 </Link>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      )}
+
+      {p.aboutUrl && (
+        <section className="section section--flush-top">
+          <div className="wrap">
+            <Reveal>
+              <div className="post-related" style={{ marginTop: 0 }}>
+                <span>{c.aboutText(p.name)}</span>
+                <a className="btn btn-secondary" href={(locale === "ar" && p.aboutUrlAr) || p.aboutUrl} target="_blank" rel="noopener">
+                  {c.aboutLink(p.name)} ↗
+                </a>
               </div>
             </Reveal>
           </div>
