@@ -701,40 +701,202 @@ export const posts: Post[] = [
   },
   {
     slug: "whatsapp-automation-for-website",
-    metaTitle: "WhatsApp Automation for Your Website",
-    title: "WhatsApp automation for your website: turning visitors into conversations",
+    metaTitle: "How to Automate WhatsApp Messages for Business",
+    title: "How to automate WhatsApp messages for your business (and your website)",
     description:
-      "How to connect your website to WhatsApp automation — chat widgets, order notifications and auto-replies — so visitors become conversations, not bounces.",
+      "How to automate WhatsApp messages: what the free Business app can do, when you need the API, what to automate first, the 24-hour rule, costs and setup steps.",
     date: "2026-06-20",
+    updated: "2026-10-29",
     category: "WASL",
-    minutes: 6,
+    minutes: 9,
     relatedService: { label: "WASL — WhatsApp AI platform", href: "/products/wasl" },
     image: { src: "/images/shot-wasl-chat.webp", alt: "An automated WhatsApp conversation previewed in WASL", w: 612, h: 576 },
     sections: [
-      { ps: ["To add WhatsApp automation to your website, put a click-to-chat button on your key pages, let automated replies handle the greeting and the questions everyone asks, send order, booking and status notifications automatically from the site, and route anything unusual to a person in a shared inbox, all through the official WhatsApp Business API. It works because most website visitors in the Gulf don't fill in contact forms; they'd rather send a quick WhatsApp. Here's how the pieces fit together."] },
-      { h: "Start with the click-to-chat entry point", ps: ["A WhatsApp button on your site (floating, or on key pages) turns interest into a message in one tap — no form, no friction. The moment that chat opens, automation can take over the routine parts: greeting the visitor, answering the five questions everyone asks, and collecting basic details before a human ever joins."] },
-      { h: "Automate notifications from the website", list: ["Order and enquiry confirmations sent the instant someone acts on your site.", "Delivery and status updates triggered by your store or system — no staff time.", "Abandoned-cart nudges for e-commerce, on the channel people actually read.", "Appointment or booking reminders that cut no-shows."] },
-      { h: "Keep a human in the loop", ps: ["Automation clears the routine so your team spends time where it matters. Good setups answer instantly within the 24-hour window, route anything unusual to a person, and keep the full conversation history in one place. Done through the official WhatsApp Business API, it's compliant and scales to any volume."] },
-      { ps: ["Our WASL platform connects your website to WhatsApp end to end — chat capture, auto-reply bots, notifications and a team inbox. Ask us for a demo on your own number."] },
+      {
+        ps: [
+          "To automate WhatsApp messages for a business, you have two routes. The free WhatsApp Business app can send a greeting, an away message and saved quick replies from one phone. For anything more (bots that answer questions, order and booking notifications sent by your website, reminders, campaigns to opted-in customers and a shared team inbox) you need the official WhatsApp Business Platform, the Cloud API, through a platform such as our WASL. The rules that matter most are opt-in, approved templates for messages you start, and the 24-hour window for free-form replies.",
+          "This guide covers what each route can do, which messages to automate first, how your website fits in, what it costs and how to set it up without getting your number restricted.",
+        ],
+      },
+      {
+        h: "Route 1: the free WhatsApp Business app",
+        ps: [
+          "The WhatsApp Business app, free on Android and iPhone, includes three simple automations: a greeting message sent the first time someone writes to you or after a period of silence, an away message outside the hours you set, and quick replies, which are saved answers you insert with a shortcut. It also has labels to sort chats and a catalogue to show products.",
+          "That is enough for a small business where one person answers on one phone. It isn't real automation, though: nothing is sent when an order is placed on your website, nobody else can reply from the same number unless they use linked devices, and there are no bots that understand a question and answer it.",
+        ],
+      },
+      {
+        h: "Route 2: the WhatsApp Business Platform (Cloud API)",
+        ps: [
+          "The WhatsApp Business Platform is Meta's official API. Your number runs in the cloud instead of on a phone, so your website, store, booking system or CRM can send messages automatically, bots can reply around the clock, and several agents can share one inbox. You use it through a platform that provides the inbox, bot builder and integrations, because the API itself has no screen to work in.",
+          "Since 2026 a number can use the WhatsApp Business app and the Cloud API at the same time (Meta calls this coexistence), so you don't have to give up the app on your main phone to add automation.",
+        ],
+      },
+      {
+        h: "What to automate first",
+        list: [
+          "Order and booking confirmations, sent the moment a customer completes checkout or a reservation on your website.",
+          "Delivery and status updates triggered by your store or system, which cut the \"where is my order?\" messages.",
+          "Appointment and payment reminders, which reduce no-shows and late payments.",
+          "Answers to the questions everyone asks: prices, opening hours, location, delivery areas and how to order.",
+          "Lead capture: collect a name, the service someone wants and a good time to call, then pass the chat to a salesperson.",
+          "Abandoned-cart reminders for e-commerce, sent only to customers who agreed to receive messages.",
+        ],
+      },
+      {
+        h: "How your website connects to WhatsApp",
+        ps: [
+          "A website plays two roles. First, it's the entry point: a click-to-chat button or link opens WhatsApp with a pre-filled message, so a visitor can ask a question in one tap instead of filling in a form. Most visitors in the Gulf would rather send a WhatsApp than wait for an email reply, and from that first message a bot can greet them, answer common questions and collect details before a person joins.",
+          "Second, the website is a trigger. When something happens on your site, such as an order, a booking, a form submission or a payment, it calls the WhatsApp platform, which sends the matching template to the customer. On WooCommerce or Shopify this is usually a plugin or webhook; on a custom site it's a short integration with the platform's API.",
+        ],
+      },
+      {
+        h: "The rules: templates, the 24-hour window and opt-in",
+        list: [
+          "Opt-in first: you may only start conversations with people who agreed to receive WhatsApp messages from you, for example with a tick box at checkout. Messaging people who never opted in leads to blocks, reports and a restricted number.",
+          "Templates for messages you start: any message you send first, such as an order confirmation, a reminder or a campaign, must use a template Meta has approved, in the category it belongs to (marketing, utility or authentication).",
+          "The 24-hour window: when a customer messages you, you can reply freely, by a person or a bot, for 24 hours after their last message. After that, only templates can be sent.",
+          "A human route: always give customers a way to reach a person, and hand over chats the bot can't handle instead of looping.",
+        ],
+      },
+      {
+        h: "What WhatsApp automation costs",
+        ps: [
+          "There are two costs. Meta charges per message for templates, with rates that depend on the category and the recipient's country, and from 1 October 2026 it also charges for service messages (free-form replies inside the 24-hour window) after the first 1,000 a month on each business number. On top of that you pay for the platform you use. With WASL that's pay-as-you-go credits, so you can see what each message costs and set spending limits.",
+          "Automation usually pays for itself through the staff time it saves and the orders it recovers, but it's worth checking which automated replies are useful before sending thousands of them, now that replies aren't free.",
+        ],
+      },
+      {
+        h: "Setting it up, step by step",
+        list: [
+          "Verify your business in Meta Business Manager and choose the number you'll use. It can be the number your customers already know.",
+          "Connect the number to the WhatsApp Business Platform through your chosen provider.",
+          "Write and submit your templates: order confirmation, shipping update, reminder and any campaigns.",
+          "Connect your website or store so each event sends the right template, and add a click-to-chat button to your key pages.",
+          "Build the bot for common questions, with a clear handover to your team.",
+          "Test everything with your own phone, then switch it on and watch the first weeks of conversations closely.",
+        ],
+      },
+      {
+        h: "Mistakes that get numbers restricted",
+        ps: [
+          "Sending campaigns to bought or old contact lists, sending too often, writing templates that hide their purpose and leaving customers stuck in a bot are the usual causes of low quality ratings and messaging limits. Keep campaigns relevant, let people opt out easily, and measure replies and blocks, not just messages sent.",
+        ],
+      },
+      {
+        ps: [
+          "WASL, our WhatsApp platform, connects your website to WhatsApp end to end: click-to-chat capture, auto-reply bots, order and booking notifications, broadcasts to opted-in customers and a shared team inbox, on the official Cloud API. Ask us for a demo on your own number, or book a free consultation and we'll map out which messages to automate first.",
+        ],
+      },
     ],
+    sources: [
+      { label: "Meta for Developers: Pricing on the WhatsApp Business Platform", url: "https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing" },
+      { label: "Meta for Developers: Onboarding WhatsApp Business app users (coexistence)", url: "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/" },
+      { label: "Meta for Developers: WhatsApp Business Platform overview", url: "https://developers.facebook.com/documentation/business-messaging/whatsapp/overview" },
+    ],
+    relatedPosts: ["whatsapp-auto-reply-bots-that-help", "whatsapp-order-notifications-ecommerce", "whatsapp-new-features"],
   },
   {
     slug: "whatsapp-new-features",
-    metaTitle: "New WhatsApp Business Features Worth Using",
-    title: "What's new in WhatsApp Business: the features worth using in 2026",
+    metaTitle: "WhatsApp New Features 2026: The Latest Updates",
+    title: "WhatsApp new features 2026: every update so far, and what it means for business",
     description:
-      "WhatsApp Business keeps evolving — from rich templates to interactive buttons and the Cloud API. Which new capabilities actually move the needle for GCC businesses.",
+      "Every major WhatsApp update of 2026: usernames, guest calling, stronger account security, Status ads and the October Business API pricing change, sourced from Meta.",
     date: "2026-06-10",
+    updated: "2026-10-29",
     category: "WASL",
-    minutes: 5,
+    minutes: 8,
     relatedService: { label: "WhatsApp Business API in Qatar", href: "/whatsapp-business-api-qatar" },
     image: { src: "/images/blog-licence-phone.webp", alt: "Hands holding a smartphone with a gradient screen", w: 1200, h: 800 },
     sections: [
-      { ps: ["The WhatsApp Business features worth using in 2026 are interactive message templates with buttons and quick replies, the official Cloud API, rich media templates, catalogs and product messages, and cleaner automation hooks for triggering messages from your own systems. Together they turn WhatsApp from \"a green chat app\" into a full commerce and support platform; here is what each one does, and which ones actually matter for a business in Qatar or the GCC."] },
-      { h: "The features that earn their place", list: ["Interactive message templates — buttons, quick replies and calls-to-action inside a message, so customers act without typing.", "The Cloud API — official, Meta-hosted access with enterprise reliability and no third-party proxies.", "Rich media templates — headers with images, documents and location for confirmations and updates that look professional.", "Catalogs and product messages — showing products directly inside the chat.", "Better automation hooks — cleaner ways to trigger messages from your own systems."] },
-      { h: "What to ignore (for now)", ps: ["Not every feature suits every business. Chase the ones that remove real friction — instant confirmations, one-tap replies, automated support for common questions — and skip novelty features that add complexity without changing your customer's experience. The test is always: does this get a customer an answer faster, or a business a sale sooner?"] },
-      { ps: ["WASL keeps pace with the official API so you don't have to track every release — templates, buttons, automation and the Cloud API, managed from one dashboard. Ask us what's worth turning on for your business."] },
+      {
+        ps: [
+          "The biggest WhatsApp updates of 2026 so far are usernames (reservations opened on 29 June and the feature is rolling out country by country), guest calling for people who don't have WhatsApp (14 October), a full password for two-step verification and support for several passkeys (25 August), and, for businesses, per-message billing for service messages from 1 October, with the first 1,000 a month free on each number. Below is each update in date order, followed by what it changes if you run a business in Qatar or the wider GCC.",
+          "Meta rolls most features out gradually, so some of them may not have reached your phone or your country yet. We update this article as new releases are announced; every claim is linked to Meta's own announcement or documentation in the sources at the end.",
+        ],
+      },
+      {
+        h: "WhatsApp's 2026 updates at a glance",
+        list: [
+          "Usernames (from 29 June 2026): an optional handle you can share instead of your phone number. Reserve it under Settings → Account → Username; it switches on when your country's rollout reaches you.",
+          "Business usernames and business-scoped user IDs: businesses can reserve a username too, and the WhatsApp Business Platform identifies customers who hide their number with a business-scoped user ID (BSUID).",
+          "Account security (25 August 2026): two-step verification moves from a six-digit PIN to a longer alphanumeric password, you can add more than one passkey, and Android shows more context about unknown callers.",
+          "Guest calling (14 October 2026): invite anyone to a WhatsApp call with a link, even people without an account. Guests join from a computer browser and wait until the host admits them.",
+          "Business app and API on one number: the WhatsApp Business app and the Cloud API can run on the same number (\"coexistence\"), so a team can keep the app and add automation.",
+          "Service-message billing (1 October 2026): replies inside the 24-hour customer service window are now charged per message after 1,000 free each month per business number.",
+        ],
+      },
+      {
+        h: "Usernames: chat without sharing your number",
+        ps: [
+          "WhatsApp opened username reservations on 29 June 2026. A username is optional and works like a handle: people can start a chat with you by typing it, without ever seeing your phone number. There is no public directory and no suggestion list, so someone needs your exact username to reach you for the first time. When the feature reaches your country you get a notice in the app.",
+          "For businesses this is the change that needs the most preparation. Reserve your brand's username early, before someone else takes the obvious one. If you use the WhatsApp Business Platform, customers who adopt usernames can message you without their phone number being shared, and the platform identifies them with a business-scoped user ID instead. Any system that matches WhatsApp chats to customer records by phone number (a CRM, an order system, a loyalty programme) needs to handle that ID. Ask your provider whether it already does.",
+        ],
+      },
+      {
+        h: "Stronger account security",
+        ps: [
+          "On 25 August 2026 WhatsApp replaced the six-digit two-step verification PIN with a full password that can be longer and include letters and special characters. Accounts can now also hold more than one passkey, which helps anyone who uses both an Android phone and an iPhone, and on Android you see more about a caller who isn't in your contacts, such as the country code and any groups you share.",
+          "If your business runs WhatsApp on shared phones, this is a good moment to set a proper two-step password on every one of them and record who holds it. Taking over an account with a stolen verification code is a well-known WhatsApp scam, and a strong password is the main defence.",
+        ],
+      },
+      {
+        h: "Guest calling: invite anyone to a call",
+        ps: [
+          "Since 14 October 2026 you can create a call link from the Calls tab and send it to anyone, including people who don't use WhatsApp. Guests type their name in a computer browser and wait in a waiting room until the host lets them in, and calls can hold up to 32 people. Guests can't see other participants' phone numbers, send messages or add anyone to the call.",
+          "In practice this makes WhatsApp usable for client meetings with people outside the Gulf, where not everyone has the app, without moving to a separate video-call tool.",
+        ],
+      },
+      {
+        h: "Status ads, promoted channels and channel subscriptions",
+        ps: [
+          "WhatsApp's Updates tab, which holds Status and Channels, now carries three business features that Meta announced in June 2025 and has been rolling out market by market: ads in Status that open a chat with the advertiser, promoted channels in the channel directory, and paid channel subscriptions. Meta says ads stay in the Updates tab and personal chats remain ad-free and end-to-end encrypted.",
+          "Status ads are bought through Meta Ads Manager alongside Facebook and Instagram campaigns. For brands in Qatar and Saudi Arabia that already sell through WhatsApp conversations, an ad that opens a chat directly is worth testing, provided someone (or a well-designed bot) is ready to answer.",
+        ],
+      },
+      {
+        h: "For businesses: what changed on the WhatsApp Business Platform",
+        list: [
+          "Service messages are billable from 1 October 2026. Free-form replies inside the 24-hour window used to cost nothing; now each business number gets 1,000 free service messages a month and pays a per-message rate after that. Rates depend on the recipient's country, so check Meta's rate card for your markets.",
+          "Calling on the Cloud API keeps growing: calls a customer starts are free, voicemail became generally available in June 2026 and call recording with transcription followed at the end of June.",
+          "Marketing templates can be sent with a maximum price you set, a feature in beta that Meta is opening to all partners from October 2026.",
+          "Business app users can connect the same number to the Cloud API through Meta's onboarding flow, and since May 2026 they can reconnect their API products after re-registering the app.",
+          "The platform's messaging and calling APIs now accept business-scoped user IDs, so automation keeps working when a customer messages you by username.",
+        ],
+      },
+      {
+        h: "What to do now if you sell in Qatar or the GCC",
+        list: [
+          "Reserve your business username in the WhatsApp Business app or through your API provider, using your brand name exactly as customers would type it.",
+          "Check your message volume. If your team or bot sends thousands of replies a month, estimate the new service-message cost per number and decide whether every automated reply earns its place.",
+          "Make sure your CRM or store integration can recognise customers by business-scoped user ID as well as by phone number before usernames reach your market.",
+          "Set a two-step verification password on every phone that runs your business account.",
+          "Test a Status ad that opens a chat, with clear opening hours and an auto-reply for out-of-hours messages.",
+        ],
+      },
+      {
+        h: "The older features that still matter most",
+        ps: [
+          "New releases get the headlines, but most of the value for a GCC business still comes from features that have been around for a while: interactive templates with buttons and quick replies, so customers can confirm or reschedule with one tap; catalogs and product messages that show items inside the chat; automatic order, delivery and appointment notifications sent from your own systems; and a shared team inbox on the official Cloud API. If those aren't in place yet, start there before chasing the newest feature.",
+        ],
+      },
+      {
+        ps: [
+          "WASL, our WhatsApp platform, runs on the official Cloud API and brings templates, bots, broadcasts and a team inbox into one dashboard, so you don't have to track every release yourself. If you'd like to know how the October pricing change affects your message volume, or which of this year's features are worth switching on for your business, ask us for a free consultation.",
+        ],
+      },
     ],
+    sources: [
+      { label: "WhatsApp Blog: It's time to reserve your WhatsApp username", url: "https://blog.whatsapp.com/its-time-to-reserve-your-whatsapp-username" },
+      { label: "Meta Newsroom: New account security features for WhatsApp (August 2026)", url: "https://about.fb.com/news/2026/08/new-account-security-features-for-whatsapp/" },
+      { label: "Meta Newsroom: Now you can invite anyone to a WhatsApp call (October 2026)", url: "https://about.fb.com/news/2026/10/introducing-whatsapp-guest-calling/" },
+      { label: "Meta Newsroom: Helping you find more channels and businesses on WhatsApp", url: "https://about.fb.com/news/2025/06/helping-you-find-more-channels-businesses-on-whatsapp/" },
+      { label: "Meta for Developers: Pricing on the WhatsApp Business Platform", url: "https://developers.facebook.com/documentation/business-messaging/whatsapp/pricing" },
+      { label: "Meta for Developers: Business-scoped user IDs", url: "https://developers.facebook.com/documentation/business-messaging/whatsapp/business-scoped-user-ids/" },
+      { label: "Meta for Developers: Onboarding WhatsApp Business app users (coexistence)", url: "https://developers.facebook.com/documentation/business-messaging/whatsapp/embedded-signup/onboarding-business-app-users/" },
+      { label: "Meta for Developers: WhatsApp Business Platform changelog", url: "https://developers.facebook.com/documentation/business-messaging/whatsapp/changelog" },
+    ],
+    relatedPosts: ["whatsapp-business-api-qatar-guide", "whatsapp-automation-for-website", "whatsapp-auto-reply-bots-that-help"],
   },
   {
     slug: "how-software-streamlines-business-operations",

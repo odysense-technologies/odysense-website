@@ -460,7 +460,13 @@ docs/indexing.md  crawler policy, llms.txt, IndexNow, and the owner's search-eng
 9. **Titles:** keep the full `<title>` (with " | Odysense") at 60 characters or less. Blog posts with
    long headlines set a shorter `metaTitle`; the H1 keeps the full headline.
 10. **Service pages** carry 250–350 words of long-form `sections` (who it's for, how it runs, pricing)
-   plus FAQs and a "Related reading" block fed by posts whose `relatedService` points at the page.
+   plus FAQs and a "Related reading" block fed by posts whose `relatedService` points at the page. The
+   mobile app page carries more (~550 words, 2026-10-29) to compete for "mobile app development company qatar".
+11. **Search Console snapshot (2026-10-29, 90 days):** ~8k impressions, ~60 clicks; every key page indexed.
+   The WhatsApp new-features article drives most impressions ("whatsapp new features 2026", "latest update
+   <month> 2026"): refresh `whatsapp-new-features` in `lib/blog.ts` monthly with Meta-sourced updates and bump
+   `updated`. Mobile app (pos ~26–45) and software (pos ~26) pages are the main ranking gaps; Arabic queries
+   (e.g. "تكلفة إنشاء تطبيق", "مطور ووردبريس في قطر") already appear.
 
 ---
 

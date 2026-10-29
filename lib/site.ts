@@ -250,6 +250,9 @@ export const productDetails: Record<
   string,
   {
     tagline: string;
+    /** Search-result title and description when the defaults ("name — chip", the product card text) are too vague */
+    metaTitle?: string;
+    metaDescription?: string;
     /** Answer-first hero intro; defaults to "tagline + description" */
     intro?: string;
     features: { h: string; p: string }[];
@@ -332,6 +335,9 @@ export const productDetails: Record<
   },
   "store-portal": {
     tagline: "Run your store. Skip the WordPress admin.",
+    metaTitle: "Store Portal: WooCommerce Store Management App",
+    metaDescription:
+      "A mobile-first app for running a WooCommerce store: products, orders, invoices, POS and analytics, in Arabic and English. Free for a year with an Odysense build.",
     intro:
       "Store Portal is our operations app for WooCommerce stores: products, orders and invoices, a built-in POS, analytics and AI Virtual Try-On in one mobile-first portal, in Arabic and English. It's free for the first year with every Odysense e-commerce build, then QAR 170 per month, or QAR 150 per month billed yearly.",
     features: [
