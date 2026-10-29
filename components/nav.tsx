@@ -3,12 +3,42 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { products, serviceLinks as serviceItems, gccLinks } from "@/lib/site";
+import { usePathname } from "next/navigation";
+import { lp, ui, type Locale } from "@/lib/i18n";
+import type { NavData } from "@/lib/content";
 
+/**
+ * Link to this page in the other language. The target comes from the page's own hreflang alternate
+ * (set by seoMeta), so the switcher and the SEO tags can never disagree; without one it goes to that
+ * language's homepage.
+ */
+function LangSwitch({ locale, className, onClick }: { locale: Locale; className?: string; onClick?: () => void }) {
+  const t = ui(locale).nav;
+  const fallback = locale === "en" ? "/ar/" : "/";
+  const [href, setHref] = useState(fallback);
+  const path = usePathname();
+  useEffect(() => {
+    const read = () => {
+      const alt = document.querySelector<HTMLLinkElement>(`link[rel="alternate"][hreflang="${t.switchLang}"]`);
+      setHref(alt ? new URL(alt.href).pathname : fallback);
+    };
+    read();
+    const id = setTimeout(read, 300); // the head updates just after a client-side navigation
+    return () => clearTimeout(id);
+  }, [path, fallback, t.switchLang]);
+  return (
+    <a className={className} href={href} hrefLang={t.switchLang} lang={t.switchLang} title={t.switchTitle} onClick={onClick}>
+      {t.switchLabel}
+    </a>
+  );
+}
 
 type Panel = "products" | "services" | null;
 
-export function Nav() {
+export function Nav({ locale = "en", data }: { locale?: Locale; data: NavData }) {
+  const t = ui(locale).nav;
+  const L = (href: string) => lp(locale, href);
+  const { services: serviceItems, gcc: gccLinks, products } = data;
   const [panel, setPanel] = useState<Panel>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -43,7 +73,7 @@ export function Nav() {
   return (
     <nav className="nav" onMouseLeave={scheduleClose}>
       <div className="nav-pill">
-        <Link className="nav-logo" href="/" onMouseEnter={scheduleClose}>
+        <Link className="nav-logo" href={L("/")} onMouseEnter={scheduleClose}>
           <Image className="nav-icon" src="/logos/odysense-icon.png" alt="" width={44} height={44} priority />
           Odysense
         </Link>
@@ -54,7 +84,7 @@ export function Nav() {
             onClick={() => setPanel(panel === "services" ? null : "services")}
             aria-expanded={panel === "services"}
           >
-            Services <span aria-hidden="true">▾</span>
+            {t.services} <span aria-hidden="true">▾</span>
           </button>
           <button
             className={`nav-drop ${panel === "products" ? "on" : ""}`}
@@ -62,23 +92,24 @@ export function Nav() {
             onClick={() => setPanel(panel === "products" ? null : "products")}
             aria-expanded={panel === "products"}
           >
-            Products <span aria-hidden="true">▾</span>
+            {t.products} <span aria-hidden="true">▾</span>
           </button>
-          <Link href="/work" onMouseEnter={scheduleClose}>
-            Work
+          <Link href={L("/work")} onMouseEnter={scheduleClose}>
+            {t.work}
           </Link>
-          <Link href="/blog" onMouseEnter={scheduleClose}>
-            Blog
+          <Link href={L("/blog")} onMouseEnter={scheduleClose}>
+            {t.blog}
           </Link>
         </div>
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-          <Link className="nav-cta" href="/contact" onMouseEnter={scheduleClose}>
-            Start a project
+          <LangSwitch locale={locale} className="nav-lang" />
+          <Link className="nav-cta" href={L("/contact")} onMouseEnter={scheduleClose}>
+            {t.cta}
           </Link>
           <button
             className="burger"
             onClick={() => setMobileOpen(true)}
-            aria-label="Open menu"
+            aria-label={t.openMenu}
             aria-expanded={mobileOpen}
           >
             <span /><span /><span />
@@ -93,27 +124,28 @@ export function Nav() {
               <Image className="nav-icon" src="/logos/odysense-icon.png" alt="" width={44} height={44} />
               Odysense
             </span>
-            <button className="popup-close" onClick={() => setMobileOpen(false)} aria-label="Close menu">✕</button>
+            <button className="popup-close" onClick={() => setMobileOpen(false)} aria-label={t.closeMenu}>✕</button>
           </div>
           <div className="mobile-menu-body">
-            <span className="mono">Services</span>
+            <span className="mono">{t.services}</span>
             {serviceItems.map((sv) => (
               <Link href={sv.href} key={sv.href} onClick={() => setMobileOpen(false)}>{sv.label}</Link>
             ))}
-            <span className="mono" style={{ marginTop: 22 }}>E-commerce across the GCC</span>
+            <span className="mono" style={{ marginTop: 22 }}>{t.gcc}</span>
             {gccLinks.map((g) => (
               <Link href={g.href} key={g.href} onClick={() => setMobileOpen(false)}>{g.label}</Link>
             ))}
-            <span className="mono" style={{ marginTop: 22 }}>Products</span>
+            <span className="mono" style={{ marginTop: 22 }}>{t.products}</span>
             {products.map((p) => (
               <Link href={p.slug} key={p.slug} onClick={() => setMobileOpen(false)}>{p.name}</Link>
             ))}
-            <span className="mono" style={{ marginTop: 22 }}>Company</span>
-            <Link href="/work" onClick={() => setMobileOpen(false)}>Work</Link>
-            <Link href="/blog" onClick={() => setMobileOpen(false)}>Blog</Link>
-            <Link href="/about" onClick={() => setMobileOpen(false)}>About</Link>
-            <Link className="btn btn-primary" style={{ marginTop: 26, justifyContent: "center" }} href="/contact" onClick={() => setMobileOpen(false)}>
-              Start a project →
+            <span className="mono" style={{ marginTop: 22 }}>{t.company}</span>
+            <Link href={L("/work")} onClick={() => setMobileOpen(false)}>{t.work}</Link>
+            <Link href={L("/blog")} onClick={() => setMobileOpen(false)}>{t.blog}</Link>
+            <Link href={L("/about")} onClick={() => setMobileOpen(false)}>{t.about}</Link>
+            <LangSwitch locale={locale} onClick={() => setMobileOpen(false)} />
+            <Link className="btn btn-primary" style={{ marginTop: 26, justifyContent: "center" }} href={L("/contact")} onClick={() => setMobileOpen(false)}>
+              {t.cta} {ui(locale).arrow}
             </Link>
           </div>
         </div>
@@ -135,12 +167,12 @@ export function Nav() {
               </Link>
             ))}
           </div>
-          <Link className="mega-feature" href="/products/wasl" onClick={() => setPanel(null)}>
-            <Image src="/images/shot-wasl-chat.webp" alt="WASL live on WhatsApp" width={612} height={576} />
+          <Link className="mega-feature" href={L("/products/wasl")} onClick={() => setPanel(null)}>
+            <Image src="/images/shot-wasl-chat.webp" alt={t.waslAlt} width={612} height={576} />
             <b>
-              WASL <span className="serif">— WhatsApp at scale.</span>
+              {t.waslFeature} <span className="serif">{t.waslAccent}</span>
             </b>
-            <small>Official API, AI inbox, broadcasts & notifications</small>
+            <small>{t.waslSmall}</small>
           </Link>
         </div>
       </div>
@@ -157,16 +189,16 @@ export function Nav() {
               </Link>
             ))}
           </div>
-          <Link className="mega-feature" href="/ecommerce-development-company-qatar" onClick={() => setPanel(null)}>
-            <Image src="/images/ecom-packages.webp" alt="E-commerce by Odysense" width={1200} height={673} />
+          <Link className="mega-feature" href={L("/ecommerce-development-company-qatar")} onClick={() => setPanel(null)}>
+            <Image src="/images/ecom-packages.webp" alt={t.ecomAlt} width={1200} height={673} />
             <b>
-              E-commerce <span className="serif">— our specialty.</span>
+              {t.ecomFeature} <span className="serif">{t.ecomAccent}</span>
             </b>
-            <small>Stores that carry your brand's standard and convert</small>
+            <small>{t.ecomSmall}</small>
           </Link>
         </div>
         <div className="mega-sub">
-          <span className="mono">E-commerce across the GCC</span>
+          <span className="mono">{t.gcc}</span>
           <div>
             {gccLinks.map((g) => (
               <Link href={g.href} key={g.href} onClick={() => setPanel(null)}>

@@ -2,26 +2,25 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Leaderboard } from "./shared";
+import type { Locale } from "@/lib/i18n";
+import { ARC_TEXT } from "./text";
 
-const QUESTIONS = [
-  { q: "What is the capital of Qatar?", options: ["Al Wakrah", "Doha", "Lusail", "Al Khor"], answer: 1 },
-  { q: "How many players does a football team have on the pitch?", options: ["9", "10", "11", "12"], answer: 2 },
-  { q: "Which planet is known as the Red Planet?", options: ["Mars", "Venus", "Jupiter", "Mercury"], answer: 0 },
-  { q: "What colour do you get by mixing blue and yellow?", options: ["Purple", "Orange", "Brown", "Green"], answer: 3 },
-  { q: "How many sides does a hexagon have?", options: ["5", "6", "7", "8"], answer: 1 },
-];
 const SECONDS = 10;
-const DEMO_PLAYERS = [
-  { name: "Guest 214", score: 3900 },
-  { name: "Guest 087", score: 3350 },
-  { name: "Guest 152", score: 2700 },
-  { name: "Guest 031", score: 1950 },
-  { name: "Guest 120", score: 1200 },
-];
+const DEMO_SCORES = [
+  ["214", 3900],
+  ["087", 3350],
+  ["152", 2700],
+  ["031", 1950],
+  ["120", 1200],
+] as const;
 
 type Phase = "intro" | "question" | "reveal" | "done";
 
-export default function Quiz() {
+export default function Quiz({ locale = "en" }: { locale?: Locale }) {
+  const all = ARC_TEXT[locale];
+  const t = all.quiz;
+  const QUESTIONS = t.questions;
+  const DEMO_PLAYERS = DEMO_SCORES.map(([n, score]) => ({ name: all.guest(n), score }));
   const [phase, setPhase] = useState<Phase>("intro");
   const [idx, setIdx] = useState(0);
   const [left, setLeft] = useState(SECONDS);
@@ -81,14 +80,11 @@ export default function Quiz() {
     return (
       <div className="arc-game arc-center">
         <h3 className="arc-title">
-          Live quiz <span className="serif">— five quick questions.</span>
+          {t.title} <span className="serif">{t.accent}</span>
         </h3>
-        <p className="arc-sub">
-          Ten seconds per question. Right answers score points, and faster answers score more. At an event, everyone
-          plays on their phones at the same time while the leaderboard runs on the big screen.
-        </p>
+        <p className="arc-sub">{t.intro}</p>
         <button className="btn btn-invert" type="button" onClick={start}>
-          Start the quiz →
+          {t.start}
         </button>
       </div>
     );
@@ -98,18 +94,16 @@ export default function Quiz() {
     return (
       <div className="arc-game arc-split">
         <div>
-          <span className="mono arc-muted">Results</span>
+          <span className="mono arc-muted">{t.results}</span>
           <h3 className="arc-title" aria-live="polite">
-            {score.toLocaleString("en-US")} <span className="serif">points.</span>
+            {score.toLocaleString("en-US")} <span className="serif">{t.points}</span>
           </h3>
-          <p className="arc-sub">
-            {correct} of {QUESTIONS.length} correct. Your best this visit: {best.toLocaleString("en-US")}.
-          </p>
+          <p className="arc-sub">{t.summary(correct, QUESTIONS.length, best.toLocaleString("en-US"))}</p>
           <button className="btn btn-invert" type="button" onClick={start}>
-            Play again
+            {t.again}
           </button>
         </div>
-        <Leaderboard rows={DEMO_PLAYERS} unit="pts" you={{ name: "You", score }} />
+        <Leaderboard rows={DEMO_PLAYERS} unit={t.pts} you={{ name: all.you, score }} locale={locale} />
       </div>
     );
   }
@@ -119,14 +113,16 @@ export default function Quiz() {
     <div className="arc-game">
       <div className="arc-quiz-top">
         <span className="mono arc-muted">
-          Question {idx + 1} / {QUESTIONS.length}
+          {t.question(idx + 1, QUESTIONS.length)}
         </span>
-        <span className="mono arc-muted">{score.toLocaleString("en-US")} pts</span>
+        <span className="mono arc-muted">
+          {score.toLocaleString("en-US")} {t.pts}
+        </span>
       </div>
       <div
         className="arc-timer"
         role="progressbar"
-        aria-label="Time left"
+        aria-label={t.timeAria}
         aria-valuemin={0}
         aria-valuemax={SECONDS}
         aria-valuenow={Math.ceil(left)}
@@ -150,14 +146,14 @@ export default function Quiz() {
         {phase === "reveal" && (
           <>
             <span>
-              {picked === null ? "Time's up!" : picked === Q.answer ? "Correct!" : "Not quite."}
+              {picked === null ? t.timeUp : picked === Q.answer ? t.correct : t.wrong}
             </span>
             <button className="btn btn-invert" type="button" onClick={next}>
-              {idx + 1 >= QUESTIONS.length ? "See results" : "Next question"} →
+              {idx + 1 >= QUESTIONS.length ? t.seeResults : t.next} {t.arrow}
             </button>
           </>
         )}
-        {phase === "question" && <span className="arc-muted">{Math.ceil(left)}s left</span>}
+        {phase === "question" && <span className="arc-muted">{t.left(Math.ceil(left))}</span>}
       </div>
     </div>
   );

@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
   // Keep trailing slashes to match the old WordPress URL format exactly
   // (preserves parity with currently-indexed URLs)
   trailingSlash: true,
+  // English and Arabic have separate root layouts (app/(en), app/(ar)), so unmatched URLs use
+  // app/global-not-found.tsx instead of a root not-found page.
+  experimental: { globalNotFound: true },
   // 301 redirects from legacy WordPress URLs
   // (extend from the full old-sitemap crawl before launch)
   async redirects() {

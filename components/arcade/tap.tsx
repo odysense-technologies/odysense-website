@@ -2,17 +2,22 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Leaderboard } from "./shared";
+import type { Locale } from "@/lib/i18n";
+import { ARC_TEXT } from "./text";
 
 const DURATION = 10;
-const DEMO_PLAYERS = [
-  { name: "Guest 044", score: 78 },
-  { name: "Guest 213", score: 71 },
-  { name: "Guest 109", score: 64 },
-  { name: "Guest 076", score: 55 },
-  { name: "Guest 158", score: 47 },
-];
+const DEMO_SCORES = [
+  ["044", 78],
+  ["213", 71],
+  ["109", 64],
+  ["076", 55],
+  ["158", 47],
+] as const;
 
-export default function Tap() {
+export default function Tap({ locale = "en" }: { locale?: Locale }) {
+  const all = ARC_TEXT[locale];
+  const t = all.tap;
+  const DEMO_PLAYERS = DEMO_SCORES.map(([n, score]) => ({ name: all.guest(n), score }));
   const [phase, setPhase] = useState<"ready" | "go" | "done">("ready");
   const [taps, setTaps] = useState(0);
   const [left, setLeft] = useState(DURATION);
@@ -55,7 +60,7 @@ export default function Tap() {
       <div className="arc-tap-col">
         <div className="arc-quiz-top">
           <span className="mono arc-muted">{left.toFixed(1)}s</span>
-          <span className="mono arc-muted">{taps} taps</span>
+          <span className="mono arc-muted">{t.taps(taps)}</span>
         </div>
         <button
           type="button"
@@ -71,31 +76,31 @@ export default function Tap() {
             }
           }}
           disabled={phase === "done"}
-          aria-label={phase === "ready" ? "Tap to start" : "Tap"}
+          aria-label={phase === "ready" ? t.startAria : t.tapAria}
         >
           <span key={pop} className="arc-tap-ring" aria-hidden="true" />
-          <b>{phase === "ready" ? "TAP" : taps}</b>
-          <small>{phase === "ready" ? "to start the clock" : phase === "go" ? "keep going!" : "time!"}</small>
+          <b>{phase === "ready" ? t.tap : taps}</b>
+          <small>{phase === "ready" ? t.toStart : phase === "go" ? t.going : t.time}</small>
         </button>
-        <p className="arc-sub arc-center-text">Tap, click, or press Space as fast as you can for {DURATION} seconds.</p>
+        <p className="arc-sub arc-center-text">{t.how(DURATION)}</p>
       </div>
       <div>
         {phase === "done" ? (
           <>
             <h3 className="arc-title" aria-live="polite">
-              {taps} taps <span className="serif">in {DURATION} seconds.</span>
+              {t.resultA(taps)} <span className="serif">{t.resultB(DURATION)}</span>
             </h3>
-            <p className="arc-sub">Your best this visit: {best}.</p>
+            <p className="arc-sub">{t.best(best)}</p>
             <button className="btn btn-invert" type="button" onClick={reset} style={{ marginBottom: 20 }}>
-              Try again
+              {t.again}
             </button>
           </>
         ) : (
           <h3 className="arc-title">
-            Tap challenge <span className="serif">— fastest fingers win.</span>
+            {t.title} <span className="serif">{t.accent}</span>
           </h3>
         )}
-        <Leaderboard rows={DEMO_PLAYERS} unit="taps" you={phase === "done" ? { name: "You", score: taps } : undefined} />
+        <Leaderboard rows={DEMO_PLAYERS} unit={t.unit} you={phase === "done" ? { name: all.you, score: taps } : undefined} locale={locale} />
       </div>
     </div>
   );

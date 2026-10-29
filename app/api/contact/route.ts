@@ -26,6 +26,13 @@ type Lead = {
   message?: string;
   website?: string; // honeypot
   page?: string;
+  lang?: string; // "ar" for the Arabic site
+};
+
+/** Error messages in the visitor's language */
+const ERRORS = {
+  en: { fields: "Please fill in the required fields.", send: "Could not send right now — please WhatsApp or email us directly." },
+  ar: { fields: "يرجى تعبئة الحقول المطلوبة.", send: "تعذّر الإرسال الآن. يرجى مراسلتنا على واتساب أو البريد الإلكتروني مباشرة." },
 };
 
 function esc(s: string) {
@@ -62,15 +69,16 @@ export async function POST(req: Request) {
   // Honeypot: real users never fill this
   if (lead.website) return NextResponse.json({ ok: true });
 
+  const err = ERRORS[lead.lang === "ar" ? "ar" : "en"];
   const isCallback = lead.type === "callback";
   if (!lead.name || (isCallback ? !lead.phone : !lead.email || !lead.message)) {
-    return NextResponse.json({ ok: false, error: "Please fill in the required fields." }, { status: 422 });
+    return NextResponse.json({ ok: false, error: err.fields }, { status: 422 });
   }
 
   const phone = `${lead.countryCode ?? ""} ${lead.phone ?? ""}`.trim();
   const subject = isCallback
-    ? `📞 Callback request: ${lead.name} (${phone})`
-    : `New website lead: ${lead.name}${lead.company ? ` — ${lead.company}` : ""}`;
+    ? `📞 Callback request: ${lead.name} (${phone})${lead.lang === "ar" ? " [Arabic site]" : ""}`
+    : `New website lead: ${lead.name}${lead.company ? ` — ${lead.company}` : ""}${lead.lang === "ar" ? " [Arabic site]" : ""}`;
 
   const html = `
     <h2>${isCallback ? "Free consultation callback request" : "New enquiry from odysense.com"}</h2>
@@ -99,7 +107,7 @@ export async function POST(req: Request) {
     console.error("Resend send failed:", e);
     await storeLead(lead); // still try to keep the lead
     return NextResponse.json(
-      { ok: false, error: "Could not send right now — please WhatsApp or email us directly." },
+      { ok: false, error: err.send },
       { status: 500 }
     );
   }

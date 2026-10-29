@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import type { Locale } from "@/lib/i18n";
+import { ARC_TEXT } from "./text";
 
-const QUESTION = "What should we serve at the next team gathering?";
-const OPTIONS = ["Karak", "Arabic coffee", "Fresh juice", "Iced latte"];
 // Relative pull of each option for the simulated audience
 const WEIGHTS = [0.38, 0.27, 0.2, 0.15];
 const SEED = [14, 10, 7, 5];
@@ -17,7 +17,9 @@ function pickWeighted() {
   return WEIGHTS.length - 1;
 }
 
-export default function Poll() {
+export default function Poll({ locale = "en" }: { locale?: Locale }) {
+  const t = ARC_TEXT[locale].poll;
+  const OPTIONS = t.options;
   const [votes, setVotes] = useState<number[]>(SEED);
   const [mine, setMine] = useState<number | null>(null);
   const [live, setLive] = useState(false);
@@ -62,11 +64,11 @@ export default function Poll() {
       <div className="arc-quiz-top">
         <span className="mono arc-muted">
           {live ? <span className="arc-live-dot" aria-hidden="true" /> : null}
-          {live ? "Live · votes coming in" : mine === null ? "Live poll" : "Poll closed"}
+          {live ? t.live : mine === null ? t.open : t.closed}
         </span>
-        <span className="mono arc-muted">{total} votes · simulated audience</span>
+        <span className="mono arc-muted">{t.votes(total)}</span>
       </div>
-      <h3 className="arc-q">{QUESTION}</h3>
+      <h3 className="arc-q">{t.question}</h3>
       <div className="arc-poll">
         {OPTIONS.map((o, i) => {
           const pct = Math.round((votes[i] / total) * 100);
@@ -77,29 +79,25 @@ export default function Poll() {
               className={`arc-poll-row ${mine === i ? "mine" : ""} ${mine !== null && i === lead ? "lead" : ""}`}
               onClick={() => vote(i)}
               disabled={mine !== null}
-              aria-label={mine === null ? `Vote ${o}` : `${o}: ${pct}%`}
+              aria-label={mine === null ? t.voteAria(o) : `${o}: ${pct}%`}
             >
               <span className="arc-poll-bar" style={{ width: mine === null ? "0%" : `${pct}%` }} aria-hidden="true" />
               <span className="arc-poll-label">
                 {o}
-                {mine === i && <small> · your vote</small>}
+                {mine === i && <small>{t.yours}</small>}
               </span>
-              <span className="arc-poll-pct">{mine === null ? "Vote" : `${pct}%`}</span>
+              <span className="arc-poll-pct">{mine === null ? t.vote : `${pct}%`}</span>
             </button>
           );
         })}
       </div>
       <div className="arc-quiz-foot" aria-live="polite">
         <span className="arc-muted">
-          {mine === null
-            ? "Cast a vote to reveal the results as the room answers."
-            : live
-              ? "Results update as each vote lands — on phones and the big screen at once."
-              : `${OPTIONS[lead]} wins the room.`}
+          {mine === null ? t.prompt : live ? t.updating : t.wins(OPTIONS[lead])}
         </span>
         {mine !== null && !live && (
           <button className="btn btn-invert" type="button" onClick={reset}>
-            Run it again
+            {t.again}
           </button>
         )}
       </div>

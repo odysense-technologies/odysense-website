@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { track } from "@/components/analytics";
+import { ui, type Locale } from "@/lib/i18n";
 
 export const GCC_CODES = [
   { flag: "🇶🇦", code: "+974", label: "Qatar" },
@@ -13,43 +14,35 @@ export const GCC_CODES = [
   { flag: "🌍", code: "+", label: "Other" },
 ];
 
-const SERVICES = [
-  "Website design & development",
-  "E-commerce store",
-  "Software or mobile app",
-  "Branding",
-  "SEO & digital marketing",
-  "WhatsApp Business API (WASL)",
-  "Other",
-];
-
-async function submitLead(payload: Record<string, string>) {
+async function submitLead(payload: Record<string, string>, fallbackError: string) {
   const res = await fetch("/api/contact", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ ...payload, page: window.location.pathname }),
   });
   const data = await res.json().catch(() => ({ ok: false }));
-  if (!res.ok || !data.ok) throw new Error(data.error || "Something went wrong.");
+  if (!res.ok || !data.ok) throw new Error(data.error || fallbackError);
 }
 
-function PhoneField({ required = false }: { required?: boolean }) {
+function PhoneField({ required = false, locale }: { required?: boolean; locale: Locale }) {
+  const t = ui(locale).form;
   return (
     <div className="form-row form-phone">
-      <select name="countryCode" defaultValue="+974" aria-label="Country code">
-        {GCC_CODES.map((c) => (
+      <select name="countryCode" defaultValue="+974" aria-label={t.code}>
+        {GCC_CODES.map((c, i) => (
           <option key={c.label} value={c.code}>
-            {c.flag} {c.code} {c.label}
+            {c.flag} {c.code} {t.countries[i]}
           </option>
         ))}
       </select>
-      <input type="tel" name="phone" placeholder="Mobile number" required={required} inputMode="tel" />
+      <input type="tel" name="phone" placeholder={t.phone} required={required} inputMode="tel" dir="ltr" />
     </div>
   );
 }
 
 /* ================= Contact form (contact page) ================= */
-export function ContactForm() {
+export function ContactForm({ locale = "en" }: { locale?: Locale }) {
+  const t = ui(locale).form;
   const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [error, setError] = useState("");
 
@@ -59,11 +52,11 @@ export function ContactForm() {
     const payload = Object.fromEntries(fd.entries()) as Record<string, string>;
     setState("sending");
     try {
-      await submitLead({ ...payload, type: "contact" });
-      track("generate_lead", { form: "contact", service: payload.service ?? "" });
+      await submitLead({ ...payload, type: "contact", lang: locale }, t.error);
+      track("generate_lead", { form: "contact", service: payload.service ?? "", lang: locale });
       setState("done");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong.");
+      setError(err instanceof Error ? err.message : t.error);
       setState("error");
     }
   }
@@ -72,9 +65,9 @@ export function ContactForm() {
     return (
       <div className="form-success">
         <span className="serif" style={{ fontSize: 30 }}>
-          Thank you.
+          {t.thanks}
         </span>
-        <p>Your enquiry is with us — expect a reply within one business day.</p>
+        <p>{t.thanksBody}</p>
       </div>
     );
   }
@@ -82,32 +75,34 @@ export function ContactForm() {
   return (
     <form className="lead-form" onSubmit={onSubmit}>
       <div className="form-grid">
-        <input name="name" placeholder="Your name *" required autoComplete="name" />
-        <input type="email" name="email" placeholder="Email *" required autoComplete="email" />
-        <PhoneField />
-        <input name="company" placeholder="Company (optional)" autoComplete="organization" />
-        <select name="service" defaultValue="" required aria-label="What do you need?">
+        <input name="name" placeholder={t.name} required autoComplete="name" />
+        <input type="email" name="email" placeholder={t.email} required autoComplete="email" dir="ltr" />
+        <PhoneField locale={locale} />
+        <input name="company" placeholder={t.company} autoComplete="organization" />
+        <select name="service" defaultValue="" required aria-label={t.need.replace(" *", "")}>
           <option value="" disabled>
-            What do you need? *
+            {t.need}
           </option>
-          {SERVICES.map((s) => (
+          {t.services.map((s) => (
             <option key={s}>{s}</option>
           ))}
         </select>
       </div>
-      <textarea name="message" placeholder="Tell us about the project *" rows={5} required />
+      <textarea name="message" placeholder={t.message} rows={5} required />
       <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hp" aria-hidden="true" />
       {state === "error" && <p className="form-error">{error}</p>}
       <button className="btn btn-primary" disabled={state === "sending"}>
-        {state === "sending" ? "Sending…" : "Send enquiry →"}
+        {state === "sending" ? t.sending : t.send}
       </button>
-      <p className="form-note">We reply within one business day. Your details stay with us — no spam, ever.</p>
+      <p className="form-note">{t.note}</p>
     </form>
   );
 }
 
 /* ================= Exit-intent consultation popup ================= */
-export function ConsultPopup() {
+export function ConsultPopup({ locale = "en" }: { locale?: Locale }) {
+  const t = ui(locale).popup;
+  const f = ui(locale).form;
   const [open, setOpen] = useState(false);
   const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [error, setError] = useState("");
@@ -134,11 +129,11 @@ export function ConsultPopup() {
     const payload = Object.fromEntries(fd.entries()) as Record<string, string>;
     setState("sending");
     try {
-      await submitLead({ ...payload, type: "callback" });
-      track("callback_request", { form: "exit_popup" });
+      await submitLead({ ...payload, type: "callback", lang: locale }, f.error);
+      track("callback_request", { form: "exit_popup", lang: locale });
       setState("done");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong.");
+      setError(err instanceof Error ? err.message : f.error);
       setState("error");
     }
   }
@@ -146,35 +141,32 @@ export function ConsultPopup() {
   if (!open) return null;
 
   return (
-    <div className="popup-overlay" role="dialog" aria-modal="true" aria-label="Free technical consultation">
+    <div className="popup-overlay" role="dialog" aria-modal="true" aria-label={t.aria}>
       <div className="popup">
-        <button className="popup-close" onClick={() => setOpen(false)} aria-label="Close">
+        <button className="popup-close" onClick={() => setOpen(false)} aria-label={t.close}>
           ✕
         </button>
         {state === "done" ? (
           <div className="form-success" style={{ padding: 0, border: "none" }}>
             <span className="serif" style={{ fontSize: 28 }}>
-              We'll call you.
+              {t.done}
             </span>
-            <p>Expect a call from our Doha team within one business day.</p>
+            <p>{t.doneBody}</p>
           </div>
         ) : (
           <>
-            <span className="kicker">Before you go</span>
+            <span className="kicker">{t.kicker}</span>
             <h3>
-              Get a free <span className="serif">technical consultation.</span>
+              {t.title} <span className="serif">{t.accent}</span>
             </h3>
-            <p>
-              15 minutes with our team — honest advice on your website, store or idea. No pitch, no obligation. Leave
-              your number and we'll call you back.
-            </p>
+            <p>{t.body}</p>
             <form className="lead-form" onSubmit={onSubmit}>
-              <input name="name" placeholder="Your name *" required autoComplete="name" />
-              <PhoneField required />
+              <input name="name" placeholder={f.name} required autoComplete="name" />
+              <PhoneField required locale={locale} />
               <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hp" aria-hidden="true" />
               {state === "error" && <p className="form-error">{error}</p>}
               <button className="btn btn-primary" disabled={state === "sending"} style={{ width: "100%" }}>
-                {state === "sending" ? "Sending…" : "Request my free callback →"}
+                {state === "sending" ? f.sending : t.submit}
               </button>
             </form>
           </>

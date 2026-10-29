@@ -4,10 +4,14 @@ import { Reveal, SectionHead, CtaBox, PageHero, Byline } from "@/components/ui";
 import { webPageSchema } from "@/lib/schema";
 import type { ServiceDef } from "@/lib/service-pages";
 import { RelatedPosts } from "@/components/related-posts";
+import { lp, ui, type Locale } from "@/lib/i18n";
 
 const NUMERALS = ["i.", "ii.", "iii.", "iv.", "v.", "vi."];
 
-export function ServicePageView({ def }: { def: ServiceDef }) {
+export function ServicePageView({ def, locale = "en" }: { def: ServiceDef; locale?: Locale }) {
+  const t = ui(locale);
+  const L = (href: string) => lp(locale, href);
+  const path = L(`/${def.slug}`);
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -18,7 +22,7 @@ export function ServicePageView({ def }: { def: ServiceDef }) {
     })),
   };
 
-  const pageSchema = webPageSchema({ path: `/${def.slug}`, name: def.metaTitle, description: def.metaDescription, modified: def.updated });
+  const pageSchema = webPageSchema({ path, name: def.metaTitle, description: def.metaDescription, modified: def.updated });
 
   return (
     <main>
@@ -26,21 +30,21 @@ export function ServicePageView({ def }: { def: ServiceDef }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }} />
 
       <PageHero
-        crumbs={[{ label: "Home", href: "/" }, { label: "Services", href: "/services" }, { label: def.crumb }]}
+        crumbs={[{ label: t.crumbs.home, href: L("/") }, { label: t.crumbs.services, href: L("/services") }, { label: def.crumb }]}
         title={
           <>
             {def.title} <span className="serif">{def.titleAccent}</span>
           </>
         }
         lede={def.lede}
-        meta={<Byline updated={def.updated} />}
+        meta={<Byline updated={def.updated} locale={locale} />}
       >
         <div className="hero-actions">
-          <Link className="btn btn-primary" href="/contact">
-            Get a fixed quote →
+          <Link className="btn btn-primary" href={L("/contact")}>
+            {t.service.quote}
           </Link>
-          <Link className="btn btn-secondary" href="/work">
-            See our work
+          <Link className="btn btn-secondary" href={L("/work")}>
+            {t.service.work}
           </Link>
         </div>
       </PageHero>
@@ -48,10 +52,10 @@ export function ServicePageView({ def }: { def: ServiceDef }) {
       <section className="section">
         <div className="wrap">
           <SectionHead
-            kicker={def.includesKicker ?? "What's included"}
+            kicker={def.includesKicker ?? t.service.included}
             title={
               <>
-                Everything, <span className="serif">handled.</span>
+                {t.service.everything} <span className="serif">{t.service.handled}</span>
               </>
             }
           />
@@ -104,10 +108,10 @@ export function ServicePageView({ def }: { def: ServiceDef }) {
       <section className="section quote-sec">
         <div className="wrap">
           <SectionHead
-            kicker="Questions"
+            kicker={t.service.questions}
             title={
               <>
-                Asked <span className="serif">often.</span>
+                {t.service.asked} <span className="serif">{t.service.often}</span>
               </>
             }
           />
@@ -125,8 +129,8 @@ export function ServicePageView({ def }: { def: ServiceDef }) {
             <Reveal>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center", marginTop: 48 }}>
                 {def.related.map((r) => (
-                  <Link className="btn btn-secondary" href={r.href} key={r.href}>
-                    {r.label} →
+                  <Link className="btn btn-secondary" href={L(r.href)} key={r.href}>
+                    {r.label} {t.arrow}
                   </Link>
                 ))}
               </div>
@@ -135,7 +139,7 @@ export function ServicePageView({ def }: { def: ServiceDef }) {
         </div>
       </section>
 
-      <RelatedPosts href={`/${def.slug}`} />
+      <RelatedPosts href={`/${def.slug}`} locale={locale} />
 
       <section className="section">
         <div className="wrap">
@@ -147,6 +151,7 @@ export function ServicePageView({ def }: { def: ServiceDef }) {
                 </>
               }
               body={def.ctaBody}
+              locale={locale}
             />
           </Reveal>
         </div>
