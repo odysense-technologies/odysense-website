@@ -3,6 +3,7 @@
 import { useRef, useState, type ChangeEvent } from "react";
 import { bins, defaultContent, symbolNames, type Clue, type Content, type SymbolId } from "./data";
 import { HazardSymbol } from "./symbols";
+import { isPictureIcon } from "./icons";
 import { DEFAULT_SETTINGS, download, normalizeContent, type QuizType, type Settings } from "./store";
 
 const SYMBOL_IDS = Object.keys(symbolNames) as SymbolId[];
@@ -135,6 +136,18 @@ async function toSymbolDataUrl(file: File): Promise<string> {
   }
 }
 
+/** An emoji input, or a preview of a picture icon; tapping the picture swaps it for an emoji to type. */
+function IconField({ value, label, onChange }: { value: string; label: string; onChange: (icon: string) => void }) {
+  if (isPictureIcon(value))
+    return (
+      <button type="button" className="mw-ed-icon mw-ed-icon--img" aria-label={`${label}: picture. Replace with an emoji`} title="Replace with an emoji" onClick={() => onChange("🗑️")}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={value} alt="" />
+      </button>
+    );
+  return <input className="mw-ed-icon" value={value} maxLength={8} aria-label={label} onChange={(e) => onChange(e.target.value)} />;
+}
+
 export function ContentEditor({ content, onChange }: { content: Content; onChange: (c: Content) => void }) {
   const [section, setSection] = useState<Section>("items");
   const [msg, setMsg] = useState("");
@@ -191,11 +204,11 @@ export function ContentEditor({ content, onChange }: { content: Content; onChang
 
       {section === "items" && (
         <>
-          <p className="mw-hint">Each item appears in Bin Rush; players tap its bin. Icons can be any emoji.</p>
+          <p className="mw-hint">Each item appears in Bin Rush; players tap its bin. Icons can be any emoji; tap a picture icon to swap it for an emoji (Reset content brings the pictures back).</p>
           <div className="mw-ed-rows">
             {content.items.map((it, i) => (
               <div className="mw-ed-row mw-ed-row--item" key={i}>
-                <input className="mw-ed-icon" value={it.icon} maxLength={8} aria-label="Icon" onChange={(e) => patch({ items: content.items.map((x, j) => (j === i ? { ...x, icon: e.target.value } : x)) })} />
+                <IconField value={it.icon} label="Icon" onChange={(icon) => patch({ items: content.items.map((x, j) => (j === i ? { ...x, icon } : x)) })} />
                 <input value={it.name} maxLength={80} aria-label="Item name" onChange={(e) => patch({ items: content.items.map((x, j) => (j === i ? { ...x, name: e.target.value } : x)) })} />
                 <select value={it.bin} aria-label="Correct bin" onChange={(e) => patch({ items: content.items.map((x, j) => (j === i ? { ...x, bin: e.target.value as typeof x.bin } : x)) })}>
                   {bins.map((b) => (
@@ -307,7 +320,7 @@ export function ContentEditor({ content, onChange }: { content: Content; onChang
                     </select>
                   ) : (
                     <span className="mw-ed-pair-text">
-                      <input className="mw-ed-icon" value={p.clue.icon} maxLength={8} aria-label="Clue icon" onChange={(e) => upd({ clue: { ...(p.clue as Extract<Clue, { kind: "text" }>), icon: e.target.value } })} />
+                      <IconField value={p.clue.icon} label="Clue icon" onChange={(icon) => upd({ clue: { ...(p.clue as Extract<Clue, { kind: "text" }>), icon } })} />
                       <input value={p.clue.text} maxLength={60} aria-label="Clue text" onChange={(e) => upd({ clue: { ...(p.clue as Extract<Clue, { kind: "text" }>), text: e.target.value } })} />
                     </span>
                   )}

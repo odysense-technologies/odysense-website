@@ -6,7 +6,7 @@
  * the results as CSV. Every read and write is wrapped, so the page still works if storage is blocked.
  */
 
-import { defaultContent, type Content } from "./data";
+import { defaultContent, type Content, type Item } from "./data";
 import { ADMIN_HASH } from "./auth";
 
 export type GameId = "bin-rush" | "code-breaker" | "symbol-match";
@@ -116,11 +116,29 @@ export function normalizeContent(c: Partial<Content> | null | undefined): Conten
   for (const [k, v] of Object.entries(c.symbols ?? {})) if (typeof v === "string" && v.startsWith("data:image/")) symbols[k as keyof Content["symbols"]] = v;
   return {
     codes: okCodes ? c.codes! : d.codes,
-    items: okItems ? c.items!.filter((i) => i && i.name && i.bin) : d.items,
-    statements: okStatements ? c.statements! : d.statements,
-    pairs: okPairs ? c.pairs! : d.pairs,
+    items: okItems ? c.items!.filter((i) => i && i.name && i.bin).map(upgradeItem) : d.items,
+    statements: okStatements ? c.statements!.map((st) => ({ ...st, text: spilled(st.text), why: spilled(st.why) })) : d.statements,
+    pairs: okPairs ? c.pairs!.map((p) => (p.clue?.kind === "text" ? { ...p, clue: { ...p.clue, text: spilled(p.clue.text) } } : p)) : d.pairs,
     symbols,
   };
+}
+
+/*
+ * Content saved on a device before 10 November 2026 still has "spilt" and the old emoji for four items.
+ * Bring those defaults up to date; an icon the admin changed to something else is left alone.
+ */
+const ITEM_UPGRADES: { names: string[]; oldIcon: string; icon: string }[] = [
+  { names: ["Spilt bottle of syrup", "Spilled bottle of syrup"], oldIcon: "🧴", icon: "/images/mw-spilled-syrup.webp" },
+  { names: ["Tissue sample"], oldIcon: "🔬", icon: "/images/mw-tissue-sample.webp" },
+  { names: ["Used lancet"], oldIcon: "🪡", icon: "/images/mw-lancet.webp" },
+  { names: ["Scalpel blade"], oldIcon: "🔪", icon: "/images/mw-scalpel.webp" },
+];
+
+const spilled = (s: string) => (typeof s === "string" ? s.replace(/\bSpilt\b/g, "Spilled").replace(/\bspilt\b/g, "spilled") : s);
+
+function upgradeItem(i: Item): Item {
+  const u = ITEM_UPGRADES.find((x) => x.names.includes(i.name));
+  return { ...i, name: spilled(i.name), icon: u && i.icon === u.oldIcon ? u.icon : i.icon };
 }
 
 export function loadContent(): Content {

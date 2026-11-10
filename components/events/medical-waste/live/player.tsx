@@ -9,12 +9,12 @@ import { makeSound } from "../sound";
 import type { Content } from "../data";
 import { GAME_NAMES, type GameId } from "../store";
 import { fetchRoom, post, rankRows, type Player, type RoomState } from "./client";
+import { GameIcon } from "../icons";
 
-const GAME_ICONS: Record<GameId, string> = { "bin-rush": "🗑️", "code-breaker": "🏷️", "symbol-match": "🧩" };
 const HOW: Record<GameId, string> = {
   "bin-rush": "Tap the right bin for each waste item before its timer runs out. Streaks and speed earn bonus points.",
   "code-breaker": "Answer quick questions on colour codes, labels and hazard symbols. Faster right answers score more.",
-  "symbol-match": "Flip two cards at a time to pair each symbol or label with its waste category. Be quick and avoid mismatches.",
+  "symbol-match": "Flip two cards at a time to match each card with its corresponding characteristics. Be quick and avoid mismatches.",
 };
 const MEDALS = ["🥇", "🥈", "🥉"];
 const playerKey = (code: string) => `moph-live-player-${code}`;
@@ -208,7 +208,9 @@ export function LivePlayer({ initialRoom }: { initialRoom: string }) {
       <main className="mw mw-phone">
         <form className="mw-phone-card" onSubmit={join}>
           <span className="mw-kicker">Room {code} · {state.players.length}/{room.maxPlayers} joined</span>
-          <span className="mw-game-icon mw-game-icon--big" aria-hidden="true">{GAME_ICONS[room.game]}</span>
+          <span className="mw-game-icon mw-game-icon--big" aria-hidden="true">
+            <GameIcon game={room.game} />
+          </span>
           <h1>{GAME_NAMES[room.game]}</h1>
           <p className="mw-tagline">{HOW[room.game]}</p>
           <label>
@@ -248,7 +250,9 @@ export function LivePlayer({ initialRoom }: { initialRoom: string }) {
           <div className="mw-stage mw-stage--phone">
             <div className="mw-stage-bar">
               <b>
-                <span aria-hidden="true">{GAME_ICONS[room.game]}</span> {GAME_NAMES[room.game]}
+                <span className="mw-inline-icon" aria-hidden="true">
+                  <GameIcon game={room.game} />
+                </span> {GAME_NAMES[room.game]}
               </b>
               <span className="mw-stage-player">{me.name}</span>
             </div>
@@ -303,7 +307,9 @@ export function LivePlayer({ initialRoom }: { initialRoom: string }) {
     <main className="mw mw-phone">
       <div className="mw-phone-card">
         <span className="mw-kicker">Room {code} · Round {room.round}</span>
-        <span className="mw-game-icon mw-game-icon--big" aria-hidden="true">{GAME_ICONS[room.game]}</span>
+        <span className="mw-game-icon mw-game-icon--big" aria-hidden="true">
+            <GameIcon game={room.game} />
+          </span>
         <h1>You&apos;re in, {me.name}!</h1>
         <p className="mw-tagline">
           {room.status === "ended" ? "This round has finished. Wait here for the next one." : `Waiting for the host to start ${GAME_NAMES[room.game]}…`}

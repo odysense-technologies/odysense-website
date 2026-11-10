@@ -144,6 +144,7 @@ components/
                     store.ts (leaderboard/settings in localStorage, CSV export, hashed admin password),
                     symbols.tsx (SVG hazard symbols + uploaded replacements), sound.ts (Web Audio cues),
                     admin-editor.tsx (settings + content editors), auth.ts (admin password hash),
+                    icons.tsx (Bin Rush / Code Breaker logos; item icons are an emoji or a /images/mw-*.webp picture),
                     live/ (host.tsx, player.tsx, screen.tsx, client.ts, qr.tsx)
   arcade/           playable demos for the gamification page (client-only, each lazy-loaded):
     arcade.tsx      tabbed "arcade" panel; keeps opened games mounted for session-only scores
@@ -302,6 +303,9 @@ docs/offsite/     off-site kit (Phase 7): product-site-prompts.md (an "About / B
   symbols (edit Bin Rush items, true/false questions, categories/labels/colours/symbols, match pairs; upload
   replacement symbol images; export/import/reset content). Edits are saved on the device; the defaults stay
   the poster content in `data.ts`.
+- **Owner updates (2026-11-10):** "Spilt" reads "Spilled"; the spilled syrup, tissue sample, lancet and scalpel
+  items use owner-supplied pictures (`public/images/mw-*.webp`); Symbol Match is described as "match each card
+  with its corresponding characteristics". `normalizeContent` upgrades content saved on a device before then.
 - **Live multiplayer** (2026-10-28): `/events/moph-medical-waste-challenge/live/` (host, password) creates a
   room (game, number of attendees, settings, plus the host device's content) and shows a QR code to
   `/join/?room=1234`; phones play the same seeded round; `/screen/?room=1234` is the big-screen leaderboard.

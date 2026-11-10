@@ -5,8 +5,8 @@ import { SettingsEditor } from "../admin-editor";
 import { checkPassword, download, GAME_NAMES, loadContent, loadSettings, type GameId, type Settings } from "../store";
 import { BASE, dbStatus, fetchRoom, joinUrl, post, rankRows, type RoomState } from "./client";
 import { QR } from "./qr";
+import { GameIcon } from "../icons";
 
-const GAME_ICONS: Record<GameId, string> = { "bin-rush": "🗑️", "code-breaker": "🏷️", "symbol-match": "🧩" };
 const ROOM_KEY = "moph-live-host-room";
 
 /**
@@ -143,7 +143,9 @@ export function LiveHost() {
           <div className="mw-live-games">
             {(Object.keys(GAME_NAMES) as GameId[]).map((g) => (
               <button type="button" key={g} className={`card mw-live-game ${game === g ? "is-on" : ""}`} onClick={() => setGame(g)} aria-pressed={game === g}>
-                <span className="mw-game-icon" aria-hidden="true">{GAME_ICONS[g]}</span>
+                <span className="mw-game-icon" aria-hidden="true">
+                  <GameIcon game={g} />
+                </span>
                 <b>{GAME_NAMES[g]}</b>
               </button>
             ))}
@@ -222,7 +224,16 @@ export function LiveHost() {
               {countdown ? `Starting in ${countdown}` : room?.status === "live" ? "● Live" : room?.status === "ended" ? "Round over" : "Lobby: waiting for players"}
             </span>
             <b>
-              {room ? `${GAME_ICONS[room.game]} ${GAME_NAMES[room.game]} · Round ${room.round}` : "Loading…"}
+              {room ? (
+                <>
+                  <span className="mw-inline-icon" aria-hidden="true">
+                    <GameIcon game={room.game} />
+                  </span>{" "}
+                  {GAME_NAMES[room.game]} · Round {room.round}
+                </>
+              ) : (
+                "Loading…"
+              )}
             </b>
             <span>
               {state?.players.length ?? 0} / {room?.maxPlayers ?? maxPlayers} players{room?.status !== "lobby" && rows.length ? ` · ${finished} finished` : ""}

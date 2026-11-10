@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { bins, makeRng, shuffle, type BinId, type Content } from "./data";
 import type { Settings } from "./store";
 import type { Sound } from "./sound";
+import { ItemIcon } from "./icons";
 
 type Feedback = { ok: boolean; text: string; rule?: string } | null;
 
@@ -156,7 +157,9 @@ export function BinRush({
 
       <div className="mw-rush-stage">
         <div className={`mw-item ${feedback ? (feedback.ok ? "is-ok" : "is-bad") : ""}`} key={`${index}-${queue.length}`}>
-          <span className="mw-item-icon" aria-hidden="true">{item.icon}</span>
+          <span className="mw-item-icon" aria-hidden="true">
+            <ItemIcon icon={item.icon} />
+          </span>
           <b>{item.name}</b>
           <span className="mw-item-bar">
             <i style={{ width: `${(itemLeft / itemTotal) * 100}%` }} />
