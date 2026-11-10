@@ -1,11 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { GAME_NAMES, type GameId } from "../store";
+import { GAME_NAMES } from "../store";
 import { fetchRoom, joinUrl, rankRows, type RoomState } from "./client";
 import { QR } from "./qr";
+import { GameIcon } from "../icons";
 
-const GAME_ICONS: Record<GameId, string> = { "bin-rush": "🗑️", "code-breaker": "🏷️", "symbol-match": "🧩" };
 const MEDALS = ["🥇", "🥈", "🥉"];
 
 /**
@@ -90,7 +90,10 @@ export function LiveScreen({ initialRoom }: { initialRoom: string }) {
           <h1>
             {room ? (
               <>
-                {GAME_ICONS[room.game]} {GAME_NAMES[room.game]} <span className="serif">· round {room.round}</span>
+                <span className="mw-inline-icon" aria-hidden="true">
+                  <GameIcon game={room.game} />
+                </span>{" "}
+                {GAME_NAMES[room.game]} <span className="serif">· round {room.round}</span>
               </>
             ) : (
               "Connecting…"

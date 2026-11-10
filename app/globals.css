@@ -931,6 +931,13 @@ a:active { transform: scale(0.995); }
 .mw-game-card ol li, .mw-intro ol li { margin-bottom: 6px; padding: 0; border-radius: 0; background: none; font-size: 15px; font-weight: 400; color: var(--slate); }
 .mw-game-icon { display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; margin-top: 18px; border-radius: 18px; background: var(--surface); font-size: 34px; }
 .mw-game-icon--big { width: 84px; height: 84px; font-size: 46px; margin-top: 0; }
+.mw-game-icon .mw-logo { width: auto; max-width: 90%; height: 86%; }
+.mw-game-card .mw-game-icon { width: 100%; height: 160px; border-radius: 22px; font-size: 80px; }
+.mw .mw-game-icon--big { width: min(260px, 100%); height: 140px; border-radius: 22px; font-size: 72px; }
+.mw-logo { display: block; font-family: var(--font-sans); }
+.mw-inline-icon { display: inline-block; width: 1.15em; height: 1.15em; vertical-align: -.2em; }
+.mw-inline-icon .mw-logo { width: 100%; height: 100%; }
+.mw-icon-img { display: inline-block; width: auto; max-width: min(2.4em, 100%); height: 1em; object-fit: contain; vertical-align: middle; -webkit-user-drag: none; user-select: none; }
 .mw-tagline { margin-top: 8px; font-size: 16px; line-height: 1.5; color: var(--ink); }
 .mw-chip { display: inline-block; align-self: flex-start; margin-top: 14px; padding: 6px 12px; border-radius: 999px; background: rgba(108, 77, 246, .1); color: var(--purple); font-size: 12px; font-weight: 700; letter-spacing: .04em; }
 .mw-play { margin-top: auto; justify-content: center; }
@@ -1165,6 +1172,8 @@ a:active { transform: scale(0.995); }
 .mw-ed-row--pair { grid-template-columns: 130px minmax(0, 1.3fr) minmax(0, 1fr) 36px; }
 .mw-ed-pair-text { display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 6px; }
 .mw-ed-icon { text-align: center; font-size: 20px !important; padding: 6px !important; }
+.mw-ed-icon--img { display: flex; align-items: center; justify-content: center; height: 100%; min-height: 40px; border: 1px solid var(--border); border-radius: 10px; background: var(--card); cursor: pointer; }
+.mw-ed-icon--img img { width: 28px; height: 28px; object-fit: contain; }
 .mw-ed-card { display: flex; flex-direction: column; gap: 8px; padding: 12px; border: 1px solid var(--border); border-radius: 14px; background: var(--card); }
 .mw-ed-symbols { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; }
 .mw-ed-symbol { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; padding: 14px; border: 1px solid var(--border); border-radius: 14px; background: var(--card); }

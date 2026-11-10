@@ -5,6 +5,7 @@ import { makeRng, shuffle, type Clue, type Content } from "./data";
 import { HazardSymbol } from "./symbols";
 import type { Settings } from "./store";
 import type { Sound } from "./sound";
+import { ItemIcon } from "./icons";
 
 type Card = { key: string; pair: string; clue?: Clue; category?: string };
 
@@ -17,7 +18,7 @@ export function matchScore(pairs: number, matched: number, seconds: number, miss
   return Math.max(100, pairs * 100 + Math.max(0, pairs * 15 - seconds) * 10 - misses * 20);
 }
 
-/** Symbol Match: flip cards to pair each symbol or label clue with its waste category. */
+/** Symbol Match: flip cards to match each card with its corresponding characteristics. */
 export function SymbolMatch({
   settings,
   content,
@@ -143,7 +144,9 @@ export function SymbolMatch({
                   {c.clue?.kind === "symbol" && <HazardSymbol id={c.clue.symbol} size={64} />}
                   {c.clue?.kind === "text" && (
                     <>
-                      <span className="mw-card-icon" aria-hidden="true">{c.clue.icon}</span>
+                      <span className="mw-card-icon" aria-hidden="true">
+                        <ItemIcon icon={c.clue.icon} />
+                      </span>
                       <small>{c.clue.text}</small>
                     </>
                   )}

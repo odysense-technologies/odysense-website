@@ -8,6 +8,7 @@ import { makeSound } from "./sound";
 import { BinRush } from "./bin-rush";
 import { CodeBreaker } from "./code-breaker";
 import { SymbolMatch } from "./symbol-match";
+import { GameIcon } from "./icons";
 import {
   DEFAULT_SETTINGS,
   GAME_NAMES,
@@ -27,10 +28,9 @@ import {
   type Settings,
 } from "./store";
 
-const GAMES: { id: GameId; icon: string; tagline: string; length: (s: Settings) => string; how: string[] }[] = [
+const GAMES: { id: GameId; tagline: string; length: (s: Settings) => string; how: string[] }[] = [
   {
     id: "bin-rush",
-    icon: "🗑️",
     tagline: "Sort each item into the right bin before the clock runs out.",
     length: (s) => `${s.binRushSeconds} seconds · ${s.binRushLives} lives`,
     how: [
@@ -42,7 +42,6 @@ const GAMES: { id: GameId; icon: string; tagline: string; length: (s: Settings) 
   },
   {
     id: "code-breaker",
-    icon: "🏷️",
     tagline: "Crack the colour codes, labels and hazard symbols.",
     length: (s) => `${s.quizQuestions} questions · ${s.quizSeconds}s each`,
     how: [
@@ -54,12 +53,11 @@ const GAMES: { id: GameId; icon: string; tagline: string; length: (s: Settings) 
   },
   {
     id: "symbol-match",
-    icon: "🧩",
-    tagline: "Pair every hazard symbol and label with its waste category.",
+    tagline: "Match each card with its corresponding characteristics.",
     length: (s) => `${s.matchPairs} pairs · ${s.matchSeconds ? `${s.matchSeconds}s limit` : "beat the clock"}`,
     how: [
       "The cards start face down. Tap two to flip them.",
-      "Match each clue (a hazard symbol or a label) with its waste category card.",
+      "Match each card with its corresponding characteristics.",
       "Matched pairs stay open; mismatches flip back.",
       "Finish fast with few mismatches for the highest score.",
     ],
@@ -207,7 +205,9 @@ export function MedicalWasteChallenge() {
             {GAMES.map((g, i) => (
               <article className="card mw-game-card" key={g.id}>
                 <span className="num">{["i.", "ii.", "iii."][i]}</span>
-                <span className="mw-game-icon" aria-hidden="true">{g.icon}</span>
+                <span className="mw-game-icon" aria-hidden="true">
+                  <GameIcon game={g.id} />
+                </span>
                 <h2>{GAME_NAMES[g.id]}</h2>
                 <p className="mw-tagline">{g.tagline}</p>
                 <span className="mw-chip">{g.length(settings)}</span>
@@ -290,7 +290,10 @@ export function MedicalWasteChallenge() {
         <div className="mw-stage" role="dialog" aria-modal="true" aria-label={GAME_NAMES[active]}>
           <div className="mw-stage-bar">
             <b>
-              <span aria-hidden="true">{game.icon}</span> {GAME_NAMES[active]}
+              <span className="mw-inline-icon" aria-hidden="true">
+                <GameIcon game={active} />
+              </span>{" "}
+              {GAME_NAMES[active]}
             </b>
             {phase !== "intro" && <span className="mw-stage-player">{player.name}</span>}
             <button type="button" className="mw-x" onClick={closeGame} aria-label="Close game">
@@ -300,7 +303,9 @@ export function MedicalWasteChallenge() {
 
           {phase === "intro" && (
             <form className="mw-intro" onSubmit={start}>
-              <span className="mw-game-icon mw-game-icon--big" aria-hidden="true">{game.icon}</span>
+              <span className="mw-game-icon mw-game-icon--big" aria-hidden="true">
+                <GameIcon game={active} />
+              </span>
               <h2>{GAME_NAMES[active]}</h2>
               <p className="mw-tagline">{game.tagline}</p>
               <ol>
