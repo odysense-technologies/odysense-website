@@ -18,7 +18,7 @@ export function matchScore(pairs: number, matched: number, seconds: number, miss
   return Math.max(100, pairs * 100 + Math.max(0, pairs * 15 - seconds) * 10 - misses * 20);
 }
 
-/** Symbol Match: flip cards to match each card with its corresponding characteristics. */
+/** Symbol Match: flip cards to pair each hazard symbol or characteristic with its waste category. */
 export function SymbolMatch({
   settings,
   content,

@@ -5,7 +5,7 @@ import { SettingsEditor } from "../admin-editor";
 import { checkPassword, download, GAME_NAMES, loadContent, loadSettings, type GameId, type Settings } from "../store";
 import { BASE, dbStatus, fetchRoom, joinUrl, post, rankRows, type RoomState } from "./client";
 import { QR } from "./qr";
-import { GameIcon } from "../icons";
+import { GameIcon, MophLogo } from "../icons";
 
 const ROOM_KEY = "moph-live-host-room";
 
@@ -101,6 +101,7 @@ export function LiveHost() {
     return (
       <main className="mw mw-live">
         <form className="mw-live-login" onSubmit={unlock}>
+          <MophLogo size="phone" />
           <span className="mw-kicker">Live multiplayer · Host</span>
           <h1>
             Medical Waste <span className="serif">Live Challenge.</span>
@@ -127,6 +128,7 @@ export function LiveHost() {
     return (
       <main className="mw mw-live">
         <div className="wrap mw-live-setup">
+          <MophLogo size="phone" />
           <span className="mw-kicker">Live multiplayer · Host</span>
           <h1>
             Set up a <span className="serif">live round.</span>

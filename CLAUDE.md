@@ -304,8 +304,13 @@ docs/offsite/     off-site kit (Phase 7): product-site-prompts.md (an "About / B
   replacement symbol images; export/import/reset content). Edits are saved on the device; the defaults stay
   the poster content in `data.ts`.
 - **Owner updates (2026-11-10):** "Spilt" reads "Spilled"; the spilled syrup, tissue sample, lancet and scalpel
-  items use owner-supplied pictures (`public/images/mw-*.webp`); Symbol Match is described as "match each card
-  with its corresponding characteristics". `normalizeContent` upgrades content saved on a device before then.
+  items use owner-supplied pictures (`public/images/mw-*.webp`). `normalizeContent` upgrades content saved on a
+  device before then. Symbol Match copy (MoPH wording, revised the same day): "Pair every hazard symbol and
+  characteristic with its waste category" / "Match each clue (a hazard symbol or its characteristics) with its
+  waste category card."
+- **MoPH logo** (supplied by MoPH, 2026-11-10): `public/images/moph-logo.webp` via `MophLogo` in `icons.tsx`, on the
+  kiosk hero and footer, the full-screen leaderboard, the big screen, every phone card and the host login/setup.
+  Keep it off the game screens themselves.
 - **Live multiplayer** (2026-10-28): `/events/moph-medical-waste-challenge/live/` (host, password) creates a
   room (game, number of attendees, settings, plus the host device's content) and shows a QR code to
   `/join/?room=1234`; phones play the same seeded round; `/screen/?room=1234` is the big-screen leaderboard.
