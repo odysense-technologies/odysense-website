@@ -65,3 +65,11 @@ export function ItemIcon({ icon }: { icon: string }) {
   // eslint-disable-next-line @next/next/no-img-element
   return isPictureIcon(icon) ? <img className="mw-icon-img" src={icon} alt="" draggable={false} /> : <>{icon}</>;
 }
+
+/** The client's logo (Ministry of Public Health, State of Qatar), supplied by MoPH for the event pages. */
+export function MophLogo({ size }: { size: "hero" | "phone" | "screen" | "bar" | "foot" }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img className={`mw-moph mw-moph--${size}`} src="/images/moph-logo.webp" width={399} height={316} alt="Ministry of Public Health, State of Qatar" />
+  );
+}

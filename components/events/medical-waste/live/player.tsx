@@ -9,12 +9,12 @@ import { makeSound } from "../sound";
 import type { Content } from "../data";
 import { GAME_NAMES, type GameId } from "../store";
 import { fetchRoom, post, rankRows, type Player, type RoomState } from "./client";
-import { GameIcon } from "../icons";
+import { GameIcon, MophLogo } from "../icons";
 
 const HOW: Record<GameId, string> = {
   "bin-rush": "Tap the right bin for each waste item before its timer runs out. Streaks and speed earn bonus points.",
   "code-breaker": "Answer quick questions on colour codes, labels and hazard symbols. Faster right answers score more.",
-  "symbol-match": "Flip two cards at a time to match each card with its corresponding characteristics. Be quick and avoid mismatches.",
+  "symbol-match": "Flip two cards at a time to pair each hazard symbol or characteristic with its waste category. Be quick and avoid mismatches.",
 };
 const MEDALS = ["🥇", "🥈", "🥉"];
 const playerKey = (code: string) => `moph-live-player-${code}`;
@@ -168,6 +168,7 @@ export function LivePlayer({ initialRoom }: { initialRoom: string }) {
             else setErr("Enter the 4-digit room code shown on the screen.");
           }}
         >
+          <MophLogo size="phone" />
           <span className="mw-kicker">Medical Waste Live Challenge</span>
           <h1>Join a game</h1>
           <label>
@@ -187,6 +188,7 @@ export function LivePlayer({ initialRoom }: { initialRoom: string }) {
     return (
       <main className="mw mw-phone">
         <div className="mw-phone-card">
+          <MophLogo size="phone" />
           <span className="mw-kicker">Room {code}</span>
           <h1>{err ? "Couldn't open the room" : "Connecting…"}</h1>
           {err && <p className="mw-err">{err}</p>}
@@ -207,6 +209,7 @@ export function LivePlayer({ initialRoom }: { initialRoom: string }) {
     return (
       <main className="mw mw-phone">
         <form className="mw-phone-card" onSubmit={join}>
+          <MophLogo size="phone" />
           <span className="mw-kicker">Room {code} · {state.players.length}/{room.maxPlayers} joined</span>
           <span className="mw-game-icon mw-game-icon--big" aria-hidden="true">
             <GameIcon game={room.game} />
@@ -273,6 +276,7 @@ export function LivePlayer({ initialRoom }: { initialRoom: string }) {
     return (
       <main className="mw mw-phone">
         <div className="mw-phone-card mw-result">
+          <MophLogo size="phone" />
           <span className="mw-result-medal" aria-hidden="true">{mine && mine.rank <= 3 ? MEDALS[mine.rank - 1] : "🎉"}</span>
           <h1>{done ? "Round over!" : "Nice work!"}</h1>
           <p className="mw-result-score">
@@ -306,6 +310,7 @@ export function LivePlayer({ initialRoom }: { initialRoom: string }) {
   return (
     <main className="mw mw-phone">
       <div className="mw-phone-card">
+          <MophLogo size="phone" />
         <span className="mw-kicker">Room {code} · Round {room.round}</span>
         <span className="mw-game-icon mw-game-icon--big" aria-hidden="true">
             <GameIcon game={room.game} />

@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { GAME_NAMES } from "../store";
 import { fetchRoom, joinUrl, rankRows, type RoomState } from "./client";
 import { QR } from "./qr";
-import { GameIcon } from "../icons";
+import { GameIcon, MophLogo } from "../icons";
 
 const MEDALS = ["🥇", "🥈", "🥉"];
 
@@ -86,6 +86,7 @@ export function LiveScreen({ initialRoom }: { initialRoom: string }) {
     <main className="mw mw-screen">
       <header className="mw-screen-head">
         <div>
+          <MophLogo size="screen" />
           <span className="mw-kicker">Medical Waste Management Conference · Live Challenge</span>
           <h1>
             {room ? (

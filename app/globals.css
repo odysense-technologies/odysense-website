@@ -987,6 +987,15 @@ a:active { transform: scale(0.995); }
 .mw-foot { padding: 34px 0 44px; border-top: 1px solid var(--border); font-size: 13px; color: var(--slate); }
 .mw-foot .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
 .mw-foot a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+/* MoPH logo (client-supplied); the hero sits centred, the others start-aligned */
+.mw-moph { display: block; width: 150px; height: auto; }
+.mw-moph--hero { position: relative; width: clamp(130px, 16vw, 190px); margin: 0 auto 22px; }
+.mw-moph--phone { width: 104px; align-self: center; margin-bottom: 2px; }
+.mw-live-login .mw-moph--phone, .mw-live-setup .mw-moph--phone { align-self: flex-start; margin-bottom: 8px; }
+.mw-moph--screen { width: clamp(110px, 9vw, 160px); margin-bottom: 12px; }
+.mw-moph--bar { width: auto; height: 52px; margin: -6px 0; }
+.mw-moph--foot { width: 64px; flex: none; }
+.mw-foot-moph { display: flex; align-items: center; gap: 14px; max-width: 560px; }
 .mw-admin-link { margin-left: 16px; border: 0; background: none; color: var(--slate); font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 
 /* Stage: the full-screen game overlay */

@@ -8,7 +8,7 @@ import { makeSound } from "./sound";
 import { BinRush } from "./bin-rush";
 import { CodeBreaker } from "./code-breaker";
 import { SymbolMatch } from "./symbol-match";
-import { GameIcon } from "./icons";
+import { GameIcon, MophLogo } from "./icons";
 import {
   DEFAULT_SETTINGS,
   GAME_NAMES,
@@ -53,11 +53,11 @@ const GAMES: { id: GameId; tagline: string; length: (s: Settings) => string; how
   },
   {
     id: "symbol-match",
-    tagline: "Match each card with its corresponding characteristics.",
+    tagline: "Pair every hazard symbol and characteristic with its waste category.",
     length: (s) => `${s.matchPairs} pairs · ${s.matchSeconds ? `${s.matchSeconds}s limit` : "beat the clock"}`,
     how: [
       "The cards start face down. Tap two to flip them.",
-      "Match each card with its corresponding characteristics.",
+      "Match each clue (a hazard symbol or its characteristics) with its waste category card.",
       "Matched pairs stay open; mismatches flip back.",
       "Finish fast with few mismatches for the highest score.",
     ],
@@ -176,6 +176,7 @@ export function MedicalWasteChallenge() {
       <header className="mw-hero">
         <div className="orb" aria-hidden="true" />
         <div className="wrap">
+          <MophLogo size="hero" />
           <span className="mw-kicker">Medical Waste Management Conference · Qatar · 12 November</span>
           <h1>
             Sort it right. <span className="serif">Stop the spread.</span>
@@ -272,7 +273,10 @@ export function MedicalWasteChallenge() {
 
       <footer className="mw-foot">
         <div className="wrap">
-          <span>Based on the Ministry of Public Health (State of Qatar) healthcare waste colour coding and segregation guidance.</span>
+          <span className="mw-foot-moph">
+            <MophLogo size="foot" />
+            Based on the Ministry of Public Health (State of Qatar) healthcare waste colour coding and segregation guidance.
+          </span>
           <span>
             Interactive experience by{" "}
             <a href="/gamification-brand-activation-qatar/" target="_blank" rel="noopener">
@@ -383,6 +387,7 @@ export function MedicalWasteChallenge() {
       {boardFull && (
         <div className="mw-stage mw-stage--board" role="dialog" aria-modal="true" aria-label="Leaderboard">
           <div className="mw-stage-bar">
+            <MophLogo size="bar" />
             <b>🏆 Leaderboard</b>
             <button type="button" className="mw-x" onClick={() => setBoardFull(false)} aria-label="Close leaderboard">
               ✕
