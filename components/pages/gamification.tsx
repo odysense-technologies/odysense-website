@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { seoMeta } from "@/lib/seo";
 import { Reveal, SectionHead, CtaBox, PageHero, Byline } from "@/components/ui";
 import { webPageSchema } from "@/lib/schema";
@@ -6,10 +7,12 @@ import { Arcade } from "@/components/arcade/arcade";
 import { site, pageUpdated } from "@/lib/site";
 import { RelatedPosts } from "@/components/related-posts";
 import { lp, ui, type Locale } from "@/lib/i18n";
+import { getCaseStudyL } from "@/lib/localized";
 
 /**
  * Gamification & brand activations. Rules (CLAUDE.md section 5): no prices, hedged timelines, web and
- * mobile capabilities only, no invented events or results. Keep both languages in step.
+ * mobile capabilities only, no invented events or results. Keep both languages in step. The MoPH case study is a
+ * real project; its figures come from lib/case-studies.ts (live-game records, owner-approved).
  */
 const COPY = {
   en: {
@@ -146,6 +149,18 @@ const COPY = {
     ctaTitle: "Make your next event",
     ctaAccent: "the one they play.",
     ctaBody: "Tell us about the event, the audience and what you want to leave with. We'll come back with a concept and a fixed quote after a free consultation.",
+    caseKicker: "Case study",
+    caseTitle: "Ministry of Public Health:",
+    caseAccent: "a conference booth, turned into a game.",
+    caseBody:
+      "For MoPH's medical waste management conference on 12 November 2026, we built and ran the Medical Waste Segregation Challenge: three short games built only from the ministry's own guidance posters, played at a booth kiosk and live on attendees' phones.",
+    caseCards: [
+      { h: "The challenge", p: "Teach exactly how healthcare waste is segregated (container colours, labels and hazard symbols) in the minute or two a visitor gives a booth, without changing a word of the official guidance." },
+      { h: "The solution", p: "Bin Rush, Code Breaker and Symbol Match on a booth kiosk, plus live rounds joined by QR code on phones, a big-screen leaderboard, and an admin panel to adjust content and settings on the day." },
+      { h: "Built for the day", p: "Kiosk scores stay on the device, so the booth doesn't depend on venue Wi-Fi. Live rounds run through our server with a host console, and scores export as a CSV." },
+    ],
+    caseLink: "Read the case study →",
+    caseLogoAlt: "Ministry of Public Health, State of Qatar",
   },
   ar: {
     metaTitle: "وكالة ألعاب تفاعلية وتفعيل علامات تجارية في قطر",
@@ -281,6 +296,18 @@ const COPY = {
     ctaTitle: "اجعل فعاليتك القادمة",
     ctaAccent: "التي يلعبها الجميع.",
     ctaBody: "أخبرنا عن الفعالية والجمهور وما تريد الخروج به. سنعود إليك بفكرة وعرض سعر ثابت بعد استشارة مجانية.",
+    caseKicker: "دراسة حالة",
+    caseTitle: "وزارة الصحة العامة:",
+    caseAccent: "جناح مؤتمر تحوّل إلى لعبة.",
+    caseBody:
+      "في مؤتمر وزارة الصحة العامة لإدارة النفايات الطبية يوم 12 نوفمبر 2026، بنينا وشغّلنا تحدي فرز النفايات الطبية: ثلاث ألعاب قصيرة مبنية فقط من ملصقات إرشادات الوزارة، لُعبت على جهاز في الجناح وبشكل مباشر على هواتف الحضور.",
+    caseCards: [
+      { h: "التحدي", p: "تعليم طريقة فرز نفايات الرعاية الصحية بدقة (ألوان الحاويات والملصقات ورموز الخطر) في الدقيقة أو الدقيقتين التي يمنحها الزائر للجناح، دون تغيير كلمة من الإرشادات الرسمية." },
+      { h: "الحل", p: "ألعاب Bin Rush وCode Breaker وSymbol Match على جهاز في الجناح، وجولات مباشرة ينضم إليها الحضور برمز QR من هواتفهم، ولوحة صدارة على الشاشة الكبيرة، ولوحة إدارة لضبط المحتوى والإعدادات في يوم الفعالية." },
+      { h: "جاهز ليوم الفعالية", p: "تبقى نتائج جهاز الجناح عليه، فلا يعتمد الجناح على شبكة المكان. وتعمل الجولات المباشرة عبر خادمنا مع وحدة تحكم للمضيف، وتُصدَّر النتائج بصيغة CSV." },
+    ],
+    caseLink: "اقرأ دراسة الحالة ←",
+    caseLogoAlt: "وزارة الصحة العامة، دولة قطر",
   },
 };
 
@@ -310,6 +337,7 @@ export function GamificationPage({ locale }: { locale: Locale }) {
   const t = ui(locale);
   const L = (href: string) => lp(locale, href);
   const updated = pageUpdated[PATH];
+  const mophCase = getCaseStudyL("moph-medical-waste-challenge", locale);
   const pageSchema = webPageSchema({ path: L(PATH), name: c.metaTitle, description: c.metaDescription, modified: updated });
   const faqSchema = {
     "@context": "https://schema.org",
@@ -429,8 +457,45 @@ export function GamificationPage({ locale }: { locale: Locale }) {
         </div>
       </section>
 
+      {/* Case study: MoPH */}
+      <section className="section" id="case-study">
+        <div className="wrap">
+          <SectionHead
+            kicker={c.caseKicker}
+            title={
+              <>
+                {c.caseTitle} <span className="serif">{c.caseAccent}</span>
+              </>
+            }
+          >
+            {c.caseBody}
+          </SectionHead>
+          <Cards items={c.caseCards} />
+          {mophCase && (
+            <Reveal className="stat-row gam-case-stats">
+              {mophCase.results.map((r) => (
+                <div className="stat" key={r.label}>
+                  <b>
+                    <bdi dir="ltr">{r.value}</bdi>
+                  </b>
+                  <span>{r.label}</span>
+                </div>
+              ))}
+            </Reveal>
+          )}
+          <Reveal>
+            <div className="gam-case-foot">
+              <Image className="gam-case-logo" src="/images/moph-logo.webp" alt={c.caseLogoAlt} width={399} height={316} />
+              <Link className="btn btn-primary" href={L("/work/moph-medical-waste-challenge")}>
+                {c.caseLink}
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* Live ops */}
-      <section className="section">
+      <section className="section section--flush-top">
         <div className="wrap">
           <SectionHead
             kicker={c.opsKicker}

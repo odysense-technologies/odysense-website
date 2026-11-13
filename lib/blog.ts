@@ -1364,11 +1364,12 @@ export const posts: Post[] = [
   {
     slug: "qa-domain-online-store-qatar",
     metaTitle: ".qa Domain for Your Online Store: Setup & SEO",
-    relatedPosts: ["qatar-ecommerce-licence-qar-500-194-activities", "qatar-ecommerce-licence-store-compliance-checklist", "website-redesign-without-losing-seo"],
+    relatedPosts: ["qa-domain-rules-october-2026", "qatar-ecommerce-licence-qar-500-194-activities", "qatar-ecommerce-licence-store-compliance-checklist"],
     title: "Your Qatar online store needs a .qa domain: how to set it up or switch without losing SEO",
     description:
       "Qatar's e-commerce licence requires a .qa or .com.qa domain. How to choose and register one, and how to move an existing store from .com without losing search rankings.",
     date: "2026-10-06",
+    updated: "2026-11-13",
     category: "E-commerce",
     minutes: 8,
     relatedService: { label: "E-commerce development in Qatar", href: "/ecommerce-development-company-qatar" },
@@ -1412,6 +1413,7 @@ export const posts: Post[] = [
         ps: [
           "The announcement is specific that registration must go through one of the eight CRA-approved service providers. Check the current list on the official channels before you buy, and be wary of resellers who can't tell you which accredited provider actually holds the registration.",
           ".qa domains have their own registration rules and documents, which can differ from a typical .com purchase. Your provider will tell you what they need. Make sure the domain is registered in the business's name and that you, not a freelancer or agency, control the account, so renewals and changes stay in your hands.",
+          "Those rules tightened on 22 October 2026. Registrars report that new .qa registrations now need a connection to Qatar, such as a Qatar ID, a Qatari commercial registration or trade licence, or a trademark registered in Qatar. Our guide to the new .qa domain rules covers what changed and what existing domain holders should check.",
         ],
       },
       {
@@ -2652,6 +2654,155 @@ export const posts: Post[] = [
         h: "Build it in from day one",
         ps: [
           "Odysense builds online stores for Qatar and the GCC with online payments, cash on delivery, courier integration and WhatsApp order updates set up together. Book a free consultation and we'll plan the checkout and delivery flow for your store.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "qa-domain-rules-october-2026",
+    metaTitle: "New .qa Domain Rules (Oct 2026): What Changed",
+    title: "Qatar's new .qa domain rules (22 October 2026): what businesses need to know",
+    description:
+      "From 22 October 2026, registering a .qa domain needs a link to Qatar. What changed, what it means for existing .qa websites and online stores, and the checks to make now.",
+    date: "2026-11-13",
+    category: "Web development",
+    minutes: 7,
+    relatedService: { label: "Website development in Qatar", href: "/website-development-company-qatar" },
+    image: { src: "/images/home-growth.webp", alt: "Two colleagues reviewing documents and a tablet in warm afternoon light", w: 1200, h: 800 },
+    relatedPosts: ["qa-domain-online-store-qatar", "qatar-ecommerce-licence-qar-500-194-activities", "website-maintenance-cost-qatar"],
+    sources: [
+      { label: "Domain Name Wire — .qa domains get new restrictions (21 Oct 2026)", url: "https://domainnamewire.com/2026/10/21/qa-domains-get-new-restrictions-change-your-nameservers-now/" },
+      { label: "AEserver — Qatar .qa domain rules changing 22 October 2026", url: "https://www.aeserver.com/qatar-qa-domain-policy-changes-2026/" },
+      { label: "Domgate — October 2026 in country domains: what changed", url: "https://domgate.com/news/october-2026-country-domains-round-up" },
+      { label: "Unitech — New .qa domain policy 2026: documents for new and existing holders", url: "https://www.unitech.qa/announcements/164" },
+      { label: "Abou Naja — Qatar's new .qa domain rules: why a Qatar trademark now matters", url: "https://abounaja.com/news/qatars-new-qa-domain-rules-why-a-qatar-trademark-now-matters-for-brand-protection" },
+    ],
+    sections: [
+      {
+        ps: [
+          "The short answer: since 22 October 2026, a new .qa domain can only be registered by someone with a connection to Qatar. Registrars report that individuals need a Qatar ID or eligible residency document, and businesses need a Qatari commercial registration or trade licence, or a trademark registered in Qatar. Existing .qa domains are not cancelled and keep renewing, but changes to them can trigger the new eligibility check, so make sure your details and documents are in order before you change anything.",
+          "The change matters to every business in Qatar with a .qa website or email, and to online sellers who need a .qa or .com.qa domain under the new e-commerce licence. Here's what registrars have reported, what's still unclear, and what to do now.",
+          "Odysense builds websites and online stores; we're not a domain registry or a law firm. The registry hadn't published its full updated guidelines when several of the notices below were written, so confirm the details with your registrar or the Qatar Domains Registry before acting.",
+        ],
+      },
+      {
+        h: "What changed on 22 October 2026",
+        ps: [
+          "The Qatar Domains Registry, operated by Qatar's Communications Regulatory Authority (CRA), moved to a new technical platform and a new set of domain policies on 22 October 2026. Registrar notices describe these main changes:",
+        ],
+        list: [
+          "Eligibility for .qa: a second-level .qa domain (yourname.qa) can no longer be registered by anyone, anywhere. You need a connection to Qatar.",
+          "Individuals: a valid Qatar ID (QID) or an eligible Qatar residency document.",
+          "Businesses: a valid Qatari commercial registration (CR) or applicable trade licence, or a trademark registered in Qatar.",
+          "No reselling: the new policy prohibits selling, renting or leasing a second-level .qa domain.",
+          ".com.qa: this ending already required a Qatari entity or a Qatari trademark, and new .qa names now follow similar rules.",
+        ],
+      },
+      {
+        h: "What it means for existing .qa domains",
+        ps: [
+          "Registrars agree that existing .qa domains were not cancelled on 22 October and that renewals continue. The catch is in changes: according to registrar notices, changing a domain's registration details brings the new eligibility requirements into play. Domain Name Wire reported that changing nameservers is one of those triggers, while changing individual DNS records such as A or CNAME records at your DNS host is not.",
+          "Some registrars are also asking existing holders to provide eligibility documents now, so they're ready when the registry checks. If your registrar has asked, don't ignore the email.",
+        ],
+      },
+      {
+        h: "What's still unclear",
+        list: [
+          "Whether, and how, companies based outside Qatar can register .qa names. Reports differ; a trademark registered in Qatar is the route most often mentioned.",
+          "The exact documents each registrar will accept, and how long checks take.",
+          "Transfer and renewal details: at least one registrar reports a 60-day transfer lock on newly registered or transferred domains, and terms of up to 10 years.",
+          "Availability: some registrars paused new .qa registrations and transfers around the switchover. Check with yours before you plan a launch date around a new domain.",
+        ],
+      },
+      {
+        h: "What to do now",
+        list: [
+          "Check who the domain is registered to. It should be your business, with your current CR or trade licence, not a former employee, freelancer or agency.",
+          "Have your documents ready: CR or trade licence for a company, QID for an individual, or your Qatar trademark registration.",
+          "Talk to your registrar before changing nameservers, moving hosting providers or transferring the domain, so a routine change doesn't stall on an eligibility check.",
+          "Keep renewals on auto-renew with a payment method that works. A domain that lapses would have to be registered again under the new rules, and someone else could take it.",
+          "Planning a new brand or store? Confirm the .qa name is available and that you're eligible before you print packaging or launch campaigns.",
+          "Selling online under the e-commerce licence? The licence requires a .qa or .com.qa domain through one of the eight CRA-approved providers, so sort the domain early.",
+        ],
+      },
+      {
+        h: "If you're moving your site to a .qa domain",
+        ps: [
+          "Moving an existing website or store from .com to .qa is routine when it's planned: one-to-one 301 redirects, an updated sitemap and canonical tags, and Google Search Console told about the move. Our guide to setting up a .qa domain for an online store walks through the steps so you keep your search rankings.",
+        ],
+      },
+      {
+        h: "We can help with the website side",
+        ps: [
+          "Odysense builds and maintains websites and online stores for businesses in Qatar and the GCC, and we plan domain moves so rankings, email and payments keep working. Book a free consultation and we'll check your setup and plan any move with you and your registrar.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "conference-booth-gamification-qatar",
+    metaTitle: "Booth Games at a Conference: What We Learned",
+    title: "Turning a health conference booth into a live game: what we learned running the MoPH challenge",
+    description:
+      "How we built and ran the Medical Waste Segregation Challenge for the Ministry of Public Health at a conference in Qatar: three short games, phones as controllers, a live leaderboard, and lessons for any event booth.",
+    date: "2026-11-13",
+    category: "Events & gamification",
+    minutes: 7,
+    relatedService: { label: "Gamification & brand activations", href: "/gamification-brand-activation-qatar" },
+    image: { src: "/images/card-gamification-team.webp", alt: "A team gathered around a table while a colleague explains a plan", w: 600, h: 800 },
+    relatedPosts: ["event-gamification-ideas-qatar", "live-quiz-polls-qa-gcc-events"],
+    sections: [
+      {
+        ps: [
+          "The short answer: a booth game works when it teaches one clear thing in a minute or two, lets people play on their own phone with no app, and puts the scores on a big screen so the room joins in. That's how we approached the Medical Waste Segregation Challenge, which we built and ran for Qatar's Ministry of Public Health (MoPH) at its medical waste management conference on 12 November 2026.",
+          "Conference booths compete for a few minutes of attention between sessions. A game earns those minutes if it's quick to start, easy to understand and fun to win. Here's what we built, how the day went, and what we'd tell anyone planning an activation.",
+        ],
+      },
+      {
+        h: "The brief",
+        ps: [
+          "MoPH wanted conference visitors to remember how healthcare waste should be segregated: which container colour, which label and which hazard symbol go with each type of waste. The rules already existed on two MoPH posters. Our job was to turn them into something people would choose to play, without changing a word of the guidance.",
+          "That shaped the first rule of the build: every item, colour, label and rule in the games comes from those two posters, and nothing else.",
+        ],
+      },
+      {
+        h: "What we built",
+        list: [
+          "Bin Rush: a medical waste item appears and players tap the right bin before the timer runs out, with lives, streaks and faster items as they go.",
+          "Code Breaker: quick questions on container colours, label wording, hazard symbols and segregation rules, scored for accuracy and speed.",
+          "Symbol Match: a card-flip game pairing hazard symbols and characteristics with their waste category.",
+          "A booth kiosk with a leaderboard and a full-screen leaderboard for a second screen.",
+          "Live multiplayer: the host starts a round, attendees scan a QR code and play the same round on their phones, and a big-screen leaderboard updates as they play.",
+          "An admin panel to adjust timings, lives and question types, edit the content, and export scores as a CSV on the day.",
+        ],
+      },
+      {
+        h: "On the day",
+        ps: [
+          "The games ran at the booth kiosk and in live rounds on the big screen. On the conference day, attendees joined live multiplayer rooms 35 times from their phones across 10 rooms. Kiosk scores stay on the booth device, so they're counted separately from the live rounds.",
+        ],
+      },
+      {
+        h: "What we learned",
+        list: [
+          "Keep it short. A Bin Rush round lasts 60 seconds, so people can play between sessions and come back to beat their score.",
+          "Let the client own the content. Building only from MoPH's posters means every answer matches the official guidance, and the admin panel lets the team adjust content without a developer.",
+          "Phones beat queues. A QR code puts the game in everyone's hand at once, instead of one person at a time on a tablet.",
+          "The leaderboard is the hook. Names on a big screen turn a quiz into a competition the whole room watches.",
+          "Plan for the venue. The booth games kept scores on the kiosk itself, so they didn't depend on the venue network, while the live rounds ran through our server.",
+          "Make the result useful afterwards. Scores export as a CSV, and the participation numbers come from the live game's own records.",
+        ],
+      },
+      {
+        h: "Using the same approach at your event",
+        ps: [
+          "The format works well beyond health: product knowledge at a launch, safety rules for staff, brand trivia at a mall activation, or a sponsor challenge at a sports event. The ingredients stay the same: a short game built on your own content, phones as controllers, a live leaderboard, and consented sign-ups where you want leads.",
+        ],
+      },
+      {
+        h: "Plan your activation with us",
+        ps: [
+          "Odysense designs, builds and runs games and live audience engagement for events in Qatar and the GCC. Read the full MoPH case study on our work page, try the demos on our gamification page, or book a free consultation and we'll suggest a format for your event with a fixed quote.",
         ],
       },
     ],
