@@ -8,6 +8,7 @@ import { DB_URL, maxRoundMs, store, type Room } from "@/lib/mw-live";
  * Live rooms API for the MoPH Medical Waste Segregation Challenge.
  *   GET  ?room=1234[&content=1]   room state, players and the current round's scores (polled every ~2 s)
  *   GET  ?status=1                whether a database is configured (db) and answering (dbOk)
+ *   GET  ?stats=1                 participation totals for the event report (counts only: no names or organisations)
  *   POST { action, ... }          create | start | end | next | kick (host, password) · join | score (players)
  */
 export const dynamic = "force-dynamic";
@@ -39,6 +40,14 @@ export async function GET(req: Request) {
     } catch (e) {
       const msg = String(e instanceof Error ? e.message : e).replace(/postgres(ql)?:\/\/\S+/gi, "[connection string]").slice(0, 160);
       return json({ ok: true, db: true, dbOk: false, error: msg });
+    }
+  }
+  if (url.searchParams.get("stats")) {
+    try {
+      return json({ ok: true, db: Boolean(DB_URL), stats: await store.stats() });
+    } catch (e) {
+      console.error("mw-live stats failed", e);
+      return json({ ok: false, error: "Couldn't read the stats." }, 503);
     }
   }
   const code = roomCode(url.searchParams.get("room"));
