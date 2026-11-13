@@ -39,7 +39,26 @@ export interface Store {
   scores(code: string, round: number): Promise<Score[]>;
   /** Round-trip check: sets up the tables if needed and counts the rooms */
   health(): Promise<number>;
+  /** Participation totals for the event report: counts only, never names or organisations */
+  stats(): Promise<Stats>;
 }
+
+export type Stats = {
+  rooms: number;
+  roomsWithPlayers: number;
+  players: number;
+  organisations: number;
+  roundsPlayed: number;
+  /** One player playing one round = one game */
+  gamesPlayed: number;
+  gamesFinished: number;
+  /** By the game each room is set to now (a host can switch games between rounds) */
+  byGame: { game: string; rooms: number; players: number; gamesPlayed: number; gamesFinished: number; avgScore: number; topScore: number }[];
+  /** Days in Qatar time (UTC+3) */
+  byDay: { day: string; rooms: number; players: number }[];
+  firstJoin: string | null;
+  lastJoin: string | null;
+};
 
 const newCode = () => String(1000 + Math.floor(Math.random() * 9000));
 const newId = () => crypto.randomUUID();
@@ -102,6 +121,40 @@ const memoryStore: Store = {
   async health() {
     return mem.rooms.size;
   },
+  async stats() {
+    const rooms = [...mem.rooms.values()];
+    const players = rooms.flatMap((r) => (mem.players.get(r.code) ?? []).map((p) => ({ ...p, game: r.game })));
+    const scores = [...mem.scores.entries()].flatMap(([k, m]) => [...m.values()].map((sc) => ({ ...sc, key: k, game: mem.rooms.get(k.split(":")[0])?.game ?? "" })));
+    const games = [...new Set(rooms.map((r) => r.game))];
+    const day = (t: number) => new Date(t + 3 * 3600_000).toISOString().slice(0, 10);
+    const days = [...new Set([...rooms.map((r) => day(r.createdAt)), ...players.map((p) => day(p.joinedAt))])].sort();
+    const joins = players.map((p) => p.joinedAt).sort((a, b) => a - b);
+    const done = scores.filter((x) => x.finished);
+    return {
+      rooms: rooms.length,
+      roomsWithPlayers: rooms.filter((r) => (mem.players.get(r.code) ?? []).length > 0).length,
+      players: players.length,
+      organisations: new Set(players.map((p) => p.org.trim().toLowerCase()).filter(Boolean)).size,
+      roundsPlayed: new Set(scores.map((x) => x.key)).size,
+      gamesPlayed: scores.length,
+      gamesFinished: done.length,
+      byGame: games.map((game) => {
+        const f = done.filter((x) => x.game === game);
+        return {
+          game,
+          rooms: rooms.filter((r) => r.game === game).length,
+          players: players.filter((p) => p.game === game).length,
+          gamesPlayed: scores.filter((x) => x.game === game).length,
+          gamesFinished: f.length,
+          avgScore: f.length ? Math.round(f.reduce((a, x) => a + x.score, 0) / f.length) : 0,
+          topScore: f.reduce((a, x) => Math.max(a, x.score), 0),
+        };
+      }),
+      byDay: days.map((d) => ({ day: d, rooms: rooms.filter((r) => day(r.createdAt) === d).length, players: players.filter((p) => day(p.joinedAt) === d).length })),
+      firstJoin: joins.length ? new Date(joins[0]).toISOString() : null,
+      lastJoin: joins.length ? new Date(joins[joins.length - 1]).toISOString() : null,
+    };
+  },
 };
 
 /* --------------------------------------------------------------- pg store */
@@ -133,8 +186,8 @@ export function createPgStore(connect: () => Promise<Q>): Store {
   return {
     async createRoom(room, content) {
       const q = await pg();
-      // Rooms are for one event day; clear out anything older than two days so codes can be reused.
-      const old = await q(`DELETE FROM mw_rooms WHERE created_at < now() - interval '2 days' RETURNING code`);
+      // Keep rooms for 90 days so the event report (stats) can be pulled afterwards, then free the codes.
+      const old = await q(`DELETE FROM mw_rooms WHERE created_at < now() - interval '90 days' RETURNING code`);
       for (const r of old) {
         await q(`DELETE FROM mw_players WHERE code = $1`, [r.code]);
         await q(`DELETE FROM mw_scores WHERE code = $1`, [r.code]);
@@ -213,6 +266,53 @@ export function createPgStore(connect: () => Promise<Q>): Store {
     async health() {
       const rows = await (await pg())(`SELECT count(*) AS n FROM mw_rooms`);
       return Number(rows[0]?.n ?? 0);
+    },
+    async stats() {
+      const q = await pg();
+      const n = (v: unknown) => Number(v ?? 0);
+      const [tot] = await q(`SELECT
+          (SELECT count(*) FROM mw_rooms) AS rooms,
+          (SELECT count(DISTINCT code) FROM mw_players) AS rooms_with_players,
+          (SELECT count(*) FROM mw_players) AS players,
+          (SELECT count(DISTINCT lower(trim(org))) FROM mw_players WHERE trim(org) <> '') AS orgs,
+          (SELECT count(DISTINCT (code, round)) FROM mw_scores) AS rounds,
+          (SELECT count(*) FROM mw_scores) AS scores,
+          (SELECT count(*) FROM mw_scores WHERE finished) AS finished,
+          (SELECT min(joined_at) FROM mw_players) AS first_join,
+          (SELECT max(joined_at) FROM mw_players) AS last_join`);
+      const games = await q(`SELECT r.game, r.rooms, coalesce(p.players, 0) AS players, coalesce(s.scores, 0) AS scores,
+          coalesce(s.finished, 0) AS finished, coalesce(s.avg_score, 0) AS avg_score, coalesce(s.top_score, 0) AS top_score
+        FROM (SELECT data->>'game' AS game, count(*) AS rooms FROM mw_rooms GROUP BY 1) r
+        LEFT JOIN (SELECT r2.data->>'game' AS game, count(*) AS players FROM mw_players p2 JOIN mw_rooms r2 ON r2.code = p2.code GROUP BY 1) p ON p.game = r.game
+        LEFT JOIN (SELECT r2.data->>'game' AS game, count(*) AS scores, count(*) FILTER (WHERE s2.finished) AS finished,
+            round(avg(s2.score) FILTER (WHERE s2.finished)) AS avg_score, max(s2.score) FILTER (WHERE s2.finished) AS top_score
+          FROM mw_scores s2 JOIN mw_rooms r2 ON r2.code = s2.code GROUP BY 1) s ON s.game = r.game
+        ORDER BY 1`);
+      const days = await q(`SELECT d AS day, sum(rooms) AS rooms, sum(players) AS players FROM (
+          SELECT to_char(created_at AT TIME ZONE 'Asia/Qatar', 'YYYY-MM-DD') AS d, 1 AS rooms, 0 AS players FROM mw_rooms
+          UNION ALL SELECT to_char(joined_at AT TIME ZONE 'Asia/Qatar', 'YYYY-MM-DD'), 0, 1 FROM mw_players) t GROUP BY d ORDER BY d`);
+      const iso = (v: unknown) => (v ? new Date(String(v)).toISOString() : null);
+      return {
+        rooms: n(tot.rooms),
+        roomsWithPlayers: n(tot.rooms_with_players),
+        players: n(tot.players),
+        organisations: n(tot.orgs),
+        roundsPlayed: n(tot.rounds),
+        gamesPlayed: n(tot.scores),
+        gamesFinished: n(tot.finished),
+        byGame: games.map((g) => ({
+          game: String(g.game),
+          rooms: n(g.rooms),
+          players: n(g.players),
+          gamesPlayed: n(g.scores),
+          gamesFinished: n(g.finished),
+          avgScore: n(g.avg_score),
+          topScore: n(g.top_score),
+        })),
+        byDay: days.map((d) => ({ day: String(d.day), rooms: n(d.rooms), players: n(d.players) })),
+        firstJoin: iso(tot.first_join),
+        lastJoin: iso(tot.last_join),
+      };
     },
   };
 }
