@@ -2349,6 +2349,313 @@ export const posts: Post[] = [
       },
     ],
   },
+  {
+    slug: "website-maintenance-cost-qatar",
+    metaTitle: "Website Maintenance in Qatar: Cost & Scope",
+    title: "Website maintenance in Qatar: what it covers, what it costs, and what happens without it",
+    description:
+      "What website maintenance includes for a business site or online store in Qatar, the running costs to budget for, and the problems that start when nobody looks after the site.",
+    date: "2026-11-13",
+    category: "Web design",
+    minutes: 7,
+    relatedService: { label: "Website design in Qatar", href: "/website-design-company-in-qatar" },
+    image: { src: "/images/svc-software.webp", alt: "A developer in glasses working at a glowing monitor", w: 1200, h: 675 },
+    relatedPosts: ["how-much-does-a-website-cost-in-qatar", "website-redesign-without-losing-seo", "store-portal-woocommerce-management"],
+    sections: [
+      {
+        ps: [
+          "The short answer: website maintenance in Qatar covers software updates, security, backups, monitoring, domain and certificate renewals, and small content changes. The fixed running costs are modest (a domain is roughly QAR 50–150 a year, and hosting runs from free tiers to QAR 500+ a year for managed plans), while hands-on maintenance is priced by how much the site does and how often it changes.",
+          "A site that nobody maintains doesn't fail on day one. It drifts: plugins fall out of date, a renewal email goes to someone who left, a form quietly stops sending leads. This guide covers what good maintenance includes so you can budget for it, whoever does the work.",
+        ],
+      },
+      {
+        h: "What maintenance actually includes",
+        list: [
+          "Software updates: the CMS (for example WordPress), its theme and plugins, or the framework a custom site runs on. Updates close security holes and keep things compatible.",
+          "Security: a firewall or security service, malware scanning, strong admin passwords and two-factor login, and removing old user accounts.",
+          "Backups: automatic daily or weekly backups stored away from the server, and a restore you have actually tested.",
+          "Monitoring: uptime alerts, so you hear about an outage before your customers do, plus a check that contact forms and checkout still work.",
+          "Renewals: the domain, the SSL certificate and any paid plugins or licences, all registered to the business rather than to a freelancer's personal account.",
+          "Content and small changes: new team members, prices, offers, pages and photos, in English and Arabic if the site is bilingual.",
+          "Performance and SEO checks: page speed, broken links, Search Console errors and the sitemap.",
+        ],
+      },
+      {
+        h: "The running costs to budget for",
+        ps: [
+          "Every website has a few fixed costs, whoever maintains it:",
+        ],
+        list: [
+          "Domain name: roughly QAR 50–150 a year, depending on the ending and the registrar.",
+          "Hosting: from free tiers on modern platforms to QAR 500+ a year for managed hosting, more for busy stores.",
+          "Premium plugins, themes or software licences, if the site uses them.",
+          "Business email on your domain, usually billed per user.",
+        ],
+      },
+      {
+        ps: [
+          "On top of that is the work itself. A brochure site that changes twice a year needs far less attention than an online store with daily orders, payment and shipping integrations and frequent promotions. Ask for a fixed monthly plan with a clear list of what's included, and agree a rate for anything outside it.",
+          "For online stores we build, the first year of domain and hosting is included in the build. WooCommerce stores also get Store Portal free for the first year, and its published add-ons cover the ongoing work: automated backups (QAR 80 a month), SEO and performance (QAR 800 a month), and full order and website management (QAR 1,000 a month), each billed annually.",
+        ],
+      },
+      {
+        h: "What happens when nobody maintains the site",
+        list: [
+          "Hacked sites: out-of-date plugins are one of the most common ways small business sites get compromised, and cleaning up costs far more than the updates would have.",
+          "Expired domains: if the renewal reminder goes to an old email address, the site and your email can go offline together.",
+          "Lost leads: a broken contact form or WhatsApp link fails silently. You only notice when enquiries stop.",
+          "Slow pages and falling rankings: images pile up, plugins add weight, and search engines and visitors both lose patience.",
+          "No way back: without a recent tested backup, one bad update can cost days of rebuilding.",
+        ],
+      },
+      {
+        h: "Do it yourself, freelancer or agency?",
+        ps: [
+          "If your site is simple and someone on your team is comfortable with updates and backups, doing it in-house is fine, as long as it's on a calendar and not left to memory. A freelancer can work well for small sites; make sure the domain, hosting and admin accounts stay in your name so you're never locked out.",
+          "An agency makes sense when the site earns money directly (an online store, a booking system, a lead-generation site) and downtime has a real cost. Ask any provider three questions: what exactly is included each month, how fast they respond when something breaks, and how you'd get everything back if you moved on.",
+        ],
+      },
+      {
+        h: "A simple monthly checklist",
+        list: [
+          "Install updates on a staging copy first, then on the live site.",
+          "Confirm last night's backup exists and that it opens.",
+          "Send a test enquiry through every form and tap every WhatsApp button.",
+          "For stores: place a test order and check the payment, email and stock all update.",
+          "Check Google Search Console for errors and the page speed report for slow pages.",
+          "Note domain, certificate and licence renewal dates for the next 90 days.",
+        ],
+      },
+      {
+        h: "Let us look after it",
+        ps: [
+          "Odysense designs, builds and maintains websites and online stores for businesses in Qatar and the GCC, in English and Arabic. Book a free consultation and we'll review your current site, flag anything urgent, and quote a fixed monthly plan for keeping it secure, fast and up to date.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "mobile-app-vs-web-app-qatar",
+    metaTitle: "Mobile App or Web App? A Guide for Qatar",
+    title: "Mobile app or web app? How businesses in Qatar should decide",
+    description:
+      "Native mobile app, web app or a well-built website: what each one is good at, what each costs in Qatar, and a simple way to choose the right first step for your business.",
+    date: "2026-11-13",
+    category: "Mobile apps",
+    minutes: 8,
+    relatedService: { label: "Mobile app development in Qatar", href: "/mobile-app-development-company-qatar" },
+    image: { src: "/images/home-engineering.webp", alt: "A young man typing on a laptop at a dark wooden desk", w: 800, h: 1200 },
+    relatedPosts: ["mobile-app-development-cost-qatar", "startup-mvp-development-qatar", "custom-software-development-cost-qatar"],
+    sections: [
+      {
+        ps: [
+          "The short answer: build a native mobile app when customers will use it often and you need things only an app does well, such as reliable push notifications, offline use or the camera and location in the background. Build a web app when you need software that works on any device without an install, and a website when people mainly need to find you, trust you and contact you. In Qatar, our mobile apps start at QAR 15,000–20,000, custom software MVPs from QAR 10,000, and websites at QAR 2,000–10,000.",
+          "Many businesses ask for an app when what they need first is a fast website or a simple web app. Others put off an app their customers would use every week. Here's how to tell which situation you're in.",
+        ],
+      },
+      {
+        h: "Three different things",
+        list: [
+          "A website tells people who you are and helps them contact you or buy. It's found through Google and opens instantly from a link.",
+          "A web app is software in the browser: a booking system, a customer portal, a dashboard, an ordering page. Nothing to install, one version for every device, and updates go live for everyone at once.",
+          "A native mobile app is installed from the App Store or Google Play. It lives on the home screen, can send push notifications, works offline and uses the phone's hardware more deeply.",
+        ],
+      },
+      {
+        h: "When a native app is worth it",
+        list: [
+          "Customers will open it often: weekly or daily use, such as ordering, booking, loyalty or tracking.",
+          "Push notifications drive the business: order updates, reminders, offers people actually want.",
+          "It needs the phone itself: camera-heavy features, location, Bluetooth, health data or offline work in the field.",
+          "Being in the app stores matters for your market or your investors.",
+        ],
+      },
+      {
+        h: "When a web app or website is the smarter first step",
+        list: [
+          "People use it occasionally: a quote request, a one-off booking, an account they check now and then. Few will install an app for that.",
+          "You need to be found on Google. App pages don't rank like web pages, and most first visits start with a search.",
+          "You're still testing the idea. A web app can be changed daily without app store reviews, so you learn faster and spend less.",
+          "Your users are staff or business customers on laptops as much as phones.",
+        ],
+      },
+      {
+        h: "Costs beyond the build",
+        ps: [
+          "Apps carry a few costs that websites don't: an Apple Developer Program membership (USD 99 a year) and a one-time Google Play registration fee (USD 25), app store review before each release, and regular updates as Apple and Google release new versions of iOS and Android. Build them into the plan from the start.",
+          "A web app avoids store fees and reviews, but it still needs hosting, security and maintenance like any software. Either way, ask for a quote that separates the first build from the monthly running costs.",
+        ],
+      },
+      {
+        h: "The middle path: start on the web, add the app",
+        ps: [
+          "A common, sensible route is to launch a responsive web app first, prove people use it, then build the native app on the same backend. The data, accounts and business logic are reused, so the app becomes a new front end rather than a second project. Modern web apps can also be added to the home screen, and on recent versions of iOS and Android they can send notifications once installed that way.",
+          "If you already know customers will use the product every week and notifications are central to it, it's usually better to build the native app from the start.",
+        ],
+      },
+      {
+        h: "Questions to answer before you decide",
+        list: [
+          "How often will a typical customer use it in a month?",
+          "Which features need the phone's hardware or must work offline?",
+          "How will people find it the first time: search, social, in store, a QR code?",
+          "Does it need Arabic and English, and right-to-left layouts?",
+          "Who will run it after launch, and what's the budget for updates?",
+        ],
+      },
+      {
+        h: "Talk it through with us",
+        ps: [
+          "Odysense builds websites, web apps and native mobile apps for businesses in Qatar and the GCC, including our own products such as QFlow and WASL, and client apps such as QSeat on the App Store. Book a free consultation and we'll recommend the right first step for your idea, with a fixed quote.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "website-speed-qatar",
+    metaTitle: "Why Is My Website Slow? Speed Fixes for Qatar",
+    title: "Why is my website slow? Speed fixes that help Qatar businesses rank and convert",
+    description:
+      "The usual reasons business websites and online stores in Qatar load slowly on phones, how to measure speed with Google's Core Web Vitals, and the fixes that make the biggest difference.",
+    date: "2026-11-13",
+    category: "Web development",
+    minutes: 7,
+    relatedService: { label: "Website development in Qatar", href: "/website-development-company-qatar" },
+    image: { src: "/images/about-workspace.webp", alt: "A developer at a white desk with two monitors in a bright studio", w: 1200, h: 670 },
+    relatedPosts: ["seo-in-qatar-how-businesses-get-found", "website-redesign-without-losing-seo", "how-much-does-ecommerce-website-cost-qatar"],
+    sections: [
+      {
+        ps: [
+          "The short answer: most slow business websites are slowed down by oversized images, too many plugins and third-party scripts, and low-cost hosting. Measure the site with Google's PageSpeed Insights and the Core Web Vitals report in Search Console, fix the biggest problems first (usually images and scripts), and aim for the main content to appear within 2.5 seconds on a phone.",
+          "Speed isn't a technical vanity metric. Most visitors in Qatar arrive on a phone, often from Instagram, WhatsApp or a Google search, and a slow page loses them before they see what you offer. Google also uses page experience signals when ranking pages.",
+        ],
+      },
+      {
+        h: "How to measure it",
+        ps: [
+          "Google's Core Web Vitals are the most useful yardstick, because they measure what visitors actually experience. A page is in good shape when it meets these targets:",
+        ],
+        list: [
+          "Largest Contentful Paint (LCP) of 2.5 seconds or less: how long until the main image or heading appears.",
+          "Interaction to Next Paint (INP) of 200 milliseconds or less: how quickly the page responds when someone taps.",
+          "Cumulative Layout Shift (CLS) of 0.1 or less: how much the page jumps around while loading.",
+        ],
+      },
+      {
+        ps: [
+          "Run your key pages (home, main service or category pages, product pages and checkout) through PageSpeed Insights and check the mobile results first. Search Console's Core Web Vitals report shows the same measures from real visitors across the whole site.",
+        ],
+      },
+      {
+        h: "The usual culprits",
+        list: [
+          "Huge images: photos uploaded straight from a camera or phone, several megabytes each, shown at a fraction of their size.",
+          "Too many plugins and scripts: chat widgets, sliders, tracking pixels, pop-ups and page builders, each adding code to every page.",
+          "Cheap or distant hosting: slow servers, no caching and no content delivery network (CDN) close to visitors in the Gulf.",
+          "Heavy fonts: several font families and weights loading before the text can show.",
+          "Autoplay video and image sliders at the top of the page, which delay the content people came for.",
+        ],
+      },
+      {
+        h: "Fixes that make the biggest difference",
+        list: [
+          "Resize and compress images, serve modern formats such as WebP, and lazy-load anything below the first screen.",
+          "Remove plugins and scripts you don't need, and load the rest after the page has appeared.",
+          "Use caching and a CDN so pages are served from close to your visitors.",
+          "Limit fonts to the weights you use, and let text show while fonts load.",
+          "Reserve space for images, banners and embeds so the layout doesn't jump.",
+          "For stores, keep product and category pages lean: fewer widgets, smaller galleries, a simple checkout.",
+        ],
+      },
+      {
+        h: "Speed sells",
+        ps: [
+          "When we built Eleganza's online store, mobile pages loaded in 2.1 seconds, every order came through on mobile, and the conversion rate rose 60% after launch. Speed wasn't the only change, but a fast, simple mobile experience was at the centre of it. You can read the full case study on our work page.",
+        ],
+      },
+      {
+        h: "Fix it or rebuild it?",
+        ps: [
+          "If the site is built on a sound foundation, an optimisation pass on images, scripts, caching and hosting often brings it into the green. If it's built on a heavy page builder with dozens of plugins, the speed you can gain is limited, and a rebuild on a modern stack can cost less over time than repeated patching. If you do rebuild, keep your URLs or redirect them properly so you don't lose rankings.",
+        ],
+      },
+      {
+        h: "Get a free speed review",
+        ps: [
+          "Odysense builds fast websites and online stores for businesses in Qatar and the GCC, in English and Arabic. Book a free consultation and we'll review your site's Core Web Vitals, show you what's slowing it down, and tell you honestly whether to optimise or rebuild.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "cash-on-delivery-online-store-qatar",
+    metaTitle: "Cash on Delivery for Online Stores in Qatar",
+    title: "Cash on delivery for online stores in Qatar: how to offer it without losing money",
+    description:
+      "How to set up cash on delivery for an online store in Qatar and the GCC: when it helps sales, how to reduce refused orders, and how to move customers towards online payment over time.",
+    date: "2026-11-13",
+    category: "E-commerce",
+    minutes: 7,
+    relatedService: { label: "E-commerce development in Qatar", href: "/ecommerce-development-company-qatar" },
+    image: { src: "/images/card-ecommerce.webp", alt: "A woman holding a parcel label marked Return beside a cardboard box", w: 630, h: 900 },
+    relatedPosts: ["payment-gateways-qatar-ksa-compared", "whatsapp-order-notifications-ecommerce", "launching-online-fashion-store-gulf-checklist"],
+    sections: [
+      {
+        ps: [
+          "The short answer: offer cash on delivery (COD) alongside online payment, not instead of it. COD lowers the barrier for first-time buyers, but refused and unreachable orders cost you shipping both ways. Confirm COD orders before dispatch (WhatsApp works well), set sensible limits, connect your courier so payment status flows back to the store, and give customers a reason to pay online.",
+          "Many shoppers in Qatar and the wider Gulf still like to pay when the parcel arrives, especially with a store they haven't bought from before. Done well, COD wins those customers. Done carelessly, it fills your warehouse with returned parcels.",
+        ],
+      },
+      {
+        h: "When COD helps, and when it hurts",
+        list: [
+          "It helps with new customers who don't yet trust your brand with their card details.",
+          "It helps in categories where people want to see the product first, such as fashion and gifts.",
+          "It hurts when orders are impulsive and easy to refuse at the door.",
+          "It hurts with high-value orders, where a refusal ties up stock and cash for days.",
+          "It always costs more to run: the courier collects cash, settles it later, and charges for the service and for any returns.",
+        ],
+      },
+      {
+        h: "Set it up properly",
+        list: [
+          "Show COD as one option at checkout, with online payment first.",
+          "Set limits: a maximum order value for COD, and COD only to delivery areas your courier covers reliably.",
+          "Check your courier's COD fee and settlement timing and build them into your pricing or a small COD charge, shown clearly before checkout.",
+          "Connect the courier to your store so tracking and cash collection update the order status automatically. We integrate any courier that offers an API.",
+          "Keep a simple rule for repeat refusals, such as online payment only for customers who refused before.",
+        ],
+      },
+      {
+        h: "Confirm before you ship",
+        ps: [
+          "The single most effective step is confirming every COD order before it leaves the warehouse. An automatic WhatsApp message with the order summary and a confirm button weeds out mistakes and second thoughts early, while shipping is still free to cancel. Follow-up messages when the parcel is out for delivery reduce failed deliveries because the customer is expecting it.",
+          "With the official WhatsApp Business API, these messages can be sent automatically from your store. WASL, our WhatsApp platform, does this for order confirmations, delivery updates and customer replies in one inbox.",
+        ],
+      },
+      {
+        h: "Move customers to online payment over time",
+        list: [
+          "Make online payment the easiest option: a fast checkout with local cards and wallets your gateway supports.",
+          "Offer a small reason to pay online: free delivery above a threshold, or faster dispatch.",
+          "Once a customer has received a COD order, invite them to pay online next time.",
+          "Watch the numbers each month: COD share, refusal rate and cost per refused order.",
+        ],
+      },
+      {
+        h: "Payments in Qatar",
+        ps: [
+          "For online payments, we've integrated MyFatoorah, Tap Payments, PayTabs, Amazon Payment Services, SADAD and QNB on live stores in Qatar, and we can integrate others on request. Our guide to payment gateways in Qatar and KSA covers how to choose.",
+        ],
+      },
+      {
+        h: "Build it in from day one",
+        ps: [
+          "Odysense builds online stores for Qatar and the GCC with online payments, cash on delivery, courier integration and WhatsApp order updates set up together. Book a free consultation and we'll plan the checkout and delivery flow for your store.",
+        ],
+      },
+    ],
+  },
 ];
 
 /** Newest first; among posts with the same date, the one added later comes first. */
