@@ -163,7 +163,7 @@ export function HomePage({ locale }: { locale: Locale }) {
               <span className="mono">{c.trusted}</span>
               <div className="client-logos">
                 {clientLogos.map((x) => (
-                  <Image src={x.file} alt={x.name} title={x.name} key={x.file} width={140} height={34} style={{ width: "auto" }} />
+                  <Image src={x.file} alt={x.name} title={x.name} key={x.file} width={140} height={34} style={{ width: "auto" }} className={"tall" in x && x.tall ? "is-tall" : undefined} />
                 ))}
               </div>
             </div>

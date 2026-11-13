@@ -107,7 +107,7 @@ export const gatewayList = (country: string) => {
  */
 export const pageUpdated: Record<string, string> = {
   "/ecommerce-development-company-qatar": "2026-10-10",
-  "/gamification-brand-activation-qatar": "2026-10-06",
+  "/gamification-brand-activation-qatar": "2026-11-13",
 };
 
 export const services = [
@@ -375,6 +375,7 @@ export const carouselTiles = [
 
 /** Client logo files (public/brands) shown in the hero */
 export const clientLogos = [
+  { name: "Ministry of Public Health, State of Qatar", file: "/brands/moph.png", tall: true },
   { name: "European Union — Delegation of Qatar", file: "/brands/european-union.png" },
   { name: "Eleganza", file: "/brands/eleganza.png" },
   { name: "Eunited", file: "/brands/eunited.png" },

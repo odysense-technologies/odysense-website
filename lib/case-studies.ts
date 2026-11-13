@@ -123,6 +123,37 @@ export const caseStudies: CaseStudy[] = [
       { value: "AR/EN", label: "bilingual from launch" },
     ],
   },
+  {
+    slug: "moph-medical-waste-challenge",
+    name: "Ministry of Public Health",
+    industry: "Government health · event activation",
+    year: "2026",
+    services: ["Gamification", "Live multiplayer", "Kiosk & big screen", "Admin panel"],
+    teaser:
+      "The Medical Waste Segregation Challenge: three short games built from MoPH's own guidance, played at a booth kiosk and live on attendees' phones at a conference in Qatar.",
+    intro:
+      "For its medical waste management conference in Qatar on 12 November 2026, the Ministry of Public Health (MoPH) wanted visitors to leave knowing how healthcare waste should be segregated: which container colour, label and hazard symbol go with each type of waste. Odysense designed, built and ran the Medical Waste Segregation Challenge: three quick games, a booth kiosk with a leaderboard, and live multiplayer rounds that attendees joined from their phones with a QR code.",
+    challenge: [
+      "The rules had to be exactly right. They come from two MoPH posters on container colour coding, labelling and signage, and on segregation and collection, and nothing in the games could add to or change them. At the same time, a conference visitor gives a booth a minute or two between sessions, so the games had to be instantly clear, quick to finish and fun enough to replay.",
+    ],
+    approach: [
+      "We turned the posters into three formats that teach the same rules in different ways: sorting items into the right bin against the clock, a fast quiz on colours, labels and symbols, and a card-matching game pairing hazard symbols and characteristics with their waste category. Every item, colour, label and rule comes from the posters, recorded once in the game's content so the three games stay consistent.",
+      "The booth kiosk runs on its own device, with scores kept on the kiosk so it doesn't depend on the venue network, and a full-screen leaderboard for a second screen. For bigger moments, the host starts a live round: attendees scan a QR code, play the same round on their phones with no app, and a big-screen leaderboard updates as they play. An admin panel lets the team adjust timings and question types, edit the content, upload replacement symbol images and export scores on the day.",
+    ],
+    built: [
+      "Bin Rush, Code Breaker and Symbol Match, built only from MoPH's guidance posters",
+      "Booth kiosk with leaderboard and full-screen leaderboard",
+      "Live multiplayer rounds joined by QR code, played in the phone browser",
+      "Big-screen leaderboard that updates during each round",
+      "Host console and password-protected admin panel with CSV export",
+      "MoPH logo and branding on every screen",
+    ],
+    results: [
+      { value: "3", label: "games built from MoPH's guidance posters" },
+      { value: "35", label: "phone joins to live multiplayer rooms on the conference day" },
+      { value: "10", label: "live multiplayer rooms run on the day" },
+    ],
+  },
 ];
 
 export function getCaseStudy(slug: string) {

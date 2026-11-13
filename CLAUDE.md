@@ -121,7 +121,8 @@ app/
   tools/review-request/page.tsx                  internal Google-review message generator (noindex)
   events/moph-medical-waste-challenge/page.tsx   client event kiosk (noindex, not in sitemap): see section 5
     live/ join/ screen/                          live multiplayer: host console, phone player (?room=), big screen
-  api/mw-live/route.ts                           live rooms API (create/join/score/start/end/next/kick)
+  api/mw-live/route.ts                           live rooms API (create/join/score/start/end/next/kick);
+                                                 ?stats=1 = participation totals, counts only (Live check prints them)
 components/
   ui.tsx            Reveal, Footer (sitewide links + NAP), SectionHead, CtaBox,
                     PageHero (emits BreadcrumbList JSON-LD from its crumbs)
@@ -163,7 +164,7 @@ lib/
   schema.ts         ORG_ID / WEBSITE_ID, webPageSchema() (dateModified), fmtDate()
   service-pages.ts  the 8 Qatar service pages (copy, long-form `sections`, FAQs, related links, images)
   gcc-pages.ts      the 9 GCC hub pages (Phase 3); gccLinks in site.ts feeds the mega menu, mobile menu, footer
-  case-studies.ts   Eleganza, Rafea Line, QSeat
+  case-studies.ts   Eleganza, Rafea Line, QSeat, MoPH Medical Waste Challenge
   mw-live.ts        live-room store: Neon Postgres (DATABASE_URL or POSTGRES_URL), in-memory fallback locally
   blog.ts           all blog articles (optional per post: metaTitle, updated, image (hero + OG),
                     sources, relatedPosts); postsNewestFirst() for listings
@@ -235,6 +236,7 @@ docs/offsite/     off-site kit (Phase 7): product-site-prompts.md (an "About / B
   "since 2013", "12+ years" and the like). Use QSTP, "20+ clients every year" or "7 in-house products"
   as proof points instead. The schema has no `foundingDate`.
 - **Client logos:** "Ninth" was removed from the client logo list and its file deleted. Logos are in `public/brands/`.
+  MoPH (`moph.png`, added 2026-11-13) leads the row; stacked logos set `tall: true` to render 52px high.
 
 ### Pricing (published starting figures)
 
@@ -316,7 +318,8 @@ docs/offsite/     off-site kit (Phase 7): product-site-prompts.md (an "About / B
   `/join/?room=1234`; phones play the same seeded round; `/screen/?room=1234` is the big-screen leaderboard.
   Phones and screens poll the API every ~2 s. Rounds end when everyone finishes, the host ends them, or the
   time is well past. **Needs a database**: connect Neon in Vercel (Storage → Neon → Production, then
-  redeploy). Without one, the API refuses to create rooms in production.
+  redeploy). Without one, the API refuses to create rooms in production. Rooms are kept 90 days (was 2) so the
+  event report can be pulled afterwards with Actions → Live check (`?stats=1`, counts only, no names).
 
 ### Arabic site (Phase 6, live since 2026-10-29)
 - Every public page exists in Arabic at `/ar/` + the same path (72 pages: core pages, 8 services, 9 GCC
@@ -363,6 +366,10 @@ docs/offsite/     off-site kit (Phase 7): product-site-prompts.md (an "About / B
   (added 2026-10-09). It has no published metrics or quote yet: add them only when the owner supplies
   real figures. The launch year (2026) is unconfirmed.
 - The e-commerce page lists only case studies whose `services` include "E-commerce".
+- **MoPH Medical Waste Challenge** (`/work/moph-medical-waste-challenge/`, added 2026-11-13; also a "Case study"
+  section on the gamification page, fed by the same record). Figures come from the live-game database
+  (`/api/mw-live/?stats=1`, conference day 12 Nov 2026): 35 phone joins to live rooms, 10 live rooms. Kiosk scores
+  live on the booth device and aren't included. Never link the case study to the event pages (they're unlinked, noindex).
 
 ### Gamification & Brand Activations (service, added 2026-10-06)
 - URL: `/gamification-brand-activation-qatar/` (bespoke page; in the Services mega menu, mobile menu,
@@ -376,7 +383,8 @@ docs/offsite/     off-site kit (Phase 7): product-site-prompts.md (an "About / B
   - Never publish prices. Cost depends on scope, and we give a fixed quote after a free consultation.
   - Timelines only in hedged wording: "depends on scope; we confirm the timeline in your proposal".
   - Capability claims stay within what we build on the web and mobile. No AR, VR or hardware claims.
-  - No invented past events, client names, statistics or results.
+  - No invented past events, client names, statistics or results. The one real activation is the MoPH case study
+    (section 5, case studies); add others only with real, owner-supplied facts.
 - The demos are simulated: no backend, no storage, no data collected, and they are labelled "Demo".
 - The homepage carousel tile is `public/images/card-gamification-team.webp` (owner photo, 2026-10-10).
 
@@ -488,7 +496,7 @@ docs/offsite/     off-site kit (Phase 7): product-site-prompts.md (an "About / B
    Clutch, DesignRush, Crunchbase. Add LinkedIn and the Google Business Profile once the owner confirms
    the URLs. Google Search Console is verified through the `verification.google`
    meta tag in `layout.tsx`.
-7. **Blog:** the article count was 36 on 2026-10-09; verify against `lib/blog.ts`. The target cadence
+7. **Blog:** the article count was 42 on 2026-11-13 (36 on 2026-10-09); verify against `lib/blog.ts`. The target cadence
    is two new articles a month, each targeting a real Qatar/GCC query and linking to its service page.
    Current topic clusters:
    - website and e-commerce cost
@@ -506,6 +514,9 @@ docs/offsite/     off-site kit (Phase 7): product-site-prompts.md (an "About / B
    - event gamification and live audience engagement
    - cost guides (website, e-commerce, mobile app, custom software, branding) and agency selection
    - local SEO (Google Business Profile) and bilingual Arabic/English websites
+   - website maintenance, site speed, app vs web app, cash on delivery (2026-11-13)
+   - .qa domain rules from 22 Oct 2026 (hedged, registrar-sourced; the registry's full guidelines were not yet
+     published, so re-check against domains.qa when updating) and the MoPH booth article
 8. **AI search and indexing** (`docs/indexing.md`): all search, answer and training crawlers are allowed;
    `/llms.txt` is generated from `lib/`; IndexNow runs after every production deploy. Never delete
    `public/fef5c264e59917ec1437b4d43bce08f0.txt` (the IndexNow key file).
@@ -572,8 +583,9 @@ docs/offsite/     off-site kit (Phase 7): product-site-prompts.md (an "About / B
 - [ ] Backlinks: QSTP directory, client footer credits, Clutch/GoodFirms/DesignRush, local press
       for the e-commerce licence and gamification content.
 - [ ] Expand thin product pages (Social Bakery, Rehabitt, ProSeek, Odysense AI: about 150–180 words).
-- [ ] Next articles: website maintenance cost, Shopify in Qatar, WooCommerce payment gateways in Qatar,
-      app vs web app, KSA market entry for Qatari stores (hedged, sourced).
+- [ ] Next articles: Shopify in Qatar, WooCommerce payment gateways in Qatar, KSA market entry for Qatari
+      stores (hedged, sourced). Maintenance cost and app vs web app shipped 2026-11-13.
+- [ ] Owner: dedicated photos for the 2026-11-13 articles (they reuse existing images) and MoPH event photos.
 - [x] Arabic `/ar/` versions of every page (2026-10-29).
 
 **SEO + AI-search initiative (started 2026-10-10; one approval-gated PR per phase)**
